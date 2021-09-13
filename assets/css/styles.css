@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font: normal 16px 'JetBrains Mono';
+}
+
+body {
+    background-color: #2d302f;
+    color: #fff;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Font Styles */
+.syntax-red {
+    color: #f47058;
+}
+
+.syntax-green {
+    color: #8ddb8c;
+}
+
+/* Background */
+
+div.langs {
+    position: relative;
+    z-index: -1;
+    font-size: 5rem;
+    /* color: #383838; */
+    /* background: linear-gradient(to right, #4e4e4e 0%, #383838 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+div.langs i {
+    transform: scale(1.6);
+    margin: 32px 37px;
+
+    background: linear-gradient(to right, #4e4e4e 0%, #383838 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* animation: 1s shimmer forwards; */
+}
+
+
+

@@ -43,6 +43,12 @@ section:not(.hero):nth-child(odd) {
     background-color: var(--secondary);
 }
 
+@keyframes fadein {
+    100% {
+        opacity: 1;
+    }
+}
+
 /* Font Styles */
 .code {
     font-family: "JetBrains Mono";
@@ -71,6 +77,8 @@ nav.main {
     min-width: 100vw;
     background-color: var(--secondary);
     transition: background-color 1s;
+    opacity: 0;
+    animation: 1s fadein 1.5s forwards;
 }
 
 .nav-alt-bg {
@@ -102,6 +110,9 @@ div.langs {
     position: relative;
     z-index: -1;
     font-size: 5rem;
+
+    opacity: 0;
+    animation: 5s fadein 0.3s forwards;
 }
 
 div.langs i {
@@ -122,6 +133,8 @@ div.langs i {
 .hero div p {
     font-size: 28px;
     word-break: break-all;
+    opacity: 0;
+    animation: 1s fadein 2s forwards;
 }
 
 .cursor {
@@ -167,6 +180,12 @@ div.langs i {
     .cursor {
         animation: none;
     }
+}
+
+/* footer */
+
+footer {
+    height: 40px;
 }
 
 

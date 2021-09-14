@@ -88,7 +88,7 @@ nav.main ul {
 }
 
 nav.main a {
-    transition: color .23s, text-shadow .32s;
+    transition: color .23s, text-shadow .32s, opacity .3s;
 }
 
 nav.main a:hover {
@@ -111,6 +111,35 @@ div.langs i {
     background: linear-gradient(to right, #4e4e4e 0%, #383838 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.command-container {
+    display: flex;
+    align-items: center;
+}
+
+.command-line {
+    font-size: 28px;
+}
+
+.cursor {
+    height: 30px;
+    width: 15px;
+    background-color: #fff;
+    opacity: 1;
+    animation: flash-cursor 1.2s infinite;
+}
+
+@keyframes flash-cursor {
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 0;
+    }
 }
 
 

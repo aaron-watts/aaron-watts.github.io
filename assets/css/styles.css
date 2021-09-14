@@ -79,6 +79,7 @@ nav.main {
     transition: background-color 1s;
     opacity: 0;
     animation: 1s fadein 1.5s forwards;
+    z-index: 3;
 }
 
 .nav-alt-bg {

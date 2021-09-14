@@ -39,12 +39,16 @@ section {
     letter-spacing: 3px;
 }
 
-.syntax-red {
-    color: #f47058;
+.bold {
+    font-weight: 500;
 }
 
-.syntax-green {
-    color: #8ddb8c;
+.user {
+    color: #4E9A06;
+}
+
+.host {
+    color: #3465A4;
 }
 
 .typed {
@@ -116,6 +120,7 @@ div.langs i {
 .command-container {
     display: flex;
     align-items: center;
+    width: 60vw;
 }
 
 .command-line {
@@ -123,11 +128,9 @@ div.langs i {
 }
 
 .cursor {
-    height: 30px;
-    width: 15px;
-    background-color: #fff;
+    font-size:32px;
     opacity: 1;
-    animation: flash-cursor 1.2s infinite;
+    animation: flash-cursor 1.8s infinite;
 }
 
 @keyframes flash-cursor {

@@ -1,6 +1,9 @@
 const navLinks = document.querySelectorAll('nav.main a');
+const navBar = document.querySelector('nav.main');
 const command = document.querySelector('#command');
-const commands = ['whoami', 'ls ~/Documents/', 'nano contact.txt'];
+const commands = ['whoami', 'ls ~/Documents/', 'ping 127.0.0.1'];
+const primaryNavColor = '#2d302f'
+const secondaryNavColor = '#373838';
 
 let typeInterval;
 
@@ -23,3 +26,9 @@ for (nav of navLinks) {
         command.innerText = '';
     })
 }
+
+// adjust nav BG color to it's current section
+window.addEventListener('scroll', () => {
+    if (parseInt(scrollY / window.innerHeight) % 2 !== 0) navBar.style.backgroundColor = primaryNavColor;
+    else navBar.style.backgroundColor = secondaryNavColor;
+})

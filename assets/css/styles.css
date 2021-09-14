@@ -87,6 +87,15 @@ nav.main ul {
     font-size: 19px;
 }
 
+nav.main a {
+    transition: color .23s, text-shadow .32s;
+}
+
+nav.main a:hover {
+    color: #c5c2c2;
+    text-shadow: #dbd8d8 0 0 1px;
+}
+
 /* Background */
 
 div.langs {

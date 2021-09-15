@@ -105,7 +105,16 @@ nav.main a:hover {
     text-shadow: #dbd8d8 0 0 1px;
 }
 
-/* Background */
+/* Page Anchors */
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -47px;
+    visibility: hidden;
+}
+
+/* Background Hero */
 
 div.langs {
     position: relative;
@@ -181,6 +190,14 @@ div.langs i {
     .cursor {
         animation: none;
     }
+}
+
+/* About Section */
+
+section.about {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 /* footer */

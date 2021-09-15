@@ -10,7 +10,9 @@ let typeInterval;
 
 // adjust nav BG color to it's current section
 window.addEventListener('scroll', () => {
-    if (parseInt(scrollY / window.innerHeight) % 2 !== 0) navBar.style.backgroundColor = primaryNavColor;
+    if (parseInt(scrollY / (window.innerHeight - navBar.offsetHeight)) % 2 !== 0) {
+        navBar.style.backgroundColor = primaryNavColor;
+    }
     else navBar.style.backgroundColor = secondaryNavColor;
 })
 

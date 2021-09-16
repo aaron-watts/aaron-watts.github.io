@@ -248,6 +248,13 @@ div.langs i {
 
 /* About Section */
 
+/* Projects Section */
+
+img.thumb {
+    width: 40vw;
+    height: auto;
+}
+
 /* footer */
 
 footer {

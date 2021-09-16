@@ -5,6 +5,7 @@
     --text-secondary: #999797;
     --green: #4E9A06;
     --blue: #3465A4;
+    --shadow: #1a1919;
     --footer-height: 80px;
 }
 
@@ -89,13 +90,13 @@ section .code:not(.hero) {
     }
 }
 
-/* Font Styles */
+/* Font Styles & box-shadow */
 .code {
     font-family: "JetBrains Mono";
     font-size: 16px;
     font-weight: 200;
     letter-spacing: 3px;
-    text-shadow: #1a1919 0 3px 5px;
+    text-shadow: var(--shadow) 0 3px 5px;
 }
 
 .bold {
@@ -112,6 +113,14 @@ section .code:not(.hero) {
 
 .no-select {
     user-select: none;
+}
+
+img {
+    box-shadow: 0 3px 5px var(--shadow);
+}
+
+i[class*='chevron'] {
+    text-shadow: var(--shadow) 0 3px 5px;
 }
 
 /* Nav */
@@ -139,6 +148,10 @@ nav .brand {
 nav .links {
     margin-right: 20px;
     font-size: 24px;
+}
+
+.links a {
+    margin-left: 10px;
 }
 
 .nav-alt-bg {
@@ -283,6 +296,7 @@ div.carousel-btn {
     font-size: 2.7rem;
     color: var(--text-secondary);
     cursor: pointer;
+    z-index: 3;
 }
 
 /* footer */

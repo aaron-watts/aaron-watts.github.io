@@ -1,7 +1,7 @@
-const navLinks = document.querySelectorAll('nav.main a');
+const navLinks = document.querySelectorAll('nav.main a, .links a');
 const navBar = document.querySelector('nav.main');
 const command = document.querySelector('#command');
-const commands = ['whoami', 'ls ~/Documents/', 'ping 127.0.0.1'];
+const commands = ['cd ~', 'whoami', 'ls ~/Documents/', 'ping 127.0.0.1', 'git remote -v'];
 const primaryNavColor = '#2d302f'
 const secondaryNavColor = '#373838';
 
@@ -29,7 +29,7 @@ const typeText = async (text) => {
 for (nav of navLinks) {
     // type relevant text to command line on hover
     nav.addEventListener('mouseover', (evt) => {
-        typeText(commands[parseInt(evt.target.id.replace('link-','')) - 1]);
+        typeText(commands[parseInt(evt.target.id.replace('link-',''))]);
     })
 
     // clear text and interval if no hover

@@ -275,16 +275,40 @@ img.thumb {
     transition: transform 1.2s, 1.2s opacity .1s;
 }
 
-img.off-right {
+.off-right img {
     position: absolute;
     opacity: 0;
     transform: scale(0.5) translateX(100vw);
 }
 
-img.off-left {
+.off-left img {
     position: absolute;
     opacity: 0;
     transform: scale(0.5) translateX(-100vw);
+}
+
+.project-container p {
+    transition: opacity 2s;
+}
+
+.project-container.off-right p,
+.project-container.off-left p {
+    opacity: 0;
+}
+
+/* .project-container h2 {
+    transition: opacity 2s;
+}
+
+.project-container.off-right h2,
+.project-container.off-left h2 {
+    opacity: 0;
+} */
+
+.project-container.off-right,
+.project-container.off-left {
+    position: absolute;
+    left: -1000vw;
 }
 
 div.carousel-btn {

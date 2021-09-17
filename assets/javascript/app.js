@@ -6,7 +6,8 @@ const navLinks = document.querySelectorAll('nav.main a.type, .links a i');
 const command = document.querySelector('#command');
 
 // for carousel on Projects section
-const imgs = [...document.querySelectorAll('img.thumb')];
+//const imgs = [...document.querySelectorAll('img.thumb')];
+const projects = [...document.querySelectorAll('div.project-container')];
 const carouselLeft = document.querySelector('.carousel-left');
 const carouselRight = document.querySelector('.carousel-right');
 
@@ -58,24 +59,24 @@ const turnCarousel = (active, direction) => {
     const dir = direction > 0 ? 'right' : 'left';
     const opp = dir === 'right' ? 'left' : 'right';
 
-    imgs[active].classList.remove('active');
-    imgs[active].classList.add(`off-${opp}`);
-    imgs[active + direction].classList.remove(`off-${dir}`);
-    imgs[active + direction].classList.add('active');
+    projects[active].classList.remove('active');
+    projects[active].classList.add(`off-${opp}`);
+    projects[active + direction].classList.remove(`off-${dir}`);
+    projects[active + direction].classList.add('active');
 }
 
 // roll images along carousel LEFT
 carouselLeft.addEventListener('click', () => {
     // find index of image with class of active
-    const active = imgs.findIndex(img => img.classList.contains('active'));
+    const active = projects.findIndex(img => img.classList.contains('active'));
 
     // check we are not at the edge of the carousel
-    if (active !== imgs.length - 1) turnCarousel(active, 1);
+    if (active !== projects.length - 1) turnCarousel(active, 1);
 })
 
 carouselRight.addEventListener('click', () => {
     // find index of image with class of active
-    const active = imgs.findIndex(img => img.classList.contains('active'));
+    const active = projects.findIndex(img => img.classList.contains('active'));
 
     // check we are not at the edge of the carousel
     if (active > 0) turnCarousel(active, -1);

@@ -302,15 +302,6 @@ img.thumb {
     opacity: 0;
 }
 
-/* .project-container h2 {
-    transition: opacity 2s;
-}
-
-.project-container.off-right h2,
-.project-container.off-left h2 {
-    opacity: 0;
-} */
-
 .project-container.off-right p,
 .project-container.off-left p {
     /* left: -1000vw; */
@@ -355,6 +346,22 @@ div.project-container h2 {
 div.project-container p {
     margin-top: 15px;
     width: 120%;
+}
+
+.indicator-container {
+    display: flex;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 3px;
+    background-color: var(--text-secondary);
+}
+
+.indicator-container > .carousel-indicator.active {
+    background-color: var(--text);
 }
 
 /* footer */

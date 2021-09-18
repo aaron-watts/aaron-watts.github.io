@@ -10,6 +10,7 @@ const command = document.querySelector('#command');
 const projects = [...document.querySelectorAll('div.project-container')];
 const carouselLeft = document.querySelector('.carousel-left');
 const carouselRight = document.querySelector('.carousel-right');
+const carouselIndicators = [...document.querySelectorAll('.carousel-indicator')];
 
 // colors to adjust nav color
 const primaryNavColor = '#2d302f'
@@ -65,19 +66,32 @@ const turnCarousel = (active, direction) => {
     projects[active + direction].classList.add('active');
 }
 
+const changeIndicator = (active, direction) => {
+    carouselIndicators[active].classList.remove('active');
+    carouselIndicators[active + direction].classList.add('active');
+}
+
 // roll images along carousel LEFT
 carouselLeft.addEventListener('click', () => {
     // find index of image with class of active
-    const active = projects.findIndex(img => img.classList.contains('active'));
+    const activeProject = projects.findIndex(project => project.classList.contains('active'));
+    const activeIndicator = carouselIndicators.findIndex(ind => ind.classList.contains('active'));
 
     // check we are not at the edge of the carousel
-    if (active !== projects.length - 1) turnCarousel(active, 1);
+    if (activeProject !== projects.length - 1) {
+        turnCarousel(activeProject, 1);
+        changeIndicator(activeIndicator, 1);
+    }
 })
 
 carouselRight.addEventListener('click', () => {
     // find index of image with class of active
-    const active = projects.findIndex(img => img.classList.contains('active'));
+    const activeProject = projects.findIndex(project => project.classList.contains('active'));
+    const activeIndicator = carouselIndicators.findIndex(ind => ind.classList.contains('active'));
 
     // check we are not at the edge of the carousel
-    if (active > 0) turnCarousel(active, -1);
+    if (activeProject > 0) {
+        turnCarousel(activeProject, -1);
+        changeIndicator(activeIndicator, -1);
+    }
 })

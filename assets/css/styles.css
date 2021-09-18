@@ -357,11 +357,13 @@ div.project-container p {
     height: 12px;
     border-radius: 50%;
     margin: 0 3px;
-    background-color: var(--text-secondary);
+    background-color: var(--text);
+    opacity: 0.4;
+    transition: opacity 1s;
 }
 
 .indicator-container > .carousel-indicator.active {
-    background-color: var(--text);
+    opacity: 1;
 }
 
 /* footer */

@@ -269,25 +269,31 @@ div.langs i {
 
 /* Projects Section */
 
-img.thumb {
-    width: 54vw;
-    height: auto;
+.project-container {
     transition: transform 1.2s, 1.2s opacity .1s;
+    height: 70vh;
 }
 
-.off-right img {
+img.thumb {
+    max-width: 54vw;
+    height: auto;
+    max-height: 58vh;
+}
+
+.off-right {
     position: absolute;
     opacity: 0;
     transform: scale(0.5) translateX(100vw);
 }
 
-.off-left img {
+.off-left {
     position: absolute;
     opacity: 0;
     transform: scale(0.5) translateX(-100vw);
 }
 
 .project-container p {
+    text-align: center;
     transition: opacity 2s;
 }
 
@@ -305,10 +311,19 @@ img.thumb {
     opacity: 0;
 } */
 
-.project-container.off-right,
-.project-container.off-left {
+.project-container.off-right p,
+.project-container.off-left p {
+    /* left: -1000vw; */
+}
+
+.project-container.off-right:last-of-type {
     position: absolute;
-    left: -1000vw;
+    left: 100px;
+}
+
+.project-container.off-left:first-of-type {
+    position: absolute;
+    margin-top:0;
 }
 
 div.carousel-btn {

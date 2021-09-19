@@ -12,6 +12,8 @@ const carouselLeft = document.querySelector('.carousel-left');
 const carouselRight = document.querySelector('.carousel-right');
 const carouselIndicators = [...document.querySelectorAll('.carousel-indicator')];
 
+const imageSets = document.querySelectorAll('.project-container .img-container');
+
 // colors to adjust nav color
 const primaryNavColor = '#2d302f'
 const secondaryNavColor = '#373838';
@@ -95,3 +97,12 @@ carouselRight.addEventListener('click', () => {
         changeIndicator(activeIndicator, -1);
     }
 })
+
+// Change images on image sets on interval
+//console.log(imageSets[1].children);
+setInterval(() => {
+    imageSets.forEach(imageSet => {
+        const active = [...imageSet.children].findIndex(image => image.classList.contains('active-img'));
+        console.log(active);
+    })
+}, 2000);

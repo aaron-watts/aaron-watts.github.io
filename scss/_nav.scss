@@ -1,0 +1,47 @@
+nav.main {
+    position: fixed;
+    min-width: 100vw;
+    border-bottom: 2px solid $text-secondary;
+    display: flex;
+    align-items: center;
+    background-color: $secondary-color;
+    transition: background-color 1s;
+    opacity: 0;
+    z-index: 1;
+
+    @include fadeinMixin(1s, 1.5s);
+
+    a {
+        transition: text-shadow .32s;
+
+        &:hover {
+            text-shadow: $text-secondary 0 0 2px;
+        }
+    }
+
+    & ul {
+        display: flex;
+        justify-content: space-between;
+        width: 50vw;
+        margin: 0.6rem auto;
+        font-size: 1.15rem;
+    }
+
+    & .brand {
+        font-size: 1.5rem;
+        margin-left: 1.2rem;
+    }
+
+    & .links {
+        margin-right: 1.2rem;
+        font-size: 1.5rem;
+
+        & a {
+            margin-left: 1.6rem;
+        }
+    }
+
+    &-alt-bg {
+        background-color: $primary-color;
+    }
+}

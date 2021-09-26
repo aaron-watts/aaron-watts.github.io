@@ -1,0 +1,33 @@
+// variables
+$primary-color: #2d302f;
+$secondary-color: #373838;
+$text-primary: #c5c2c2;
+$text-secondary: #999797;
+$text-green: #4e9a06;
+$text-blue: #3465a4;
+$accent-color: #1a1919;
+
+
+// Resets and defaults
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $text-primary;
+}
+
+body {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    letter-spacing: .06rem;
+    background-color: $primary-color;
+    color: $text-primary;
+}

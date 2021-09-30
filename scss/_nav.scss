@@ -2,6 +2,7 @@
     background-color: $secondary-color;
     border-bottom: 2px solid $text-secondary;
     display: flex;
+    flex-direction: column;
 
     justify-content: space-between;
     align-items: center;
@@ -9,14 +10,15 @@
     padding: 0.3rem 1rem;
     position: fixed;
 
+    height: 3rem;;
+    transition: height 1s;
+
     #{&}__brand {
         font-size: 1.6rem;
         align-self: flex-start;
     }
 
     #{&}__menu {
-        // height: 2rem;
-        // width: 2.4rem;
         height: $menu-height;
         width: $menu-width;
         position: absolute;
@@ -26,10 +28,8 @@
 
         &--burger {
             width: 100%;
-            // height: 3px;
             height: $menu-thickness;
             background: $text-primary;
-            // border-radius: 2px;
             border-radius: $menu-radius;
             
             position: absolute;
@@ -40,10 +40,8 @@
             &::before {
                 content: '';
                 width: 100%;
-                // height: 3px;
                 height: $menu-thickness;
                 background-color: $text-primary;
-                // border-radius: 2px;
                 border-radius: $menu-radius;
                 position: absolute;
                 top: -.7rem;
@@ -55,10 +53,8 @@
             &::after {
                 content: '';
                 width: 100%;
-                // height: 3px;
                 height: $menu-thickness;
                 background-color: $text-primary;
-                // border-radius: 2px;
                 border-radius: $menu-radius;
                 position: absolute;
                 top: .7rem;
@@ -79,7 +75,7 @@
         align-items: center;
         font-size: 2rem;
 
-        // transform: translateY(-100vh);
+        transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
 
         & li {
             margin: .6rem auto;
@@ -88,7 +84,6 @@
 
     &.open {
         height: 100vh;
-        flex-direction: column;
 
         & .main-nav__menu {
             &--burger {
@@ -107,17 +102,19 @@
     }
 
     &.open &__page-links {
-        display: flex;
+        opacity: 1;
     }
 
     &:not(.open) &__page-links {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
     }
 
     #{&}__socials {
         display: flex;
 
         justify-items: flex-start;
+        transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
 
         // transform: translateY(-100vh);
         
@@ -131,12 +128,12 @@
     }
 
     &.open &__socials {
-        // visibility: visible;
-        display: flex;
+        opacity: 1;
     }
 
     &:not(.open) &__socials {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
     }
 }
 

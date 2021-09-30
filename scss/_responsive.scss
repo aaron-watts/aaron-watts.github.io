@@ -1,10 +1,11 @@
 @include media-md {
 
-    // nav
+    // Nav
     .main-nav {
         background-color: $secondary-color;
         border-bottom: 2px solid $text-secondary;
         display: flex;
+        flex-direction: row;
 
         justify-content: space-between;
         align-items: center;
@@ -12,7 +13,6 @@
         padding: 0 1rem;
 
         #{&}__menu {
-            // border: 2px solid white;
             height: 2rem;
             width: 2.4rem;
             position: absolute;
@@ -42,15 +42,16 @@
 
         &.open {
             height: auto;
-            flex-direction: row;
         }
         
         &:not(.open) &__page-links {
-            display: flex;
+            opacity: 1;
+            visibility: visible;
         }
 
         &:not(.open) &__socials {
-            display: flex;
+            opacity: 1;
+            visibility: visible;
         }
     }
 }

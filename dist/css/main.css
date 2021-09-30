@@ -46,8 +46,8 @@ body {
 }
 
 .main-nav .main-nav__menu {
-  height: 2rem;
-  width: 2.4rem;
+  height: 30px;
+  width: 31.5px;
   position: absolute;
   top: .3rem;
   right: 1.5rem;
@@ -57,10 +57,14 @@ body {
 .main-nav .main-nav__menu--burger {
   width: 100%;
   height: 3px;
-  background-color: #c5c2c2;
+  background: #c5c2c2;
   border-radius: 2px;
   position: absolute;
   top: 50%;
+  -webkit-transition: background .5s, -webkit-transform 1s ease-in-out;
+  transition: background .5s, -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, background .5s;
+  transition: transform 1s ease-in-out, background .5s, -webkit-transform 1s ease-in-out;
 }
 
 .main-nav .main-nav__menu--burger::before {
@@ -71,6 +75,12 @@ body {
   border-radius: 2px;
   position: absolute;
   top: -.7rem;
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 .main-nav .main-nav__menu--burger::after {
@@ -81,6 +91,12 @@ body {
   border-radius: 2px;
   position: absolute;
   top: .7rem;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 .main-nav .main-nav__page-links {
@@ -111,6 +127,22 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.main-nav.open .main-nav__menu--burger {
+  -webkit-transform: rotate(720deg);
+          transform: rotate(720deg);
+  background: transparent;
+}
+
+.main-nav.open .main-nav__menu--burger::before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.main-nav.open .main-nav__menu--burger::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .main-nav.open .main-nav__page-links {
@@ -162,7 +194,17 @@ body {
             align-items: center;
     min-width: 100vw;
     padding: 0 1rem;
-    position: fixed;
+  }
+  .main-nav .main-nav__menu {
+    height: 2rem;
+    width: 2.4rem;
+    position: absolute;
+    top: .3rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }
+  .main-nav .main-nav__menu--burger {
+    display: none;
   }
   .main-nav .main-nav__brand {
     font-size: 1.6rem;
@@ -182,6 +224,7 @@ body {
     font-size: 1.8rem;
   }
   .main-nav.open {
+    height: auto;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;

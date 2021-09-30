@@ -1,0 +1,56 @@
+@include media-md {
+
+    // nav
+    .main-nav {
+        background-color: $secondary-color;
+        border-bottom: 2px solid $text-secondary;
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+        min-width: 100vw;
+        padding: 0 1rem;
+
+        #{&}__menu {
+            // border: 2px solid white;
+            height: 2rem;
+            width: 2.4rem;
+            position: absolute;
+            top: .3rem;
+            right: 1.5rem;
+            cursor: pointer;
+    
+            &--burger {
+                display: none;
+            }
+        }
+
+        #{&}__brand {
+            font-size: 1.6rem;
+            align-self: center;
+        }
+
+        #{&}__page-links {    
+            flex-direction: row;
+            font-size: 1.6rem;
+        }
+
+        #{&}__socials i {
+            margin: 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        &.open {
+            height: auto;
+            flex-direction: row;
+        }
+        
+        &:not(.open) &__page-links {
+            display: flex;
+        }
+
+        &:not(.open) &__socials {
+            display: flex;
+        }
+    }
+}

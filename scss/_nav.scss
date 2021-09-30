@@ -9,17 +9,16 @@
     padding: 0.3rem 1rem;
     position: fixed;
 
-    // flex-direction: column;
-
     #{&}__brand {
         font-size: 1.6rem;
         align-self: flex-start;
     }
 
     #{&}__menu {
-        // border: 2px solid white;
-        height: 2rem;
-        width: 2.4rem;
+        // height: 2rem;
+        // width: 2.4rem;
+        height: $menu-height;
+        width: $menu-width;
         position: absolute;
         top: .3rem;
         right: 1.5rem;
@@ -27,31 +26,45 @@
 
         &--burger {
             width: 100%;
-            height: 3px;
-            background-color: $text-primary;
-            border-radius: 2px;
+            // height: 3px;
+            height: $menu-thickness;
+            background: $text-primary;
+            // border-radius: 2px;
+            border-radius: $menu-radius;
             
             position: absolute;
             top: 50%;
 
+            transition: transform 1s ease-in-out, background .5s;
+
             &::before {
                 content: '';
                 width: 100%;
-                height: 3px;
+                // height: 3px;
+                height: $menu-thickness;
                 background-color: $text-primary;
-                border-radius: 2px;
+                // border-radius: 2px;
+                border-radius: $menu-radius;
                 position: absolute;
                 top: -.7rem;
+
+                transform-origin: top right;
+                transition: transform 1s;
             }
 
             &::after {
                 content: '';
                 width: 100%;
-                height: 3px;
+                // height: 3px;
+                height: $menu-thickness;
                 background-color: $text-primary;
-                border-radius: 2px;
+                // border-radius: 2px;
+                border-radius: $menu-radius;
                 position: absolute;
                 top: .7rem;
+
+                transform-origin: bottom right;
+                transition: transform 1s;
             }
         }
     }
@@ -76,6 +89,21 @@
     &.open {
         height: 100vh;
         flex-direction: column;
+
+        & .main-nav__menu {
+            &--burger {
+                transform: rotate(720deg);
+                background: transparent;
+
+                &::before {
+                    transform: rotate(-45deg);
+                }
+
+                &::after {
+                    transform: rotate(45deg);
+                }
+            }
+        }
     }
 
     &.open &__page-links {
@@ -112,50 +140,3 @@
     }
 }
 
-@include media-md {
-    .main-nav {
-        background-color: $secondary-color;
-        border-bottom: 2px solid $text-secondary;
-        display: flex;
-
-        justify-content: space-between;
-        align-items: center;
-        min-width: 100vw;
-        // max-height: 3rem;
-        padding: 0 1rem;
-        position: fixed;
-
-        #{&}__brand {
-            font-size: 1.6rem;
-            align-self: center;
-        }
-
-        #{&}__page-links {    
-            flex-direction: row;
-            font-size: 1.6rem;
-        }
-
-        #{&}__socials i {
-            margin: 0 1rem;
-            font-size: 1.8rem;
-    
-            & i {
-                // margin: 0 1rem;
-                // font-size: 1.8rem;
-            }   
-        }
-
-        &.open {
-            // height: 3rem;
-            flex-direction: row;
-        }
-        
-        &:not(.open) &__page-links {
-            display: flex;
-        }
-
-        &:not(.open) &__socials {
-            display: flex;
-        }
-    }
-}

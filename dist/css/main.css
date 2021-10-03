@@ -121,13 +121,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2rem;
   -webkit-transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
   transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
 }
 
 .main-nav .main-nav__page-links li {
   margin: .6rem auto;
+  font-size: 1.4rem;
 }
 
 .main-nav.open {
@@ -247,5 +247,9 @@ body {
 
 section {
   min-height: 100vh;
+}
+
+section:nth-child(odd) {
+  background-color: #373838;
 }
 /*# sourceMappingURL=main.css.map */

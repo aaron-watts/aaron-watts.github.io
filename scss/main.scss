@@ -4,5 +4,9 @@
 
 section {
     min-height: 100vh;
+
+    &:nth-child(odd) {
+        background-color: $secondary-color;
+    }
 }
 

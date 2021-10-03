@@ -73,12 +73,12 @@
 
         flex-direction: column;
         align-items: center;
-        font-size: 2rem;
 
         transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
 
         & li {
             margin: .6rem auto;
+            font-size: 1.4rem;
         }
     }
 

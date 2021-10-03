@@ -29,17 +29,18 @@
 
         #{&}__page-links {    
             flex-direction: row;
-            font-size: 1.6rem;
+
+            & li {
+                font-size: 1.4rem;
+            }
         }
 
-        #{&}__socials a {
-            margin: 0 1rem;
+        #{&}__socials {
             font-size: 1.8rem;
-        }
 
-        #{&}__socials i {
-            margin: 0 .25rem;
-            font-size: 1.8rem;
+            & li {
+                margin: 0 .75rem;            #
+            }
         }
 
         &.open {

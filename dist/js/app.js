@@ -61,3 +61,36 @@ for (let link of navLinks) {
 
 // Debug to check script loaded
 console.log('Script Loaded');
+
+const badgeOrder = [0, 1, 2, 3, 4];
+const badges = document.querySelectorAll('.badge');
+
+//badges[Math.floor(Math.random() * badges.length)].classList.add('show');
+const shuffleBadges = () => {
+    badgeOrder.sort(() => Math.random() - 0.5);
+}
+
+// for (let index of badgeOrder) {
+//     for (let badge of badges) {
+//         if (badge.classList.contains('show')) {
+//             badge.classList.remove('show');
+//         }
+//     }
+//     badges[index].classList.add('show');
+// }
+shuffleBadges();
+let badgeCounter = 0;
+
+setInterval(() => {
+    for (let badge of badges) {
+        if (badge.classList.contains('show')) {
+            badge.classList.remove('show');
+        }
+    }
+    badges[badgeOrder[badgeCounter]].classList.add('show');
+    badgeCounter++;
+    if (badgeCounter >= badges.length) {
+        shuffleBadges();
+        badgeCounter = 0;
+    }
+}, 5000)

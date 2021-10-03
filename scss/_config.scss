@@ -6,6 +6,8 @@ $text-secondary: #999797;
 $text-green: #4e9a06;
 $text-blue: #3465a4;
 $accent-color: #1a1919;
+$gradient-1: #4e4e4e;
+$gradient-2: #383838;
 
 $nav-height: 3rem;
 
@@ -13,6 +15,9 @@ $menu-height: 30px;
 $menu-width: $menu-height * 1.05;
 $menu-thickness: 3px;
 $menu-radius: 2px;
+
+$hero-icon-lg-fs: 6rem;
+$hero-icon-sm-fs: $hero-icon-lg-fs * 0.36;
 
 
 // Resets and defaults
@@ -51,6 +56,12 @@ html {
 
 @mixin link-hover-transition {
     transition: text-shadow .4s;
+}
+
+@mixin gradient-text ($color-1, $color-2, $breakpoint-1, $breakpoint-2) {
+    background: linear-gradient(to right, $color-1 0%, $color-2 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @mixin media-md {

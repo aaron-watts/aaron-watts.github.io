@@ -47,6 +47,7 @@ html {
   min-width: 100vw;
   padding: 0.3rem 1rem;
   position: fixed;
+  z-index: 1;
   height: 3rem;
   -webkit-transition: height .7s, background-color .3s .4s linear;
   transition: height .7s, background-color .3s .4s linear;
@@ -263,11 +264,10 @@ html {
     font-size: 1.4rem;
   }
   .main-nav .main-nav__socials {
-    margin: 0 .75rem;
     font-size: 1.8rem;
   }
   .main-nav .main-nav__socials li {
-    margin: 0;
+    margin: 0 .75rem;
   }
   .main-nav.open {
     height: auto;
@@ -284,6 +284,7 @@ html {
 
 section {
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 section:nth-child(odd) {
@@ -295,5 +296,99 @@ a.anchor {
   position: relative;
   top: -3rem;
   visibility: hidden;
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.home .home__hero {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.home .home__hero i {
+  font-size: 6rem;
+  margin: .6rem 1.2rem;
+}
+
+.home .home__hero div {
+  position: relative;
+}
+
+.home .home__hero div .lg-i {
+  background: -webkit-gradient(linear, left top, right top, from(#4e4e4e), color-stop(60%, #383838));
+  background: linear-gradient(to right, #4e4e4e 0%, #383838 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home .home__hero div .badge {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  opacity: 0;
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s;
+}
+
+.home .home__hero div .badge i {
+  font-size: 2.16rem;
+  background: -webkit-gradient(linear, left top, right top, from(#999797), color-stop(60%, #4e4e4e));
+  background: linear-gradient(to right, #999797 0%, #4e4e4e 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home .home__hero div .badge.express-logo {
+  font-family: helvetica neue,open sans,sans-serif;
+  font-weight: 200;
+  letter-spacing: 0;
+  position: absolute;
+  bottom: 10%;
+  right: 16%;
+  height: 1.8rem;
+  background: -webkit-gradient(linear, left top, right top, from(#c5c2c2), color-stop(60%, #999797));
+  background: linear-gradient(to right, #c5c2c2 0%, #999797 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home .home__hero div .badge.templating {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 10%;
+  right: 16%;
+  height: 1.8rem;
+  background: -webkit-gradient(linear, left top, right top, from(#c5c2c2), color-stop(60%, #999797));
+  background: linear-gradient(to right, #c5c2c2 0%, #999797 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home .home__hero div .badge.show {
+  opacity: 1;
 }
 /*# sourceMappingURL=main.css.map */

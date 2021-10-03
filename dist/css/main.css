@@ -22,6 +22,11 @@ body {
   color: #c5c2c2;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
 .main-nav {
   background-color: #373838;
   border-bottom: 2px solid #999797;
@@ -42,8 +47,8 @@ body {
   padding: 0.3rem 1rem;
   position: fixed;
   height: 3rem;
-  -webkit-transition: height 1s;
-  transition: height 1s;
+  -webkit-transition: height .7s, background-color .3s .4s linear;
+  transition: height .7s, background-color .3s .4s linear;
 }
 
 .main-nav .main-nav__brand {
@@ -68,10 +73,10 @@ body {
   border-radius: 2px;
   position: absolute;
   top: 50%;
-  -webkit-transition: background .5s, -webkit-transform 1s ease-in-out;
-  transition: background .5s, -webkit-transform 1s ease-in-out;
-  transition: transform 1s ease-in-out, background .5s;
-  transition: transform 1s ease-in-out, background .5s, -webkit-transform 1s ease-in-out;
+  -webkit-transition: background .1s ease-in, -webkit-transform 1s ease-in-out;
+  transition: background .1s ease-in, -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, background .1s ease-in;
+  transition: transform 1s ease-in-out, background .1s ease-in, -webkit-transform 1s ease-in-out;
 }
 
 .main-nav .main-nav__menu--burger::before {

@@ -1,7 +1,10 @@
 const menuBtn = document.querySelector('.main-nav__menu');
 const nav = document.querySelector('.main-nav');
 
-const navLinks = document.querySelectorAll('.main-nav .main-nav__page-links li');
+const navLinks = document.querySelectorAll(
+    `.main-nav .main-nav__page-links li, 
+    .main-nav .main-nav__brand`
+    );
 
 const navBar = document.querySelector('nav.main-nav');
 const primaryColor = '#2d302f'

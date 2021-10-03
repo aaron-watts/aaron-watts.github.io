@@ -10,7 +10,7 @@
     padding: 0.3rem 1rem;
     position: fixed;
 
-    height: 3rem;;
+    height: $nav-height;
     transition: height .7s, background-color .3s .4s linear;
 
     #{&}__brand {
@@ -79,6 +79,16 @@
         & li {
             margin: .6rem auto;
             font-size: 1.4rem;
+
+            & a:hover {
+                text-shadow: $text-secondary 0 0 2px;
+            }
+
+            &.active {
+                & a {
+                    text-shadow: $text-primary 0 0 3px;
+                }
+            }
         }
     }
 
@@ -116,14 +126,16 @@
         justify-items: flex-start;
         transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
 
-        // transform: translateY(-100vh);
-        
         & i {
             margin: auto .5rem;
             font-size: 1.5rem;
 
             margin: 0 1rem 20vh;
             font-size: 2rem;
+        }
+
+        & a:hover {
+            text-shadow: $text-secondary 0 0 2px;
         }
     }
 

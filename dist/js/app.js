@@ -1,14 +1,51 @@
-const menuBtn = document.querySelector('.main-nav__menu');
-const nav = document.querySelector('.main-nav');
+const menuBtn = document.querySelector('.main-nav__menu');      // hamburger button
+const nav = document.querySelector('.main-nav');                // nav container
 
+// Nav items that are supposed to cause the hamburger menu to close
 const navLinks = document.querySelectorAll(
     `.main-nav .main-nav__page-links li, 
     .main-nav .main-nav__brand`
-    );
+);
 
-const navBar = document.querySelector('nav.main-nav');
 const primaryColor = '#2d302f'
 const secondaryColor = '#373838';
+
+// Apply active class to relevant navLink if not home
+const applyActiveTarget = () => {
+    if (document.querySelector(':target')) {                    // First check if target exists
+        const target = document.querySelector(':target');       // Get target
+        const targetNav = document.querySelector(`
+            a[href="#${target.id}"]`
+        );                                                      // Get relevant nav anchor
+
+        for (let link of navLinks) {
+            if (link === targetNav.parentElement) {             // If link matches targetNavs parent (li)
+                link.classList.add('active');
+            }
+            else if (link.classList.contains('active')) {       // Don't remove non existent classes
+                link.classList.remove('active');
+            }
+        }
+    } else {                                                    // If no target (home)
+        for (let link of navLinks) {
+            if (link.classList.contains('active')) {            // Don't remove non existent classes
+                link.classList.remove('active');
+            }
+        }
+    }
+}
+
+// Apply active class to relevant link in nav on load and on hashchange
+window.addEventListener('load', applyActiveTarget);
+window.addEventListener('hashchange', applyActiveTarget);
+
+// Adjust nav BG color to it's current section
+window.addEventListener('scroll', () => {
+    if (parseInt(scrollY / (window.innerHeight - nav.offsetHeight)) % 2 !== 0) {
+        nav.style.backgroundColor = primaryColor;
+    }
+    else nav.style.backgroundColor = secondaryColor;
+})
 
 // Hamburger Menu (Small screens only - negated by CSS at larger sizes)
 menuBtn.addEventListener('click', () => {
@@ -21,14 +58,6 @@ for (let link of navLinks) {
         nav.classList.remove('open');
     })
 }
-
-// Adjust nav BG color to it's current section
-window.addEventListener('scroll', () => {
-    if (parseInt(scrollY / (window.innerHeight - navBar.offsetHeight)) % 2 !== 0) {
-        navBar.style.backgroundColor = primaryColor;
-    }
-    else navBar.style.backgroundColor = secondaryColor;
-})
 
 // Debug to check script loaded
 console.log('Script Loaded');

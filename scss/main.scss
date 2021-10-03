@@ -10,3 +10,10 @@ section {
     }
 }
 
+a.anchor {
+    display: block;
+    position: relative;
+    top: -$nav-height;
+    visibility: hidden;
+}
+

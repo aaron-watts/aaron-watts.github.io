@@ -1,0 +1,19 @@
+@import 'config';
+@import 'nav';
+@import 'responsive';
+
+section {
+    min-height: 100vh;
+
+    &:nth-child(odd) {
+        background-color: $secondary-color;
+    }
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -$nav-height;
+    visibility: hidden;
+}
+

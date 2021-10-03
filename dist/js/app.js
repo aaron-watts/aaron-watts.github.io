@@ -19,7 +19,7 @@ const applyActiveTarget = () => {
         );                                                      // Get relevant nav anchor
 
         for (let link of navLinks) {
-            if (link === targetNav.parentElement) {             // If link matches targetNavs parent (li)
+            if (link === targetNav.parentElement) {             // If link is targetNavs parent (li)
                 link.classList.add('active');
             }
             else if (link.classList.contains('active')) {       // Don't remove non existent classes
@@ -47,12 +47,12 @@ window.addEventListener('scroll', () => {
     else nav.style.backgroundColor = secondaryColor;
 })
 
-// Hamburger Menu (Small screens only - negated by CSS at larger sizes)
+// Hamburger Menu Toggler (Small screens only - negated by CSS at larger sizes)
 menuBtn.addEventListener('click', () => {
     nav.classList.toggle('open');
 })
 
-// Close hamburger menu when link selected
+// Close hamburger menu when a relevant link selected
 for (let link of navLinks) {
     link.addEventListener('click', () => {
         nav.classList.remove('open');

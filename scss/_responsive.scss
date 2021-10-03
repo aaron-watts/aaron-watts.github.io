@@ -19,10 +19,7 @@
             top: .3rem;
             right: 1.5rem;
             cursor: pointer;
-    
-            &--burger {
-                display: none;
-            }
+            display: none;
         }
 
         #{&}__brand {
@@ -35,8 +32,13 @@
             font-size: 1.6rem;
         }
 
-        #{&}__socials i {
+        #{&}__socials a {
             margin: 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        #{&}__socials i {
+            margin: 0 .25rem;
             font-size: 1.8rem;
         }
 

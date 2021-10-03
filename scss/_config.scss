@@ -45,6 +45,14 @@ html {
     overflow: hidden;
 }
 
+@mixin link-hover {
+    text-shadow: $text-secondary 0 0 5px;
+}
+
+@mixin link-hover-transition {
+    transition: text-shadow .4s;
+}
+
 @mixin media-md {
     @media screen and (min-width: 768px) {
         @content;

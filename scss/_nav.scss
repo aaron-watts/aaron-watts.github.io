@@ -16,6 +16,11 @@
     #{&}__brand {
         font-size: 1.6rem;
         align-self: flex-start;
+        @include link-hover-transition;
+
+        &:hover {
+            @include link-hover;
+        }
     }
 
     #{&}__menu {
@@ -80,8 +85,12 @@
             margin: .6rem auto;
             font-size: 1.4rem;
 
-            & a:hover {
-                text-shadow: $text-secondary 0 0 2px;
+            & a {
+                @include link-hover-transition;
+
+                &:hover {
+                    @include link-hover;
+                }
             }
 
             &.active {
@@ -126,16 +135,16 @@
         justify-items: flex-start;
         transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
 
-        & i {
-            margin: auto .5rem;
+        & a {
             font-size: 1.5rem;
 
-            margin: 0 1rem 20vh;
+            margin: 20vh 1rem 20vh;
             font-size: 2rem;
-        }
+            @include link-hover-transition;
 
-        & a:hover {
-            text-shadow: $text-secondary 0 0 2px;
+            &:hover {
+                @include link-hover;
+            }
         }
     }
 

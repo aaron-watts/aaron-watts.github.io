@@ -23,9 +23,22 @@ a.anchor {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 5vw;
+    // width: fit-content;
 
-    #{&}__hero {
-        width: 100%;
+    & .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: fit-content;
+    }
+
+    & .command-line {
+        margin-bottom: 3vh;
+        // align-self: flex-start;
+    }
+
+    #{&}__lg-i {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,38 +55,18 @@ a.anchor {
             & .lg-i {
                 @include gradient-text($gradient-1, $gradient-2, 0%, 60%);
             }
-
-            & .badge {
-                position: absolute;
-                bottom: 2%;
-                right: 2%;
-                opacity: 0;
-                transition: opacity 2.8s .3s;
-                
-                & i {
-                    font-size: $hero-icon-sm-fs;
-                    @include gradient-text($text-secondary, $gradient-1, 0%, 60%);
-                }
-
-                &.express-logo {
-                    // font-family: helvetica neue,open sans,sans-serif;
-                    // font-weight: 100; // this is correct font-weight - but too small!
-                    font-family: 'Open Sans', sans-serif;
-                    font-weight: 200;
-                    letter-spacing: 0;
-                    position: absolute;
-                    bottom: 10%;
-                    right: 16%;
-                    height: 1.8rem;
-
-                    @include gradient-text($text-primary, $text-secondary, 0%, 100%);
-                }
-
-                &.show {
-                    opacity: 0.6;
-                }
-            }
         }       
+    }
+
+    #{&}__sm-i {
+        display: flex;
+
+        & div .sm-i {
+            font-size: $hero-icon-sm-fs;
+            margin: 1rem .6rem;
+            opacity: 0.8;
+            @include gradient-text($text-secondary, $gradient-1, 0%, 80%);
+        }
     }
 }
 

@@ -366,10 +366,30 @@ a.anchor {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 5vw;
 }
 
-.home .home__hero {
-  width: 100%;
+.home .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.home .command-line {
+  margin-bottom: 3vh;
+}
+
+.home .home__lg-i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -385,54 +405,35 @@ a.anchor {
           flex-flow: row wrap;
 }
 
-.home .home__hero i {
-  font-size: 6rem;
+.home .home__lg-i i {
+  font-size: 5rem;
   margin: .6rem 1.2rem;
 }
 
-.home .home__hero div {
+.home .home__lg-i div {
   position: relative;
 }
 
-.home .home__hero div .lg-i {
+.home .home__lg-i div .lg-i {
   background: -webkit-gradient(linear, left top, right top, from(#4e4e4e), color-stop(60%, #383838));
   background: linear-gradient(to right, #4e4e4e 0%, #383838 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.home .home__hero div .badge {
-  position: absolute;
-  bottom: 2%;
-  right: 2%;
-  opacity: 0;
-  -webkit-transition: opacity 2.8s .3s;
-  transition: opacity 2.8s .3s;
+.home .home__sm-i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.home .home__hero div .badge i {
-  font-size: 2.16rem;
+.home .home__sm-i div .sm-i {
+  font-size: 1.8rem;
+  margin: 1rem .6rem;
+  opacity: 0.8;
   background: -webkit-gradient(linear, left top, right top, from(#999797), color-stop(60%, #4e4e4e));
   background: linear-gradient(to right, #999797 0%, #4e4e4e 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.home .home__hero div .badge.express-logo {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-  letter-spacing: 0;
-  position: absolute;
-  bottom: 10%;
-  right: 16%;
-  height: 1.8rem;
-  background: -webkit-gradient(linear, left top, right top, from(#c5c2c2), color-stop(60%, #999797));
-  background: linear-gradient(to right, #c5c2c2 0%, #999797 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.home .home__hero div .badge.show {
-  opacity: 0.6;
 }
 /*# sourceMappingURL=main.css.map */

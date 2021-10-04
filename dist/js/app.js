@@ -62,8 +62,12 @@ for (let link of navLinks) {
 // Debug to check script loaded
 console.log('Script Loaded');
 
-const badgeOrder = [0, 1, 2, 3, 4];
 const badges = document.querySelectorAll('.badge');
+const badgeOrder = [];
+for (let i = 0; i < badges.length; i++){
+    badgeOrder.push(i);
+}
+console.log(badgeOrder);
 
 //badges[Math.floor(Math.random() * badges.length)].classList.add('show');
 const shuffleBadges = () => {
@@ -78,7 +82,7 @@ const shuffleBadges = () => {
 //     }
 //     badges[index].classList.add('show');
 // }
-shuffleBadges();
+// shuffleBadges();
 let badgeCounter = 0;
 
 setInterval(() => {

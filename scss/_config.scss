@@ -37,7 +37,7 @@ a {
 }
 
 body {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;
     letter-spacing: .06rem;
@@ -48,6 +48,44 @@ body {
 html {
     scroll-behavior: smooth;
     overflow: hidden;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.code {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .2rem;
+
+    & .user {
+        color: $text-green;
+    }
+
+    & .host {
+        color: $text-blue;
+    }
+
+    &.bold {
+        font-weight: 500;;
+    }
+
+    & .cursor {
+        font-size: 1.3rem;
+        animation: flash-cursor 1.8s infinite;
+    }
+}
+
+@keyframes flash-cursor {
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 0;
+    }
 }
 
 @mixin link-hover {

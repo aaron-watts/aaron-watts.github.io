@@ -15,7 +15,7 @@ a {
 }
 
 body {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: 300;
   letter-spacing: .06rem;
@@ -26,6 +26,60 @@ body {
 html {
   scroll-behavior: smooth;
   overflow: hidden;
+}
+
+.no-select {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.code {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .2rem;
+}
+
+.code .user {
+  color: #4e9a06;
+}
+
+.code .host {
+  color: #3465a4;
+}
+
+.code.bold {
+  font-weight: 500;
+}
+
+.code .cursor {
+  font-size: 1.3rem;
+  -webkit-animation: flash-cursor 1.8s infinite;
+          animation: flash-cursor 1.8s infinite;
+}
+
+@-webkit-keyframes flash-cursor {
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash-cursor {
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
 }
 
 .main-nav {
@@ -308,6 +362,10 @@ a.anchor {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .home .home__hero {
@@ -348,8 +406,8 @@ a.anchor {
   bottom: 2%;
   right: 2%;
   opacity: 0;
-  -webkit-transition: opacity 3s;
-  transition: opacity 3s;
+  -webkit-transition: opacity 2.8s .3s;
+  transition: opacity 2.8s .3s;
 }
 
 .home .home__hero div .badge i {
@@ -361,7 +419,7 @@ a.anchor {
 }
 
 .home .home__hero div .badge.express-logo {
-  font-family: helvetica neue,open sans,sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 200;
   letter-spacing: 0;
   position: absolute;
@@ -374,21 +432,7 @@ a.anchor {
   -webkit-text-fill-color: transparent;
 }
 
-.home .home__hero div .badge.templating {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 500;
-  letter-spacing: 1px;
-  position: absolute;
-  bottom: 10%;
-  right: 16%;
-  height: 1.8rem;
-  background: -webkit-gradient(linear, left top, right top, from(#c5c2c2), color-stop(60%, #999797));
-  background: linear-gradient(to right, #c5c2c2 0%, #999797 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .home .home__hero div .badge.show {
-  opacity: 1;
+  opacity: 0.6;
 }
 /*# sourceMappingURL=main.css.map */

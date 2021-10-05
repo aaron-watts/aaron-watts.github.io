@@ -273,6 +273,125 @@ html {
   visibility: hidden;
 }
 
+section {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+section:nth-child(odd) {
+  background-color: #373838;
+}
+
+section h2 {
+  opacity: 0;
+  -webkit-transition: opacity 0s 2.6s;
+  transition: opacity 0s 2.6s;
+  font-weight: 300;
+}
+
+section h2.show {
+  opacity: 1;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -3rem;
+  visibility: hidden;
+}
+
+.command-line {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5vw;
+}
+
+.home .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 95vw;
+  margin: 0 auto;
+}
+
+.home .command-line {
+  margin-bottom: 3vh;
+  word-break: break-all;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.home .home__lg-i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.home .home__lg-i i {
+  font-size: 5rem;
+  margin: .6rem 1.2rem;
+}
+
+.home .home__lg-i div {
+  position: relative;
+}
+
+.home .home__lg-i div .lg-i {
+  background: -webkit-gradient(linear, left top, right top, from(#4e4e4e), color-stop(60%, #383838));
+  background: linear-gradient(to right, #4e4e4e 0%, #383838 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home .home__sm-i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home .home__sm-i div .sm-i {
+  font-size: 1.8rem;
+  margin: 1rem .6rem;
+  opacity: 0.8;
+  background: -webkit-gradient(linear, left top, right top, from(#999797), color-stop(60%, #4e4e4e));
+  background: linear-gradient(to right, #999797 0%, #4e4e4e 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @media screen and (min-width: 768px) {
   .main-nav {
     background-color: #373838;
@@ -335,143 +454,35 @@ html {
     visibility: visible;
   }
   .home .container {
-    width: 70vw;
-    max-width: 70vw;
-  }
-  .home .command-line {
-    -ms-flex-item-align: start;
-        align-self: flex-start;
-    width: inherit;
-  }
-  .home .command-line-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
-    min-height: 3rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 30vh;
+    width: 73vw;
   }
-}
-
-section {
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-section:nth-child(odd) {
-  background-color: #373838;
-}
-
-section h2 {
-  opacity: 0;
-  -webkit-transition: opacity 0s 2.6s;
-  transition: opacity 0s 2.6s;
-  font-weight: 300;
-}
-
-section h2.show {
-  opacity: 1;
-}
-
-a.anchor {
-  display: block;
-  position: relative;
-  top: -3rem;
-  visibility: hidden;
-}
-
-.command-line {
-  word-break: break-all;
-  word-wrap: break-word;
-}
-
-.home {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 5vw;
-}
-
-.home .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  width: 95vw;
-}
-
-.home .command-line {
-  margin-bottom: 3vh;
-  word-break: break-all;
-  word-wrap: break-word;
-  max-width: 100%;
-}
-
-.home .home__lg-i {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-}
-
-.home .home__lg-i i {
-  font-size: 5rem;
-  margin: .6rem 1.2rem;
-}
-
-.home .home__lg-i div {
-  position: relative;
-}
-
-.home .home__lg-i div .lg-i {
-  background: -webkit-gradient(linear, left top, right top, from(#4e4e4e), color-stop(60%, #383838));
-  background: linear-gradient(to right, #4e4e4e 0%, #383838 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.home .home__sm-i {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.home .home__sm-i div .sm-i {
-  font-size: 1.8rem;
-  margin: 1rem .6rem;
-  opacity: 0.8;
-  background: -webkit-gradient(linear, left top, right top, from(#999797), color-stop(60%, #4e4e4e));
-  background: linear-gradient(to right, #999797 0%, #4e4e4e 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  .home .command-line {
+    width: inherit;
+    vertical-align: bottom;
+    margin-bottom: 0;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .home .home__lg-i i {
+    font-size: 6rem;
+  }
+  .home .home__sm-i div .sm-i {
+    font-size: 2.25rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */

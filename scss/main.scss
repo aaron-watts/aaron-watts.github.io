@@ -1,6 +1,6 @@
 @import 'config';
 @import 'nav';
-@import 'responsive';
+
 
 section {
     min-height: 100vh;
@@ -44,15 +44,14 @@ a.anchor {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: fit-content;
         width: 95vw;
+        margin: 0 auto;
     }
 
     & .command-line {
         margin-bottom: 3vh;
         word-break: break-all;
         word-wrap: break-word;
-        // width: inherit;
         max-width: 100%;
     }
 
@@ -87,3 +86,5 @@ a.anchor {
         }
     }
 }
+
+@import 'responsive';

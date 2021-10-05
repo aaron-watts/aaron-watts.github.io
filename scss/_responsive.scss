@@ -61,20 +61,28 @@
     // home section
     .home {
         & .container {
-            width: 70vw;
-            max-width: 70vw;
-            // background-color: darkcyan;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: column;
+            height: 30vh;
+            width: 73vw;
         }
 
         & .command-line {
-            align-self: flex-start;
             width: inherit;
-            
+            vertical-align: bottom;
+            margin-bottom: 0;
+            justify-content: flex-end;
+        }
 
-            &-container {
-                display: flex;
-                align-items: flex-end;
-                min-height: 3rem;
+        #{&}__lg-i i {
+            font-size: $hero-icon-lg-fs * 1.2;   
+        }
+    
+        #{&}__sm-i {
+            & div .sm-i {
+                font-size: $hero-icon-sm-fs * 1.25;
             }
         }
     }

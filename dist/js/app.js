@@ -7,6 +7,7 @@ const navLinks = document.querySelectorAll(
     .main-nav .main-nav__brand`
 );
 
+// Nav items that interact with the pretend terminals
 const allNavLinks = [
     ...navLinks, 
     ...document.querySelectorAll('.main-nav .main-nav__socials li')
@@ -21,14 +22,23 @@ const sectionHeaders = document.querySelectorAll('section h2');
 let typeInterval;
 
 // Recursive function to create typing effect
+// If text exist type first character and then send rest of string back into
+// this function but without the first character - with 60ms delay
 const typeText = async (text, elem) => {
     if (text.length > 0) {
         elem.innerText += text[0];
-        // assign setTimeout to global to allow animation to be cancelled when no longer hovering
-        typeInterval = setTimeout(function () { 
-            typeText(text.substring(1, text.length), elem) 
-        }, 60);
+
+        if (elem.classList.contains('home-bash')) {             // we only want to cancel out nav commands
+            typeInterval = setTimeout(function () {             // assigned so can be cancelled
+                typeText(text.substring(1, text.length), elem) 
+            }, 60);
+        } else {
+            setTimeout(function () {                            // not assigned so can't be cancelled
+                typeText(text.substring(1, text.length), elem) 
+            }, 60);
+        }      
     }
+
     else return;
 }
 
@@ -37,7 +47,6 @@ const clearText = (elem) => {
 }
 
 for (let link of allNavLinks) {
-    console.log(link);
     link.addEventListener('mouseover', (evt) => {
         if (evt.target.attributes.bashText) {
             typeText(evt.target.attributes.bashText.value, homeBash);
@@ -67,6 +76,7 @@ const applyActiveTarget = () => {
             }
         }
 
+        // if bash text provided 'type' into into the relevant 'terminal'
         if (target.attributes.bashtext) {
             // hide all headers
             sectionHeaders.forEach(i => {

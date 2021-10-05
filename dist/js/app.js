@@ -10,14 +10,12 @@ const navLinks = document.querySelectorAll(
 const primaryColor = '#2d302f'
 const secondaryColor = '#373838';
 
-const homeBash = document.querySelector('.home-bash');
-const aboutBash = document.querySelector('.about-bash');
+const sectionHeaders = document.querySelectorAll('section h2');
 // declared in global scope to allow cancel timeout, used in typeText()
 let typeInterval;
 
 // Recursive function to create typing effect
 const typeText = async (text, elem) => {
-    console.log(`${text.length}`)
     if (text.length > 0) {
         elem.innerText += text[0];
         // assign setTimeout to global to allow animation to be cancelled when no longer hovering
@@ -50,9 +48,17 @@ const applyActiveTarget = () => {
         }
 
         if (target.attributes.bashtext) {
+            // hide all headers
+            sectionHeaders.forEach(i => {
+                if (i.classList.contains('show')) {
+                    i.classList.remove('show');
+                }
+            });
             document.querySelector(`section.${target.id} h2`).classList.add('show');
             const element = document.querySelector(`.${target.id}-bash`);
             clearText(element);
+
+            // use timeout to allow scroll animation to finish first
             setTimeout(() => {
                 typeText(target.attributes.bashtext.value, element);
             }, 1300);

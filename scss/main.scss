@@ -9,6 +9,15 @@ section {
     &:nth-child(odd) {
         background-color: $secondary-color;
     }
+
+    h2 {
+        opacity: 0;
+        transition: opacity 0s 2.6s;
+
+        &.show {
+            opacity: 1;
+        }
+    }
 }
 
 a.anchor {

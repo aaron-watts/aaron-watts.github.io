@@ -345,6 +345,16 @@ section:nth-child(odd) {
   background-color: #373838;
 }
 
+section h2 {
+  opacity: 0;
+  -webkit-transition: opacity 0s 2.6s;
+  transition: opacity 0s 2.6s;
+}
+
+section h2.show {
+  opacity: 1;
+}
+
 a.anchor {
   display: block;
   position: relative;

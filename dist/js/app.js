@@ -17,6 +17,7 @@ let typeInterval;
 
 // Recursive function to create typing effect
 const typeText = async (text, elem) => {
+    console.log(`${text.length}`)
     if (text.length > 0) {
         elem.innerText += text[0];
         // assign setTimeout to global to allow animation to be cancelled when no longer hovering
@@ -48,16 +49,13 @@ const applyActiveTarget = () => {
             }
         }
 
-        // console.log(target.attributes.bashtext)
         if (target.attributes.bashtext) {
-            console.log(target.id);
+            document.querySelector(`section.${target.id} h2`).classList.add('show');
             const element = document.querySelector(`.${target.id}-bash`);
-            console.log(element);
             clearText(element);
             setTimeout(() => {
                 typeText(target.attributes.bashtext.value, element);
             }, 1300);
-            typeText(target.attributes.bashtext.value);
         }
     } else {                                                    // If no target (home)
         for (let link of navLinks) {

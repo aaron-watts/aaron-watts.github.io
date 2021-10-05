@@ -10,7 +10,8 @@ const navLinks = document.querySelectorAll(
 // Nav items that interact with the pretend terminals
 const allNavLinks = [
     ...navLinks, 
-    ...document.querySelectorAll('.main-nav .main-nav__socials li')
+    ...document.querySelectorAll('.main-nav .main-nav__socials li'),
+    ...document.querySelectorAll('.home__lg-i i, .home__sm-i i')
 ];
 
 const primaryColor = '#2d302f'

@@ -10,6 +10,27 @@ const navLinks = document.querySelectorAll(
 const primaryColor = '#2d302f'
 const secondaryColor = '#373838';
 
+const homeBash = document.querySelector('.home-bash');
+const aboutBash = document.querySelector('.about-bash');
+// declared in global scope to allow cancel timeout, used in typeText()
+let typeInterval;
+
+// Recursive function to create typing effect
+const typeText = async (text, elem) => {
+    if (text.length > 0) {
+        elem.innerText += text[0];
+        // assign setTimeout to global to allow animation to be cancelled when no longer hovering
+        typeInterval = setTimeout(function () { 
+            typeText(text.substring(1, text.length), elem) 
+        }, 60);
+    }
+    else return;
+}
+
+const clearText = (elem) => {
+    elem.innerText = '';
+}
+
 // Apply active class to relevant navLink if not home
 const applyActiveTarget = () => {
     if (document.querySelector(':target')) {                    // First check if target exists
@@ -26,6 +47,18 @@ const applyActiveTarget = () => {
                 link.classList.remove('active');
             }
         }
+
+        // console.log(target.attributes.bashtext)
+        if (target.attributes.bashtext) {
+            console.log(target.id);
+            const element = document.querySelector(`.${target.id}-bash`);
+            console.log(element);
+            clearText(element);
+            setTimeout(() => {
+                typeText(target.attributes.bashtext.value, element);
+            }, 1300);
+            typeText(target.attributes.bashtext.value);
+        }
     } else {                                                    // If no target (home)
         for (let link of navLinks) {
             if (link.classList.contains('active')) {            // Don't remove non existent classes
@@ -38,6 +71,7 @@ const applyActiveTarget = () => {
 // Apply active class to relevant link in nav on load and on hashchange
 window.addEventListener('load', applyActiveTarget);
 window.addEventListener('hashchange', applyActiveTarget);
+
 
 // Adjust nav BG color to it's current section
 window.addEventListener('scroll', () => {
@@ -61,3 +95,4 @@ for (let link of navLinks) {
 
 // Debug to check script loaded
 console.log('Script Loaded');
+

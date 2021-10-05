@@ -352,6 +352,11 @@ a.anchor {
   visibility: hidden;
 }
 
+.command-line {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
 .home {
   display: -webkit-box;
   display: -ms-flexbox;

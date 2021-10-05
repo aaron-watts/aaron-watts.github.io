@@ -18,6 +18,11 @@ a.anchor {
     visibility: hidden;
 }
 
+.command-line {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
 .home {
     display: flex;
     align-items: center;
@@ -35,7 +40,6 @@ a.anchor {
 
     & .command-line {
         margin-bottom: 3vh;
-        // align-self: flex-start;
     }
 
     #{&}__lg-i {
@@ -69,5 +73,3 @@ a.anchor {
         }
     }
 }
-
-

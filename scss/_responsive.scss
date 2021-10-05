@@ -57,4 +57,25 @@
             visibility: visible;
         }
     }
+
+    // home section
+    .home {
+        & .container {
+            width: 70vw;
+            max-width: 70vw;
+            // background-color: darkcyan;
+        }
+
+        & .command-line {
+            align-self: flex-start;
+            width: inherit;
+            
+
+            &-container {
+                display: flex;
+                align-items: flex-end;
+                min-height: 3rem;
+            }
+        }
+    }
 }

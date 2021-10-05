@@ -66,14 +66,14 @@ html {
         color: $text-blue;
     }
 
-    &.bold {
-        font-weight: 500;;
-    }
-
     & .cursor {
         font-size: 1.3rem;
         animation: flash-cursor 1.8s infinite;
     }
+}
+
+.bold {
+    font-weight: 500;;
 }
 
 @keyframes flash-cursor {

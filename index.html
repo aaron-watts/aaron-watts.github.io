@@ -26,14 +26,14 @@
         </a>
 
         <ul class="main-nav__page-links">
-            <li class=""><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class=""><a href="#about" bashText="whoami">About</a></li>
+            <li><a href="#projects" bashText="ls ~/Documents/">Projects</a></li>
+            <li><a href="#contact" bashText="ping 127.0.0.1">Contact</a></li>
         </ul>
 
         <ul class="main-nav__socials">
-            <li><a href=""><i class="fab fa-github"></i></a></li>
-            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+            <li><a href=""><i class="fab fa-github" bashText="git remote -v"></i></a></li>
+            <li><a href=""><i class="fab fa-linkedin" bashText="wget https://linkedin.com"></i></a></li>
         </ul>
 
         <div class="main-nav__menu">
@@ -43,10 +43,13 @@
 
     <section class="home">
         <div class="container">
-            <div class="command-line code no-select bold">
-                <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span
-                    class="host">~</span>$&nbsp;<span 
-                    class="home-bash"></span><span class="cursor">_</span>
+            <div class="command-line-container">
+                <div class="command-line code no-select">
+                    <span class="bold">
+                        <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span
+                            class="host">~</span>$&nbsp;</span><span class="home-bash"></span><span
+                        class="cursor bold">_</span>
+                </div>
             </div>
 
             <div class="home__lg-i">
@@ -84,10 +87,12 @@
     <section class="about">
         <a class="anchor" id="about" bashText="./sayHello"></a>
 
-        <div class="command-line code no-select bold">
-            <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span
-                class="host">~</span>$&nbsp;<span 
-                class="about-bash"></span><span class="cursor">_</span>
+        <div class="command-line code no-select">
+            <span class="bold">
+                <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span
+                    class="host">~</span>$&nbsp;</span><span class="about-bash"></span><span
+                class="cursor bold">_</span>
+
         </div>
         <h2 class="code">Hello, World!</h2>
 
@@ -99,14 +104,13 @@
     </section>
 
     <section class="projects">
-        <a class="anchor" id="projects" bashText="dir ~/Documents/"></a>
+        <a class="anchor" id="projects" bashText="ls -a ~/Documents/"></a>
 
         <div class="command-line code no-select bold">
-            <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span
-                class="host">~</span>$&nbsp;<span 
+            <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span class="host">~</span>$&nbsp;<span
                 class="projects-bash"></span><span class="cursor">_</span>
         </div>
-        <h2 class="code">. .. projects/</h2>
+        <h2 class="code"><span class="host">. .. <span class="bold">projects</span></span></h2>
 
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate molestiae voluptates expedita nemo
             officiis, sed debitis doloribus saepe labore non, harum nam illum quis, sit voluptatum impedit possimus
@@ -123,8 +127,7 @@
         <a class="anchor" id="contact" bashText="ping 127.0.0.1"></a>
 
         <div class="command-line code no-select bold">
-            <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span
-                class="host">~</span>$&nbsp;<span 
+            <span class="user">aaron-watts</span>@<span class="host">dev</span>:<span class="host">~</span>$&nbsp;<span
                 class="contact-bash"></span><span class="cursor">_</span>
         </div>
         <h2 class="code">Contact Me</h2>

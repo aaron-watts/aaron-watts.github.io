@@ -7,9 +7,15 @@ const navLinks = document.querySelectorAll(
     .main-nav .main-nav__brand`
 );
 
+const allNavLinks = [
+    ...navLinks, 
+    ...document.querySelectorAll('.main-nav .main-nav__socials li')
+];
+
 const primaryColor = '#2d302f'
 const secondaryColor = '#373838';
 
+const homeBash = document.querySelector('.home-bash');
 const sectionHeaders = document.querySelectorAll('section h2');
 // declared in global scope to allow cancel timeout, used in typeText()
 let typeInterval;
@@ -28,6 +34,20 @@ const typeText = async (text, elem) => {
 
 const clearText = (elem) => {
     elem.innerText = '';
+}
+
+for (let link of allNavLinks) {
+    console.log(link);
+    link.addEventListener('mouseover', (evt) => {
+        if (evt.target.attributes.bashText) {
+            typeText(evt.target.attributes.bashText.value, homeBash);
+        }
+    })
+
+    link.addEventListener('mouseout', (evt) => {
+        clearTimeout(typeInterval);
+        homeBash.innerText = '';
+    })
 }
 
 // Apply active class to relevant navLink if not home
@@ -54,10 +74,13 @@ const applyActiveTarget = () => {
                     i.classList.remove('show');
                 }
             });
-            document.querySelector(`section.${target.id} h2`).classList.add('show');
-            const element = document.querySelector(`.${target.id}-bash`);
-            clearText(element);
 
+            // unhide current section header
+            document.querySelector(`section.${target.id} h2`).classList.add('show');
+            // get relevant bash 'console'
+            const element = document.querySelector(`.${target.id}-bash`);
+
+            clearText(element);
             // use timeout to allow scroll animation to finish first
             setTimeout(() => {
                 typeText(target.attributes.bashtext.value, element);
@@ -75,7 +98,6 @@ const applyActiveTarget = () => {
 // Apply active class to relevant link in nav on load and on hashchange
 window.addEventListener('load', applyActiveTarget);
 window.addEventListener('hashchange', applyActiveTarget);
-
 
 // Adjust nav BG color to it's current section
 window.addEventListener('scroll', () => {

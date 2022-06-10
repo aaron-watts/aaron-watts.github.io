@@ -1,0 +1,75 @@
+:root {
+    --clr-bg: hsl(0, 0%, 2%);
+    --clr-neon: hsl(184 100% 86% / .7);
+    --clr-neon-surge: hsl(184 100% 86%);
+}
+
+body {
+    background: var(--clr-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.neon-light {
+    font-family: 'Text Me One', serif;
+    font-size: 5rem;
+    user-select: none;
+
+    border: var(--clr-neon) .05em solid;
+    border-radius: .2em;
+    color: var(--clr-neon);
+    padding: .5em 1em;
+    text-align: center;
+    
+    text-shadow: 
+        0 0 .125em var(--clr-neon),
+        0 0 .125em var(--clr-neon);
+    box-shadow: 
+        0 0 .5em 0 var(--clr-neon),
+        inset 0 0 .5em 0 var(--clr-neon);
+
+    transform: rotate(2deg);
+
+    position: relative;
+}
+.neon-light::before {
+    content: '';
+    position: absolute;
+
+    background: var(--clr-neon);
+
+    top: 125%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, .25) rotateY(-2deg) translateX(-.6em);
+    filter: blur(1.5em);
+    opacity: .7;
+}
+
+.neon-light.surge {
+    border-color: var(--clr-neon-surge);
+    color: var(--clr-neon-surge);
+    text-shadow: 
+        0 0 .125em var(--clr-neon-surge),
+        0 0 .125em var(--clr-neon-surge);
+    box-shadow: 
+        0 0 .5em 0 var(--clr-neon-surge),
+        inset 0 0 .5em 0 var(--clr-neon-surge);
+}
+.neon-light.surge::before {
+    opacity: 1;
+}
+
+.neon-light.cut {
+    border: none;
+    color: transparent;
+    text-shadow: none;
+    box-shadow: none;
+}
+.neon-light.cut::before {
+    opacity: 0;
+}

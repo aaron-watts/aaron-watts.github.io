@@ -1,0 +1,19 @@
+body {
+    font-family: serif;
+    background-color: #222;
+    color: #ddd;
+}
+
+a {
+    color: #3787c9;
+}
+
+a:visited {
+    color: #be8ae9;
+}
+
+pre {
+    background-color: #ddd;
+    color: #222;
+    padding: 1em;
+}

@@ -90,12 +90,30 @@
         .neon-light.cut::before {
             opacity: 0;
         }
+
+        .neon-light>div {
+            font-size: .4em;
+            position: absolute;
+            right: 2em;
+            bottom: .5em;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .neon-light.cut>div {
+            opacity: 0;
+        }
+
+        a {
+            color: inherit;
+        }
     </style>
 </head>
 
 <body>
     <main class="neon-light">
         Aaron Watts
+        <div><a href="#">Click to enter</a></div>
     </main>
 
     <script>

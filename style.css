@@ -4,8 +4,7 @@ body {
     color: #ddd;
     letter-spacing: .03em;
     line-height: 1.4em;
-    text-align: justify;
-    padding-inline: 3rem;
+    padding-inline: 2.5rem;
 }
 
 h1, h2, h3, h4 {

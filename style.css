@@ -59,7 +59,7 @@ main.article>p:first-of-type {
 }
 
 .tag-container {
-    margin: 0 1em 1.2em;
+    margin: 1.2em 1em;
 }
 
 .tag {

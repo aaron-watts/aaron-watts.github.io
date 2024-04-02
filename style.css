@@ -70,3 +70,11 @@ main.article>p:first-of-type {
     white-space: nowrap;
     font-size: .9em;
 }
+
+#tag-list>.tag {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}

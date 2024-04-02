@@ -90,9 +90,26 @@
                 const tag = document.createElement('div');
                 tag.classList.add('tag');
                 tag.innerText = tagName;
+                tag.addEventListener('click', filterByTag);
 
                 tagList.appendChild(tag);
             });
+        };
+
+        function filterByTag() {
+            const selection = this.innerText;
+
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.classList.add('hidden');
+
+                const tags = [...project.children[1].children];
+                for (let tag of tags) {
+                    if (tag.innerText === selection) {
+                        project.classList.remove('hidden');
+                    }
+                }
+            })
         };
 
         document.addEventListener('DOMContentLoaded', populateTags);

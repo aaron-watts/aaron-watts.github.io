@@ -11,10 +11,21 @@
 <body>
     <header id="top">Aaron Watts Dev <i>KDE Plasma Bigscreen</i></header>
     <a href="/home">Back to home</a>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#getting-started">Gettind Started</a></li>
+            <li><a href="#installing-kde-plasma">Installing KDE Plasma</a></li>
+            <li><a href="#setting-up-plasma-bigscreen">Setting Up Plasma Bigscreen</a></li>
+            <li><a href="#controls">Controls</a></li>
+            <li><a href="#some-optional-polish">Some Optional Polish</a></li>
+            <li><a href="#not-quite-full-screen">Not Quite Full Screen</a></li>
+        </ul>
+    </nav>
     <main class="article">
         <h1>KDE Plasma Bigscreen</h1>
         <img src="/images/kde-plasma-bigscreen-demo.jpg" alt="">
-        <p>
+        <p id="intro">
             I built this media centre at the start of 2024. There may
             be easier methods of installation by now. When I built this
             project, existing guides mentioned an installation image
@@ -52,7 +63,7 @@
             with built in track pads on amazon.
         </p>
 
-        <h2>Getting Started</h2>
+        <h2 id="getting-started">Getting Started</h2>
         <p>
             Start by flashing the latest 
             <a href="https://www.raspberrypi.com/software/operating-systems/"
@@ -87,7 +98,7 @@ dtoverlay=vc4-fkms-v3d</pre>
             followed by a <code>sudo reboot</code> for luck.
         </p>
 
-        <h2>Installing KDE Plasma</h2>
+        <h2 id="installing-kde-plasma">Installing KDE Plasma</h2>
         <p>
             Next we need to istall KDE Plasma; I ooriginally went
             for <code>kde-plasma-desktop</code> as its the lighter
@@ -121,7 +132,7 @@ sudo systemctl set-default graphical.target</pre>
             leave the compositor on and just disable effects.
         </p>
 
-        <h2>Setting up Plasma Bigscreen</h2>
+        <h2 id="setting-up-plasma-bigscreen">Setting Up Plasma Bigscreen</h2>
         <p>
             Now the effects are disabled, and if you have your
             cooling set up, now is a good time to overclock,
@@ -183,7 +194,7 @@ sudo ufw enable</pre>
             Done! Reboot and enjoy!
         </p>
 
-        <h2>Controls</h2>
+        <h2 id="controls">Controls</h2>
 
         <h3>KDE Connect</h3>
         <p>
@@ -234,7 +245,7 @@ sudo ufw enable</pre>
             into the terminal to get it set up.
         </p>
 
-        <h2>Some Optional Polish</h2>
+        <h2 id="some-optional-polish">Some Optional Polish</h2>
         <h3>Window Decorations</h3>
         <p>
             Plasma Bigscreen is designed to work one window at a time,
@@ -262,7 +273,7 @@ sudo ufw enable</pre>
         </p>
 <pre>sudo apt install xscreensaver xscreensaver-data-extra</pre>
 
-        <h2>Not Quite Full Screen</h2>
+        <h2 id="not-quite-full-screen">Not Quite Full Screen</h2>
         <p>
             KDE's window management isn't quite perfect, and full screen
             often falls short by 1 pixel on the right and bottom borders

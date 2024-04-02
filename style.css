@@ -11,6 +11,11 @@ body {
     padding-inline: 2.5rem;
 }
 
+main.article>p:first-of-type {
+    font-weight: bold;
+    font-style: italic;
+}
+
 h1, h2, h3, h4 {
     line-height: 1.2em;
 }

@@ -75,6 +75,10 @@ main.article>p:first-of-type {
     cursor: pointer;
 }
 
+.tag.selected {
+    background-color: #666;
+}
+
 .hidden {
     display: none;
 }

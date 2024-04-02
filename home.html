@@ -97,19 +97,32 @@
         };
 
         function filterByTag() {
+            const selected = document.querySelector('#tag-list>.tag.selected');
+            if (selected) selected.classList.remove('selected');
+
             const selection = this.innerText;
-
             const projects = document.querySelectorAll('.project');
-            projects.forEach(project => {
-                project.classList.add('hidden');
 
-                const tags = [...project.children[1].children];
-                for (let tag of tags) {
-                    if (tag.innerText === selection) {
-                        project.classList.remove('hidden');
+            if (!selected || selected.innerText !== selection) {
+                console.log('is it true')
+                this.classList.add('selected');
+
+                projects.forEach(project => {
+                    project.classList.add('hidden');
+
+                    const tags = [...project.children[1].children];
+                    for (let tag of tags) {
+                        if (tag.innerText === selection) {
+                            project.classList.remove('hidden');
+                        }
                     }
-                }
-            })
+                });
+            } else {
+                this.classList.remove('selected');
+
+                projects.forEach(project => project.classList.remove('hidden'))
+            }
+
         };
 
         document.addEventListener('DOMContentLoaded', populateTags);

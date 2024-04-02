@@ -11,11 +11,6 @@ body {
     padding-inline: 2.5rem;
 }
 
-main.article>p:first-of-type {
-    font-weight: bold;
-    font-style: italic;
-}
-
 h1, h2, h3, h4 {
     line-height: 1.2em;
 }
@@ -46,14 +41,32 @@ code {
     white-space: nowrap;
 }
 
-.note {
-    font-style: italic;
-    font-size: .9em;
-}
-
 img {
     width: 70%;
     height: auto;
     display: block;
     margin-inline: auto;
+}
+
+.note {
+    font-style: italic;
+    font-size: .9em;
+}
+
+main.article>p:first-of-type {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.tag-container {
+    margin: 0 1em 1.2em;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #444;
+    padding: .3em .7em;
+    margin: .4em .2em;
+    white-space: nowrap;
+    font-size: .9em;
 }

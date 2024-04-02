@@ -23,6 +23,7 @@
         finding stuff easier if you were to enable script ...
         no pressure.
     </noscript>
+    <p class="note">Filter by topic:</p>
     <div id="tag-list" class="tag-container"></div>
     <main>
         <div class="project">
@@ -84,7 +85,7 @@
                     [...document.querySelectorAll('.tag')]
                         .map(i => i.innerText)
                 )
-            ];
+            ].sort((a,b) => a > b);
 
             tags.forEach(tagName => {
                 const tag = document.createElement('div');

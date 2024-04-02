@@ -233,7 +233,52 @@ sudo ufw enable</pre>
             into the terminal to get it set up.
         </p>
 
-        <h3></h3>
+        <h2>Some Optional Polish</h2>
+        <h3>Window Decorations</h3>
+        <p>
+            Plasma Bigscreen is designed to work one window at a time,
+            so if you minus a window without a keyboard, then you've
+            essentially lost it for good. In settings you can remove
+            the titlebar buttons for max/min and hide, and just leave
+            the one to close the window with.
+        </p>
+
+        <h3>XScreensaver</h3>
+        <p class="note">
+            Note: It looks like this version doesn't cooperate with
+            XScreensaver very well. I've encountered 2 issues so far:
+            firstly: the login scripts don't load up, and secondly:
+            if the login scripts load up, then XScreensaver gets called
+            after "inactivity" when watching content in fullscreen mode,
+            which shouldn't happen. This worked fine however when using
+            an X86 device with arch linux and the newer version of
+            Bigscreen.
+        </p>
+        <p>
+            XScreensaver has a pretty cool analog tv effect screensaver
+            that will cycle through images in a folder and display them
+            with various tv static effects:
+        </p>
+<pre>sudo apt install xscreensaver xscreensaver-data-extra</pre>
+
+        <h2>Not Quite Full Screen</h2>
+        <p>
+            KDE's window management isn't quite perfect, and full screen
+            often falls short by 1 pixel on the right and bottom borders
+            (despite any window rules you might add). This can be an
+            irritant when a bright wallpaper sits behind whatever you're
+            watching. The easiest fix is to set a dark-edged wallpaper.
+            The newer bigscreen lets you use kde settings which is nice
+            as you can set the wallpaper to plain colour black, but in
+            the debian version you have to use the built in wallpaper
+            settings app found in the bigscreen settings menu on the
+            home screen. It will only show you the wallpapers that are
+            installed, so download your dark wallpaper, then move it to
+            the wallpaper folder and then it will show up in the wallpaper
+            changer application:
+        </p>
+<pre>
+sudo mv ~/Downloads/&lt;wallpaper&gt; /usr/share/wallpaper/</pre>
     </main>
 </body>
 

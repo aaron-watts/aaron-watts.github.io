@@ -28,6 +28,7 @@ pre {
     padding: 1em;
     white-space: pre-wrap;
     text-align: left;
+    margin-inline: 3em;
 }
 
 code {

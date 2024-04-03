@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWD - RetroPie NesPi 4</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <header id="top">Aaron Watts Dev <i>RetroPie NesPi 4</i></header>
     <a href="/home">Back to home</a>
     <nav>
         <ul>
             <li><a href="#intro">Intro</a></li>
+            <!-- Page Guide -->
+            <li>Setting up/Installation</li>
+            <li>BIOS's</li>
+            <li>Performance Tweaks (N64, Dreamcast, PSP)</li>
+            <li>Menu Soundtrack</li>
+            <li>Lightgun Games</li>
+            <li>Nintendo DS</li>
         </ul>
     </nav>
     <main class="article">
         <h1>RetroPie NesPi 4</h1>
         <div>Placeholder - image here</div>
         <p id="intro">
-            The Raspberry Pi 4, with Retroflag's NesPi4 Case, running RetroPie
+            The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie
             is the ultimate retro gaming rig. Lower power consumption? Check.
             Light gun games? You got it. Great customisation options? Of course.
-            Did you know you can even you a wiimote as the stylus for the Drastic
+            Did you know you can even use a wiimote as the stylus for the Drastic
             Nintendo DS Emulator?? Did I hear someone say Wario Ware?
         </p>
         <p>
@@ -35,5 +44,49 @@
             to occasionally break after updates - not often, but often enough
             for me to notice a pattern.
         </p>
+
+        <h2>Setting Up/Installation</h2>
+
+        <h2>BIOS's</h2>
+
+        <h2>Perfomance Tweaks</h2>
+
+        <h2>Menu Soundtrack</h2>
+
+<pre>
+sudo apt install mpg123</pre>
+
+        <p>
+            <code>/opt/retropie/configs/all/autostart.sh</code>
+        </p>
+
+<pre>
+while pgrep omxplayer >/dev/null; do sleep 1; done
+(sleep 10; mpg123 -Z /home/pi/bgm/*.mp3 >/dev/null 2>&1) &
+    
+emulationstation #auto</pre>
+
+        <p>
+            <code>/opt/retropie/configs/all/runcommand-onstart.sh</code>
+        </p>
+
+<pre>
+pkill -STOP mpg123</pre>
+
+        <p>
+            <code>/opt/retropie/configs/all/runcommand-onend.sh</code>
+        </p>
+
+<pre>
+pkill -CONT mpg123</pre>
+
+<pre>
+sudo chmod a+x /opt/retropie/configs/all/runcommand-onstart.sh
+sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</pre>
+
+        <h2>Lightgun Games</h2>
+
+        <h2>Nintendo DS</h2>
 </body>
+
 </html>

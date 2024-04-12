@@ -28,7 +28,7 @@
         <img src="/images/nespi-4.jpg" alt="">
         <p id="intro">
             The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie
-            is the ultimate retro gaming rig. Lower power consumption? Check.
+            is the ultimate retro gaming rig. Low power consumption? Check.
             Light gun games? You got it. Great customisation options? Of course.
             Did you know you can even use a wiimote as the stylus for the Drastic
             Nintendo DS Emulator?? Did I hear someone say Wario Ware?
@@ -120,7 +120,46 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
             fashioned way.
         </p>
 
-        <h2></h2>
+        <h2>Games</h2>
+        <p>
+            I have no idea if I'm legally allowed to tell you where to
+            download digital copies of games you already own, but
+            <a href="https://www.techpout.com/safe-rom-sites/">these guys</a>
+            don't seem to give a toss. There's some good sources there.
+            EmuParadise stopped working, but if you install the tampermonkey
+            extension on firefox, the following script adds a workaround
+            which you can right click and choose save as to download.
+        </p>
+        <p class="note">
+            Note: workaround doesn't work when there are multiple download
+            sources on a page - a common thing for Dreamcast images.
+        </p>
+<pre>
+// ==UserScript==
+// @name         EmuParadise Download Workaround - 1.1.1
+// @version      1.1.2
+// @description  Replaces the download button link with a working one
+// @author       Eptun
+// @match        https://www.emuparadise.me/*/*/*
+// @require      http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    var id = ((document.URL).split("/"))[5];
+    $(".download-link").prepend(`&lt;a target="_blank" href="/roms/get-download.php?gid=`+id+`&test=true" title="Download using the workaround script"&gt;Download using the workaround script&lt;/a&gt;&lt;br&gt;&lt;br&gt;`);
+})();</pre>
+        <p>
+            To get your games over, check the
+            <a href="https://retropie.org.uk/docs/">RetroPie Docs</a> to
+            make sure that your roms are in the correct format, then copy
+            them over the old fashioned way or with rsync to the correct
+            directory. I'm feeling generous today so I'll write a bash
+            script that can simplify the procedure and put it here later.
+            Otherwise, if you're chicken, use USB.
+        </p>
 
         <h2>Perfomance Tweaks</h2>
 

@@ -14,9 +14,9 @@
     <nav>
         <ul>
             <li><a href="#intro">Intro</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#bios">BIOS files</a></li>
             <!-- Page Guide -->
-            <li>Setting up/Installation</li>
-            <li>BIOS's</li>
             <li>Performance Tweaks (N64, Dreamcast, PSP)</li>
             <li>Menu Soundtrack</li>
             <li>Lightgun Games</li>
@@ -25,7 +25,7 @@
     </nav>
     <main class="article">
         <h1>RetroPie NesPi 4</h1>
-        <div>Placeholder - image here</div>
+        <img src="/images/nespi-4.jpg" alt="">
         <p id="intro">
             The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie
             is the ultimate retro gaming rig. Lower power consumption? Check.
@@ -45,9 +45,82 @@
             for me to notice a pattern.
         </p>
 
-        <h2>Setting Up/Installation</h2>
+        <h2 id="getting-started">Getting Started</h2>
 
-        <h2>BIOS's</h2>
+        <p>
+            The NesPi 4 Case gives you the option to use an SSD drive
+            cunningly disguised as a NES cartridge for additional storage.
+            But, given the faster speeds and greater reliability of SSD
+            via USB for the raspberry pi, the smarter play is to boot from
+            it and throw out the SD card. You might need to update EEPROM
+            to get it going, I didn't in this case. If you bought the spare
+            <em>cartridge</em> it comes with a case that lets you plug it
+            into your computer, so do that, and flash a fresh copy of
+            RetroPie to the disk using the Raspberry Pi Imager, or etcher
+            if you so choose. If you didn't get the adapter, you will want
+            to dig one out from your drawer of wires, or order one online.
+        </p>
+        <p class="note">
+            Note: RetroPie images can be found in the Raspberry Pi Imager, or
+            online at <a href="https://retropie.org.uk/download/">RetroPie</a>.
+        </p>
+        <p>
+            First boot should prompt you to map your gamepad. Once done
+            you can get your pi online and get its IP from the RetroPie
+            menu, and ssh into it to install the NesPi 4 safe shutdown
+            script:
+        </p>
+<pre>
+wget -O - "https://raw.githubusercontent.com/RetroFlag/retroflag-picase/master/install.sh" | sudo bash</pre>
+        
+        <p>
+            There's plenty of themes and splash screens to choose from,
+            so make the pi yours (I went with a smart looking Nintendo
+            theme and splash myself), and move to the next step when
+            you're ready.
+        </p>
+        
+        <h2 id="bios">BIOS files</h2>
+        <p>
+            So now games? No. Slow down there. Some of the emulators
+            are plug'n'play, but for some to run you will need BIOS's.
+            As much as I love being told to google it by people in
+            forums, it's not helpful, and you can often end up with
+            files that don't work. Someone has been kind enough to collate
+            a <a href="https://github.com/archtaurus/RetroPieBIOS">BIOS set</a>
+            on github, you can simply copy all contents into
+            your BIOS directory, or copy in as needed.
+        </p>
+        <p>
+            If you're not familiar with how git works, and need some
+            extra help just follow the steps below.
+        </p>
+        <p class="note">
+            Note: these instructions are assuming you are working on
+            a different device to the pi.
+        </p>
+<pre>
+git clone https://github.com/archtaurus/RetroPieBIOS.git
+cd RetroPieBIOS</pre>
+        <p>
+            Get your pi's local IP address, but don't SSH in. Either copy
+            the entire BIOS set over, or cherry pick what you need:
+        </p>
+<pre>
+# to copy entire directory
+rsync -r BIOS/ &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BIOS
+
+# or to pick out a single file
+cd BIOS
+rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
+        <p>
+            If that scares yesterdays dinner out of you, then just
+            plug your SSD (or SD card if you are unwilling to take good
+            advice) back into the computer and do it all the old
+            fashioned way.
+        </p>
+
+        <h2></h2>
 
         <h2>Perfomance Tweaks</h2>
 

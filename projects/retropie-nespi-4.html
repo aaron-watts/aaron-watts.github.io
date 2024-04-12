@@ -16,11 +16,12 @@
             <li><a href="#intro">Intro</a></li>
             <li><a href="#getting-started">Getting Started</a></li>
             <li><a href="#bios">BIOS files</a></li>
-            <!-- Page Guide -->
-            <li>Performance Tweaks (N64, Dreamcast, PSP)</li>
-            <li>Menu Soundtrack</li>
-            <li>Lightgun Games</li>
-            <li>Nintendo DS</li>
+            <li><a href="#games">Getting Games</a></li>
+            <li><a href="#tweaks">Performance Tweaks</a></li>
+            <li><a href="#menu-music">Menu Music</a></li>
+            <li><a href="#lightgun">Lightgun Games</a></li>
+            <li><a href="#nintendo-ds">Nintendo DS</a></li>
+            <li><a href="#achievements">RetroAchievments</a></li>
         </ul>
     </nav>
     <main class="article">
@@ -120,7 +121,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
             fashioned way.
         </p>
 
-        <h2>Games</h2>
+        <h2 id="games">Getting Games</h2>
         <p>
             I have no idea if I'm legally allowed to tell you where to
             download digital copies of games you already own, but
@@ -128,7 +129,8 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
             don't seem to give a toss. There's some good sources there.
             EmuParadise stopped working, but if you install the tampermonkey
             extension on firefox, the following script adds a workaround
-            which you can right click and choose save as to download.
+            which you can <em>right click</em> and choose <em>save as</em>
+            to download.
         </p>
         <p class="note">
             Note: workaround doesn't work when there are multiple download
@@ -152,24 +154,48 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
     $(".download-link").prepend(`&lt;a target="_blank" href="/roms/get-download.php?gid=`+id+`&test=true" title="Download using the workaround script"&gt;Download using the workaround script&lt;/a&gt;&lt;br&gt;&lt;br&gt;`);
 })();</pre>
         <p>
-            To get your games over, check the
+            To get your games over to your pi, check the
             <a href="https://retropie.org.uk/docs/">RetroPie Docs</a> to
             make sure that your roms are in the correct format, then copy
             them over the old fashioned way or with rsync to the correct
             directory. I'm feeling generous today so I'll write a bash
-            script that can simplify the procedure and put it here later.
+            script that can simplify the procedure, I'll put it here later.
             Otherwise, if you're chicken, use USB.
         </p>
+        <p class="note">Note: Use the built in scrapers on the RetroPie
+            start menu to get cover art and game descriptions, you might
+            need to run each once to get all your games list done. If some
+            still don't work, they may need their file names adjusted in
+            order to be found.
+        </p>
 
-        <h2>Perfomance Tweaks</h2>
+        <h2 id="tweaks">Performance Tweaks</h2>
+        <p>
+            (N64, Dreamcast, PSP)
+        </p>
+        <h3>N64</h3>
 
-        <h2>Menu Soundtrack</h2>
+        <h3>Dreamcast</h3>
 
+        <h3>PSP</h3>
+
+        <h2 id="menu-music">Menu Music</h2>
+        <p>
+            But RetroPie doesn't have menu music, I hear you say. That
+            may be, but out of the linux based emulation station 
+            frontends, it's the least opinionated, so we can just add it
+            ourselves. Neat! First download whatever music you want running
+            on the menu, and place it in <code>~/pi/bgm/</code> - as many
+            as you want. I only went with one, I used the nintendo wii
+            menu soundtrack to go with my nintendo theme. Next install
+            mpg123:
+        </p>
 <pre>
 sudo apt install mpg123</pre>
 
         <p>
-            <code>/opt/retropie/configs/all/autostart.sh</code>
+            Next we will want to add the following to the
+            <code>/opt/retropie/configs/all/autostart.sh</code> file:
         </p>
 
 <pre>
@@ -179,26 +205,53 @@ while pgrep omxplayer >/dev/null; do sleep 1; done
 emulationstation #auto</pre>
 
         <p>
+            And in the
             <code>/opt/retropie/configs/all/runcommand-onstart.sh</code>
+            file, create one if it doesn't already exist:
         </p>
 
 <pre>
 pkill -STOP mpg123</pre>
 
         <p>
+            And then the
             <code>/opt/retropie/configs/all/runcommand-onend.sh</code>
+            file, again: create if it doesn't exist:
         </p>
 
 <pre>
 pkill -CONT mpg123</pre>
-
+        <p>
+            And finally we just need to make those last two files
+            executable:
+        </p>
 <pre>
 sudo chmod a+x /opt/retropie/configs/all/runcommand-onstart.sh
 sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</pre>
+        <p>Reboot for moods.</p>
 
-        <h2>Lightgun Games</h2>
+        <h2 id="lightgun">Lightgun Games</h2>
+        <p>
+            This was surprisingly simple to get going. I don't really
+            play MAME games, and there's plenty of guides for the
+            MAME lightgun games anyway, jfgi if that's what you're
+            here for. 
+        </p>
 
-        <h2>Nintendo DS</h2>
+        <h2 id="nintendo-ds">Nintendo DS</h2>
+
+        <h2 id="achievements">RetroAchievments</h2>
+        <p>
+            Trophies! Set up an account at 
+            <a href="https://retroachievements.org/">RetroAchievements</a>
+            to add replay value to all your old favourites! You'll
+            find the settings for this in the retroarch settings.
+            It will only work with the libretro cores, which is most
+            of what you will be using. It won't work with Redream,
+            Drastic, or PPSSPP emulators - but unless you've replaced
+            the lr cores for different ones, it should run on every
+            other emulator you will be using.
+        </p>
 </body>
 
 </html>

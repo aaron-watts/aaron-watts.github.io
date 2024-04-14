@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWD - Media Keyboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header id="top">Aaron Watts Dev <i>KDE Plasma Bigscreen</i></header>
+    <a href="/home">Back to home</a>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>Media Keyboard - Pico Controller</h1>
+        <img src="/images/media-keyboard.jpg" alt="">
+        <p id="intro">
+            My keyboard doesn't include the media keys, so I built a macro
+            keyboard to control the media on my desktop computer. It is
+            plug'n'play and requires no configuration to work between
+            different devices. The project can be easily tweaked to program
+            macro's for work, steam games, and whatever else you can't be
+            bothered to type out manually.
+        </p>
+        <p>
+            I won't be going through the first time setup of the pico here,
+            so that is something you're going to have to look up yourself.
+            Once you know how to get some python code on the device and
+            get it to run, you're ready, so see you then!
+        </p>
+
+        <h2>Getting Started</h2>
+        <p>
+            When you know how to move data on and off the device and run
+            some python on it, you will want to install
+            <a href="https://circuitpython.org/downloads">CircuitPython</a>
+            on it. We will be using the 
+            <a href="https://github.com/adafruit/Adafruit_CircuitPython_HID">
+                Adafruit CircuitPython HID
+            </a> library too. The easiest way to do this is to download the
+            newest <em>mpy</em> version from the releases page, unzip the
+            download, and copy the <code>adafruit_hid/</code> directory into
+            the <code>lib/</code> directory on the pico.
+        </p>        
+
+        <h2>Button Set Up</h2>
+        <p class="note">
+            Note: I will assume you know how to wire a button. I'm using
+            the same ground pin for all 6. I have used GPIO pins 16 to
+            21, which keeps things nice and tidy as the are all in one
+            corner of the pico.
+        </p>
+        <p>
+            First we need to import the libraries we need, including the
+            adafruit consumer control modules:
+        </p>
+
+<pre>
+import time
+import digitalio
+import board
+import usb_hid
+from adafruit_hid.consumer_control import ConsumerControl
+from adafruit_hid.consumer_control_code import ConsumerControlCode</pre>
+
+        <p>
+            Next we can look at how to set up a single key:
+        </p>
+
+<pre>
+cc = ConsumerControl(usb_hid.devices)
+wait = 0.125
+
+btn1 = digitalio.DigitalInOut(board.GP21)
+btn1.direction = digitalio.Direction.INPUT
+btn1.pull = digitalio.Pull.DOWN</pre>
+
+        <p>
+            If you have ever set up buttons using GPIO on a raspberry
+            pi, then this should all be looking pretty familiar.
+            We assign <code>btn1</code> a GPIO address, state that
+            the GPIO is receiving input, and identify whether the
+            buttons <em>awake</em> state should be when UP or DOWN.
+        </p>
+        <p>
+            Of course this is a long process to go through for multiple
+            buttons, and we will use some syntactic prowess to make this
+            easier. But for now, let's finally look at the program loop
+            that will be listening for key presses:
+        </p>
+
+<pre>
+while True:
+    if btn1.value:
+        print('key pressed')
+        cc.send(Consumer.ControlCode.PLAY_PAUSE)</pre>
+
+        <h2>Optimising the Code</h2>
+        <p>
+            As mentioned, going through this process for 6 keys,
+            and setting up the conditional logic to handle key
+            presses would be a little tedious. To remedy this, we
+            can use the power of python lists and dictionaries to
+            create a list of each GPIO address, and what event
+            that each specific event will correspond to:
+        </p>
+
+<pre>
+media_keys = [
+    {'pin':board.GP21, 'code':ConsumerControlCode.MUTE},
+    {'pin':board.GP16, 'code':ConsumerControlCode.VOLUME_DECREMENT},
+    {'pin':board.GP20, 'code':ConsumerControlCode.VOLUME_INCREMENT},
+    {'pin':board.GP19, 'code':ConsumerControlCode.SCAN_PREVIOUS_TRACK},
+    {'pin':board.GP17, 'code':ConsumerControlCode.PLAY_PAUSE},
+    {'pin':board.GP18, 'code':ConsumerControlCode.SCAN_NEXT_TRACK}
+    ]</pre>
+
+        <p>
+            Neat, right? What about assigning the active states to
+            each key? Rather than add repeated information into our
+            keys list, we can just use a for loop to add this info
+            to each dictionary in the list:
+        </p>
+
+<pre>
+    for media_key in media_keys:
+        media_key['btn'] = digitalio.DigitalInOut(media_key['pin'])
+        media_key['btn'].direction = digitalio.Direction.INPUT
+        media_key['btn'].pull = digitalio.Pull.DOWN</pre>
+
+        <p>
+            Isn't python great? Lastly we can use a for loop again,
+            this time for the key listener loop, making use of the
+            power of python to save us typing out tedious and
+            repetitive code:
+        </p>
+
+<pre>
+    while True:
+        for media_key in media_keys:
+            if media_key['btn'].value:
+                cc.send(media_key['code'])
+                time.sleep(wait)
+        time.sleep(wait)</pre>
+
+        <h2>The Finished Code</h2>
+        <p>
+            The following code should be saved on the pico's top-most
+            directory as <code>code.py</code>. Adding print statements
+            to the while loop should aid in debugging if you find it
+            doesn't work correctly.
+        </p>
+
+<pre>
+import time
+import digitalio
+import board
+import usb_hid
+from adafruit_hid.consumer_control import ConsumerControl
+from adafruit_hid.consumer_control_code import ConsumerControlCode
+
+cc = ConsumerControl(usb_hid.devices)
+wait = 0.125
+
+media_keys = [
+    {'pin':board.GP21,'code':ConsumerControlCode.MUTE},
+    {'pin':board.GP16,'code':ConsumerControlCode.VOLUME_DECREMENT},
+    {'pin':board.GP20,'code':ConsumerControlCode.VOLUME_INCREMENT},
+    {'pin':board.GP19,'code':ConsumerControlCode.SCAN_PREVIOUS_TRACK},
+    {'pin':board.GP17,'code':ConsumerControlCode.PLAY_PAUSE},
+    {'pin':board.GP18,'code':ConsumerControlCode.SCAN_NEXT_TRACK}
+    ]
+
+for media_key in media_keys:
+    media_key['btn'] = digitalio.DigitalInOut(media_key['pin'])
+    media_key['btn'].direction = digitalio.Direction.INPUT
+    media_key['btn'].pull = digitalio.Pull.DOWN
+
+while True:
+    for media_key in media_keys:
+        if media_key['btn'].value:
+            cc.send(media_key['code'])
+            time.sleep(wait)
+    time.sleep(wait)</pre>
+</body>
+</html>

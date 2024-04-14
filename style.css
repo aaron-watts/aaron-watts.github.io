@@ -36,6 +36,10 @@ pre {
     overflow-x: scroll;
 }
 
+pre.no-wrap {
+    white-space: pre;
+}
+
 code {
     padding: .4em .3em .2em;
     font-size: 1.1em;

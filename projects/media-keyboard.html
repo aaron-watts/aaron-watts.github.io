@@ -12,6 +12,10 @@
     <nav>
         <ul>
             <li><a href="#intro">Intro</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#button-setup">Button Set Up</a></li>
+            <li><a href="#optimising">Optimising the Code</a></li>
+            <li><a href="#finished-code">The Finished Code</a></li>
         </ul>
     </nav>
     <main class="article">
@@ -32,21 +36,21 @@
             get it to run, you're ready, so see you then!
         </p>
 
-        <h2>Getting Started</h2>
+        <h2 id="getting-started">Getting Started</h2>
         <p>
             When you know how to move data on and off the device and run
             some python on it, you will want to install
             <a href="https://circuitpython.org/downloads">CircuitPython</a>
             on it. We will be using the 
             <a href="https://github.com/adafruit/Adafruit_CircuitPython_HID">
-                Adafruit CircuitPython HID
-            </a> library too. The easiest way to do this is to download the
+                Adafruit CircuitPython HID</a>
+            library too. The easiest way to do this is to download the
             newest <em>mpy</em> version from the releases page, unzip the
             download, and copy the <code>adafruit_hid/</code> directory into
             the <code>lib/</code> directory on the pico.
         </p>        
 
-        <h2>Button Set Up</h2>
+        <h2 id="button-setup">Button Set Up</h2>
         <p class="note">
             Note: I will assume you know how to wire a button. I'm using
             the same ground pin for all 6. I have used GPIO pins 16 to
@@ -98,7 +102,7 @@ while True:
         print('key pressed')
         cc.send(Consumer.ControlCode.PLAY_PAUSE)</pre>
 
-        <h2>Optimising the Code</h2>
+        <h2 id="optimising">Optimising the Code</h2>
         <p>
             As mentioned, going through this process for 6 keys,
             and setting up the conditional logic to handle key
@@ -146,7 +150,7 @@ media_keys = [
                 time.sleep(wait)
         time.sleep(wait)</pre>
 
-        <h2>The Finished Code</h2>
+        <h2 id="finished-code">The Finished Code</h2>
         <p>
             The following code should be saved on the pico's top-most
             directory as <code>code.py</code>. Adding print statements
@@ -185,5 +189,8 @@ while True:
             cc.send(media_key['code'])
             time.sleep(wait)
     time.sleep(wait)</pre>
+        </main>
+
+        <a href="#top">Back to Top</a>
 </body>
 </html>

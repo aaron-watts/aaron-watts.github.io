@@ -24,15 +24,15 @@ a:visited {
 }
 
 pre, code {
-    background-color: #ddd;
+    background-color: #ddd !important;
     color: #444;
 }
 
 pre {
-    padding: 1em;
+    padding: 1em !important;
     white-space: pre-wrap;
     text-align: left;
-    margin-inline: 1.5em;
+    margin-inline: 1.5em !important;
     overflow-x: scroll;
 }
 
@@ -44,6 +44,12 @@ code {
     padding: .4em .3em .2em;
     font-size: 1.1em;
     white-space: nowrap;
+}
+
+pre>code {
+    font-size: .75em !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 img {

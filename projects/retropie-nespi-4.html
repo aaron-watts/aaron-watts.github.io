@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWD - RetroPie NesPi 4</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
 </head>
 
 <body>
@@ -136,8 +137,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
             Note: workaround doesn't work when there are multiple download
             sources on a page - a common thing for Dreamcast images.
         </p>
-<pre class="no-wrap">
-// ==UserScript==
+<pre class="no-wrap"><code class="language-javascript">// ==UserScript==
 // @name         EmuParadise Download Workaround - 1.1.1
 // @version      1.1.2
 // @description  Replaces the download button link with a working one
@@ -152,7 +152,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
 
     var id = ((document.URL).split("/"))[5];
     $(".download-link").prepend(`&lt;a target="_blank" href="/roms/get-download.php?gid=`+id+`&test=true" title="Download using the workaround script"&gt;Download using the workaround script&lt;/a&gt;&lt;br&gt;&lt;br&gt;`);
-})();</pre>
+})();</code></pre>
         <p>
             To get your games over to your pi, check the
             <a href="https://retropie.org.uk/docs/">RetroPie Docs</a> to
@@ -198,11 +198,10 @@ sudo apt install mpg123</pre>
             <code>/opt/retropie/configs/all/autostart.sh</code> file:
         </p>
 
-<pre>
-while pgrep omxplayer >/dev/null; do sleep 1; done
+<pre><code class="language-bash">while pgrep omxplayer >/dev/null; do sleep 1; done
 (sleep 10; mpg123 -Z /home/pi/bgm/*.mp3 >/dev/null 2>&1) &
     
-emulationstation #auto</pre>
+emulationstation #auto</code></pre>
 
         <p>
             And in the
@@ -255,6 +254,8 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</pre>
     </main>
 
     <a href="#top">Back to Top</a>
+
+    <script src="/assets/scripts/prism.js"></script>
 </body>
 
 </html>

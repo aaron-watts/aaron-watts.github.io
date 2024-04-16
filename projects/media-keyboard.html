@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWD - Media Keyboard</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
 </head>
 <body>
     <header id="top">Aaron Watts Dev <i>KDE Plasma Bigscreen</i></header>
@@ -62,25 +63,23 @@
             adafruit consumer control modules:
         </p>
 
-<pre>
-import time
+<pre><code class="language-python">import time
 import digitalio
 import board
 import usb_hid
 from adafruit_hid.consumer_control import ConsumerControl
-from adafruit_hid.consumer_control_code import ConsumerControlCode</pre>
+from adafruit_hid.consumer_control_code import ConsumerControlCode</code></pre>
 
         <p>
             Next we can look at how to set up a single key:
         </p>
 
-<pre>
-cc = ConsumerControl(usb_hid.devices)
+<pre><code class="language-python">cc = ConsumerControl(usb_hid.devices)
 wait = 0.125
 
 btn1 = digitalio.DigitalInOut(board.GP21)
 btn1.direction = digitalio.Direction.INPUT
-btn1.pull = digitalio.Pull.DOWN</pre>
+btn1.pull = digitalio.Pull.DOWN</code></pre>
 
         <p>
             If you have ever set up buttons using GPIO on a raspberry
@@ -96,11 +95,10 @@ btn1.pull = digitalio.Pull.DOWN</pre>
             that will be listening for key presses:
         </p>
 
-<pre>
-while True:
+<pre><code class="language-python">while True:
     if btn1.value:
         print('key pressed')
-        cc.send(Consumer.ControlCode.PLAY_PAUSE)</pre>
+        cc.send(Consumer.ControlCode.PLAY_PAUSE)</code></pre>
 
         <h2 id="optimising">Optimising the Code</h2>
         <p>
@@ -112,15 +110,14 @@ while True:
             that each specific event will correspond to:
         </p>
 
-<pre>
-media_keys = [
+<pre><code class="language-python">media_keys = [
     {'pin':board.GP21, 'code':ConsumerControlCode.MUTE},
     {'pin':board.GP16, 'code':ConsumerControlCode.VOLUME_DECREMENT},
     {'pin':board.GP20, 'code':ConsumerControlCode.VOLUME_INCREMENT},
     {'pin':board.GP19, 'code':ConsumerControlCode.SCAN_PREVIOUS_TRACK},
     {'pin':board.GP17, 'code':ConsumerControlCode.PLAY_PAUSE},
     {'pin':board.GP18, 'code':ConsumerControlCode.SCAN_NEXT_TRACK}
-    ]</pre>
+    ]</code></pre>
 
         <p>
             Neat, right? What about assigning the active states to
@@ -129,11 +126,10 @@ media_keys = [
             to each dictionary in the list:
         </p>
 
-<pre>
-    for media_key in media_keys:
+<pre><code class="language-python">    for media_key in media_keys:
         media_key['btn'] = digitalio.DigitalInOut(media_key['pin'])
         media_key['btn'].direction = digitalio.Direction.INPUT
-        media_key['btn'].pull = digitalio.Pull.DOWN</pre>
+        media_key['btn'].pull = digitalio.Pull.DOWN</code></pre>
 
         <p>
             Isn't python great? Lastly we can use a for loop again,
@@ -142,13 +138,12 @@ media_keys = [
             repetitive code:
         </p>
 
-<pre>
-    while True:
+<pre><code class="language-python">    while True:
         for media_key in media_keys:
             if media_key['btn'].value:
                 cc.send(media_key['code'])
                 time.sleep(wait)
-        time.sleep(wait)</pre>
+        time.sleep(wait)</code></pre>
 
         <h2 id="finished-code">The Finished Code</h2>
         <p>
@@ -158,8 +153,7 @@ media_keys = [
             doesn't work correctly.
         </p>
 
-<pre class="no-wrap">
-import time
+<pre class="no-wrap"><code class="language-python">import time
 import digitalio
 import board
 import usb_hid
@@ -188,9 +182,11 @@ while True:
         if media_key['btn'].value:
             cc.send(media_key['code'])
             time.sleep(wait)
-    time.sleep(wait)</pre>
-        </main>
+    time.sleep(wait)</code></pre>
+    </main>
 
-        <a href="#top">Back to Top</a>
+    <a href="#top">Back to Top</a>
+
+    <script src="/assets/scripts/prism.js"></script>
 </body>
 </html>

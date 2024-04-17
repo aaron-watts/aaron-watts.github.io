@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWD - KDE Big Screen</title>
     <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
 </head>
 
 <body>
@@ -65,13 +66,11 @@
 
         <h2 id="getting-started">Getting Started</h2>
         <p>
-            Start by flashing the latest 
-            <a href="https://www.raspberrypi.com/software/operating-systems/"
-            target="_blank">
+            Start by flashing the latest
+            <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank">
                 64-bit Raspberry Pi OS Lite</a>
             to a usb device. You may need to
-            <a href="https://www.raspberrystreet.com/learn/how-to-boot-raspberrypi-from-usb-ssd"
-            target="_blank">
+            <a href="https://www.raspberrystreet.com/learn/how-to-boot-raspberrypi-from-usb-ssd" target="_blank">
                 update the EEPROM</a>
             if you haven't already in order to boot from USB. Take
             advantage of rpi imager settings here to enable SSH and
@@ -88,9 +87,8 @@
             <code>/boot/firmware/config.txt</code> and comment out
             and add the following lines:
         </p>
-<pre class="no-wrap">
-#dtoverlay=vc4-kms-v3d
-dtoverlay=vc4-fkms-v3d</pre>
+        <pre><code class="language-none">#dtoverlay=vc4-kms-v3d
+dtoverlay=vc4-fkms-v3d</code></pre>
         <p>
             Now that the screen is working you can log into the
             session, and make the usual prayer
@@ -105,17 +103,15 @@ dtoverlay=vc4-fkms-v3d</pre>
             install, but it kept hanging at boot, you ight have more
             luck, but expect to start again if it fails.
         </p>
-<pre>
-sudo apt install kde-standard</pre>
+        <pre><code class="language-none">sudo apt install kde-standard</code></pre>
         <p>
             After that, another reboot for luck. Then we need to
             activate the sddm login manager service, and tell
             raspi OS that we want to boot into GUI on the next
             boot:
         </p>
-<pre>
-sudo systemctl enable sddm
-sudo systemctl set-default graphical.target</pre>
+        <pre><code class="language-none">sudo systemctl enable sddm
+sudo systemctl set-default graphical.target</code></pre>
         <p>
             And reboot again. It should now boot into Plasma,
             and the first thing you should do is disable all the
@@ -136,8 +132,7 @@ sudo systemctl set-default graphical.target</pre>
             time to open up konsole and install the power and
             fan control:
         </p>
-<pre>
-curl https://download.argon40.com/argon1.sh | bash</pre>
+        <pre><code class="language-none">curl https://download.argon40.com/argon1.sh | bash</code></pre>
 
         <h2 id="setting-up-plasma-bigscreen">Setting Up Plasma Bigscreen</h2>
         <p>
@@ -146,33 +141,30 @@ curl https://download.argon40.com/argon1.sh | bash</pre>
             so back into <code>/boot/firmware/config.txt</code>.
             I just went with the following:
         </p>
-<pre class="no-wrap"># Overclock
+        <pre><code class="language-none"># Overclock
 over_voltage=6
 arm_freq=2000
-gpu_freq=700</pre>
+gpu_freq=700</code></pre>
         <p>
             Next we can install the other bits we need:
         </p>
-<pre>
-sudo apt install chromium-browser rpi-chromium-mods plasma-bigscreen</pre>
+        <pre><code class="language-none">sudo apt install chromium-browser rpi-chromium-mods plasma-bigscreen</code></pre>
         <p>
             If you want to watch DRM services like netflix you
             need another package that's not included in lite:
         </p>
-<pre>
-sudo apt install libwidevinecdm0</pre>
+        <pre><code class="language-none">sudo apt install libwidevinecdm0</code></pre>
         <p>
             KDE connect and an android phone make the perfect
             remote control, connect should already be included
             in the KDE install. But firewall suggested, with
             KDE connect and SSH rules:
         </p>
-<pre>
-sudo apt install ufw
+        <pre><code class="language-none">sudo apt install ufw
 sudo ufw allow 1714:1764/upd
 sudo ufw allow 1714:1764/tcp
 sudo ufw allow 22/tcp
-sudo ufw enable</pre>
+sudo ufw enable</code></pre>
         <p>
             Next open chromium, add the extensions you want,
             and <em>"install"</em> your <em>"web apps"</em>.
@@ -184,13 +176,12 @@ sudo ufw enable</pre>
         </p>
         <p class="note">
             Note:
-            <a href="https://chromewebstore.google.com/detail/ublock-origin" 
-            target="_blank">uBlock Origin</a> and
-            <a href="https://chromewebstore.google.com/detail/privacy-badger"
-            target="_blank">Privacy Badger</a> highly recommended!
+            <a href="https://chromewebstore.google.com/detail/ublock-origin" target="_blank">uBlock Origin</a> and
+            <a href="https://chromewebstore.google.com/detail/privacy-badger" target="_blank">Privacy Badger</a> highly
+            recommended!
         </p>
         <p>
-            Now open up KDE settings again, select 
+            Now open up KDE settings again, select
             <em>Startup and Shutdown > Login Screen (SDDM)</em>,
             and then click the behaviour button at the bottom and
             set plasma to log in automatically and change the session
@@ -212,14 +203,14 @@ sudo ufw enable</pre>
             By far the best option if you have an android phone or
             tablet lying around. KDE Connect for android is available
             in the standard
-            <a href="https://f-droid.org/en/packages/org.kde.kdeconnect_tp/"
-            target="_blank">F-Droid repository</a>. The app includes
+            <a href="https://f-droid.org/en/packages/org.kde.kdeconnect_tp/" target="_blank">F-Droid repository</a>. The
+            app includes
             a big screen feature, but you can get most of what you need
             done using the remote input feature.
         </p>
         <p class="note">
-            As a side, <a href="https://f-droid.org/en/packages/juloo.keyboard2/" 
-            target="_blank">Unexpected Keyboard</a> is a configurable
+            As a side, <a href="https://f-droid.org/en/packages/juloo.keyboard2/" target="_blank">Unexpected
+                Keyboard</a> is a configurable
             keyboard for android that includes all the keys you might
             need to use the terminal.
         </p>
@@ -227,16 +218,15 @@ sudo ufw enable</pre>
         <h3>Mini Wireless Keyboard with Touchpad</h3>
         <p>
             The
-            <a href="https://www.amazon.co.uk/gp/product/B01G6XGLQQ"
-            target="_blank">Rii K01X1 2.4GHz Mini Wireless Keyboard
-            with Touchpad Remote Control</a> is the perfect companion
+            <a href="https://www.amazon.co.uk/gp/product/B01G6XGLQQ" target="_blank">Rii K01X1 2.4GHz Mini Wireless
+                Keyboard
+                with Touchpad Remote Control</a> is the perfect companion
             for interacting with Plasma Bigscreen. However the range
             doesn't appear to be very long, especially on the Argon
             One case where the receiver plugged in at the back due to the
             Argon remote interacting with the front of the case.
             However this can be easily remedied with a short
-            <a href="https://www.amazon.co.uk/dp/B09LYRRQ91"
-            target="_blank">USB extension cable</a>
+            <a href="https://www.amazon.co.uk/dp/B09LYRRQ91" target="_blank">USB extension cable</a>
             to point the receiver in the correct
             direction.
         </p>
@@ -277,7 +267,7 @@ sudo ufw enable</pre>
 
         <h3>XScreensaver</h3>
         <p class="note">
-            Note: It looks like this version of Bigscreen doesn't cooperate 
+            Note: It looks like this version of Bigscreen doesn't cooperate
             with XScreensaver very well. I've encountered 2 issues so far:
             firstly: the login scripts don't load up, and secondly:
             if the login scripts load up, then XScreensaver gets called
@@ -291,7 +281,7 @@ sudo ufw enable</pre>
             that will cycle through images in a folder and display them
             with various tv static effects:
         </p>
-<pre>sudo apt install xscreensaver xscreensaver-data-extra</pre>
+        <pre><code class="language-none">sudo apt install xscreensaver xscreensaver-data-extra</code></pre>
 
         <h2 id="not-quite-full-screen">Not Quite Full Screen</h2>
         <p>
@@ -309,12 +299,12 @@ sudo ufw enable</pre>
             the wallpaper folder and then it will show up in the wallpaper
             changer application:
         </p>
-<pre>
-sudo mv ~/Downloads/&lt;wallpaper&gt; /usr/share/wallpaper/</pre>
+        <pre><code class="language-none">sudo mv ~/Downloads/&lt;wallpaper&gt; /usr/share/wallpaper/</code></pre>
     </main>
-    
+
     <a href="#top">Back to Top</a>
 
+    <script src="/assets/scripts/prism.js"></script>
 </body>
 
 </html>

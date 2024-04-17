@@ -72,16 +72,15 @@
             menu, and ssh into it to install the NesPi 4 safe shutdown
             script:
         </p>
-<pre>
-wget -O - "https://raw.githubusercontent.com/RetroFlag/retroflag-picase/master/install.sh" | sudo bash</pre>
-        
+        <pre><code class="language-none">wget -O - "https://raw.githubusercontent.com/RetroFlag/retroflag-picase/master/install.sh" | sudo bash</code></pre>
+
         <p>
             There's plenty of themes and splash screens to choose from,
             so make the pi yours (I went with a smart looking Nintendo
             theme and splash myself), and move to the next step when
             you're ready.
         </p>
-        
+
         <h2 id="bios">BIOS files</h2>
         <p>
             So now games? No. Slow down there. Some of the emulators
@@ -101,20 +100,18 @@ wget -O - "https://raw.githubusercontent.com/RetroFlag/retroflag-picase/master/i
             Note: these instructions are assuming you are working on
             a different device to the pi.
         </p>
-<pre>
-git clone https://github.com/archtaurus/RetroPieBIOS.git
-cd RetroPieBIOS</pre>
+        <pre><code class="language-none">git clone https://github.com/archtaurus/RetroPieBIOS.git
+cd RetroPieBIOS</code></pre>
         <p>
             Get your pi's local IP address, but don't SSH in. Either copy
             the entire BIOS set over, or cherry pick what you need:
         </p>
-<pre>
-# to copy entire directory
+        <pre><code class="language-none"># to copy entire directory
 rsync -r BIOS/ &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BIOS
 
 # or to pick out a single file
 cd BIOS
-rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
+rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code></pre>
         <p>
             If that scares yesterdays dinner out of you, then just
             plug your SSD (or SD card if you are unwilling to take good
@@ -137,7 +134,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
             Note: workaround doesn't work when there are multiple download
             sources on a page - a common thing for Dreamcast images.
         </p>
-<pre class="no-wrap"><code class="language-javascript">// ==UserScript==
+        <pre><code class="language-javascript">// ==UserScript==
 // @name         EmuParadise Download Workaround - 1.1.1
 // @version      1.1.2
 // @description  Replaces the download button link with a working one
@@ -151,7 +148,11 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
     'use strict';
 
     var id = ((document.URL).split("/"))[5];
-    $(".download-link").prepend(`&lt;a target="_blank" href="/roms/get-download.php?gid=`+id+`&test=true" title="Download using the workaround script"&gt;Download using the workaround script&lt;/a&gt;&lt;br&gt;&lt;br&gt;`);
+    $(".download-link").prepend(
+        `&lt;a target="_blank"
+            href="/roms/get-download.php?gid=`+id+`&test=true"
+            title="Download using the workaround script"
+        &gt;Download using the workaround script&lt;/a&gt;&lt;br&gt;&lt;br&gt;`);
 })();</code></pre>
         <p>
             To get your games over to your pi, check the
@@ -182,7 +183,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
         <h2 id="menu-music">Menu Music</h2>
         <p>
             But RetroPie doesn't have menu music, I hear you say. That
-            may be, but out of the linux based emulation station 
+            may be, but out of the linux based emulation station
             frontends, it's the least opinionated, so we can just add it
             ourselves. Neat! First download whatever music you want running
             on the menu, and place it in <code>~/pi/bgm/</code> - as many
@@ -190,15 +191,14 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</pre>
             menu soundtrack to go with my nintendo theme. Next install
             mpg123:
         </p>
-<pre>
-sudo apt install mpg123</pre>
+        <pre><code class="language-none">sudo apt install mpg123</code></pre>
 
         <p>
             Next we will want to add the following to the
             <code>/opt/retropie/configs/all/autostart.sh</code> file:
         </p>
 
-<pre><code class="language-bash">while pgrep omxplayer >/dev/null; do sleep 1; done
+        <pre><code class="language-bash">while pgrep omxplayer >/dev/null; do sleep 1; done
 (sleep 10; mpg123 -Z /home/pi/bgm/*.mp3 >/dev/null 2>&1) &
     
 emulationstation #auto</code></pre>
@@ -209,8 +209,7 @@ emulationstation #auto</code></pre>
             file, create one if it doesn't already exist:
         </p>
 
-<pre>
-pkill -STOP mpg123</pre>
+        <pre><code class="language-none">pkill -STOP mpg123</code></pre>
 
         <p>
             And then the
@@ -218,15 +217,13 @@ pkill -STOP mpg123</pre>
             file, again: create if it doesn't exist:
         </p>
 
-<pre>
-pkill -CONT mpg123</pre>
+        <pre><code class="language-none">pkill -CONT mpg123</code></pre>
         <p>
             And finally we just need to make those last two files
             executable:
         </p>
-<pre>
-sudo chmod a+x /opt/retropie/configs/all/runcommand-onstart.sh
-sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</pre>
+        <pre><code class="language-none">sudo chmod a+x /opt/retropie/configs/all/runcommand-onstart.sh
+sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
         <p>Reboot for moods.</p>
 
         <h2 id="lightgun">Lightgun Games</h2>
@@ -234,14 +231,14 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</pre>
             This was surprisingly simple to get going. I don't really
             play MAME games, and there's plenty of guides for the
             MAME lightgun games anyway, jfgi if that's what you're
-            here for. 
+            here for.
         </p>
 
         <h2 id="nintendo-ds">Nintendo DS</h2>
 
         <h2 id="achievements">RetroAchievments</h2>
         <p>
-            Trophies! Set up an account at 
+            Trophies! Set up an account at
             <a href="https://retroachievements.org/">RetroAchievements</a>
             to add replay value to all your old favourites! You'll
             find the settings for this in the retroarch settings.

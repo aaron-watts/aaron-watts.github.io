@@ -232,9 +232,8 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             play MAME games, and there's plenty of guides for the
             MAME lightgun games anyway, jfgi if that's what you're
             here for. You will need a
-            <a href="https://www.amazon.co.uk/Mayflash-W010-Dolphin-Bar-Wireless/dp/B00HZWEB74"
-                target="_blank"
-            >Mayflash Dolphin Bar</a>, a wiimote, and to do it properly,
+            <a href="https://www.amazon.co.uk/Mayflash-W010-Dolphin-Bar-Wireless/dp/B00HZWEB74" target="_blank">Mayflash
+                Dolphin Bar</a>, a wiimote, and to do it properly,
             a wiimote pistol adaptor. With RetroPie, at least, the dolphin
             bar is plug and play - although you will need to adjust
             settings in the retroarch menu. You can only use one wiimote
@@ -244,7 +243,163 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             among you are welcome to give it a try.
         </p>
         <p>
-
+            Key mapping in emulation station and retroarch respectively
+            can be a pain. So I will go through the basic setup for PSX
+            and Dreamcast. First, once you've synced your wiimote up to
+            your Maylfash Dolphin bar in mode 2, select
+            <em>configure input</em> in the Emulation Station start menu
+            settings. Emulation Station can't detect buttons A or B on
+            the wiimote - this is because these are registering as mouse
+            buttons in mode 2. Further, Retroarch can't detect buttons
+            1 or 2 on the wiimote - why this is, I'm not entirely sure.
+            This is mildly inconvenient, but it's not enough to stop
+            us from getting our way. For the Emulation Station input
+            use the following mapping:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Wiimote</th>
+                    <th scope="col">Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Start</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Select</td>
+                </tr>
+                <tr>
+                    <td>D-Pad</td>
+                    <td>D-Pad</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Hotkey</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            This is enough to select our games and access the settings
+            menu if we need to. The next steps differ slightly between
+            Dreamcast and PSX. Newer versions of RetroPie use Redream
+            as the default Dreamcast emulator, this is good - it's a
+            fantastic emulator. However to use the wiimote we need
+            the power of retroarch customisations, so we will need to
+            install the lr-flycast emulator. So in the RetroPie menu
+            screen, select <em>retropie-setup</em>, then select
+            <em>manage packages</em>, then 
+            <em>manage optional packages</em>, and scroll down to
+            lr-flycast and install the emulator. In the Dreamcast
+            games menu, choose a lightgun game such as House of the Dead,
+            launch the game, and interupt the runcommand menu by pressing
+            A when the launch text appears. Choose
+            <em>select emulator for ROM</em> and set it to lr-flycast,
+            and then launch the game.
+        </p>
+        <p>
+            Once the game has launch, trigger the RetroArch menu using
+            <em>Hotkey + X</em>. In the <em>quick menu</em>, select
+            <em>controls, port 1 controls</em>, then set 
+            <em>device type</em> to <em>lightgun</em>. Then choose
+            <em>manage remap files</em>, and <em>save remap file</em>.
+        </p>
+        <p>
+            Next, go back to <em>quick menu</em>, then back once more to
+            <em>main menu</em>, choose
+            <em>settings, input, retropad binds, port 1 controls</em>, and
+            set the following mappings:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Wiimote</th>
+                    <th scope="col">Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B</td>
+                    <td>Gun Trigger</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>Gun Reload</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>Gun Start</td>
+                </tr>
+                <tr>
+                    <td>D-Pad</td>
+                    <td>D-Pad</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Next, go back to <em>quick menu</em>, select 
+            <em>core options, input</em>, and set the gun crosshair
+            1 display by choosing which crosshair you wuold like.
+        </p>
+        <p>
+            Finally, back in the <em>main menu</em>, select
+            <em>configuration file</em>, and then
+            <em>save current configuration</em> for settings to
+            persist the next time you load the game.
+        </p>
+        <p>
+            For PSX, we will be using the same emulator as with
+            every other game, so we don't need to change anything
+            there. Instead of setting device type to
+            <em>lightgun</em>, choose <em>guncon</em>. And, for
+            Time Crisis at least, this is the better mapping:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Wiimote</th>
+                    <th scope="col">Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B</td>
+                    <td>Gun Trigger</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>Gun Aux A</td>
+                </tr>
+                <tr>
+                    <td>Home</td>
+                    <td>Gun Reload</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>Gun Start</td>
+                </tr>
+                <tr>
+                    <td>D-Pad</td>
+                    <td>D-Pad</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">
+            Note: you will need to play around with different mappings
+            for different games depending on the controls they use,
+            however these mappings are a decent starting point to work
+            from.
         </p>
 
         <h2 id="nintendo-ds">Nintendo DS</h2>

@@ -172,13 +172,57 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
 
         <h2 id="tweaks">Performance Tweaks</h2>
         <p>
-            (N64, Dreamcast, PSP)
+            Aside from the obvious performance tweaks (cooling system,
+            overclock, installing the operating system on a SSD or USB),
+            There's a few things you can do for emulators which can tend
+            to struggle on a pi 4. You're probably not going to like them,
+            but that's what you get for not doing an X86 build with a
+            graphics card instead. You pay peanuts, you get 480p.
         </p>
         <h3>N64</h3>
-
+        <p>
+            I've seen a load of tips online on how to imrove N64
+            performance. None of them worked for me. The sad truth is
+            N64 just works the pi too hard. But you can make your games
+            playable to setting the resolution to 480p. Stop complaining,
+            if you plugged a real N64 into your TV you think you're going
+            to get better resolution?
+        </p>
+        <p>
+            Launch a game, and interrupt the runcommand dialog by pressing
+            A, choose <em>Select video mode for lr-mupen64plus-next</em>,
+            and scroll down and select
+            <em>720x480@60Hz 16:9 (27.03Mhz, nhsync, nvsync, driver)</em>.
+            This fixed all the graphical and audio glitches for me, and now
+            I can play Banjo Kazooie and Ocarina of Time and enjoy them.
+            Granted the trophy overlays look like shit, but this is the
+            dirty world of emulation, pirates aren't known for being clean.
+        </p>
         <h3>Dreamcast</h3>
-
+        <p>
+            If, like me, you bought a lot of the indie games by the likes
+            of NG:Dev.Team, Red Spot and HuCast, then those bad boys are
+            most likely going to run in full 1080. Tap yourself on the back
+            for supporting great devs and for also having great taste. If
+            you are more interested in playing the classics, such as Shenmue,
+            Crazy Taxi, or Jet Set Radio, you're going to have to make some
+            sacrifice. Those games all play brilliantly in 1080 through the
+            Redream emulator ... but not on a pi4. You will have to use the
+            redream menu to set the resolution per game. The menu has a lush
+            UI and I honestly doubt you'll srtuggle to work that out
+            yourself. Find the resolution settings and drop it down to 480.
+            Don't forget, the Dreamcast ran at 480 anyway, if you want more
+            then you will want to look at doing a X86 build.
+        </p>
         <h3>PSP</h3>
+        <p>
+            Start here: 
+            <a target="_blank"
+            href="https://retropie.org.uk/docs/PSP/#performance"
+                >https://retropie.org.uk/docs/PSP/#performance</a>. Good luck!
+            It's playable enough ..    
+        </p>
+        
 
         <h2 id="menu-music">Menu Music</h2>
         <p>

@@ -7,133 +7,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aaron Watts Dev</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Text+Me+One&display=swap" rel="stylesheet">
-
     <style>
-        :root {
-            --clr-bg: hsl(0, 0%, 2%);
-            --clr-neon: hsl(184 100% 86% / .7);
-            --clr-neon-surge: hsl(184 100% 86%);
-        }
-
         body {
-            background: var(--clr-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 90vh;
+            background-color: #000;
+            font-family: monospace;
+            color: #fff;
+            margin: 0;
+            font-size: 3.2vw;
+            letter-spacing: .4vw;
+            line-height: 5vw;
             overflow: hidden;
         }
 
-        .neon-light {
-            font-family: 'Text Me One', serif;
-            font-size: 5rem;
-            user-select: none;
-
-            border: var(--clr-neon) .05em solid;
-            border-radius: .2em;
-            color: var(--clr-neon);
-            padding: .5em 1em;
-            text-align: center;
-
-            text-shadow:
-                0 0 .125em var(--clr-neon),
-                0 0 .125em var(--clr-neon);
-            box-shadow:
-                0 0 .5em 0 var(--clr-neon),
-                inset 0 0 .5em 0 var(--clr-neon);
-
-            transform: rotate(2deg);
-
-            position: relative;
-        }
-
-        .neon-light::before {
-            content: '';
-            position: absolute;
-
-            background: var(--clr-neon);
-
-            top: 125%;
-            left: 0;
-            height: 100%;
-            width: 100%;
-
-            transform: perspective(1em) rotateX(40deg) scale(1, .25) rotateY(-2deg) translateX(-.6em);
-            filter: blur(1.5em);
-            opacity: .7;
-        }
-
-        .neon-light.surge {
-            border-color: var(--clr-neon-surge);
-            color: var(--clr-neon-surge);
-            text-shadow:
-                0 0 .125em var(--clr-neon-surge),
-                0 0 .125em var(--clr-neon-surge);
-            box-shadow:
-                0 0 .5em 0 var(--clr-neon-surge),
-                inset 0 0 .5em 0 var(--clr-neon-surge);
-        }
-
-        .neon-light.surge::before {
-            opacity: 1;
-        }
-
-        .neon-light.cut {
-            border: none;
-            color: transparent;
-            text-shadow: none;
-            box-shadow: none;
-        }
-
-        .neon-light.cut::before {
-            opacity: 0;
-        }
-
-        .neon-light>div {
-            font-size: .4em;
-            position: absolute;
-            right: 2em;
-            bottom: .5em;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .neon-light.cut>div {
-            opacity: 0;
-        }
-
         a {
-            color: inherit;
+            color: #06e;
+            text-decoration: none;
+            text-shadow: 
+                0 0 .3vw #06e,
+                0 0 1.6vw #06e;
+        }
+        a:visited {
+            color: #06e;
+        }
+
+        a:hover {
+            color: #09f;
+            text-shadow: 
+                0 0 .6vw #06e,
+                0 0 3.2vw #06e;
+        }
+
+        div {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span.hero-text {
+            font-weight: bold;
+            text-shadow: 
+                0 0 .3vw #ccc,
+                0 0 1.6vw #ccc;
+        }
+
+        span.cursor {
+            -webkit-animation: flash-cursor 1.2s infinite;
+            animation: flash-cursor 1.2s infinite;
+        }
+
+        nav {
+            text-shadow: 
+                0 0 .3vw #ccc,
+                0 0 1.6vw #ccc;
+        }
+
+        @-webkit-keyframes flash-cursor {
+            0% { opacity: 1 }
+            50% { opacity: 0 }
+            100% { opacity: 1 }
+        }
+
+        @keyframes flash-cursor {
+            0% { opacity: 1 }
+            50% { opacity: 0 }
+            100% { opacity: 1 }
         }
     </style>
 </head>
 
 <body>
-    <main class="neon-light">
-        Aaron Watts
-        <div><a href="home.html">Click to enter</a></div>
-    </main>
-
-    <script>
-        const neon = document.querySelector('.neon-light');
-        const INTERVAL = 6500;
-
-        setInterval(() => {
-            const randInt = () => Math.floor(Math.random() * 100) + 80;
-
-            let delay = randInt();
-            let numFlashes = (Math.floor(Math.random() * 3) + 1) * 2;
-            let className = delay > 95 ? 'surge' : 'cut';
-
-            for (let i = 0; i < numFlashes; i++) {
-                setTimeout(() => neon.classList.toggle(className), delay);
-                delay += randInt();
-            }
-        }, INTERVAL);
-    </script>
+    <div>
+        <main>
+            <span class="hero-text">aaronwatts@dev:~ $ <span class="cursor">&#9608</span></span>
+            <nav>. .. <a href="/home">Enter/</a></nav>
+        </main>
+    </div>
 </body>
 
 </html>

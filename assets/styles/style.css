@@ -23,22 +23,16 @@ a:visited {
     color: #be8ae9;
 }
 
-pre, code {
-    background-color: #ddd;
+code:not([class*=language-]) {
+    padding: .4em .3em .2em;
+    font-size: 1.1em;
+    background-color: #f5f2f0;
     color: #444;
 }
 
 pre {
-    padding: 1em;
-    white-space: pre-wrap;
-    text-align: left;
-    margin-inline: 3em;
-}
-
-code {
-    padding: .4em .3em .2em;
-    font-size: 1.1em;
-    white-space: nowrap;
+    margin-inline: 1em !important;
+    font-size: .9em !important;
 }
 
 img {

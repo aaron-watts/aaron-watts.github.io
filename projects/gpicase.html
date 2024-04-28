@@ -15,6 +15,10 @@
     <nav>
         <ul>
             <li><a href="#intro">Intro</a></li>
+            <li><a href="#setting-up">Setting Up</a></li>
+            <li><a href="#bios">BIOS's</a></li>
+            <li><a href="#roms">Adding ROMs</a></li>
+            <li><a href="#tweaks">Tweaks and Polish</a></li>
         </ul>
     </nav>
     <main class="article">
@@ -29,6 +33,129 @@
             Recalbox, there is little that can challenge it for a
             portable retro gaming experience.
         </p>
+        <p>
+            For this project, I went with a Compute Module 4, with 32Gb
+            eMMC storage, and 4Gb RAM. I also went with no wireless, as
+            this is my portable gaming device, and I don't require any
+            online functionality for it. If you've read my NesPi-4 guide,
+            you will know that I prefer RetroPie as my emulationstation
+            frontend, but for this project I went with Recalbox instead.
+            The biggest issue I've had with Recalbox in my Nespi-4 case,
+            was that some updates would break the operating system
+            sligthly. The web UI where you upload your games would stop
+            working, and the shutdown option would disappear from the
+            start menu. But as I don't really run this device online,
+            the WebUI isn't as much of an issue, and the safe shutdown
+            script for the GPi Case 2 means that the missing option
+            isn't really an issue either. Although, I haven't really
+            encountered the same glitches when updating Recalbox on this
+            device. Recalbox also has a few features that let it pair
+            extremely well to the GPi Case 2. It is 64-bit, which helps
+            a lot with performance - I haven't overclocked it, as there
+            is no cooling inside the case, but I still get great
+            performance when e3mulating PSX, and it runs Mr. Driller
+            and Volgar the Viking well on the Dreamcast - I haven't
+            tried any games more taxing than those though, as it a
+            battery powered device, and working it too hard is going
+            to drain it faster. Recalbox is quite opinionated as far
+            as emulationstation station frontends go, and to my
+            knowledge, there is no way to add new emulators to it,
+            although it does come prepacked with a more than reasonable
+            collection of emulators, as well as lots of homebrew game
+            ROMs, which is a very nice touch!
+        </p>
+
+        <h2 id="setting-up">Setting Up</h2>
+        <p class="note">
+            Note: I use Linux computers only, so these instructions
+            might not be of use to you if you are using Windows or
+            Mac OS.
+        </p>
+        <p>
+            First you will need to flash Recalbox to the eMMC storage
+            on the compute module 4. Either use the image provided in
+            the Raspberry Pi Imager (Recalbox - Raspberry Pi 4 / 400
+            (64 bits)), or download the image from
+            <a 
+                href="https://www.recalbox.com/download/stable/handheld/gpicase2/alternative/"
+                target="_blank"
+            >Recalbox</a> and install using your software of choice.
+            To install directly onto the CM4's flash storage, we will
+            need a piece of software that overrides the boot method
+            on the CM4, and registers the device instead, as a storage
+            device.
+        </p>
+        <p>
+            First, we will need to check that
+            <code>libusb-1.0-0-dev</code> is installed on your computer
+            that you will be using to flash the CM4. Check using:
+        </p>
+        <pre><code class="language-none">apt list --installed | grep libusb</code></pre>
+        <p>
+            <code>libusb-1.0-0-dev</code> should be in the list. If it's
+            not, then install it using:
+        </p>
+        <pre><code class="language-none">sudo apt install libusb-1.0-0-dev</code></pre>
+        <p>
+            Next, we need to clone the
+            <a href="https://github.com/raspberrypi/usbboot"
+            target="_blank">Raspberry Pi USB Boot</a> repository.
+        </p>
+        <pre><code class="language-none">git clone --depth=1 https://github.com/raspberrypi/usbboot</code></pre>
+        <p>
+            Next we need to build the software:
+        </p>
+        <pre><code class="language-none">cd usbboot
+make</code></pre>
+        <p>
+            Now we can run the software:
+        </p>
+        <pre><code class="language-none">sudo ./rpiboot</code></pre>
+        <p>
+            Now, plug the GPiCase 2, with compute module 4 board
+            installed, into your PC while the usbboot software is
+            still running. You need to use the micro USB socket on
+            the back of the case, under the cartridge style cover.
+            Now power on the GPi Case 2, and the computer will now
+            recognise the CM4 as a storage device. You can install
+            the image just as you would an SD card.
+        </p>
+
+        <h2 id="bios">BIOS's</h2>
+        <p>
+            You can get a full set of the RetroPie BIOS's at
+            <a href="https://github.com/archtaurus/RetroPieBIOS"
+            target="_blank">this repo</a> (if you need help getting
+            BIOS's from it, have a look at my
+            <a href="/projects/retropie-nespi-4#bios"
+            >NesPi-4 guide</a> for instructions).
+            I haven't checked every single one,
+            but they should cover most of what you'll need for
+            Recalbox. Check where to load each BIOS in the
+            <a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx"
+            target="_blank"
+            >RecalBox Documentation</a>. Use the installation
+            instructions described in the next section about ROMs
+            to install BIOS's onto the device.
+        </p>
+
+        <h2 id="roms">Adding ROMs</h2>
+        <p>
+            I'm not going to tell you where to get copies of ROMs
+            you already own physical copies of, but if you need
+            help with it, take a look at the
+            <a href="/projects/retropie-nespi-4#games"
+            >Getting Games</a> section in the Nespi-4 guide.
+            To load the ROMs to CM4, you will need to run the
+            <code>usbboot</code> software again, as with the
+            installation. Games will need to be loaded onto
+            the <em>Share</em> partition, check out the
+            <a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx"
+            target="_blank">RecalBox docs</a> for the correct
+            location and formats of ROMs for specific emulators.
+        </p>
+
+        <h2 id="tweaks">Tweaks and Polish</h2>
 
         <a href="#top">Back to Top</a>
 

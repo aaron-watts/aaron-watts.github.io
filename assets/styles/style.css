@@ -92,6 +92,11 @@ main.article>p:first-of-type {
     display: none;
 }
 
+.rss-container {
+    margin-block: .5em 1em;
+    width: 3.2em;
+}
+
 footer {
     text-align: center;
     padding-block: 2.5rem 2rem;

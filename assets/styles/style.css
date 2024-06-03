@@ -1,3 +1,20 @@
+:root {
+    /*
+    --cactus-border-width
+    --cactus-border-radius
+    --cactus-text-color
+    --cactus-text-color--soft
+    --cactus-background-color
+    --cactus-background-color--strong
+    --cactus-border-color
+    --cactus-box-shadow-color
+    --cactus-button-color
+    --cactus-button-color--strong
+    --cactus-button-color--stronger
+    --cactus-error-color
+    */
+}
+
 html {
     scroll-behavior: smooth;
 }

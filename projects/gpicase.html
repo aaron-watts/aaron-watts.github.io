@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,8 @@
     module 4, and recalbox's emulationstation frontend to create a portable 
     gaming device.">
     <title>AWD - GPi Case 2</title>
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
     <link rel="stylesheet" href="/assets/styles/style.css">
     <link rel="stylesheet" href="/assets/styles/prism.css">
 </head>
@@ -206,12 +208,23 @@ make</code></pre>
             your phone into the USB-C port at the bottom, using a USB
             to USB-C adaptor, and use your phones USB hotspot tethering.
         </p>
-
-
-        <a href="#top">Back to Top</a>
-
-        <script src="/assets/scripts/prism.js"></script>
+        
     </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "pi5-desktop"
+        })
+    </script>
 </body>
 
 </html>

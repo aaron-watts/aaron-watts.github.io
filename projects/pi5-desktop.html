@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,8 @@
     <meta name="description" content="A look at using a Raspberry Pi 5
     as a desktop computer and daily driver.">
     <title>AWD - Raspberry Pi 5 Desktop Computer</title>
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
     <link rel="stylesheet" href="/assets/styles/style.css">
 </head>
 
@@ -200,7 +202,21 @@
             matters to you, then you should maybe look at installing android
             on a raspberry pi instead.
         </p>
-
-        <a href="#top">Back to Top</a>
+        
     </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "pi5-desktop"
+        })
+    </script>
 </body>

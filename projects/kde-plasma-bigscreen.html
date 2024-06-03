@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,8 @@
     <meta name="description" content="How to set up KDE's Plasma Bigscreen
     on a Raspberry Pi 4.">
     <title>AWD - KDE Big Screen</title>
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
     <link rel="stylesheet" href="/assets/styles/style.css">
     <link rel="stylesheet" href="/assets/styles/prism.css">
 </head>
@@ -309,7 +311,18 @@ sudo ufw enable</code></pre>
 
     <a href="#top">Back to Top</a>
 
-    <script src="/assets/scripts/prism.js"></script>
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "pi5-desktop"
+        })
+    </script>
 </body>
 
 </html>

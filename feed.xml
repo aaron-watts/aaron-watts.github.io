@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+    <title>AaronWattsDev Projects</title>
+    <link>https://aaronwattsdev.com/home</link>
+    <description>Projects in coding, raspberry pi, linux and more</description>
+    <item>
+        <title>Raspberry Pi 5 - Desktop Computer</title>
+        <link>https://aaronwattsdev.com/projects/pi5-desktop</link>
+        <description>This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.</description>
+        <image>
+            <url>https://aaronwattsdev.com/images/pi5desktop.jpg</url>
+            <title>Screenshot of the Raspberry Pi desktop, with a terminal open to neofetch displaying specs, code editor displaying a html file, and a web browser open to onlyoffice document editor, with the contents of this web page written within the editor.</title>
+            <link>https://aaronwattsdev.com</link>
+        </image>
+    </item>
+    <item>
+        <title>KDE Plasma Bigscreen - Raspberry Pi 4</title>
+        <link>https://aaronwattsdev.com/projects/kde-plasma-bigscreen</link>
+        <description>I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.</description>
+        <image>
+            <url>https://aaronwattsdev.com/images/kde-plasma-bigscreen-demo.jpg</url>
+            <title>A Rspberry Pi 4b in an Argon One M.2. Sata case, powered on and plugged into a TV that is on the KDE Plasma Bigscreen home screen, with a Debian logo wallpaper.</title>
+            <link>https://aaronwattsdev.com</link>
+        </image>
+    </item>
+    <item>
+        <title>RetroPie - RetroFlag NesPi 4 Case</title>
+        <link>https://aaronwattsdev.com/projects/retropie-nespi-4</link>
+        <description>The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Lower power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?</description>
+        <image>
+            <url>https://aaronwattsdev.com/images/nespi-4.jpg</url>
+            <title>A NesPi-4 cased Raspberry Pi 4b, with the slot open to show a NES cartridge style SSD case, an 8BitDo SN30 Pro controller, and a WiiMote in a pistol lightgun adapter.</title>
+            <link>https://aaronwattsdev.com</link>
+        </image>
+    </item>
+    <item>
+        <title>Media Keyboard - Pico Controller</title>
+        <link>https://aaronwattsdev.com/projects/media-keyboard</link>
+        <description>My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.</description>
+        <image>
+            <url>https://aaronwattsdev.com/images/media-keyboard.jpg</url>
+            <title>A Raspberry Pi Pico controller on a breadboard, wired up to six coloured buttons, in the pattern of white, blue, blue, white, blue, white.</title>
+            <link>https://aaronwattsdev.com</link>
+        </image>
+    </item>
+    <item>
+        <title>GPi Case 2 - Compute Module 4</title>
+        <link>https://aaronwattsdev.com/projects/gpicase.html</link>
+        <description>The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.</description>
+        <image>
+            <url>https://aaronwattsdev.com/images/gpi-case-2.jpg</url>
+            <title>GPi Case 2 powered on, showing the recalbox menu screen</title>
+            <link>https://aaronwattsdev.com</link>
+        </image>
+    </item>
+</channel>
+
+</rss>

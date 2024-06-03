@@ -95,3 +95,12 @@ main.article>p:first-of-type {
 .hidden {
     display: none;
 }
+
+footer {
+    text-align: center;
+    padding-block: 2.5rem 2rem;
+}
+
+footer > div {
+    padding-block: 0 .5rem;
+}

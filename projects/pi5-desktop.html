@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWD - Raspberry Pi 5 Desktop Computer</title>
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
     <link rel="stylesheet" href="/assets/styles/style.css">
 </head>
 
@@ -195,5 +197,18 @@
         </p>
 
         <a href="#top">Back to Top</a>
+
+        <h4>Comment Section</h4>
+        <div id="comment-section"></div>
+
+        <script>
+            initComments({
+                node: document.getElementById("comment-section"),
+                defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+                serverName: "cactus.chat",
+                siteName: "aaronwattsdev",
+                commentSectionId: "pi5-desktop"
+            })
+        </script>
     </main>
 </body>

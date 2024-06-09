@@ -606,7 +606,7 @@ projects = soup.select('.project')
 
 for project in projects:
     title = project.select_one('h2').text
-    link = project.select_one('a')['href'][:-5]
+    link = project.select_one('a')['href']
     description = project.select_one('.description').text</code></pre>
 
         <p>
@@ -663,7 +663,7 @@ with open('home.html') as f:
 projects = soup.select('.project')
 for project in projects:
     title = project.select_one('h2').text
-    link = project.select_one('a')['href'][:-5]
+    link = project.select_one('a')['href']
     description = project.select_one('.description').text
     build_item(title, link, description)
 
@@ -824,7 +824,7 @@ with open('home.html') as f:
 projects = soup.select('.project')
 for project in projects:
     title = project.select_one('h2').text
-    link = project.select_one('a')['href'][:-5]
+    link = project.select_one('a')['href']
     description = project.select_one('.description').text
     build_item(title, link, description)
 
@@ -849,7 +849,9 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             very simple hmtl pages that only contain the article
             information, the way the Jekyll builds from markdown
             files, but as we are working directly in html, we would
-            have far more control over CSS and JavaScript. These
+            have far more control over CSS and JavaScript. Then, after
+            that, I'm not really sure what a CMS could offer that we
+            haven't already just done ourselves. These
             are things I hope to look at in the near future, but for
             now, I can feel my pigments fading and I would like to
             go out into the sunlight for a while, so let's start
@@ -870,14 +872,15 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
         <p>
             Cactus Comments is free, and doesn't require users to
             sign in like the solutions based on github issues.
-            It also runs on <a href="https://matrix.org/"
+            It runs on <a href="https://matrix.org/"
             target="_blank">matrix</a>, which is a defederated chat and
             messaging service. And I'm a big fan of defederation.
             As it runs on matrix, you can use the
             <a href="https://element.io/"
-            target="_blank">element</a> mobile and PC apps (there is
+            target="_blank">element</a> PC and mobile apps to get
+            alerts of, reply to, and moderate comments (there is
             an arm 64-bit version for linux too, which is great now
-            that I mostly work on my raspberry pi 5 now!).
+            that I do all of my computing on my raspberry pi 5!).
         </p>
         <p>
             I won't explain how to get started, the documentation

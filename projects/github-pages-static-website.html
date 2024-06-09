@@ -18,7 +18,7 @@
 </head>
 <body>
     <header>
-        <div>Aaron Watts Dev <i>Static Website - Github Pages</i></div>
+        <div>Aaron Watts Dev <i>Github Pages Static Website</i></div>
         <a href="/home">Back to home</a>
         <div class="rss-container">
             <a href="https://aaronwattsdev.com/feed.xml">
@@ -29,25 +29,94 @@
     <nav>
         <ul>
             <li><a href="#intro">Intro</a></li>
+            <li><a href="#cms">Why Not a CMS?</a></li>
+            <li><a href="">Github Pages</a></li>
+            <li><a href="">Custom Domain</a></li>
+            <li><a href="">Getting Bing Ready</a></li>
+            <li><a href="">H1's</a></li>
+            <li><a href="">Favicon</a></li>
+            <li><a href="">Meta Description</a></li>
+            <li><a href="">Sitemap</a></li>
+            <li><a href="">RSS Feed</a></li>
+            <li><a href="">Automating the Boring Stuff</a></li>
+            <li><a href="">Adding a Comments Section</a></li>
         </ul>
     </nav>
     <main class="article">
-        <h1>It looks like the developer forgot to include a header</h1>
+        <h1>Static Website - Github Pages</h1>
         <!-- Update img src and alt text -->
         <img src=""
         alt="It looks like the developer forgot to include alt text">
         <p id="intro">
-            <!-- intro here - first paragraph of intro will also
-            serve as project description on projects page -->
-            It looks like the developer forgot to include an intro
+            You don't always need a full stack. When all you need to
+            do is show information, a static website is enough. And
+            with Github Pages, it is possible to have a fully
+            functioning website for free, just like this one! It could
+            just be the perfect solution for your portfolio page.
         </p>
         <p>
-            <!-- More intro here -->
+            In fact, in 2024, static sites can do a bit more than just
+            send information. This site, for example, has a 
+            <a href="#comment-section">comment section</a> on each
+            project page (scroll down and see for yourself). There's
+            an oceans-worth of webdev lessons and tutorials out there,
+            but not many really talk about getting the site up, and
+            indexed. So instead of talking about how to code a website,
+            I thought I'd go over some of the things I've learned in 
+            building this website and getting it bing-ready, as well
+            as some of the interesting things you can get working on
+            static websites today.
         </p>
 
-        <h2 id=""></h2>
+        <h2 id="cms">Why Not a CMS?</h2>
         <p>
-            
+            Good question. You can absolutely use a Content Management
+            System. Github Pages even has one incorporated into it, 
+            it's called
+            <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.
+            But I had a very specific vision for my website. Story time.
+        </p>
+        <p>
+            I bought my domain name a while ago. I had been learning
+            web development, and thought I might like to do it
+            professionally. And so, naturally I would need an online
+            portfolio. Eventually, I changed my mind, and decided that
+            I prefer to play with mono fonts as a hobby, so I scrapped
+            that idea. But I kept the domain name, just in case I
+            decided I might eventually want to do something with it.
+            And I did, I'm doing it now, it's this site. Anyway, when
+            I was learning all these amazing CSS and Javascript spells
+            and incantations, two things would often happen. The first
+            was that more
+            code would lead to more bugs, and the other thing was that
+            I was never satisified with a project. I would always want
+            to improve or fix something, and nothing ever got finished.
+        </p>
+        <p>
+            Then I came across a website, just some
+            <a href="https://motherfuckingwebsite.com/" 
+            target="_blank">motherfucking website</a>, and I realised
+            then, that less is more. When I decided I wanted to build
+            this website to log my projects, I decided I wanted it to
+            follow those design principles (or lack there of). In
+            doing very little, I wanted to acheive a responsive,
+            hierarchical website that just worked everywhere, and
+            loaded up <em>fast</em>. You don't get that with CMS's.
+            And to that end, I use very little javascript on this site
+            (even though I love javascript), it highlights my syntax,
+            runs a filter feature on the home page, and runs the
+            comments sections on these projects pages. I don't import
+            fonts, and as much as possible is hosted in the website
+            itself. The only external service is the comments because,
+            well, static.
+        </p>
+        <p>
+            So, to keep to those design principles, I've opted to do
+            everything myself (and also because I enjoy coding).
+            Although, that doesn't mean things have to be difficult
+            either. After looking at the things you need to get done
+            to pass the bing test, we will take a look at automating
+            some of the tedious stuff with python scripts.
         </p>
 
     </main>
@@ -63,7 +132,7 @@
             defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
             serverName: "cactus.chat",
             siteName: "aaronwattsdev",
-            commentSectionId: "" // include comment section id - to correspond to page name
+            commentSectionId: "github-static-website"
         })
     </script>
 

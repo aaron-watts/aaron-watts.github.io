@@ -2,6 +2,7 @@
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
 
 <channel>
+    <atom:link href="https://aaronwattsdev.com/test.xml" rel="self" type="application/rss+xml"/>
     <title>AaronWattsDev Projects</title>
     <link>https://aaronwattsdev.com/home</link>
     <description>Projects in coding, raspberry pi, linux and more</description>

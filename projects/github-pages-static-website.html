@@ -34,7 +34,7 @@
             <li><a href="#custom-domain">Custom Domain</a></li>
             <li><a href="#bing">Getting Bing Ready</a></li>
             <li><a href="#sitemap">Sitemap</a></li>
-            <li><a href="">RSS Feed</a></li>
+            <li><a href="#feed">RSS Feed</a></li>
             <li><a href="">Automating the Boring Stuff</a></li>
             <li><a href="">Adding a Comments Section</a></li>
         </ul>
@@ -243,7 +243,7 @@
             short name values in that file before pushing.
         </p>
 
-        <h1 id="sitemap">Sitemap</h1>
+        <h2 id="sitemap">Sitemap</h2>
         <p>
             There are two main types of sitemap. The first is 
             html sitemaps, intended for users, but search engines
@@ -263,7 +263,11 @@
             sitemaps.
         </p>
         <p>
-
+            The sitemap xml file isn't too complicated, and is a
+            good thing to look at before moving onto RSS feeds,
+            which are similar but have a fair bit more going on
+            to them. Let's take a look at the sitemap for this
+            website, and then break it down:
         </p>
         <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
@@ -289,6 +293,101 @@
         &lt;loc&gt;https://aaronwattsdev.com/projects/retropie-nespi-4/&lt;/loc&gt;
     &lt;/url&gt;
 &lt;/urlset&gt;</code></pre>
+    
+    <p>
+        This should all look a little familiar if you've ever
+        played around with svg's in the browser, as it's the
+        same type of markup. The first line is just stating
+        which version of xml and encoding the document is using.
+    </p>
+
+<pre class="language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
+
+    <p>
+        The next line is the opening tag for the root element,
+        <code>&lt;urlset&gt;</code>. It's what it sounds like, a set of
+        url's.
+    </p>
+
+<pre class="language-xml"><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+    &lt;!-- urls go here --&gt;
+&lt;/urlset&gt;</code></pre>
+
+    <p>
+        Nested within the <code>&lt;urlset&gt;</code> element are the
+        <code>&lt;url&gt;</code> elements, one for each page in your
+        website that you wish to be known to a search engines
+        crawler. Nested within each <code>&lt;url&gt;</code>
+        element, should be the information about each url.
+        <code>&lt;loc&gt;</code> contains the url itself,
+        and is the only tag that's required within the
+        <code>&lt;url&gt;</code> tag,
+        but you can check what other tags can be included by
+        checking the protocol documenation at 
+        <a href="https://sitemaps.org/protocol.html"
+        target="_blank">sitemap.org</a>.
+    </p>
+
+<pre class="language-xml"><code>&lt;url&gt;
+    &lt;loc&gt;https://aaronwattsdev.com/&lt;/loc&gt;
+&lt;/url&gt;</code></pre>
+
+    <p>
+        A CMS would write these out for you, and doing them
+        by hand can become a bit boring, and also prone to
+        human error, so we will take a look at writing
+        scripts to build these xml files for us shortly.
+        But first, let's look at the rss feed.
+    </p>
+
+    <h2 id="feed">RSS Feed</h2>
+    <p>
+        So, the following xml file contains the bare minimum for
+        an rss feed to function in most readers. The required elements
+        are all there. We can add more for a far better experience,
+        but already, it is quite a bit to write each time you want
+        to add to the feed. Further, all the required information
+        can be gathered from within our project in some way, so
+        before we flesh this file out to be a better feed, we would
+        be foolish not to get some kind of automation set up to do
+        this for us.
+    </p>
+    <p>
+        But first, let's have a quick look at what we have so far:
+    </p>
+<pre class="language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss version="2.0"&gt;
+    &lt;channel&gt;
+        &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
+        &lt;link&gt;https://aaronwattsdev.com/home&lt;/link&gt;
+        &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
+        &lt;item&gt;
+            &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
+            &lt;link&gt;https://aaronwattsdev.com/projects/pi5-desktop&lt;/link&gt;
+            &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;title&gt;KDE Plasma Bigscreen - Raspberry Pi 4&lt;/title&gt;
+            &lt;link&gt;https://aaronwattsdev.com/projects/kde-plasma-bigscreen&lt;/link&gt;
+            &lt;description&gt;I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.&lt;/description&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;title&gt;RetroPie - RetroFlag NesPi 4 Case&lt;/title&gt;
+            &lt;link&gt;https://aaronwattsdev.com/projects/retropie-nespi-4&lt;/link&gt;
+            &lt;description&gt;The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Lower power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?&lt;/description&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;title&gt;Media Keyboard - Pico Controller&lt;/title&gt;
+            &lt;link&gt;https://aaronwattsdev.com/projects/media-keyboard&lt;/link&gt;
+            &lt;description&gt;My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.&lt;/description&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;title&gt;GPi Case 2 - Compute Module 4&lt;/title&gt;
+            &lt;link&gt;https://aaronwattsdev.com/projects/gpicase&lt;/link&gt;
+            &lt;description&gt;The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.&lt;/description&gt;
+        &lt;/item&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;</code></pre>
 
     </main>
 

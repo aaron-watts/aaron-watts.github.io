@@ -67,11 +67,11 @@ main.article>p:first-of-type {
     font-style: italic;
 }
 
-.tag-container {
+.topic-container {
     margin: 1.2em 1em;
 }
 
-.tag {
+.topic {
     display: inline-block;
     background-color: #444;
     padding: .3em .7em;
@@ -80,11 +80,11 @@ main.article>p:first-of-type {
     font-size: .9em;
 }
 
-#tag-list>.tag {
+#topic-list>.topic {
     cursor: pointer;
 }
 
-.tag.selected {
+.topic.selected {
     background-color: #666;
 }
 

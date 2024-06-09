@@ -37,15 +37,15 @@
         no pressure.
     </noscript>
     <p class="note">Filter by topic:</p>
-    <div id="tag-list" class="tag-container"></div>
+    <div id="topic-list" class="topic-container"></div>
     <main>
         <div class="project">
             <h2>Raspberry Pi 5 - Desktop Computer</h2>
-            <div class="tag-container">
-                <div class="tag">raspberry pi</div>
-                <div class="tag">rpi5</div>
-                <div class="tag">computing</div>
-                <div class="tag">daily driver</div>
+            <div class="topic-container">
+                <div class="topic">raspberry pi</div>
+                <div class="topic">rpi5</div>
+                <div class="topic">computing</div>
+                <div class="topic">daily driver</div>
             </div>
             <a href="/projects/pi5-desktop">Go to project</a>
             <p class="description">
@@ -58,12 +58,12 @@
         </div>
         <div class="project">
             <h2>KDE Plasma Bigscreen - Raspberry Pi 4</h2>
-            <div class="tag-container">
-                <div class="tag">raspberry pi</div>
-                <div class="tag">rpi4</div>
-                <div class="tag">smart tv</div>
-                <div class="tag">kde bigscreen</div>
-                <div class="tag">streaming</div>
+            <div class="topic-container">
+                <div class="topic">raspberry pi</div>
+                <div class="topic">rpi4</div>
+                <div class="topic">smart tv</div>
+                <div class="topic">kde bigscreen</div>
+                <div class="topic">streaming</div>
             </div>
             <a href="/projects/kde-plasma-bigscreen">Go to project</a>
             <p class="description">
@@ -79,13 +79,13 @@
         </div>
         <div class="project">
             <h2>RetroPie - RetroFlag NesPi 4 Case</h2>
-            <div class="tag-container">
-                <div class="tag">raspberry pi</div>
-                <div class="tag">rpi4</div>
-                <div class="tag">retropie</div>
-                <div class="tag">gaming</div>
-                <div class="tag">lightgun</div>
-                <div class="tag">wiimote</div>
+            <div class="topic-container">
+                <div class="topic">raspberry pi</div>
+                <div class="topic">rpi4</div>
+                <div class="topic">retropie</div>
+                <div class="topic">gaming</div>
+                <div class="topic">lightgun</div>
+                <div class="topic">wiimote</div>
             </div>
             <a href="/projects/retropie-nespi-4">Go to project</a>
             <p class="description">
@@ -98,12 +98,12 @@
         </div>
         <div class="project">
             <h2>Media Keyboard - Pico Controller</h2>
-            <div class="tag-container">
-                <div class="tag">pico</div>
-                <div class="tag">microcontroller</div>
-                <div class="tag">circuitpython</div>
-                <div class="tag">python</div>
-                <div class="tag">gpio</div>
+            <div class="topic-container">
+                <div class="topic">pico</div>
+                <div class="topic">microcontroller</div>
+                <div class="topic">circuitpython</div>
+                <div class="topic">python</div>
+                <div class="topic">gpio</div>
             </div>
             <a href="/projects/media-keyboard">Go to project</a>
             <p class="description">
@@ -117,12 +117,12 @@
         </div>
         <div class="project">
             <h2>GPi Case 2 - Compute Module 4</h2>
-            <div class="tag-container">
-                <div class="tag">raspberry pi</div>
-                <div class="tag">cm4</div>
-                <div class="tag">recalbox</div>
-                <div class="tag">gaming</div>
-                <div class="tag">handheld</div>
+            <div class="topic-container">
+                <div class="topic">raspberry pi</div>
+                <div class="topic">cm4</div>
+                <div class="topic">recalbox</div>
+                <div class="topic">gaming</div>
+                <div class="topic">handheld</div>
             </div>
             <a href="/projects/gpicase">Go to project</a>
             <p class="description">
@@ -144,27 +144,27 @@
     </footer>
 
     <script>
-        const populateTags = () => {
-            const tagList = document.querySelector('#tag-list');
-            const tags = [
+        const populateTopics = () => {
+            const topicList = document.querySelector('#topic-list');
+            const topics = [
                 ...new Set(
-                    [...document.querySelectorAll('.tag')]
+                    [...document.querySelectorAll('.topic')]
                         .map(i => i.innerText)
                 )
             ].sort((a, b) => a > b);
 
-            tags.forEach(tagName => {
-                const tag = document.createElement('div');
-                tag.classList.add('tag');
-                tag.innerText = tagName;
-                tag.addEventListener('click', filterByTag);
+            topics.forEach(topicName => {
+                const topic = document.createElement('div');
+                topic.classList.add('topic');
+                topic.innerText = topicName;
+                topic.addEventListener('click', filterByTopic);
 
-                tagList.appendChild(tag);
+                topicList.appendChild(topic);
             });
         };
 
-        function filterByTag() {
-            const selected = document.querySelector('#tag-list>.tag.selected');
+        function filterByTopic() {
+            const selected = document.querySelector('#topic-list>.topic.selected');
             if (selected) selected.classList.remove('selected');
 
             const selection = this.innerText;
@@ -177,9 +177,9 @@
                 projects.forEach(project => {
                     project.classList.add('hidden');
 
-                    const tags = [...project.children[1].children];
-                    for (let tag of tags) {
-                        if (tag.innerText === selection) {
+                    const topics = [...project.children[1].children];
+                    for (let topic of topics) {
+                        if (topic.innerText === selection) {
                             project.classList.remove('hidden');
                         }
                     }
@@ -192,7 +192,7 @@
 
         };
 
-        document.addEventListener('DOMContentLoaded', populateTags);
+        document.addEventListener('DOMContentLoaded', populateTopics);
     </script>
 </body>
 

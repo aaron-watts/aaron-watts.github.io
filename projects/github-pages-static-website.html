@@ -508,7 +508,7 @@ loc.text = 'https://aaronwattsdev.com/'</code></pre>
             so that may as well be extracted out to a function.
             We will pass the file<em>path</em> to it as a
             parameter, and use it to build the url itself.
-            We will also set the default path apram to an empty
+            We will also set the default path param to an empty
             string, for when we need to build the index url.
         </p>
 <pre class="language-python"><code>def build_url(path=''):
@@ -524,7 +524,7 @@ loc.text = 'https://aaronwattsdev.com/'</code></pre>
             to have new files going into it regularly, so
             for that, I will use the <code>os</code> python
             module to iterate through these files, and
-            call the build file, passing the filename, with
+            call the build file function, passing the filename with
             the <code>.html</code> extension truncated off.
         </p>
 
@@ -715,9 +715,9 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
         &lt;link&gt;https://aaronwattsdev.com/projects/pi5-desktop&lt;/link&gt;
         &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
         &lt;guid&gt;https://aaronwattsdev.com/projects/pi5-desktop&lt;/guid&gt;
-        &lt;enclosure url="https://aaronwattsdev.com/images/projects/pi5-desktop" length="0" type="image/jpeg" /&gt;
-        &lt;media:thumbnail url="https://aaronwattsdev.com/images/projects/pi5-desktop" width="1920" height="1080" /&gt;
-        &lt;media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/pi5-desktop" /&gt;
+        &lt;enclosure url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" length="0" type="image/jpeg" /&gt;
+        &lt;media:thumbnail url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" width="1920" height="1080" /&gt;
+        &lt;media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" /&gt;
     &lt;/item&gt;
     &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
@@ -725,7 +725,7 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
         <p>
             My design choices and project structure have
             influenced how I have written the script to collect
-            all the reuired information to build the individual
+            all the required information to build the individual
             rss items. For example, I don't have any image links
             on the page I am scraping on - I just didn't want
             the page to have to load an image for every article.
@@ -752,7 +752,11 @@ images/
             A different solution here could be to include a
             hidden element in each project on the home page
             that lists them, with innertext that defines
-            an image url.
+            an image url. Here is the final script for
+            generating a more complex rss feed, there's
+            a lot happening, but broken down, it's not too
+            different from the simple rss script, it just
+            has more jobs to do now:
         </p>
 
 <pre class="language-python"><code>import xml.etree.ElementTree as ET

@@ -30,13 +30,10 @@
         <ul>
             <li><a href="#intro">Intro</a></li>
             <li><a href="#cms">Why Not a CMS?</a></li>
-            <li><a href="">Github Pages</a></li>
-            <li><a href="">Custom Domain</a></li>
-            <li><a href="">Getting Bing Ready</a></li>
-            <li><a href="">H1's</a></li>
-            <li><a href="">Favicon</a></li>
-            <li><a href="">Meta Description</a></li>
-            <li><a href="">Sitemap</a></li>
+            <li><a href="#github-pages">Github Pages</a></li>
+            <li><a href="#custom-domain">Custom Domain</a></li>
+            <li><a href="#bing">Getting Bing Ready</a></li>
+            <li><a href="#sitemap">Sitemap</a></li>
             <li><a href="">RSS Feed</a></li>
             <li><a href="">Automating the Boring Stuff</a></li>
             <li><a href="">Adding a Comments Section</a></li>
@@ -118,6 +115,180 @@
             to pass the bing test, we will take a look at automating
             some of the tedious stuff with python scripts.
         </p>
+
+        <h2 id="github-pages">Github Pages</h2>
+        <p>
+            So, assuming you've got a basic website built and ready
+            to go, you will need somewhere to serve the files from.
+            I'm not savvy enough to want to brave self hosting on
+            a home server, so I opted for
+            <a href="https://pages.github.com/"
+            target="_blank">Github Pages</a>. 
+            If you're here reading this, then chances are you either
+            have a github account, or are familiar with the git CLI.
+            Github Pages websites are free, though there are
+            limitations to them, but for a portfolio page, a blog,
+            or documentation it is ideal.
+        </p>
+        <p>
+            There are 2 different types of github pages websites.
+            The first is the user/organisation site. This will
+            give you a url in the format
+            <code>&lt;username&gt;.github.io</code>, which, in
+            itself is pretty tidy as far as free url's go. You will 
+            be able to use advanced DNS configuration with a DNS 
+            provider such as namecheap if you go this route, meaning
+            it will be much easier to set up with search engines.
+            The second is a project site. Although trickier, it is
+            still possible to set up a custom domain in this case, 
+            and without advanced DNS configuration, setting up with
+            search engines will involve adding meta tags into the
+            site headers for verification.
+        </p>
+
+        <h2 id="custom-domain">Custom Domain Name</h2>
+        <p>
+            You don't need a custom domain name. But with a DNS
+            provider, such as
+            <a target="_blank" 
+            href="https://www.namecheap.com/">namecheap</a>,
+            you get the benefit of advnaced DNS configuration,
+            making it far easier to set up SEO, using CNAME and
+            txt records, instead of uglying up your code with
+            unnecessary meta tags. Also, <code>&lt;yourname&gt;.com</code>
+            looks far nicer, and more professional, than
+            <code>&lt;yourname&gt;.github.io</code>. The process for getting
+            custom domains set up for user and organisation
+            pages is pretty thoroughly documented by gihtub
+            <a 
+                href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site"
+                target="_blank"
+            >here</a>. For project pages, there is a solution
+            that worked for me over at Stack Overflow
+            <a 
+                href="https://stackoverflow.com/a/9123911"
+                target="_blank"
+            >here</a>.
+        </p>
+
+        <h2 id="bing">Getting Bing Ready</h2>
+        <p>
+            Okay, so Bing is not the only search engine. But
+            out of Bing and Google, Bing is definitely the
+            hard-arse parent that isn't goint to tolerate any
+            slack from you. Google is quite lax, provided your
+            url's are all correct and your site is verified.
+            But Bing runs a number of tests and won't index
+            if your site fails them. The only other remaining
+            <em>pure search engines</em> remaining today,
+            might be Yahoo and DuckDuckGo, but both of those
+            pull indexes off of Bing, so through the hoops
+            we jump. There may well be more issues than what
+            I bring up here, but assuming you're starting
+            with something like the emmet boilerplate, you
+            shouldn't run in to too many more than I did.
+        </p>
+        <h3>H1's</h3>
+        <p>
+            They tried to tell you. You didn't listen.
+            Semantics is important. But you kept following
+            those CSS guru's on youtube like they were bitches
+            on heat. Now all you know about web dev is how to
+            nest spans in divs in spans in divs to make a
+            sidemenu icon change shape when the menu is hidden.
+        </p>
+        <p>
+            Bing wants to see a h1 on every page. Be smart and
+            use it on the <em>main title</em> of the 
+            <em>relevant content</em> of each page. I didn't
+            really see the need for one on my
+            <a href="/" target="_blank"
+            >splash page</a>, but Bing flagged it, so I had to
+            put one in and cancel the styling on it.
+        </p>
+
+        <h3>Alt-txt</h3>
+        <p>
+            Yes, semantics is important. And yes, I regularly
+            forget to put the alt-txt on images. Oh, fine. I
+            just don't bother, I remember and then decide I'm
+            too lazy to do it. Anyway, Bing pulled me on it,
+            and now I try to be a good web dev.
+        </p>
+
+        <h3>Meta Description</h3>
+        <p>
+            SEO has changed over the years, and search engines
+            rely less on the meta tags in html headers than they
+            used to. However, Bing still wants a meta desription
+            tag, it won't index a page without one. You can throw
+            in the meta keywords lists and all other bells and
+            whistles if you wish, but just make sure the description
+            is in their, as it seems to be the one Bing cares about.
+        </p>
+
+        <h3>Favicon</h3>
+        <p>
+            Technically, this wasn't really an obstacle to getting
+            indexed, but it is rumoured that it can improve your
+            ranking in search engines, and it also get's rid of that
+            annoying console warning. Easiest way, use one of the
+            <a href="https://favicon.io/" target="_blank">favicon.io</a>
+            favicon generators, and they will not only render all
+            the files required for it, but they'll also provide the
+            markup for the headers, as well as a
+            <code>site.webmanifest</code> file for android users to
+            be able to create shortcuts on their homescreen of your
+            website - just don't forget to update the name and
+            short name values in that file before pushing.
+        </p>
+
+        <h1 id="sitemap">Sitemap</h1>
+        <p>
+            There are two main types of sitemap. The first is 
+            html sitemaps, intended for users, but search engines
+            can also crawl them to find links to all the pages on
+            your site. The second is xml sitemaps, which you can
+            submit directly to search engines, so they have an
+            immediate directory of your sites urls.
+        </p>
+        <p>
+            Creating a html sitemap isn't too difficult if you
+            have already managed to code a static website, so
+            I'll look at the xml sitemap, as there's a bit to
+            learn with xml if you haven't used it much before.
+        </p>
+        <p class="note">
+            Note: If your site is only one page, you do not need any
+            sitemaps.
+        </p>
+        <p>
+
+        </p>
+        <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/&lt;/loc&gt;
+    &lt;/url&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/home/&lt;/loc&gt;
+    &lt;/url&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/projects/gpicase/&lt;/loc&gt;
+    &lt;/url&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/projects/kde-plasma-bigscreen/&lt;/loc&gt;
+    &lt;/url&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/projects/media-keyboard/&lt;/loc&gt;
+    &lt;/url&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/projects/pi5-desktop/&lt;/loc&gt;
+    &lt;/url&gt;
+    &lt;url&gt;
+        &lt;loc&gt;https://aaronwattsdev.com/projects/retropie-nespi-4/&lt;/loc&gt;
+    &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
 
     </main>
 

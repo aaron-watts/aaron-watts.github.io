@@ -34,8 +34,8 @@
             <li><a href="#bing">Getting Bing Ready</a></li>
             <li><a href="#sitemap">Sitemap</a></li>
             <li><a href="#feed">RSS Feed</a></li>
-            <li><a href="">Automating the Boring Stuff</a></li>
-            <li><a href="">Adding a Comments Section</a></li>
+            <li><a href="#automating">Automating the Boring Stuff</a></li>
+            <li><a href="#adding-comments-section">Adding a Comments Section</a></li>
         </ul>
     </nav>
     <main class="article">
@@ -293,67 +293,67 @@
     &lt;/url&gt;
 &lt;/urlset&gt;</code></pre>
     
-    <p>
-        This should all look a little familiar if you've ever
-        played around with svg's in the browser, as it's the
-        same type of markup. The first line is just stating
-        which version of xml and encoding the document is using.
-    </p>
+        <p>
+            This should all look a little familiar if you've ever
+            played around with svg's in the browser, as it's the
+            same type of markup. The first line is just stating
+            which version of xml and encoding the document is using.
+        </p>
 
 <pre class="language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
 
-    <p>
-        The next line is the opening tag for the root element,
-        <code>&lt;urlset&gt;</code>. It's what it sounds like, a set of
-        url's.
-    </p>
+        <p>
+            The next line is the opening tag for the root element,
+            <code>&lt;urlset&gt;</code>. It's what it sounds like, a set of
+            url's.
+        </p>
 
 <pre class="language-xml"><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
     &lt;!-- urls go here --&gt;
 &lt;/urlset&gt;</code></pre>
 
-    <p>
-        Nested within the <code>&lt;urlset&gt;</code> element are the
-        <code>&lt;url&gt;</code> elements, one for each page in your
-        website that you wish to be known to a search engines
-        crawler. Nested within each <code>&lt;url&gt;</code>
-        element, should be the information about each url.
-        <code>&lt;loc&gt;</code> contains the url itself,
-        and is the only tag that's required within the
-        <code>&lt;url&gt;</code> tag,
-        but you can check what other tags can be included by
-        checking the protocol documenation at 
-        <a href="https://sitemaps.org/protocol.html"
-        target="_blank">sitemap.org</a>.
-    </p>
+        <p>
+            Nested within the <code>&lt;urlset&gt;</code> element are the
+            <code>&lt;url&gt;</code> elements, one for each page in your
+            website that you wish to be known to a search engines
+            crawler. Nested within each <code>&lt;url&gt;</code>
+            element, should be the information about each url.
+            <code>&lt;loc&gt;</code> contains the url itself,
+            and is the only tag that's required within the
+            <code>&lt;url&gt;</code> tag,
+            but you can check what other tags can be included by
+            checking the protocol documenation at 
+            <a href="https://sitemaps.org/protocol.html"
+            target="_blank">sitemap.org</a>.
+        </p>
 
 <pre class="language-xml"><code>&lt;url&gt;
     &lt;loc&gt;https://aaronwattsdev.com/&lt;/loc&gt;
 &lt;/url&gt;</code></pre>
 
-    <p>
-        A CMS would write these out for you, and doing them
-        by hand can become a bit boring, and also prone to
-        human error, so we will take a look at writing
-        scripts to build these xml files for us shortly.
-        But first, let's look at the rss feed.
-    </p>
+        <p>
+            A CMS would write these out for you, and doing them
+            by hand can become a bit boring, and also prone to
+            human error, so we will take a look at writing
+            scripts to build these xml files for us shortly.
+            But first, let's look at the rss feed.
+        </p>
 
-    <h2 id="feed">RSS Feed</h2>
-    <p>
-        So, the following xml file contains the bare minimum for
-        an rss feed to function in most readers. The required elements
-        are all there. We can add more for a far better experience,
-        but already, it is quite a bit to write each time you want
-        to add to the feed. Further, all the required information
-        can be gathered from within our project in some way, so
-        before we flesh this file out to be a better feed, we would
-        be foolish not to get some kind of automation set up to do
-        this for us.
-    </p>
-    <p>
-        But first, let's have a quick look at what we have so far:
-    </p>
+        <h2 id="feed">RSS Feed</h2>
+        <p>
+            So, the following xml file contains the bare minimum for
+            an rss feed to function in most readers. The required elements
+            are all there. We can add more for a far better experience,
+            but already, it is quite a bit to write each time you want
+            to add to the feed. Further, all the required information
+            can be gathered from within our project in some way, so
+            before we flesh this file out to be a better feed, we would
+            be foolish not to get some kind of automation set up to do
+            this for us.
+        </p>
+        <p>
+            But first, let's have a quick look at what we have so far:
+        </p>
 <pre class="language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;rss version="2.0"&gt;
     &lt;channel&gt;
@@ -388,6 +388,503 @@
     &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
 
+        <p>
+            So, ignoring the first line, that is the same as the
+            sitemap xml file, we can see that the root element in
+            the rss feed is the <code>&lt;rss&gt;</code> element.
+            The rss version is specified as an attribute, it is
+            using rss 2.0. Within that, is the nested 
+            <code>&lt;channel&gt;</code> element. Inside of the
+            <code>&lt;channel&gt;</code> element, we have the feed
+            information: <code>&lt;title&gt;</code>,
+            <code>&lt;link&gt;</code> and
+            <code>&lt;description&gt;</code>. This all provides
+            the rss aggregators with the information they need about
+            the channel itself.
+        </p>
+
+    <pre class="language-xml"><code>&lt;rss version="2.0"&gt;
+    &lt;channel&gt;
+        &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
+        &lt;link&gt;https://aaronwattsdev.com/home&lt;/link&gt;
+        &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
+        &lt;!-- rss items go here --&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;</code></pre>
+    
+        <p>
+            Finally, we have the rss items themselves. These each
+            consist of an <code>&lt;item&gt;</code> element, with a
+            nested <code>&lt;title&gt;</code>,
+            <code>&lt;link&gt;</code> and <code>&lt;description&gt;</code>
+            element each. What's helpful about these elements, is the
+            information they require are all available on this sites
+            <a href="/home">home page</a>, where each project is listed
+            with links and descriptions. This will come in handy in a
+            when we automate the feed.
+        </p>
+
+<pre class="language-xml"><code>&lt;item&gt;
+    &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
+    &lt;link&gt;https://aaronwattsdev.com/projects/pi5-desktop&lt;/link&gt;
+    &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
+&lt;/item&gt;</code></pre>
+
+        <h2 id="automating">Automating the Boring Stuff</h2>
+
+        <p>
+            One of the main benefits of using a CMS, is that you
+            don't have to do, or even think about, most of this
+            stuff. Not only is ammending the sitemap and rss feed
+            another job that can be time consuming, forgotten,
+            or even done wrong, but it's also not necessary.
+            Even without a CMS, we can make our own lives easier
+            with a bit of messy hacking. First let's handle the
+            easy one, which is the sitemap. But before we begin,
+            it's worth mentioning that a sensible directory
+            structure will help a lot with automation, and that
+            what I write here isn't necessarily going to work for
+            your own sites structure, so you will need to hack
+            around with it yourself to get it working for you.
+            I will talk about the structure I use and how it
+            affects or benefits the scripts I'm writing for
+            reference.
+        </p>
+
+        <h3>A Sitemap Generator in Python</h3>
+
+        <p>
+            So the sitemap is essentially just a set of links
+            to each html page in the website. Easy, my site
+            only has two folders containing any html files at
+            all, that's the <code>root/</code> and
+            <code>projects/</code> directories.
+        </p>
+
+<pre class="language-none"><code>/
+index.html
+home.html
+projects/
+    gpicase.html
+    kde-plasma-bigscreen.html
+    media-keyboard.html
+    pi5-desktop.html
+    retropie-nespi-4.html
+</code></pre>
+
+        <p>
+            With this in mind, all we need to do, is build a
+            <code>&lt;url&gt;</code> element for each file,
+            append it to the root element, and then write it to
+            a file. We can use the <code>os</code> module to
+            probe our filesystem, and the
+            <code>xml.etree.ElementTree</code> module parses
+            and writes xml. Both are included in python3.
+        </p>
+        <p>
+            The following snippet will build a root element,
+            and then append a subelement to it, and fill out
+            the text. We also have to register the xml
+            namespace we will be using <em>before</em> we make
+            the root element, and set the namespace on the root
+            element after we have created it, not doing so
+            will result in <code>ns0</code> inserting itself
+            within all the following elements down the tree.
+        </p>
+<pre class="language-python"><code>import xml.etree.ElementTree as ET
+
+# create the root element and set namespace
+ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+urlset = ET.Element('urlset')
+urlset.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+
+# append a subelement to the root element
+url = ET.SubElement(urlset, 'url')
+loc = ET.SubElement(url, 'loc')
+loc.text = 'https://aaronwattsdev.com/'</code></pre>
+
+        <p>
+            We are going to have to build a lot more url's,
+            so that may as well be extracted out to a function.
+            We will pass the file<em>path</em> to it as a
+            parameter, and use it to build the url itself.
+            We will also set the default path apram to an empty
+            string, for when we need to build the index url.
+        </p>
+<pre class="language-python"><code>def build_url(path=''):
+    url = ET.SubElement(urlset, 'url')
+    loc = ET.SubElement(url, 'loc')
+    loc.text = f'{root_url}{path}'</code></pre>
+
+        <p>
+            I'm going to keep the script simple, and just
+            call the two files in the root directory
+            directly, as I don't expect these to change any
+            time soon. But the projects directory is likely
+            to have new files going into it regularly, so
+            for that, I will use the <code>os</code> python
+            module to iterate through these files, and
+            call the build file, passing the filename, with
+            the <code>.html</code> extension truncated off.
+        </p>
+
+<pre class="language-python"><code>build_url()
+build_url('home/')
+
+for filename in os.listdir('projects/'):
+    build_url(f'{filename[:-5]}/')</code></pre>
+
+        <p>
+            Finally, we just need to declare the element
+            tree, indent it for readability, and write it
+            to <code>sitemap.xml</code>. We can define the
+            xml version and encoding in the write function.
+        </p>
+
+<pre class="language-python"><code>tree = ET.ElementTree(urlset)
+ET.indent(tree)
+tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
+
+        <p>
+            A quick look at the finished script and you will
+            see I have stored the base url as a string, to help
+            in the build url function. It only gets used on the
+            one line within the function, but it makes it easier
+            to change later if we need to by declaring it at the
+            start of the script
+        </p>
+
+<pre class="language-python"><code>import os
+import xml.etree.ElementTree as ET
+
+root_url = 'https://aaronwattsdev.com/'
+
+def build_url(path=''):
+    url = ET.SubElement(urlset, 'url')
+    loc = ET.SubElement(url, 'loc')
+    loc.text = f'{root_url}{path}'
+
+ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+urlset = ET.Element('urlset')
+urlset.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+
+build_url()
+build_url('home/')
+
+for filename in os.listdir('projects/'):
+    build_url(f'{filename[:-5]}/')
+
+tree = ET.ElementTree(urlset)
+ET.indent(tree)
+tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
+
+        <h3>A Simple RSS Generator in Python</h3>
+
+        <p>
+            There is a bit more to do in this script. As well as
+            url's for each page, we will need a title and a
+            description for each project. Well, that all exists
+            in <code>/home.html</code>, and we can use the
+            python <code>bs4</code>, a.k.a. Beautiful Soup,
+            module to read and parse the html file, and extract
+            all the data we need.
+        </p>
+        <p class="note">
+            Beautiful Soup is not a built-in python module, and
+            will need to be installed, along with a parser. For
+            more information check the
+            <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#installing-beautiful-soup"
+            target="_blank">documentation</a>.
+        </p>
+<pre class="language-python"><code>from bs4 import BeautifulSoup
+
+with open('home.html') as f:
+    txt = f.read()
+    soup = BeautifulSoup(txt, 'lxml')
+
+projects = soup.select('.project')
+
+for project in projects:
+    title = project.select_one('h2').text
+    link = project.select_one('a')['href'][:-5]
+    description = project.select_one('.description').text</code></pre>
+
+        <p>
+            The next step is to build the xml. Which is
+            essentially the same process as with the sitemap,
+            however the elements are a little more complex
+            for the rss elements.
+        </p>
+
+<pre class="language-python"><code>import xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
+
+# strings for the channel information
+base_url = 'https://aaronwattsdev.com'
+title_text = 'AaronWattsDev Projects'
+description_text = 'Projects in coding, raspberry pi, linux and more'
+
+# build a single element
+# params: parent, type, text
+# returns: element
+def build_element(el_parent, el_type, el_text=''):
+    element = ET.SubElement(el_parent, el_type)
+    # leaves text blank if empty
+    if len(el_text):
+        element.text = el_text
+    return element
+
+# build rss item element
+# params: title, link, description
+def build_item(title, link, description):
+    link_text = f'{base_url}{link}'
+    rss_item = build_element(rss_channel, 'item')
+    build_element(rss_item, 'title', title)
+    build_element(rss_item, 'link', link_text)
+    # join and split to remove excess whitespace from html formatting
+    build_element(rss_item, 'description', ' '.join(description.split()))
+
+# make root element
+rss = ET.Element('rss')
+rss.set('version', '2.0')
+
+# append channel element and append channel details
+rss_channel = build_element(rss, 'channel')
+build_element(rss_channel, 'title', title_text)
+build_element(rss_channel, 'link', f'{base_url}/home')
+build_element(rss_channel, 'description', description_text)
+
+# make soup
+with open('home.html') as f:
+    txt = f.read()
+    soup = BeautifulSoup(txt, 'lxml')
+
+# parse projects from soup and build rss items with data
+projects = soup.select('.project')
+for project in projects:
+    title = project.select_one('h2').text
+    link = project.select_one('a')['href'][:-5]
+    description = project.select_one('.description').text
+    build_item(title, link, description)
+
+# build and write xml tree
+tree = ET.ElementTree(rss)
+ET.indent(tree)
+tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
+    </code></pre>
+
+        <h3>A Better RSS Feed</h3>
+
+        <p>
+            We have the basics now for a working RSS feed,
+            but loaded up into an aggregator, it looks a little
+            empty compared to other RSS feeds out there. There
+            are a few tweaks we can make to the feed to improve
+            it. By including the atom namespace and an
+            <code>&lt;atom:link&gt;</code> element in the channel, we
+            can increase the rss feed's compatibility with
+            more aggregators. We can also use
+            <code>&lt;enclosure&gt;</code> and <code>&lt;media&gt;</code>
+            elements to include images in the rss feed. A
+            <code>&lt;guid&gt;</code> element can help aggregators
+            work out if it has already received an item or
+            not. And some aggregators use the
+            <code>&lt;category&gt;</code> element to categorise
+            feeds.
+        </p>
+        <p>
+            There are other elements you can include, such as
+            dates for updates and published, but I am not yet
+            including this information in articles, I may
+            implement it in the near future. Check the
+            rssboard <a href="https://www.rssboard.org/media-rss"
+            target="_blank">media-rss documentation</a> for
+            more quality-of-life elements around media.
+        </p>
+
+<pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/"&gt;
+    &lt;channel&gt;
+    &lt;atom:link href="https://aaronwattsdev.com/feed.xml" rel="self" type="applications/rss+xml" /&gt;
+    &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
+    &lt;link&gt;https://aaronwattsdev.com/home&lt;/link&gt;
+    &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
+    &lt;category&gt;Technology&lt;/category&gt;
+    &lt;item&gt;
+        &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
+        &lt;link&gt;https://aaronwattsdev.com/projects/pi5-desktop&lt;/link&gt;
+        &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
+        &lt;guid&gt;https://aaronwattsdev.com/projects/pi5-desktop&lt;/guid&gt;
+        &lt;enclosure url="https://aaronwattsdev.com/images/projects/pi5-desktop" length="0" type="image/jpeg" /&gt;
+        &lt;media:thumbnail url="https://aaronwattsdev.com/images/projects/pi5-desktop" width="1920" height="1080" /&gt;
+        &lt;media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/pi5-desktop" /&gt;
+    &lt;/item&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;</code></pre>
+
+        <p>
+            My design choices and project structure have
+            influenced how I have written the script to collect
+            all the reuired information to build the individual
+            rss items. For example, I don't have any image links
+            on the page I am scraping on - I just didn't want
+            the page to have to load an image for every article.
+            However, I have only one image per article, and
+            each image has the same filename as the html file
+            it's associated with. So by knowing the page url,
+            the script can easily decipher the image url that's
+            associated with it.
+        </p>
+
+<pre class="language-none"><code>/
+index.html
+home.html
+projects/
+    gpicase.html
+    kde-plasma-bigscreen.html
+    ...
+images/
+    projects/
+        gpicase.jpg
+        kde-plasma-bigscreen.jpg</code></pre>
+
+        <p>
+            A different solution here could be to include a
+            hidden element in each project on the home page
+            that lists them, with innertext that defines
+            an image url.
+        </p>
+
+<pre class="language-python"><code>import xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
+
+base_url = 'https://aaronwattsdev.com'
+title_text = 'AaronWattsDev Projects'
+description_text = 'Projects in coding, raspberry pi, linux and more'
+
+# builds a basic xml element, populates text, and appends to specified parent
+def build_element(el_parent, el_type, el_text=''):
+    element = ET.SubElement(el_parent, el_type)
+    if len(el_text):
+        element.text = el_text
+    return element
+
+# builds a rss item from scraped project data
+def build_item(title, link, description):
+    link_text = f'{base_url}{link}'
+    rss_item = build_element(rss_channel, 'item')
+    build_element(rss_item, 'title', title)
+    build_element(rss_item, 'link', link_text)
+    build_element(rss_item, 'description', ' '.join(description.split()))
+    build_element(rss_item, 'guid', link_text)
+    build_media(rss_item, link)
+
+# called by build_item: builds complex media elements and appends to item parent
+def build_media(el_parent, el_link):
+    img_link = f'{base_url}/images{el_link}.jpg'
+    enclosure = ET.SubElement(el_parent, 'enclosure')
+    enclosure.set('url', img_link)
+    enclosure.set('length', '0')
+    enclosure.set('type','image/jpeg')
+    media_thumbnail = ET.SubElement(el_parent, 'media:thumbnail')
+    media_thumbnail.set('url', img_link)
+    media_thumbnail.set('width', '1920')
+    media_thumbnail.set('height', '1080')
+    media_content = ET.SubElement(el_parent, 'media:content')
+    media_content.set('type', 'image/jpeg')
+    media_content.set('url', img_link)
+
+# Declare XML namespaces to be used
+ET.register_namespace('', 'http://www.w3.org/2005/Atom')
+ET.register_namespace('', 'http://search.yahoo.com/mrss/')
+
+# create root rss element and set attributes
+rss = ET.Element('rss')
+rss.set('version', '2.0')
+rss.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
+rss.set('xmlns:media', 'http://search.yahoo.com/mrss/')
+
+# add necessary child elements to root element and set attributes if required
+rss_channel = build_element(rss, 'channel')
+atom_link = ET.SubElement(rss_channel, 'atom:link')
+atom_link.set('href', f'{base_url}/feed.xml')
+atom_link.set('rel', 'self')
+atom_link.set('type', 'applications/rss+xml')
+build_element(rss_channel, 'title', title_text)
+build_element(rss_channel, 'link', f'{base_url}/home')
+build_element(rss_channel, 'description', description_text)
+build_element(rss_channel, 'category', 'Technology')
+
+# parse contents of home.html
+with open('home.html') as f:
+    txt = f.read()
+    soup = BeautifulSoup(txt, 'lxml')
+
+# create and populate an item element for each project
+projects = soup.select('.project')
+for project in projects:
+    title = project.select_one('h2').text
+    link = project.select_one('a')['href'][:-5]
+    description = project.select_one('.description').text
+    build_item(title, link, description)
+
+# build and write the tree
+tree = ET.ElementTree(rss)
+ET.indent(tree)
+tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
+
+        <h3>Further Automation</h3>
+        <p>
+            We could expand on this even further. The list of
+            projects in <code>home.html</code> could, with not
+            much more work than we've already done, be generated
+            from the files in the <code>projects/</code>
+            directory. Right now I haven't implemented published
+            dates for each article, and so I unless I handle it
+            another way, articles will become listed in alphabetical
+            order, and I think I would prefer to have newest appear
+            first. We could even strip away the repeated code from
+            each project page, such as the headers, links and style
+            tags, and have Beautiful Soup build the pages from
+            very simple hmtl pages that only contain the article
+            information, the way the Jekyll builds from markdown
+            files, but as we are working directly in html, we would
+            have far more control over CSS and JavaScript. These
+            are things I hope to look at in the near future, but for
+            now, I can feel my pigments fading and I would like to
+            go out into the sunlight for a while, so let's start
+            wrapping this up.
+        </p>
+
+        <h2 id="adding-comments-section">Adding A Comments Section</h2>
+        <p>
+            This wasn't something that I was previously aware that
+            you could do with static websites, and I'm not even sure
+            what first brought my attention to it. But it turns out
+            there are quite a few options here. There seems to an
+            option or two that use github issues to serve the comments,
+            which is actually pretty smart. But the one I chose to go
+            with was <a href="https://cactus.chat/"
+            target="_blank">Cactus Comments</a>.
+        </p>
+        <p>
+            Cactus Comments is free, and doesn't require users to
+            sign in like the solutions based on github issues.
+            It also runs on <a href="https://matrix.org/"
+            target="_blank">matrix</a>, which is a defederated chat and
+            messaging service. And I'm a big fan of defederation.
+            As it runs on matrix, you can use the
+            <a href="https://element.io/"
+            target="_blank">element</a> mobile and PC apps (there is
+            an arm 64-bit version for linux too, which is great now
+            that I mostly work on my raspberry pi 5 now!).
+        </p>
+        <p>
+            I won't explain how to get started, the documentation
+            for cactus is pretty easy to follow. At first look you'll
+            wonder if there's stuff missing from it, as it all seems
+            too simple, but it really is as simple as it looks!
+        </p>
     </main>
 
     <a href="#top">Back to Top</a>

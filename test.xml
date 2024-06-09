@@ -12,8 +12,8 @@
         <description>This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.</description>
         <enclosure url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" length="0" type="image/jpeg"/>
         <media:description type="html"> </media:description>
-        <media:thumbnail url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" length="0" type="image/jpeg" width="1920" height="1080"/>
-        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" length="0" type="image/jpeg"/>
+        <media:thumbnail url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg" width="1920" height="1080"/>
+        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/pi5-desktop.jpg"/>
     </item>
     <item>
         <title>KDE Plasma Bigscreen - Raspberry Pi 4</title>
@@ -21,8 +21,8 @@
         <description>I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.</description>
         <enclosure url="https://aaronwattsdev.com/images/projects/kde-plasma-bigscreen.jpg" length="0" type="image/jpeg"/>
         <media:description type="html"> </media:description>
-        <media:thumbnail url="https://aaronwattsdev.com/images/projects/kde-plasma-bigscreen.jpg" length="0" type="image/jpeg" width="1920" height="1080"/>
-        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/kde-plasma-bigscreen.jpg" length="0" type="image/jpeg"/>
+        <media:thumbnail url="https://aaronwattsdev.com/images/projects/kde-plasma-bigscreen.jpg" width="1920" height="1080"/>
+        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/kde-plasma-bigscreen.jpg"/>
     </item>
     <item>
         <title>RetroPie - RetroFlag NesPi 4 Case</title>
@@ -30,8 +30,8 @@
         <description>The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Lower power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?</description>
         <enclosure url="https://aaronwattsdev.com/images/projects/retropie-nespi-4.jpg" length="0" type="image/jpeg"/>
         <media:description type="html"> </media:description>
-        <media:thumbnail url="https://aaronwattsdev.com/images/projects/retropie-nespi-4.jpg" length="0" type="image/jpeg" width="1920" height="1080"/>
-        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/retropie-nespi-4.jpg" length="0" type="image/jpeg"/>
+        <media:thumbnail url="https://aaronwattsdev.com/images/projects/retropie-nespi-4.jpg" width="1920" height="1080"/>
+        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/retropie-nespi-4.jpg"/>
     </item>
     <item>
         <title>Media Keyboard - Pico Controller</title>
@@ -39,8 +39,8 @@
         <description>My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.</description>
         <enclosure url="https://aaronwattsdev.com/images/projects/media-keyboard.jpg" length="0" type="image/jpeg"/>
         <media:description type="html"> </media:description>
-        <media:thumbnail url="https://aaronwattsdev.com/images/projects/media-keyboard.jpg" length="0" type="image/jpeg" width="1920" height="1080"/>
-        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/media-keyboard.jpg" length="0" type="image/jpeg"/>
+        <media:thumbnail url="https://aaronwattsdev.com/images/projects/media-keyboard.jpg" width="1920" height="1080"/>
+        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/media-keyboard.jpg"/>
     </item>
     <item>
         <title>GPi Case 2 - Compute Module 4</title>
@@ -48,8 +48,8 @@
         <description>The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.</description>
         <enclosure url="https://aaronwattsdev.com/images/projects/gpicase.jpg" length="0" type="image/jpeg"/>
         <media:description type="html"> </media:description>
-        <media:thumbnail url="https://aaronwattsdev.com/images/projects/gpicase.jpg" length="0" type="image/jpeg" width="1920" height="1080"/>
-        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/gpicase.jpg" length="0" type="image/jpeg"/>
+        <media:thumbnail url="https://aaronwattsdev.com/images/projects/gpicase.jpg" width="1920" height="1080"/>
+        <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/gpicase.jpg"/>
     </item>
 </channel>
 

@@ -18,12 +18,20 @@ h4 {
     line-height: 1.2em;
 }
 
-a {
+a, button {
     color: #3787c9;
 }
 
 a:visited {
     color: #be8ae9;
+}
+
+button {
+    border-style: none;
+    background: none;
+    font-size: 1em;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 code:not([class*=language-]) {
@@ -67,8 +75,9 @@ main.article>p:first-of-type {
     font-style: italic;
 }
 
-.topic-container {
+.topic-container, #topic-list {
     margin: 1.2em 1em;
+    padding: 0;
 }
 
 .topic {
@@ -80,8 +89,16 @@ main.article>p:first-of-type {
     font-size: .9em;
 }
 
+.topic-truncate {
+    max-height: 20vh;
+    overflow: hidden;
+}
+
 #topic-list>.topic {
     cursor: pointer;
+}
+#topic-list--container>button.hide {
+    display: none;
 }
 
 .topic.selected {

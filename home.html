@@ -29,9 +29,11 @@
         a hobby. Here, I hope to keep logs of my projects for
         my own reference, and for anyone elses.
     </div>
-    
+
     <p class="note">Filter by topic:</p>
-    <div id="topic-list" class="topic-container"></div>
+    <div id="topic-list--container">
+        <ul id="topic-list" class="topic-truncate"></ul>
+    </div>
     <noscript class="note">
         This website follows the
         <a href="https://motherfuckingwebsite.com/" target="_blank">Motherfucking Website</a> design principles,
@@ -164,6 +166,11 @@
 
     <script>
         const populateTopics = () => {
+            const isOverflow = ({clientHeight, scrollHeight}) => {
+                return scrollHeight > clientHeight;
+            };
+
+            const topicContainer = document.querySelector('#topic-list--container');
             const topicList = document.querySelector('#topic-list');
             const topics = [
                 ...new Set(
@@ -173,13 +180,34 @@
             ].sort((a, b) => a > b);
 
             topics.forEach(topicName => {
-                const topic = document.createElement('div');
+                const topic = document.createElement('ul');
                 topic.classList.add('topic');
                 topic.innerText = topicName;
                 topic.addEventListener('click', filterByTopic);
 
                 topicList.appendChild(topic);
             });
+
+            const showBtn = document.createElement('button');
+            showBtn.innerText = 'Show more';
+            showBtn.classList.add('hide');
+            showBtn.addEventListener('click', () => {
+                topicList.classList.toggle('topic-truncate');
+                showBtn.innerText == 'Show more' ? 
+                showBtn.innerText = 'Show less' : 
+                showBtn.innerText = 'Show more';
+            });
+            topicContainer.appendChild(showBtn);
+
+            window.addEventListener('resize', function() {
+                if (isOverflow(topicList) || topicList.clientHeight > window.innerHeight * .2) {
+                    showBtn.classList.remove('hide');
+                } else showBtn.classList.add('hide')
+            }, true)
+
+            if (isOverflow(topicList)) {
+                showBtn.classList.remove('hide');
+            } 
         };
 
         function filterByTopic() {

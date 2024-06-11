@@ -170,6 +170,27 @@
                 return scrollHeight > clientHeight;
             };
 
+            const makeTopicTag = (topicName) => {
+                const topic = document.createElement('ul');
+                topic.classList.add('topic');
+                topic.innerText = topicName;
+                topic.addEventListener('click', filterByTopic);
+                return topic;
+            };
+
+            const makeButton = () => {
+                const showBtn = document.createElement('button');
+                showBtn.innerText = 'Show more';
+                showBtn.classList.add('hidden');
+                showBtn.addEventListener('click', () => {
+                    topicList.classList.toggle('topic-truncate');
+                    showBtn.innerText == 'Show more' ? 
+                    showBtn.innerText = 'Show less' : 
+                    showBtn.innerText = 'Show more';
+                });
+                return showBtn;
+            }
+
             const topicContainer = document.querySelector('#topic-list--container');
             const topicList = document.querySelector('#topic-list');
             const topics = [
@@ -180,23 +201,10 @@
             ].sort((a, b) => a > b);
 
             topics.forEach(topicName => {
-                const topic = document.createElement('ul');
-                topic.classList.add('topic');
-                topic.innerText = topicName;
-                topic.addEventListener('click', filterByTopic);
-
-                topicList.appendChild(topic);
+                topicList.appendChild(makeTopicTag(topicName));
             });
 
-            const showBtn = document.createElement('button');
-            showBtn.innerText = 'Show more';
-            showBtn.classList.add('hidden');
-            showBtn.addEventListener('click', () => {
-                topicList.classList.toggle('topic-truncate');
-                showBtn.innerText == 'Show more' ? 
-                showBtn.innerText = 'Show less' : 
-                showBtn.innerText = 'Show more';
-            });
+            const showBtn = makeButton();
             topicContainer.appendChild(showBtn);
 
             window.addEventListener('resize', function() {
@@ -218,7 +226,6 @@
             const projects = document.querySelectorAll('.project');
 
             if (!selected || selected.innerText !== selection) {
-                console.log('is it true')
                 this.classList.add('selected');
 
                 projects.forEach(project => {

@@ -190,7 +190,7 @@
 
             const showBtn = document.createElement('button');
             showBtn.innerText = 'Show more';
-            showBtn.classList.add('hide');
+            showBtn.classList.add('hidden');
             showBtn.addEventListener('click', () => {
                 topicList.classList.toggle('topic-truncate');
                 showBtn.innerText == 'Show more' ? 
@@ -201,12 +201,12 @@
 
             window.addEventListener('resize', function() {
                 if (isOverflow(topicList) || topicList.clientHeight > window.innerHeight * .2) {
-                    showBtn.classList.remove('hide');
-                } else showBtn.classList.add('hide')
+                    showBtn.classList.remove('hidden');
+                } else showBtn.classList.add('hidden')
             }, true)
 
             if (isOverflow(topicList)) {
-                showBtn.classList.remove('hide');
+                showBtn.classList.remove('hidden');
             } 
         };
 

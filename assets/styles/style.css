@@ -97,9 +97,6 @@ main.article>p:first-of-type {
 #topic-list>.topic {
     cursor: pointer;
 }
-#topic-list--container>button.hide {
-    display: none;
-}
 
 .topic.selected {
     background-color: #666;

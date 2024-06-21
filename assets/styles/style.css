@@ -69,6 +69,15 @@ img {
     font-style: italic;
     font-size: .9em;
 }
+.quote {
+    font-style: italic;
+    font-size: .9em;
+    color: #ccc;
+    border-left: solid 4px #777;
+    padding: .5em .8em;
+    margin-inline: 1em;
+    background: #333;
+}
 
 main.article>p:first-of-type {
     font-weight: bold;

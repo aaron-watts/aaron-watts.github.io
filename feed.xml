@@ -7,6 +7,15 @@
     <description>Projects in coding, raspberry pi, linux and more</description>
     <category>Technology</category>
     <item>
+      <title>Google Calendar API - Apps Script</title>
+      <link>https://aaronwattsdev.com/projects/google-calendar-appscript-api</link>
+      <description>Considering how long they've been around, working with iCal's in the browser is surprisingly difficult. When working with data from Google Calendar, we can use Google's Apps Script to create an API, that will let us pull exactly what we desire down from a Google Calendar.</description>
+      <guid>https://aaronwattsdev.com/projects/google-calendar-appscript-api</guid>
+      <enclosure url="https://aaronwattsdev.com/images/projects/google-calendar-appscript-api.jpg" length="0" type="image/jpeg" />
+      <media:thumbnail url="https://aaronwattsdev.com/images/projects/google-calendar-appscript-api.jpg" width="1920" height="1080" />
+      <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/google-calendar-appscript-api.jpg" />
+    </item>
+    <item>
       <title>Static Website - Github Pages</title>
       <link>https://aaronwattsdev.com/projects/github-pages-static-website</link>
       <description>You don't always need a full stack. When all you need to do is show information, a static website is enough. And with Github Pages, it is possible to have a fully functioning website for free, just like this one! It could just be the perfect solution for your portfolio page.</description>

@@ -141,8 +141,8 @@
             That function needs to return a
             <code>ContentService</code> class instance, with the
             method <code>createTextOutput</code> specifying the
-            JSON data we wish to return, here being or <code>res</code>,
-            or <code>response</code>, object. And finally, we need
+            JSON data we wish to return, here being our <code>res</code>
+            (or <code>response</code>) object. And finally, we need
             to also invoke the <code>setMimeType</code> method,
             and set it to JAVASCRIPT, so it returns as JSONP, instead
             of JSON.
@@ -166,9 +166,9 @@
         <p>
             The code I am using to get the calendar info to populate
             the <code>response</code> object in <code>doGet</code>
-            simply takes each calendars ID as a parameter, defines
+            simply takes each calendar's ID as a parameter, defines
             a start datetime (now), and an end (+1 year), and collects
-            and then maps the start, end, title and description from
+            and maps the start, end, title and description from
             each calendar entry that is returned.
         </p>
 
@@ -195,7 +195,7 @@
             wherever you want to call it from. It will provide you with
             a web app URL, that if you now enter that into your browser,
             should send you back your JSON data, assuming everyting's
-            set up and wroking correctly. In my case, I receive something
+            set up and working correctly. In my case, I receive something
             like this:
         </p>
 
@@ -259,6 +259,13 @@
             Instead, I will just look at calling the API itself, and
             having the iFrames as a fallback.
         </p>
+        <p>
+            I'm using an async function, to call the <code>fetch</code>
+            method on the URL provided for the Apps Script API that I've
+            set up. Apps Script calls work by being redirected by the
+            content service itself, so be sure to include
+            <code>redirect: 'follow'</code> as an option.
+        </p>
         <pre class="language-javascript"><code>const getEvents = async () => {
     const res = await fetch(
         'https://script.google.com/macros/s/&lt;script-url&gt;/exec',
@@ -271,11 +278,16 @@
     return data;
 }</code></pre>
         <p>
-            I'm using an async function, to call the <code>fetch</code>
-            method on the URL provided for the Apps Script API that I've
-            set up. App Script calls work by being redirected by the
-            content service itself, so be sure to include
-            <code>redirect: 'follow'</code> as an option.
+            Finally, we just need to call that <code>getEvents</code>
+            function that returns the JSON data, and do something
+            with the data. I am only logging to the console in this
+            example. There are checks to see if there are events or not,
+            and then it is wrapped in a <code>try</code> statement, so
+            if the API call fails, then the iFrames can be initiated
+            within the <code>catch</code> statement. This entire
+            process gets initiated within a <code>DOMContentLoaded</code>
+            event listener, which, in my opinion, is good practise most
+            of the time when working with the DOM in JavaScript.
         </p>
         <pre class="language-javascript"><code>const populateLists = async () => {
     try {
@@ -307,19 +319,6 @@
 
 document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
 
-        <p>
-            Finally, we just need to call that <code>getEvents</code>
-            function that returns the JSON data, and do something
-            with the data. I am only logging to the console in this
-            example. There are checks to see if there are events or not,
-            and the it is wrapped in a <code>try</code> statement, so
-            if the API call fails, then the iFrames can be initiated
-            within the <code>catch</code> statement. This entire
-            process gets initiated within a <code>DOMContentLoaded</code>
-            event listener, which, in my opinion, is good practise most
-            of the time when working with the DOM in JavaScript.
-        </p>
-
         <h2 id="google">A Quick Word About Google</h2>
         <p>
             I'm not here to say Google is good or bad, it offers
@@ -338,7 +337,7 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
             So while they can offer great solutions to those of us
             working on a tight budget, it's important to recognise
             that they are under no obligation to do so, and that we
-            won't always have the same solutions availbale to us
+            won't always have the same solutions available to us
             tomorrow.
         </p>
 

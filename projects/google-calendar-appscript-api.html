@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to create a Google Calendar
+    API using Apps Script">
+    <title>AWD - Google Calendar API</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+</head>
+<body>
+    <header>
+        <div>Aaron Watts Dev <i>Google Calendar Apps Script API
+        </i></div>
+        <a href="/home">Back to home</a>
+        <div class="rss-container">
+            <a href="https://aaronwattsdev.com/feed.xml">
+                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#use-case">Use Case</a></li>
+            <li><a href="#serving-json">Serving JSON</a></li>
+            <li><a href="#api">Creating the API</a></li>
+            <li><a href="#api-call">Calling the API From a Webpage</a></li>
+            <li><a href="#google">A Quick Word About Google</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>Google Calendar API - Apps Script</h1>
+        <!-- Update img src and alt text -->
+        <img src=""
+        alt="It looks like the developer forgot to include alt text">
+        <p id="intro">
+            Considering how long they've been around, working with
+            iCal's in the browser is surprisingly difficult. When
+            working with data from Google Calendar, we can use
+            Google's Apps Script to create an API, that will let us
+            pull exactly what we desire down from a Google Calendar.
+        </p>
+        <p>
+            There is actually a great JavaScript module called
+            <a href="https://github.com/kewisch/ical.js/"
+            target="_blank">ical.js</a>, but as I write this in June
+            2024 it seems to be broken. At first I thought it may be
+            that Google had decided not to play nice, and changed their
+            iCal format, but upon testing other ics files from other
+            services, I was getting the same errors from the module
+            I had built from source, as well as on various iCal JS
+            validators online. So hopefully this reaches someone in
+            a similar situation that I found myself in.
+        </p>
+
+        <h2 id="use-case">Use Case</h2>
+        <p>
+            A good static website should require as little work as
+            possible, and that work should be as accessible as
+            possible. I was making a static website, intended to show
+            upcoming events for a youth group. Youth workers aren't
+            necessarily techno-literate, and probably don't have a
+            lot of time to do that kind of stuff anyway. So, I
+            decided that the website should just update itself via
+            a Google Calendar - easy! Or at least that's what I
+            thought.
+        </p>
+        <p>
+            Aside from iCalJS, which I've already mentioned, the only
+            really easy option here, at least to my knowledge, is to use
+            an iFrame which Google provides in it's calendar settings
+            and sharing options. But those things are ugly. Butt ugly.
+            I've used Apps Script in the past to serve a web app
+            designed just to do some very basic bookings management
+            using a Google Sheet as the backend - roll your eyes if
+            you must, but it worked and best of all it was free. So if
+            you can serve HTML via Google's Apps Script service, then
+            you should be able to serve some json data too, right?
+        </p>
+
+        <h2 id="serving-json">Serving JSON</h2>
+        <p>
+            You <em>can</em> serve JSON using Google's Apps Script
+            service. But, you can only access it in a Chromium type
+            browser - it just won't work in firefox, and CORS makes
+            it virtually impossible to work with in a static site.
+        </p>
+        <p>
+            To serve HTML web apps or JSON, you need to use the
+            <a href="https://developers.google.com/apps-script/guides/content"
+            target="_blank">Apps Script Content Service</a>. They do
+            also have a third option in that, which is called JSONP.
+            You're not alone if you've never heard of that, I hadn't
+            either. It stands for JSON with Padding, and wikipedia
+            describes it as
+        </p>
+        <p class="quote">
+            .. a historical JavaScript technique for requesting data
+            by loading a <code>&lt;script&gt;</code> element, which is
+            an element intended to load ordinary javascript.
+        </p>
+        <p>
+            That sounds both fun and dangerous! Sensibly, Google issues
+            a warning for when working with JSONP:
+        </p>
+        <p class="quote">
+            Warning: Be very careful when using this JSONP technique
+            in your scripts. Because it's possible for anyone to embed
+            the script tag in their web page, you can be tricked into
+            executing the script when you visit a malicious website,
+            which can then capture the data returned. Best practice is
+            to ensure that JSONP scripts are read-only and only return
+            non-sensitive information.
+        </p>
+        <p>
+            The script I am making will only be returning GET requests
+            with information that is on a public Google calendar, so
+            for me at least, it's safe to go on..
+        </p>
+
+        <h2 id="api">Creating the API</h2>
+        <p>
+            To begin, in your Google Drive, select <em>New</em>, then
+            <em>More</em>, and if <em>Google Apps Script</em> isn't
+            already on that menu, you will need to choose
+            <em>Connect More Apps</em> and choose Apps Script from
+            there.
+        </p>
+        <p>
+            To use the Apps Script Content Service, you need a
+            function called <code>doGet</code>, which will send the
+            data we want to receive from our API as JSON content.
+            That function needs to return a
+            <code>ContentService</code> class instance, with the
+            method <code>createTextOutput</code> specifying the
+            JSON data we wish to return, here being or <code>res</code>,
+            or <code>response</code>, object. And finally, we need
+            to also invoke the <code>setMimeType</code> method,
+            and set it to JAVASCRIPT, so it returns as JSONP, instead
+            of JSON.
+        </p>
+
+        <pre class="language-javascript"><code>const doGet = () => {
+    const holidayHoursCalID = '&lt;calendar-id&gt;@group.calendar.google.com';
+    const eventsCalID = '&lt;calendar-id&gt;@group.calendar.google.com';
+
+    const res = {
+        'data': {
+            holidayHours: getEvents(holidayHoursCalID),
+            events: getEvents(eventsCalID),
+        }
+    };
+
+    return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JAVASCRIPT);
+};</code></pre>
+
+        <p>
+            The code I am using to get the calendar info to populate
+            the <code>response</code> object in <code>doGet</code>
+            simply takes each calendars ID as a parameter, defines
+            a start datetime (now), and an end (+1 year), and collects
+            and then maps the start, end, title and description from
+            each calendar entry that is returned.
+        </p>
+
+        <pre class="language-javascript"><code>const getEvents = id => {
+    const cal = CalendarApp.getCalendarById(id);
+    const start = new Date();
+    const end = new Date();
+    end.setFullYear(end.getFullYear() + 1)
+
+    const calData = cal.getEvents(start, end).map(i => ({
+        start: i.getStartTime(),
+        end: i.getEndTime(),
+        title: i.getTitle(),
+        description: i.getDescription()
+    }));
+
+    return calData;
+};</code></pre>
+
+        <p>
+            Next, we need to deploy the web app. Deploy it as a Web App,
+            not as API executable. You will also need to set the access
+            permissions to <em>Anyone</em> for it to be accessible
+            wherever you want to call it from. It will provide you with
+            a web app URL, that if you now enter that into your browser,
+            should send you back your JSON data, assuming everyting's
+            set up and wroking correctly. In my case, I receive something
+            like this:
+        </p>
+
+        <pre class="language-javascript"><code>"data": {
+    "holidayHours":[
+        {
+            "start":"2024-07-24T23:00:00.000Z",
+            "end":"2024-08-30T23:00:00.000Z",
+            "title":"Summer Holiday",
+            "description":"Open 12 - 6pm everyday (except bank holidays)"
+        },
+        {
+            "start":"2024-08-25T23:00:00.000Z",
+            "end":"2024-08-26T23:00:00.000Z",
+            "title":"Bank holiday",
+            "description":"CLOSED"
+        }
+    ],
+    "events":[
+        {
+            "start":"2024-06-20T23:00:00.000Z",
+            "end":"2024-06-21T23:00:00.000Z",
+            "title":"Pride event",
+            "description":"An art workshop for Pride!"
+        },
+        {
+            "start":"2024-07-06T15:00:00.000Z",
+            "end":"2024-07-06T17:00:00.000Z",
+            "title":"CLT event",
+            "description":"A community art project:\n\"Postcards From Our Future\""
+        }
+    ]
+}</code></pre>
+
+        <p class="note">
+            NOTE: You will need to update the url in your API call
+            whenever you make changes to the API and redeploy.
+        </p>
+
+        <h2 id="api-call">Calling the API From a Webpage</h2>
+        <p>
+            So this method is free. It works, but you get what you
+            pay for, and we can't always be sure it will work every
+            time that it's called. There are limits on how many Apps
+            Script calls can be made, so if the tik tok web crawler
+            takes an interest in the web page this is being called
+            from, things are going to break. With this in mind, I
+            opted to use the (very ugly) iFrames as a fallback, in
+            case for whatever reason the API call is unable to fetch
+            data I need. It is likely that I will monitor the situation
+            with iCalJS, and if that ends up working at some point,
+            that will become my first port of call, with this Apps
+            Script API becoming a fallback for <em>that</em>, and the
+            iFrames becoming a final fallback if all else fails.
+        </p>
+        <p>
+            I'm not going to go through the in's and out's of
+            formatting Date objects and manipulating the DOM, so you
+            will have to design your own calendar entry cards or
+            calendar table or however you want to display the data.
+            Instead, I will just look at calling the API itself, and
+            having the iFrames as a fallback.
+        </p>
+        <pre class="language-javascript"><code>const getEvents = async () => {
+    const res = await fetch(
+        'https://script.google.com/macros/s/&lt;script-url&gt;/exec',
+        {
+            redirect: 'follow'
+        }
+    );
+
+    const { data } = await res.json();
+    return data;
+}</code></pre>
+        <p>
+            I'm using an async function, to call the <code>fetch</code>
+            method on the URL provided for the Apps Script API that I've
+            set up. App Script calls work by being redirected by the
+            content service itself, so be sure to include
+            <code>redirect: 'follow'</code> as an option.
+        </p>
+        <pre class="language-javascript"><code>const populateLists = async () => {
+    try {
+        const data = await getEvents();
+        const { events, holidayHours } = data;
+
+        if (events.length) {
+            events.forEach(event => {
+                console.log(event);
+            });
+        } else {
+            console.log('No events information available');
+        };
+        
+        if (holidayHours.length) {
+            holidayHours.forEach(event => {
+                console.log(event);
+            });
+        } else {
+            console.log('No holiday information available');
+        };
+    } catch (e) {
+        const eventFrame = `&lt;iframe&gt;COPY AND PASTED FROM GOOGLE&lt;/iframe&gt;`;
+        const termDateFrame = `&lt;iframe&gt;COPY AND PASTED FROM GOOGLE&lt;/iframe&gt;`;
+        eventList.innerHTML = eventFrame;
+        termDatesList.innerHTML = termDateFrame;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
+
+        <p>
+            Finally, we just need to call that <code>getEvents</code>
+            function that returns the JSON data, and do something
+            with the data. I am only logging to the console in this
+            example. There are checks to see if there are events or not,
+            and the it is wrapped in a <code>try</code> statement, so
+            if the API call fails, then the iFrames can be initiated
+            within the <code>catch</code> statement. This entire
+            process gets initiated within a <code>DOMContentLoaded</code>
+            event listener, which, in my opinion, is good practise most
+            of the time when working with the DOM in JavaScript.
+        </p>
+
+        <h2 id="google">A Quick Word About Google</h2>
+        <p>
+            I'm not here to say Google is good or bad, it offers
+            amazing services - a lot of them for free. But it is
+            a very big entity. There's loads of amazing developers
+            there that clearly have a passion for delivering
+            fantastic products and services for people. And then
+            there's also, well, all the other stuff. But politics
+            aside, you ought to know that as an entity, Google can
+            be fickle, and a service that exists today, could cease
+            to exist tomorrow. There's even been some really popular
+            and succesful services that have just been cut, seemingly
+            overnight and for no reason - check out the Google Graveyard
+            at <a href="https://killedbygoogle.com/"
+            target="_blank">Killed by Google</a> to see for yourself.
+            So while they can offer great solutions to those of us
+            working on a tight budget, it's important to recognise
+            that they are under no obligation to do so, and that we
+            won't always have the same solutions availbale to us
+            tomorrow.
+        </p>
+
+    </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+    <noscript class="note">
+        Enable JavaScript to join in the conversation!
+    </noscript>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "google-calendar-appscript-api"
+        })
+    </script>
+
+    <footer>
+        <div>Made by Hand. Powered by</div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img src="/images/githubpages.svg" 
+            alt="https://pages.github.com/">
+        </a>
+    </footer>
+
+    <script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

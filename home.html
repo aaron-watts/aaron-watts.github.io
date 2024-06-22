@@ -216,7 +216,7 @@
                     [...document.querySelectorAll('.topic')]
                         .map(i => i.innerText)
                 )
-            ].sort((a, b) => a > b);
+            ].sort();
 
             topics.forEach(topicName => {
                 topicList.appendChild(makeTopicTag(topicName));

@@ -33,6 +33,7 @@
             <li><a href="#serving-json">Serving JSON</a></li>
             <li><a href="#api">Creating the API</a></li>
             <li><a href="#api-call">Calling the API From a Webpage</a></li>
+            <li><a href="#hide-url">Hiding your script URL</a></li>
             <li><a href="#google">A Quick Word About Google</a></li>
         </ul>
     </nav>
@@ -319,6 +320,103 @@
 };
 
 document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
+
+        <h2 id="hide-url">Hiding your script URL</h2>
+        <p>
+            Having your Apps Script url in your JavaScript file on
+            a static website leaves it in plain view of anyone who
+            knows how to get to it. To be able to use it in a
+            website, we have had to allow access to it by anyone,
+            so it is potentially open to being spammed by anyone
+            who just plain doesn't like you. But, certain static
+            website hosting providers, do provide serverless
+            functions, which can allow us to call the script URL
+            discreetly from a psuedo backend. I will be using
+            <a href="https://www.netlify.com/"
+            target="_blank">Netlify</a>. Although there is still
+            an API link in our frontend JavaScript that could still
+            potentially be spammed, it is a Netlify link, rather
+            than a Google macro, which will give us a little
+            extra in terms of load balancing and spamming
+            protection. Other providers often offer Lambda
+            Functions within their services, much to the same
+            affect as Netlify's functions.
+        </p>
+        <p>
+            To begin, we will need to create a <code>.env</code>
+            file in the root of our webpage directory - but don't
+            worry, we don't need the dotenv node module here, so
+            no need to initialise a node project - it is however
+            worth running <code>npm i -g netlify-cli</code> for
+            testing purposes. In the
+            <code>.env</code> file, we do the usual, and list
+            our <em>secret</em> with a key and value.
+        </p>
+        <p class="note">
+            NOTE: If the script url has been published in a public
+            repo or file, it may be best to create a new script
+            deployment and archive the old one.
+        </p>
+        <pre class="language-none"><code>APPS_SCRIPT="https://script.google.com/macros/s/&lt;script-url&gt;/exec"</code></pre>
+        <p class="note">
+            NOTE: Make sure to add the dotenv file to .gitignore
+            if you haven't already got in in your global gitignore
+            config.
+        </p>
+        <p>
+            In your Netlify project, you will also set this as an
+            environment variable. Now, to create the netlify
+            function, we need to create a <code>netlify</code>
+            directory, and a <code>functions</code> directory
+            within that. Any JavaScript files within the
+            <code>functions</code> directory will be treated as
+            a backend API url.
+        </p>
+        <pre class="language-none"><code>/
+index.html
+assets/
+    ...
+netlify/
+    functions/
+        api.js</code></pre>
+        <p>
+            For our API function, we just need to export one
+            default function, that takes <code>request</code>
+            and <code>context</code> parameters, and returns
+            a <code>Response</code> instance. This will be viewable
+            if your project repo is public, but by using the
+            <code>Netlify.env.get()</code> method, we can collect
+            our secret from the dotenv file in development, and
+            from the Netlify environment variable we've already
+            set up while in production.
+        </p>
+        <pre class="language-javascript"><code>export default async (req, context) => {
+    const api = Netlify.env.get('APPS_SCRIPT');
+    
+    const res = await fetch(api, {
+        redirect: 'follow'
+    });
+    const { data } = await res.json();
+
+    return new Response(JSON.stringify(data));
+};</code></pre>
+        <p>
+            Now that we have done that, we just need to update the api
+            call in our <code>app.js</code> file on the frontend
+            to reflect the changes. URL's for netlify functions
+            read as
+            <code>&lt;project-url&gt;/.netlify/functions/&lt;file-name&gt;</code>.
+            Note that the <code>.js</code> file extension is not
+            included in the url. Once that is completed, just
+            push the project, and you're done!
+        </p>
+        <pre class="language-javascript"><code>const getEvents = async () => {
+    const res = await fetch('/.netlify/functions/api');
+
+    const data = await res.json();
+
+    return data;
+}</code></pre>
 
         <h2 id="google">A Quick Word About Google</h2>
         <p>

@@ -1,189 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="All projects for the AaronWattsDev
-    website.">
-    <title>AWD - Projects</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-</head>
-
-<body>
-    <header>
-        <div>Aaron Watts Dev <i>Home</i></div>
-        <div class="rss-container">
-            <a href="https://aaronwattsdev.com/feed.xml">
-                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-            </a>
-        </div>
-    </header>
-    <h1>Welcome!</h1>
-    <div>
-        Welcome to my website. I like to play with computers as
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="All projects for the AaronWattsDev
+    website." name="description"/>
+  <title>
+   AWD - Projects
+  </title>
+  <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="/site.webmanifest" rel="manifest"/>
+  <link href="/assets/styles/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header>
+   <div>
+    Aaron Watts Dev
+    <i>
+     Home
+    </i>
+   </div>
+   <div class="rss-container">
+    <a href="https://aaronwattsdev.com/feed.xml">
+     <img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+    </a>
+   </div>
+  </header>
+  <h1>
+   Welcome!
+  </h1>
+  <div>
+   Welcome to my website. I like to play with computers as
         a hobby. Here, I hope to keep logs of my projects for
         my own reference, and for anyone elses.
-    </div>
-
-    <p class="note">Filter by topic:</p>
-    <div id="topic-list--container">
-        <ul id="topic-list" class="topic-truncate"></ul>
-    </div>
-    <noscript class="note">
-        This website follows the
-        <a href="https://motherfuckingwebsite.com/" target="_blank">Motherfucking Website</a> design principles,
+  </div>
+  <p class="note">
+   Filter by topic:
+  </p>
+  <div id="topic-list--container">
+   <ul class="topic-truncate" id="topic-list">
+   </ul>
+  </div>
+  <noscript class="note">
+   This website follows the
+   <a href="https://motherfuckingwebsite.com/" target="_blank">
+    Motherfucking Website
+   </a>
+   design principles,
         but this page does have some search features to make
         finding stuff easier if you were to enable script ...
         no pressure.
-    </noscript>
-    
-    <main>
-        <div class="project">
-            <h2>Google Calendar API - Apps Script</h2>
-            <ul class="topic-container">
-                <li class="topic">webdev</li>
-                <li class="topic">google</li>
-                <li class="topic">ical</li>
-                <li class="topic">apps script</li>
-                <li class="topic">javascript</li>
-            </ul>
-            <a href="/projects/google-calendar-appscript-api">Go to project</a>
-            <p class="description">
-                Considering how long they've been around, working with
-                iCal's in the browser is surprisingly difficult. When
-                working with data from Google Calendar, we can use
-                Google's Apps Script to create an API, that will let us
-                pull exactly what we desire down from a Google Calendar.
-            </p>
-        </div>
-        <div class="project">
-            <h2>Static Website - Github Pages</h2>
-            <ul class="topic-container">
-                <li class="topic">webdev</li>
-                <li class="topic">seo</li>
-                <li class="topic">xml</li>
-                <li class="topic">python</li>
-            </ul>
-            <a href="/projects/github-pages-static-website">Go to project</a>
-            <p class="description">
-                You don't always need a full stack. When all you need to
-                do is show information, a static website is enough. And
-                with Github Pages, it is possible to have a fully
-                functioning website for free, just like this one! It could
-                just be the perfect solution for your portfolio page.
-            </p>
-        </div>
-        <div class="project">
-            <h2>Raspberry Pi 5 - Desktop Computer</h2>
-            <ul class="topic-container">
-                <li class="topic">raspberry pi</li>
-                <li class="topic">rpi5</li>
-                <li class="topic">computing</li>
-                <li class="topic">daily driver</li>
-            </ul>
-            <a href="/projects/pi5-desktop">Go to project</a>
-            <p class="description">
-                This is less of a guide, and more just an outline of how,
-                and why, I'm doing it. As well as a review of how it's
-                going. It's not here as clickbait, you might not want to
-                do it yourself, but I'm here to say that it's working for
-                me.
-            </p>
-        </div>
-        <div class="project">
-            <h2>KDE Plasma Bigscreen - Raspberry Pi 4</h2>
-            <ul class="topic-container">
-                <li class="topic">raspberry pi</li>
-                <li class="topic">rpi4</li>
-                <li class="topic">smart tv</li>
-                <li class="topic">kde bigscreen</li>
-                <li class="topic">streaming</li>
-            </ul>
-            <a href="/projects/kde-plasma-bigscreen">Go to project</a>
-            <p class="description">
-                I built this media centre at the start of 2024. There may
-                be easier methods of installation by now. When I built this
-                project, existing guides mentioned an installation image
-                on KDE's bigscreen page, however, it doesn't seem to exist
-                currently, except for a manjaro image, and I prefer to stick
-                to Raspberry Pi's own debian OS when I can, especially that
-                it ensures the best compatibility with things like cases and
-                accessories.
-            </p>
-        </div>
-        <div class="project">
-            <h2>RetroPie - RetroFlag NesPi 4 Case</h2>
-            <ul class="topic-container">
-                <li class="topic">raspberry pi</li>
-                <li class="topic">rpi4</li>
-                <li class="topic">retropie</li>
-                <li class="topic">gaming</li>
-                <li class="topic">lightgun</li>
-                <li class="topic">wiimote</li>
-            </ul>
-            <a href="/projects/retropie-nespi-4">Go to project</a>
-            <p class="description">
-                The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie
-                is the ultimate retro gaming rig. Lower power consumption? Check.
-                Light gun games? You got it. Great customisation options? Of course.
-                Did you know you can even use a wiimote as the stylus for the Drastic
-                Nintendo DS Emulator?? Did I hear someone say Wario Ware?
-            </p>
-        </div>
-        <div class="project">
-            <h2>Media Keyboard - Pico Controller</h2>
-            <ul class="topic-container">
-                <li class="topic">pico</li>
-                <li class="topic">microcontroller</li>
-                <li class="topic">circuitpython</li>
-                <li class="topic">python</li>
-                <li class="topic">gpio</li>
-            </ul>
-            <a href="/projects/media-keyboard">Go to project</a>
-            <p class="description">
-                My keyboard doesn't include the media keys, so I built a macro
-                keyboard to control the media on my desktop computer. It is
-                plug'n'play and requires no configuration to work between
-                different devices. The project can be easily tweaked to program
-                macro's for work, steam games, and whatever else you can't be
-                bothered to type out manually.
-            </p>
-        </div>
-        <div class="project">
-            <h2>GPi Case 2 - Compute Module 4</h2>
-            <ul class="topic-container">
-                <li class="topic">raspberry pi</li>
-                <li class="topic">cm4</li>
-                <li class="topic">recalbox</li>
-                <li class="topic">gaming</li>
-                <li class="topic">handheld</li>
-            </ul>
-            <a href="/projects/gpicase">Go to project</a>
-            <p class="description">
-                The GPi Case 2 with Raspberry Pi's Compute Module 4 is the
-                ultimate portable gaming device. The case offers amazing
-                functionality, and when combined with a CM4 and 64-bit
-                Recalbox, there is little that can challenge it for a
-                portable retro gaming experience.
-            </p>
-        </div>
-    </main>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script>
-        const populateTopics = () => {
+  </noscript>
+  <main>
+   <div class="project">
+    <h2>
+     Google Calendar API - Apps Script
+    </h2>
+    <time datetime="2024-06-21">
+     21st June, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      webdev
+     </li>
+     <li class="topic">
+      google
+     </li>
+     <li class="topic">
+      ical
+     </li>
+     <li class="topic">
+      apps script
+     </li>
+     <li class="topic">
+      javascript
+     </li>
+    </ul>
+    <a href="projects/google-calendar-appscript-api">
+     Go to project
+    </a>
+    <p class="decription">
+     Considering how long they've been around, working with iCal's in the browser is surprisingly difficult. When working with data from Google Calendar, we can use Google's Apps Script to create an API, that will let us pull exactly what we desire down from a Google Calendar.
+    </p>
+   </div>
+   <div class="project">
+    <h2>
+     Static Website - Github Pages
+    </h2>
+    <time datetime="2024-06-09">
+     9th June, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      webdev
+     </li>
+     <li class="topic">
+      seo
+     </li>
+     <li class="topic">
+      xml
+     </li>
+     <li class="topic">
+      python
+     </li>
+    </ul>
+    <a href="projects/github-pages-static-website">
+     Go to project
+    </a>
+    <p class="decription">
+     You don't always need a full stack. When all you need to do is show information, a static website is enough. And with Github Pages, it is possible to have a fully functioning website for free, just like this one! It could just be the perfect solution for your portfolio page.
+    </p>
+   </div>
+   <div class="project">
+    <h2>
+     Raspberry Pi 5 - Desktop Computer
+    </h2>
+    <time datetime="2024-05-31">
+     31st May, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      raspberry pi
+     </li>
+     <li class="topic">
+      rpi5
+     </li>
+     <li class="topic">
+      computing
+     </li>
+     <li class="topic">
+      daily driver
+     </li>
+    </ul>
+    <a href="projects/pi5-desktop">
+     Go to project
+    </a>
+    <p class="decription">
+     This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.
+    </p>
+   </div>
+   <div class="project">
+    <h2>
+     GPi Case 2
+    </h2>
+    <time datetime="2024-04-28">
+     28th April, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      raspberry pi
+     </li>
+     <li class="topic">
+      cm4
+     </li>
+     <li class="topic">
+      recalbox
+     </li>
+     <li class="topic">
+      gaming
+     </li>
+     <li class="topic">
+      handheld
+     </li>
+    </ul>
+    <a href="projects/gpicase">
+     Go to project
+    </a>
+    <p class="decription">
+     The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.
+    </p>
+   </div>
+   <div class="project">
+    <h2>
+     RetroPie NesPi 4
+    </h2>
+    <time datetime="2024-04-23">
+     23rd April, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      raspberry pi
+     </li>
+     <li class="topic">
+      rpi4
+     </li>
+     <li class="topic">
+      retropie
+     </li>
+     <li class="topic">
+      gaming
+     </li>
+     <li class="topic">
+      lightgun
+     </li>
+     <li class="topic">
+      wiimote
+     </li>
+    </ul>
+    <a href="projects/retropie-nespi-4">
+     Go to project
+    </a>
+    <p class="decription">
+     The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Low power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?
+    </p>
+   </div>
+   <div class="project">
+    <h2>
+     Media Keyboard - Pico Controller
+    </h2>
+    <time datetime="2024-04-14">
+     14th April, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      pico
+     </li>
+     <li class="topic">
+      microcontroller
+     </li>
+     <li class="topic">
+      circuitpython
+     </li>
+     <li class="topic">
+      python
+     </li>
+     <li class="topic">
+      gpio
+     </li>
+    </ul>
+    <a href="projects/media-keyboard">
+     Go to project
+    </a>
+    <p class="decription">
+     My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.
+    </p>
+   </div>
+   <div class="project">
+    <h2>
+     KDE Plasma Bigscreen
+    </h2>
+    <time datetime="2024-04-02">
+     2nd April, 2024
+    </time>
+    <ul class="topic-container">
+     <li class="topic">
+      raspberry pi
+     </li>
+     <li class="topic">
+      rpi4
+     </li>
+     <li class="topic">
+      smart tv
+     </li>
+     <li class="topic">
+      kde bigscreen
+     </li>
+     <li class="topic">
+      streaming
+     </li>
+    </ul>
+    <a href="projects/kde-plasma-bigscreen">
+     Go to project
+    </a>
+    <p class="decription">
+     I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.
+    </p>
+   </div>
+  </main>
+  <footer>
+   <div>
+    Made by Hand. Powered by
+   </div>
+   <a href="https://pages.github.com/" target="_blank">
+    <img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+   </a>
+  </footer>
+  <script>
+   const populateTopics = () => {
             const isOverflow = ({clientHeight, scrollHeight}) => {
                 return scrollHeight > clientHeight;
             };
@@ -249,9 +344,9 @@
                 projects.forEach(project => {
                     project.classList.add('hidden');
 
-                    const topics = [...project.children[1].children];
+                    const topics = [...project.children[2].children];
                     for (let topic of topics) {
-                        if (topic.innerText === selection) {
+                        if (topic.innerText.trim() === selection.trim()) {
                             project.classList.remove('hidden');
                         }
                     }
@@ -265,7 +360,6 @@
         };
 
         document.addEventListener('DOMContentLoaded', populateTopics);
-    </script>
-</body>
-
+  </script>
+ </body>
 </html>

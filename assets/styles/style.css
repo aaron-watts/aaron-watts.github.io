@@ -65,11 +65,11 @@ img {
     margin-inline: auto;
 }
 
-.note {
+aside {
     font-style: italic;
     font-size: .9em;
 }
-.quote {
+blockquote {
     font-style: italic;
     font-size: .9em;
     color: #ccc;

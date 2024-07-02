@@ -105,16 +105,16 @@
             either. It stands for JSON with Padding, and wikipedia
             describes it as
         </p>
-        <p class="quote">
+        <blockquote>
             .. a historical JavaScript technique for requesting data
             by loading a <code>&lt;script&gt;</code> element, which is
             an element intended to load ordinary javascript.
-        </p>
+        </blockquote>
         <p>
             That sounds both fun and dangerous! Sensibly, Google issues
             a warning for when working with JSONP:
         </p>
-        <p class="quote">
+        <blockquote>
             Warning: Be very careful when using this JSONP technique
             in your scripts. Because it's possible for anyone to embed
             the script tag in their web page, you can be tricked into
@@ -122,7 +122,7 @@
             which can then capture the data returned. Best practice is
             to ensure that JSONP scripts are read-only and only return
             non-sensitive information.
-        </p>
+        </blockquote>
         <p>
             The script I am making will only be returning GET requests
             with information that is on a public Google calendar, so
@@ -233,10 +233,10 @@
     ]
 }</code></pre>
 
-        <p class="note">
+        <aside>
             NOTE: You will need to update the url in your API call
             whenever you make changes to the API and redeploy.
-        </p>
+        </aside>
 
         <h2 id="api-call">Calling the API From a Webpage</h2>
         <p>
@@ -353,17 +353,17 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
             <code>.env</code> file, we do the usual, and list
             our <em>secret</em> with a key and value.
         </p>
-        <p class="note">
+        <aside>
             NOTE: If the script url has been published in a public
             repo or file, it may be best to create a new script
             deployment and archive the old one.
-        </p>
+        </aside>
         <pre class="language-none"><code>APPS_SCRIPT="https://script.google.com/macros/s/&lt;script-url&gt;/exec"</code></pre>
-        <p class="note">
+        <aside>
             NOTE: Make sure to add the dotenv file to .gitignore
             if you haven't already got in in your global gitignore
             config.
-        </p>
+        </aside>
         <p>
             In your Netlify project, you will also set this as an
             environment variable. Now, to create the netlify

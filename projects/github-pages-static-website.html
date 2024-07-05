@@ -864,6 +864,102 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             wrapping this up.
         </p>
 
+        <h3>Index Page Generator</h3>
+        <p>
+            Eagle eyed readers may have noticed that I have, in fact,
+            added published dates to the projects on this site. I
+            did also write a script that takes the exisiting projects
+            and generates content within the <code>home.html</code>
+            page where the full list of projects currently lives.
+            It was not an incredibly complex script either.
+        </p>
+        <p>
+            Using the Beautiful Soup Python module, the script crawls
+            through the <code>projects</code> directory, and scrapes
+            the relevant data required to make project summaries and
+            links. And, thanks to the power of Beautiful Soup, we can
+            work with the html much like we wouold with the DOM, and
+            instead of rewriting the entire page, we can simply just
+            rewrite the contents of the element that contains the
+            full list of projects.
+        </p>
+        <pre class="language-python"><code>from bs4 import BeautifulSoup
+import os
+from datetime import date
+
+projects = []
+
+# crawl projects folder
+for f in os.scandir('projects'):
+    path_name = f'projects/{f.name}'
+    with open(path_name) as projectf:
+        project_txt = projectf.read()
+        project_soup = BeautifulSoup(project_txt, 'lxml')
+    # scrape the relevant data
+    title = project_soup.select_one('h1').text
+    intro = project_soup.select_one('p#intro').text
+    description = ' '.join(intro.split())
+    html_date = project_soup.select_one('time')
+    project_date = date.fromisoformat(html_date['datetime'])
+    keywords = project_soup.select_one('meta[name=keywords]')['content'].split(',')
+    keywords = [kw.lstrip() for kw in keywords]
+    
+    projects.append({
+        'title' : title,
+        'description' : description,
+        'keywords' : keywords,
+        'date' : project_date,
+        'datehtml' : html_date,
+        'link': f'/{path_name[:-5]}'
+    })
+
+# callback function to organise into order of date
+def date_sort(e):
+    return e['date']
+
+# sort projects by date - newest first
+projects.sort(reverse=True, key=date_sort)
+
+with open('home.html') as inf:
+    txt = inf.read()
+    soup = BeautifulSoup(txt, 'lxml')
+
+# select and clear main element
+main_element = soup.select_one('main')
+main_element.clear()
+
+# for each project, create and add the relevant html to the main element
+for project in projects:
+    print(project['link'])
+    project_div = soup.new_tag('div')
+    project_div['class'] = 'project'
+    project_header = soup.new_tag('h2')
+    project_header.string = project['title']
+    project_div.append(project_header)
+    project_date = soup.new_tag('time', datetime=project['datehtml']['datetime'])
+    project_date.string = project['datehtml'].text
+    project_div.append(project_date)
+    project_ul = soup.new_tag('ul')
+    project_ul['class'] = 'topic-container'
+    for topic in project['keywords']:
+        topic_li = soup.new_tag('li')
+        topic_li['class'] = 'topic'
+        topic_li.string = topic
+        project_ul.append(topic_li)
+    project_div.append(project_ul)
+    project_link = soup.new_tag('a', href=project['link'])
+    project_link.string = 'Go to project'
+    project_div.append(project_link)
+    project_description = soup.new_tag('p')
+    project_description['class'] = 'description'
+    project_description.string = project['description']
+    project_div.append(project_description)
+    main_element.append(project_div)
+
+# write changes to file home.html
+with open ('home.html', 'w') as outf:
+    outf.write(BeautifulSoup.prettify(soup))</code></pre>
+
         <h2 id="adding-comments-section">Adding A Comments Section</h2>
         <p>
             This wasn't something that I was previously aware that

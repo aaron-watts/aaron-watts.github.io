@@ -878,10 +878,11 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             through the <code>projects</code> directory, and scrapes
             the relevant data required to make project summaries and
             links. And, thanks to the power of Beautiful Soup, we can
-            work with the html much like we wouold with the DOM, and
+            work with the html much like we would with the DOM, and
             instead of rewriting the entire page, we can simply just
             rewrite the contents of the element that contains the
-            full list of projects.
+            full list of projects, which in my case, is the
+            <code>main</code> element.
         </p>
         <pre class="language-python"><code>from bs4 import BeautifulSoup
 import os
@@ -930,7 +931,6 @@ main_element.clear()
 
 # for each project, create and add the relevant html to the main element
 for project in projects:
-    print(project['link'])
     project_div = soup.new_tag('div')
     project_div['class'] = 'project'
     project_header = soup.new_tag('h2')

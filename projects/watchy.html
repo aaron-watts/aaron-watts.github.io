@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guide for using watchy,
+    specifically v2 models.">
+    <meta name="keywords" content="watchy, arduino, python">
+    <title>AWD - Watchy</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <!-- remove this line if no code or pre used -->
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+</head>
+<body>
+    <header>
+        <div>Aaron Watts Dev <i>Watchy
+        </i></div>
+        <a href="/home">Back to home</a>
+        <div class="rss-container">
+            <a href="https://aaronwattsdev.com/feed.xml">
+                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#signs">First Signs Something Is Wrong</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>Watchy - Arduino IDE</h1>
+        <time datetime="yyyy-mm-dd">d<sup>th</sup> Month, Year</time>
+        <!-- Update img src and alt text -->
+        <img src=""
+        alt="It looks like the developer forgot to include alt text">
+        <p id="intro">
+            I didn't intend to write an article about Watchy, as I
+            only bought it to satisfy my nerd fetish. But after the
+            trouble I had getting it to work, I thought I might write
+            a short guide to assist anyone who might run into some of
+            the same issues I did.
+        </p>
+        <p>
+            <a href="https://watchy.sqfmi.com/" 
+            target="_blank">Watchy</a>, by SQFMI, is an awesome
+            gadget. In short it's a programmable watch, that you
+            assemble yourself, with added wifi and accelerometer.
+            It doesn't necessarily connect to your phone, so it's
+            not a <em>smart</em> watch <em>per se</em>, but it is a
+            clever watch. But, and it's a big but, the documentation
+            is somewhat lacking. Unless you end up with the V3 watchy,
+            the little documentation there is, is utterly useless.
+        </p>
+        <p>
+            I bought mine from the <a href="https://thepihut.com"
+            target="_blank">The Pi Hut</a>, which, according to the
+            description on their site is a V2. If you end up with
+            anything less than a V3, don't even bother with the
+            <a href="https://watchy.sqfmi.com/docs/getting-started/"
+            target="_blank">documentation</a> beyond the initial
+            assembly, because it won't work.
+        </p>
+
+        <h2 id="signs">First Signs Something Is Wrong</h2>
+        <p>
+            So after assembly, and following the documentation to a
+            tee, I tried the first seemingly obvious and easy thing
+            to customising my watchy; I tried to change the watch
+            face using one of the provided examples in the Arduino
+            IDE. First I got an error that told me that my device
+            was <em>ESP32</em> and not <em>ESP32-S3</em>. The error
+            killed the operation. So, perhaps foolishly, seeing there
+            wasn't really a solution offered within the docs, I did
+            what that error told me, and switched boards in the IDE
+            from <em>ESP32S3-dev</em> to <em>ESP32-dev</em>. The code
+            compiled (very slowly!), and it flashed - common sense and
+            a good error message had saved the day, or so it seemed.
+        </p>
+        <p>
+            Once the code had written to the flash storage, it went
+            to reset the device. It seemed to hang on that message.
+            No bother, things sometimes take a while, I'll go make a
+            cup of tea while it finishes up. After I had finished
+            staining my teeth with delicious taurine, I came back to
+            check on Watchy, but it still hadn't reset. I waited a
+            bit longer but nothing happened. E-Ink displays aren't
+            particularly helpful here is they maintain their last
+            image, so I wasn't sure if it had worked but the buttons
+            had stopped working, or if it hadn't worked, until enough
+            time had passed for me to be sure the time wasn't
+            updating.
+        </p>
+        <p>
+            Even in the preloaded demo, the buttons seemed somewhat
+            unresponsive when trying to operate the Watchy. In
+            particular, I couldn't seem to get the thing to reset or
+            go into boot select mode. After searching online I was
+            worried that it would require soldering to fix the button
+            or the reset - I am not very exeperienced with soldering,
+            and on such small components I am sure it would look as
+            though something has sneezed metal across the board once
+            I was done with it.
+        </p>
+
+    </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+    <noscript class="note">
+        Enable JavaScript to join in the conversation!
+    </noscript>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "" // include comment section id - to correspond to page name
+        })
+    </script>
+
+    <footer>
+        <div>Made by Hand. Powered by</div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img src="/images/githubpages.svg" 
+            alt="https://pages.github.com/">
+        </a>
+    </footer>
+
+    <!-- remove this line if no code or pre used -->
+    <script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

@@ -32,6 +32,9 @@
         <ul>
             <li><a href="#intro">Intro</a></li>
             <li><a href="#signs">First Signs Something Is Wrong</a></li>
+            <li><a href="#model">Figuring Out Which Model You Have</a></li>
+            <li><a href="#arduino">Setting Up The Arduino IDE</a></li>
+            <li><a href="#customising">Customising Watchy</a></li>
         </ul>
     </nav>
     <main class="article">
@@ -72,7 +75,7 @@
         <p>
             So after assembly, and following the documentation to a
             tee, I tried the first seemingly obvious and easy thing
-            to customising my watchy; I tried to change the watch
+            to customise my watchy; I tried to change the watch
             face using one of the provided examples in the Arduino
             IDE. First I got an error that told me that my device
             was <em>ESP32</em> and not <em>ESP32-S3</em>. The error
@@ -91,7 +94,7 @@
             staining my teeth with delicious taurine, I came back to
             check on Watchy, but it still hadn't reset. I waited a
             bit longer but nothing happened. E-Ink displays aren't
-            particularly helpful here is they maintain their last
+            particularly helpful here as they maintain their last
             image, so I wasn't sure if it had worked but the buttons
             had stopped working, or if it hadn't worked, until enough
             time had passed for me to be sure the time wasn't
@@ -102,13 +105,131 @@
             unresponsive when trying to operate the Watchy. In
             particular, I couldn't seem to get the thing to reset or
             go into boot select mode. After searching online I was
-            worried that it would require soldering to fix the button
+            worried that it would require soldering to fix a button
             or the reset - I am not very exeperienced with soldering,
             and on such small components I am sure it would look as
             though something has sneezed metal across the board once
             I was done with it.
         </p>
 
+        <h2 id="model">Figuring Out Which Model You Have</h2>
+        <p>
+            So, as I mentioned, the docs are useless now. There is
+            a Discord server where you can find some help, but
+            personally, I'm not the biggest fan of chat rooms - they
+            have their place of course, and that is on dial up back
+            in the early 2000's. Anyway, I did it, so you don't have
+            to, but if you enjoy trawling through messages upon
+            messages that aren't necessarily the same conversation
+            as you are partaking in, then be my guest.
+        </p>
+        <p>
+            One issue with working with Watchy in Arduino IDE, is
+            that it's slow, <em>really slow</em>. Luckily, there's
+            a python package and a couple of binaries we can use to
+            quickly figure out if which version of Watchy we have.
+            Szybet's <a href="https://github.com/Szybet/InkWatchy/wiki/Trying-out-the-demo-firmware"
+            target="_blank">InkWatchy</a> firmware has a couple of
+            <a href="https://github.com/Szybet/InkWatchy/releases"
+            target="_blank">binary demo's</a> we can quickly flash
+            to Watchy, and see which one works. To do so, we will
+            need a Python package called ESPTool.
+        </p>
+        <p>
+            I have mentioned quite a few times before, in previous
+            articles, that nowadays I compute exclusively on a
+            Raspberry Pi. Unfortunately there wasn't an esptool
+            package in apt, and from what I have read elsewhere,
+            what you can get in apt on other distro's is pretty
+            outdated. To install
+            esptool, first create a directory where you can work
+            on your Watchy stuff, maybe call it <code>watchy/</code>
+            or something like that. Then, inside that directory,
+            create a virtual environment where you can install
+            esptool.
+        </p>
+        <aside>
+            NOTE: always make sure to deactivate the virtual
+            environment before closing your terminal!
+        </aside>
+        <pre class="language-none"><code># create virtual environment
+python -m venv esptoolenv
+
+# activate virtual environment
+source esptoolenv/bin/activate
+
+# install package
+pip3 install esptool==4.5.dev2
+
+# deactivate virtual environment
+deactivate</code></pre>
+        <p>
+            Now we have the virtual environment set up, copy those
+            two firmware binaries over to the parent directory of
+            the vitrual environment, and we can try to flash each
+            one using the following instructions.
+        </p>
+        <pre class="language-none"><code>source esptoolenv/bin/activate
+esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
+        <p>
+            If <code>Watchy_3-demo.bin</code> works, you have a
+            V3 Watchy, and you probably just need to make sure you
+            are using up to date versions of the esprissif ESP
+            Board and Watchy libraries. If 
+            <code>Watchy_2-demo.bin</code> then you have a V2 or
+            lower, and will need to change a few things in your
+            Arduino IDE to get the Watchy to flash, so read on.
+        </p>
+
+        <h2 id="arduino">Setting Up The Arduino IDE</h2>
+        <p>
+            If you are also using a Raspberry Pi 5 like me, you
+            might have noticed that the Arduino IDE has gone missing
+            from the reccomended software app. We still have a few
+            options for installation though. There is an apt package,
+            but it's ugly as hell and the menu's don't pick up on the
+            theming. There is also a version in Pi-Apps, but to be
+            safe, I am using the
+            <a href="https://docs.arduino.cc/software/ide-v1/tutorials/Linux/"
+            target="_blank">legacy version</a> from the official
+            website, and everything works with it. You will still
+            want to follow the instructions in the
+            <a href="https://watchy.sqfmi.com/docs/getting-started#arduino-setup"
+            target="_blank">Watchy Docs</a> with regards to setting
+            up Arduino, except instead of installing
+            <code>v2.0.17+</code> of the esp32 platform, install
+            <code>v2.0.11</code>. And, instead of the latest version
+            of the Watchy library, install <code>1.4.7</code>.
+        </p>
+        <p>
+            Instead of choosing the ESP32S3-Dev Module board, scroll
+            down in the <em>ESP Arduino</em> boards list until you
+            find <em>Watchy</em>, and select that. Under
+            <em>Board Revision</em>, <em>Watchy v1.0</em> seems to
+            work well - the buttons seemed far more responsive after
+            flashing with this option than when in the preinstalled
+            demo firmware, so I haven't actually tried the other
+            versions as of yet. Your next attempt to flash Watchy 
+            using the Arduino IDE should now work, so don't throw it 
+            in the parts bin!
+        </p>
+
+        <h2 id="customising">Customising Watchy</h2>
+        <p>
+            I'm not going to go into detail here, after all this is
+            the fun of having a Watchy. Go hack and learn some stuff
+            about programming. However, as a hint, the Watchy
+            firmware library is in
+            <code>~/Arduino/libraries/Watchy/src/</code>, just in
+            case you might want to try and figure out a better
+            alternative to Watchy displaying it's own internal
+            temperature when it doesn't have a wifi connection to
+            retreive weather data. And if you want to try another
+            firmware on top of the two we've seen here,
+            <a href="https://github.com/GuruSR/Watchy_GSR/tree/master"
+            target="_blank">Watchy_GSR</a> is worth a look and has
+            much better documentation than Watchy does itself!
+        </p>
     </main>
 
     <a href="#top">Back to Top</a>

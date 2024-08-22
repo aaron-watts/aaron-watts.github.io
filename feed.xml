@@ -8,6 +8,18 @@
     <category>Technology</category>
     <item>
       <title>
+     Firefox Web Apps - Plasma Bigscreen
+    </title>
+      <link>https://aaronwattsdev.com/projects/firefox-web-apps</link>
+      <pubDate>Thu, 22 Aug 2024</pubDate>
+      <description>With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps.</description>
+      <guid>https://aaronwattsdev.com/projects/firefox-web-apps</guid>
+      <enclosure url="https://aaronwattsdev.com/images/projects/firefox-web-apps.jpg" length="0" type="image/jpeg" />
+      <media:thumbnail url="https://aaronwattsdev.com/images/projects/firefox-web-apps.jpg" width="1920" height="1080" />
+      <media:content type="image/jpeg" url="https://aaronwattsdev.com/images/projects/firefox-web-apps.jpg" />
+    </item>
+    <item>
+      <title>
      Google Calendar API - Apps Script
     </title>
       <link>https://aaronwattsdev.com/projects/google-calendar-appscript-api</link>
@@ -44,7 +56,7 @@
     </item>
     <item>
       <title>
-     GPi Case 2
+     GPi Case 2 - Compute Module 4
     </title>
       <link>https://aaronwattsdev.com/projects/gpicase</link>
       <pubDate>Sun, 28 Apr 2024</pubDate>
@@ -56,7 +68,7 @@
     </item>
     <item>
       <title>
-     RetroPie NesPi 4
+     RetroPie - RetroFlag NesPi 4 Case
     </title>
       <link>https://aaronwattsdev.com/projects/retropie-nespi-4</link>
       <pubDate>Tue, 23 Apr 2024</pubDate>
@@ -80,7 +92,7 @@
     </item>
     <item>
       <title>
-     KDE Plasma Bigscreen
+     KDE Plasma Bigscreen - Raspberry Pi 4
     </title>
       <link>https://aaronwattsdev.com/projects/kde-plasma-bigscreen</link>
       <pubDate>Tue, 02 Apr 2024</pubDate>

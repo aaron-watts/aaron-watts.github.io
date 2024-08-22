@@ -229,6 +229,11 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
             target="_blank">Watchy_GSR</a> is worth a look and has
             much better documentation than Watchy does itself!
         </p>
+
+        <h3>Fonts</h3>
+        <pre class="language-none"><code>cd ~/Arduino/libraries/Adafruit_GFX_Library/fontconvert
+make
+./fontconvert &lt;path-to-font&gt; &lt;size&gt; &gt;&gt; my_font.h</code></pre>
     </main>
 
     <a href="#top">Back to Top</a>

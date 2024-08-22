@@ -68,6 +68,7 @@ img {
 aside {
     font-style: italic;
     font-size: .9em;
+    margin: 1em;
 }
 blockquote {
     font-style: italic;

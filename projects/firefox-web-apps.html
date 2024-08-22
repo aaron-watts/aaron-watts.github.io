@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to run Progressive Web Apps
+    through the Firefox browser in KDE Plasma Big Screen on
+    Rapsberry Pi OS">
+    <meta name="keywords" content="raspberry pi, rpi4, smart tv, kde bigscreen, streaming">
+    <title>AWD - Firefox Web Apps</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+</head>
+<body>
+    <header>
+        <div>Aaron Watts Dev <i>Firefox Web Apps
+        </i></div>
+        <a href="/home">Back to home</a>
+        <div class="rss-container">
+            <a href="https://aaronwattsdev.com/feed.xml">
+                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#firefox">Firefox on Pi</a></li>
+            <li><a href="#install">Installation</a></li>
+            <li><a href="#webapps">Setting Up Web Apps</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>Firefox Web Apps - Plasma Bigscreen</h1>
+        <time datetime="yyyy-mm-dd">22<sup>nd</sup> August, 2024</time>
+        <img src="/images/projects/firefox-web-apps.jpg"
+        alt="A Raspberry Pi 4 running KDE Plasma Bigscreen on a
+        HD TV, firefox browser, aniwave and amazon prime are listed
+        in the recent apps list">
+        <p id="intro">
+            With the introduction of Web Manifest V3, ad blocking in
+            Chromium based browsers is changing. the new limitations
+            and API's for browser extensions means ad blockers, such
+            as Ublock Origin are less effective than they once were.
+            Firefox will still be using Manifest V2 for a while yet,
+            but the fact that Firefox, on the dekstop at least, does
+            not have support for PWA's (progressive web apps) may
+            hinder the user experience for those off us using Plasma
+            Bigscreen as a streaming OS. Luckily, Linux is flexible,
+            and there's an easy way to get Firefox Web Apps.
+        </p>
+        <p>
+            Web Apps on Linux are not new, and while it would be time
+            consuming, you could potentially just right your own
+            dekstop files to open specified url's in their own
+            windows. Thankfully, Linux Mint's Web Apps software has
+            been ported over to the Raspberry Pi, so we can get set
+            up with Firefox PWA's pretty quickly, and without fuss.
+        </p>
+        <aside>
+            NOTE: This guide is for installing Firefox PWA's on a 
+            Raspberry Pi device running KDE Plasma Bigscreen, find 
+            out how to get Bigscreen running on a Pi
+            <a href="/projects/kde-plasma-bigscreen">here</a>.
+        </aside>
+
+        <h2 id="firefox">Firefox on Pi</h2>
+        <p>
+            Raspberry Pi OS used to ship with Chromium as it's
+            default browser, and while the Ubuntu image for
+            Rapsberry Pi delivered decent performance with Firefox,
+            it did tend to struggle on Raspberry Pi OS. These issues
+            appear to have been fixed, and you can now select
+            Firefox or Chromium as the default browser when setting
+            up the desktop. The Raspberry Pi Foundation has even
+            included their own Firefox extension, called
+            <code>UANaughtyList</code>, that simply changes the
+            user agent to improve the experience on Youtube and
+            Netflix (you <em>ARE</em> naughty, Youtube and Netflix!).
+        </p>
+        <p>
+            To install Firefox on Raspberry Pi OS with the necessary
+            extensions, open terminal in type the following:
+        </p>
+        <pre><code class="language-none">sudo apt update
+sudo apt install firefox rpi-firefox-mods</code></pre>
+
+        <h2 id="install">Installation</h2>
+        <p>
+            Installation is pretty simple, but you will want the
+            flexibility of multiple windows, so first log out of
+            the Bigscreen session, and log in to the Plasma desktop
+            session before starting.
+        </p>
+        <p>
+            To install Linux Mint's Web Apps software, we first need
+            to install <a href="https://pi-apps.io/"
+            target="_blank">Pi-Apps</a>. Installing Pi-Apps is simple
+            enough and can be done with one line in the terminal:
+        </p>
+        <pre><code class="language-none">wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash</code></pre>
+        <p>
+            Once Pi-Apps is installed, open it, and install 
+            <code>Web Apps</code> from the <code>Internet</code>
+            category in the software list.
+        </p>
+
+        <h2 id="webapps">Setting Up Web Apps</h2>
+        <p>
+            Setting up web apps is easy. Just open the Web Apps
+            software and click <code>+</code> to create a new app.
+            Give the app a name, and enter the url. Once you have
+            typed the url, there is a button next to the field that
+            will scrape the url for favicons that you can use as the
+            apps icon on the dekstop. It's success rate for finding
+            favicons is extremely good, but not quite 100%, so you
+            may occasionally need to download the icon and set it
+            manually.
+            You can choose which web browser to launch a specific
+            application in, so if a site struggles in firefox, you
+            can select a different browser for that particular
+            application.
+        </p>
+        <p>
+            That's all there is to it. After setting up your web
+            apps, simply log back into the Bigscreen session and
+            enjoy your favourite shows.
+        </p>
+    </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+    <noscript class="note">
+        Enable JavaScript to join in the conversation!
+    </noscript>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "firefox-web-apps"
+        })
+    </script>
+
+    <footer>
+        <div>Made by Hand. Powered by</div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img src="/images/githubpages.svg" 
+            alt="https://pages.github.com/">
+        </a>
+    </footer>
+
+    <script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

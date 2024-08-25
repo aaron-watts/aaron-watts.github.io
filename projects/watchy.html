@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guide for using watchy,
+    specifically v2 models.">
+    <meta name="keywords" content="watchy, arduino, python">
+    <title>AWD - Watchy</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+    <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+</head>
+<body>
+    <header>
+        <div>Aaron Watts Dev <i>Watchy
+        </i></div>
+        <a href="/home">Back to home</a>
+        <div class="rss-container">
+            <a href="https://aaronwattsdev.com/feed.xml">
+                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#signs">First Signs Something Is Wrong</a></li>
+            <li><a href="#model">Figuring Out Which Model You Have</a></li>
+            <li><a href="#arduino">Setting Up The Arduino IDE</a></li>
+            <li><a href="#customising">Customising Watchy</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>Watchy - Arduino IDE</h1>
+        <time datetime="2024-08-25">25<sup>th</sup> August, 2024</time>
+        <img src="/images/projects/watchy.jpg"
+        alt="A Watchy with gun metal case displaying the time, date,
+        weather and a steps count in a custom monospace font.">
+        <p id="intro">
+            I didn't intend to write an article about Watchy, as I
+            only bought it to satisfy my nerd fetish. But after the
+            trouble I had getting it to work, I thought I might write
+            a short guide to assist anyone who might run into some of
+            the same issues I did.
+        </p>
+        <p>
+            <a href="https://watchy.sqfmi.com/" 
+            target="_blank">Watchy</a>, by SQFMI, is an awesome
+            gadget. In short it's a programmable watch, that you
+            assemble yourself, with added wifi and accelerometer.
+            It doesn't necessarily connect to your phone, so it's
+            not a <em>smart</em> watch <em>per se</em>, but it is a
+            clever watch. But, and it's a big but, the documentation
+            is somewhat lacking. Unless you end up with the V3 watchy,
+            the little documentation there is, is utterly useless.
+        </p>
+        <p>
+            I bought mine from the <a href="https://thepihut.com"
+            target="_blank">The Pi Hut</a>, which, according to the
+            description on their site is a V2. If you end up with
+            anything less than a V3, don't even bother with the
+            <a href="https://watchy.sqfmi.com/docs/getting-started/"
+            target="_blank">documentation</a> beyond the initial
+            assembly, because it won't work.
+        </p>
+
+        <h2 id="signs">First Signs Something Is Wrong</h2>
+        <p>
+            So after assembly, and following the documentation to a
+            tee, I tried the first seemingly obvious and easy thing
+            to customise my watchy; I tried to change the watch
+            face using one of the provided examples in the Arduino
+            IDE. First I got an error that told me that my device
+            was <em>ESP32</em> and not <em>ESP32-S3</em>. The error
+            killed the operation. So, perhaps foolishly, seeing there
+            wasn't really a solution offered within the docs, I did
+            what that error told me, and switched boards in the IDE
+            from <em>ESP32S3-dev</em> to <em>ESP32-dev</em>. The code
+            compiled (very slowly!), and it flashed - common sense and
+            a good error message had saved the day, or so it seemed.
+        </p>
+        <p>
+            Once the code had written to the flash storage, it went
+            to reset the device. It seemed to hang on that message.
+            No bother, things sometimes take a while, I'll go make a
+            cup of tea while it finishes up. After I had finished
+            staining my teeth with delicious taurine, I came back to
+            check on Watchy, but it still hadn't reset. I waited a
+            bit longer but nothing happened. E-Ink displays aren't
+            particularly helpful here as they maintain their last
+            image, so I wasn't sure if it had worked but the buttons
+            had stopped working, or if it hadn't worked, until enough
+            time had passed for me to be sure the time wasn't
+            updating.
+        </p>
+        <p>
+            Even in the preloaded demo, the buttons seemed somewhat
+            unresponsive when trying to operate the Watchy. In
+            particular, I couldn't seem to get the thing to reset or
+            go into boot select mode. After searching online I was
+            worried that it would require soldering to fix a button
+            or the reset - I am not very exeperienced with soldering,
+            and on such small components I am sure it would look as
+            though something has sneezed metal across the board once
+            I was done with it.
+        </p>
+
+        <h2 id="model">Figuring Out Which Model You Have</h2>
+        <p>
+            So, as I mentioned, the docs are useless now. There is
+            a Discord server where you can find some help, but
+            personally, I'm not the biggest fan of chat rooms - they
+            have their place of course, and that is on dial up back
+            in the early 2000's. Anyway, I did it, so you don't have
+            to, but if you enjoy trawling through messages upon
+            messages that aren't necessarily the same conversation
+            as you are partaking in, then be my guest.
+        </p>
+        <p>
+            One issue with working with Watchy in Arduino IDE, is
+            that it's slow, <em>really slow</em>. Luckily, there's
+            a python package and a couple of binaries we can use to
+            quickly figure out if which version of Watchy we have.
+            Szybet's <a href="https://github.com/Szybet/InkWatchy/wiki/Trying-out-the-demo-firmware"
+            target="_blank">InkWatchy</a> firmware has a couple of
+            <a href="https://github.com/Szybet/InkWatchy/releases"
+            target="_blank">binary demo's</a> we can quickly flash
+            to Watchy, and see which one works. To do so, we will
+            need a Python package called ESPTool.
+        </p>
+        <p>
+            I have mentioned quite a few times before, in previous
+            articles, that nowadays I compute exclusively on a
+            Raspberry Pi. Unfortunately there wasn't an esptool
+            package in apt, and from what I have read elsewhere,
+            what you can get in apt on other distro's is pretty
+            outdated. To install
+            esptool, first create a directory where you can work
+            on your Watchy stuff, maybe call it <code>watchy/</code>
+            or something like that. Then, inside that directory,
+            create a virtual environment where you can install
+            esptool.
+        </p>
+        <aside>
+            NOTE: always make sure to deactivate the virtual
+            environment before closing your terminal!
+        </aside>
+        <pre class="language-none"><code># create virtual environment
+python -m venv esptoolenv
+
+# activate virtual environment
+source esptoolenv/bin/activate
+
+# install package
+pip3 install esptool==4.5.dev2
+
+# deactivate virtual environment
+deactivate</code></pre>
+        <p>
+            Now we have the virtual environment set up, copy those
+            two firmware binaries over to the parent directory of
+            the vitrual environment, and we can try to flash each
+            one using the following instructions.
+        </p>
+        <pre class="language-none"><code>source esptoolenv/bin/activate
+esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
+        <p>
+            If <code>Watchy_3-demo.bin</code> works, you have a
+            V3 Watchy, and you probably just need to make sure you
+            are using up to date versions of the esprissif ESP
+            Board and Watchy libraries. If 
+            <code>Watchy_2-demo.bin</code> then you have a V2 or
+            lower, and will need to change a few things in your
+            Arduino IDE to get the Watchy to flash, so read on.
+        </p>
+
+        <h2 id="arduino">Setting Up The Arduino IDE</h2>
+        <p>
+            If you are also using a Raspberry Pi 5 like me, you
+            might have noticed that the Arduino IDE has gone missing
+            from the reccomended software app. We still have a few
+            options for installation though. There is an apt package,
+            but it's ugly as hell and the menu's don't pick up on the
+            theming. There is also a version in Pi-Apps, but to be
+            safe, I am using the
+            <a href="https://docs.arduino.cc/software/ide-v1/tutorials/Linux/"
+            target="_blank">legacy version</a> from the official
+            website, and everything works with it. You will still
+            want to follow the instructions in the
+            <a href="https://watchy.sqfmi.com/docs/getting-started#arduino-setup"
+            target="_blank">Watchy Docs</a> with regards to setting
+            up Arduino, except instead of installing
+            <code>v2.0.17+</code> of the esp32 platform, install
+            <code>v2.0.11</code>. And, instead of the latest version
+            of the Watchy library, install <code>1.4.7</code>.
+        </p>
+        <p>
+            Instead of choosing the ESP32S3-Dev Module board, scroll
+            down in the <em>ESP Arduino</em> boards list until you
+            find <em>Watchy</em>, and select that. Under
+            <em>Board Revision</em>, <em>Watchy v1.0</em> seems to
+            work well - the buttons seemed far more responsive after
+            flashing with this option than when in the preinstalled
+            demo firmware, so I haven't actually tried the other
+            versions as of yet. Your next attempt to flash Watchy 
+            using the Arduino IDE should now work, so don't throw it 
+            in the parts bin!
+        </p>
+
+        <h2 id="customising">Customising Watchy</h2>
+        <p>
+            I'm not going to go into detail here, after all this is
+            the fun of having a Watchy. Go hack and learn some stuff
+            about programming. However, as a hint, the Watchy
+            firmware library is in
+            <code>~/Arduino/libraries/Watchy/src/</code>, just in
+            case you might want to try and figure out a better
+            alternative to Watchy displaying it's own internal
+            temperature when it doesn't have a wifi connection to
+            retreive weather data. And if you want to try another
+            firmware on top of the two we've seen here,
+            <a href="https://github.com/GuruSR/Watchy_GSR/tree/master"
+            target="_blank">Watchy_GSR</a> is worth a look and has
+            much better documentation than Watchy does itself!
+        </p>
+
+        <h3>Fonts</h3>
+        <p>
+            The online font converter was down when I went to use it.
+            It seems to be back online now. But just in case there is
+            an issue with it when you go to use it yourself, you can
+            get the tool itself from an Arduino library within the
+            Arduino IDE. Just <code>cd</code> into the following
+            directory and <code>make</code> the binary yourself, then
+            you can convert your fonts for Watchy yourself.
+        </p>
+        <pre class="language-none"><code>cd ~/Arduino/libraries/Adafruit_GFX_Library/fontconvert
+make
+./fontconvert &lt;path-to-font&gt; &lt;size&gt; &gt;&gt; my_font.h</code></pre>
+    </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+    <noscript class="note">
+        Enable JavaScript to join in the conversation!
+    </noscript>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "watchy"
+        })
+    </script>
+
+    <footer>
+        <div>Made by Hand. Powered by</div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img src="/images/githubpages.svg" 
+            alt="https://pages.github.com/">
+        </a>
+    </footer>
+
+    <script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

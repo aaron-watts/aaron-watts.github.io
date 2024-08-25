@@ -39,9 +39,9 @@
     <main class="article">
         <h1>Watchy - Arduino IDE</h1>
         <time datetime="yyyy-mm-dd">d<sup>th</sup> Month, Year</time>
-        <!-- Update img src and alt text -->
-        <img src=""
-        alt="It looks like the developer forgot to include alt text">
+        <img src="/images/projects/watchy.jpg"
+        alt="A Watchy with gun metal case displaying the time, date,
+        weather and a steps count in a custom monospace font.">
         <p id="intro">
             I didn't intend to write an article about Watchy, as I
             only bought it to satisfy my nerd fetish. But after the
@@ -231,6 +231,15 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
         </p>
 
         <h3>Fonts</h3>
+        <p>
+            The online font converter was down when I went to use it.
+            It seems to be back online now. But just in case there is
+            an issue with it when you go to use it yourself, you can
+            get the tool itself from an Arduino library within the
+            Arduino IDE. Just <code>cd</code> into the following
+            directory and <code>make</code> the binary yourself, then
+            you can convert your fonts for Watchy yourself.
+        </p>
         <pre class="language-none"><code>cd ~/Arduino/libraries/Adafruit_GFX_Library/fontconvert
 make
 ./fontconvert &lt;path-to-font&gt; &lt;size&gt; &gt;&gt; my_font.h</code></pre>

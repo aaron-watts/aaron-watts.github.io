@@ -42,11 +42,11 @@
         and mono that read 'The lazy dog woffed!'">
         <p id="intro">
             If you've ever used an older or lower spec device, or had
-            a bad internet connection on a public wifi network, you
-            may have noticed the fonts get loaded after the content
-            and layout on a web page. Most of the time this is
+            a slow connection on a public wifi network, you
+            may have noticed the fonts on a web page get loaded after
+            the content and layout. Most of the time this is
             virtually unnoticable, but once you've seen it, as with
-            things traumatic, it is hard to unsee it. But there are
+            most things traumatic, it is hard to unsee it. But there are
             a few steps we can take to mitigate this from happening.
         </p>
         <p>
@@ -54,7 +54,7 @@
             learning web development, and also when teaching it.
             Budding web developers tend to be taught how to import a
             chosen font from a CDN service such as google fonts, and
-            that tends to be the extent of fonts in web development.
+            that tends to be the extent of fonts within the subject.
             I prefer to avoid external services wherever I can, as
             even the most reliable service can fail on occasion,
             which I've learned from experience.
@@ -70,7 +70,7 @@
             their own preferences. <a href="https://prismjs.com/"
             target="_blank">Prism JS</a>, which I use for my
             code snippets, sets a sensible font stack, and looks
-            for fonts locally installed on the users machine - it
+            for fonts installed locally on the users machine - it
             allows for some more thoughtful design without relying
             on http requests for fonts.
         </p>
@@ -116,14 +116,15 @@
             a potential point for things to break. Fonts is not
             something I feel that should be fetched from elsewhere
             on the web. Furthermore, and this one is kinda big: in
-            the EU at least, it's considered a breach of GDPR!
-            Thankfully Google Fonts are open source, and can be
+            the EU at least, it's considered a breach of GDPR to
+            import fonts from Google!
+            Thankfully, Google Fonts are open source, and can be
             downloaded for self hosting.
         </p>
         <p>
             Fonts typically download as TTF format files. TTF, or
             True Type Fonts, are typically what we would use to
-            install a font on as operating system. They will include
+            install a font on an operating system. They will include
             binary information required to render the fonts. While
             we can use TTF's in a web environment, they are bloated
             with unecessary data that a web browser doesn't need in
@@ -153,18 +154,18 @@
         </p>
         <pre class="language-none"><code>cp woff2_compress woff2_decompress ~/.local/bin/</code></pre>
         <p>
-            Once converting your fonts to WOFF2, you can now include
+            After converting your fonts to WOFF2, you can now include
             the files in your project.
         </p>
         <pre class="language-none"><code>assets/
     fonts/
-        my-font.woff2
+        OpenDyslexic3-Regular.woff2
 index.html</code></pre>
         <p>
             In your CSS file, you simply need to create a
             <code>@font-face</code> rule to pull the font into
             your stylesheet. After that, you will be able to
-            use the font with whatever you named as in the
+            use the font with whatever you named it as in the
             <code>font-family</code> attribute of the
             <code>@font-face</code> rule.
         </p>
@@ -183,7 +184,7 @@ body {
             not installed locally on the machine that is viewing
             your web page, it will need to be fetched. You would
             assume, that if it is within the stylesheet, the font
-            would be applied whe the styling rules are applied
+            would be applied when the styling rules are applied
             to the document. For reasons that I am not smart enough
             to understand, this is not the case. I haven't looked
             into it too much, but the web browser doesn't consider
@@ -200,12 +201,13 @@ body {
             becomes available. This means the content in the page
             takes a (very brief) moment longer to load, but it also
             means that it doesn't load in serif before changing to
-            the correct font. Before your CSS, simply include a 
+            the correct font. Before your CSS, simply include another 
             <code>link</code>
             element with the relationship, or <code>rel</code>,
             attribute set to preload.
-            We also need to set the <code>as</code> and <code>type</code>,
-            and include the <code>crossorigin</code> attribute.
+            We also need to set the <code>as</code> and <code>type</code>
+            attributes, and also include the <code>crossorigin</code>
+            attribute.
         </p>
         <pre class="language-html"><code>&lt;link rel="preload" href="/assets/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin /&gt;
 &lt;link rel="stylesheet" href="/assets/styles/style.css"&gt;</code></pre>
@@ -231,7 +233,7 @@ body {
             defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
             serverName: "cactus.chat",
             siteName: "aaronwattsdev",
-            commentSectionId: "" // include comment section id - to correspond to page name
+            commentSectionId: "web-fonts"
         })
     </script>
 

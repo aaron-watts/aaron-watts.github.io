@@ -129,6 +129,43 @@ time {
     width: 3.2em;
 }
 
+nav.breadcrumbs {
+    font-family: monospace;
+    font-weight: bold;
+    color: #ddd;
+    font-size: .9rem;
+    letter-spacing: .09rem;
+}
+nav.breadcrumbs a {
+    text-decoration: none;  
+}
+nav.breadcrumbs .host,
+nav.breadcrumbs .host a,
+nav.breadcrumbs .host a:visited {
+    color: #3787c9;
+}
+nav.breadcrumbs .host a:hover {
+    color: #44a0eb;
+}
+nav.breadcrumbs .path,
+nav.breadcrumbs .path a,
+nav.breadcrumbs .path a:visited {
+    color: #be8ae9;
+}
+nav.breadcrumbs .path a:hover {
+    color: #d7a6ff;
+}
+@media only screen and (max-width: 720px) {
+    nav.breadcrumbs .host a,
+    nav.breadcrumbs .host a:visited {
+        color: #44a0eb;
+    }
+    nav.breadcrumbs .path a,
+    nav.breadcrumbs .path a:visited {
+        color: #d7a6ff;
+    }
+}
+
 footer {
     text-align: center;
     padding-block: 2.5rem 2rem;

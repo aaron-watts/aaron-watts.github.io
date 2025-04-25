@@ -56,25 +56,25 @@ function filterByTopic() {
     if (selected) selected.classList.remove('selected');
 
     const selection = this.innerText;
-    const articles = document.querySelectorAll('.project');
+    const articles = document.querySelectorAll('.article');
 
     if (!selected || selected.innerText !== selection) {
         this.classList.add('selected');
 
-        articles.forEach(project => {
-            project.classList.add('hidden');
+        articles.forEach(article => {
+            article.classList.add('hidden');
 
-            const topics = [...project.children[2].children];
+            const topics = [...article.children[2].children];
             for (let topic of topics) {
                 if (topic.innerText.trim() === selection.trim()) {
-                    project.classList.remove('hidden');
+                    article.classList.remove('hidden');
                 }
             }
         });
     } else {
         this.classList.remove('selected');
 
-        articles.forEach(project => project.classList.remove('hidden'));
+        articles.forEach(article => article.classList.remove('hidden'));
     }
 
 };

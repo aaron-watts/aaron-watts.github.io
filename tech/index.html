@@ -1,153 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="All projects for the AaronWattsDev
-    website." name="description"/>
-  <title>
-   AWD - Projects
-  </title>
-  <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-  <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
-  <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
-  <link href="/site.webmanifest" rel="manifest"/>
-  <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="Aaron Watts Dev RSS Feed" type="application/rss+xml"/>
-  <link href="/assets/styles/style.css" rel="stylesheet"/>
- </head>
- <body>
-  <header>
-    <nav class="breadcrumbs">
-        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-        class="path">/tech $</span>
-    </nav>
-   <div class="rss-container">
-    <a href="https://aaronwatts.dev/tech/feed.xml">
-     <img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
-    </a>
-   </div>
-  </header>
-  <h1>
-   Technology
-  </h1>
-  <div>
-    Tech today is a daunting minefield. When I choose my tech,
-    be it hardware or software, I try to choose technology
-    that I consider to be <em>thoughful</em>. I praise tech
-    that is affordable, ethical, and most of all useful.
-    Here I will write about some of my choices of tech and
-    talk about why I consider it to be <em>thoughtful</em>.
-    This is not to convince you to buy things, I am writing
-    here just to express what I believe to be good tech, and
-    hopefully others will learn something new or feel provoked
-    to think more about what tech they use day to day.
-  </div>
-  <p class="note">
-   Filter by topic:
-  </p>
-  <search id="topic-list--container">
-   <ul class="topic-truncate" id="topic-list">
-   </ul>
-  </search>
-  <noscript class="note">
-   This page does have some search features to make
-    finding stuff easier if you were to enable script ...
-    no pressure.
-  </noscript>
-  <main>
 
-  </main>
-  <footer>
-   <div>
-    Made by Hand. Powered by
-   </div>
-   <a href="https://pages.github.com/" target="_blank">
-    <img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
-   </a>
-  </footer>
-  <script>
-   const populateTopics = () => {
-            const isOverflow = ({clientHeight, scrollHeight}) => {
-                return scrollHeight > clientHeight;
-            };
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="All projects for the AaronWattsDev
+    website." name="description" />
+    <title>
+        AWD - Projects
+    </title>
+    <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+    <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+    <link href="/site.webmanifest" rel="manifest" />
+    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="Aaron Watts Dev RSS Feed"
+        type="application/rss+xml" />
+    <link href="/assets/styles/style.css" rel="stylesheet" />
+</head>
 
-            const makeTopicTag = (topicName) => {
-                const topic = document.createElement('ul');
-                topic.classList.add('topic');
-                topic.innerText = topicName;
-                topic.addEventListener('click', filterByTopic);
-                return topic;
-            };
+<body>
+    <header>
+        <nav class="breadcrumbs">
+            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span class="path">/tech $</span>
+        </nav>
+        <div class="rss-container">
+            <a href="https://aaronwatts.dev/tech/feed.xml">
+                <img alt="RSS feed" class="rss-icon" src="/images/rss.svg" />
+            </a>
+        </div>
+    </header>
+    <h1>
+        Technology
+    </h1>
+    <div>
+        Tech today is a daunting minefield. When I choose my tech,
+        be it hardware or software, I try to choose technology
+        that I consider to be <em>thoughful</em>. I praise tech
+        that is affordable, ethical, and most of all useful.
+        Here I will write about some of my choices of tech and
+        talk about why I consider it to be <em>thoughtful</em>.
+        This is not to convince you to buy things, I am writing
+        here just to express what I believe to be good tech, and
+        hopefully others will learn something new or feel provoked
+        to think more about what tech they use day to day.
+    </div>
+    <p class="note">
+        Filter by topic:
+    </p>
+    <search id="topic-list--container">
+        <ul class="topic-truncate" id="topic-list">
+        </ul>
+    </search>
+    <noscript class="note">
+        This page does have some search features to make
+        finding stuff easier if you were to enable script ...
+        no pressure.
+    </noscript>
+    <main>
+        <div class="project">
+            <h2>
+                Fairphone - Smartphone
+            </h2>
+            <time datetime="2025-04-05">
+                5th April, 2025
+            </time>
+            <ul class="topic-container">
+                <li class="topic">
+                    fairphone
+                </li>
+                <li class="topic">
+                    smartphone
+                </li>
+                <li class="topic">
+                    android
+                </li>
+                <li class="topic">
+                    diy
+                </li>
+                <li class="topic">
+                    repair
+                </li>
+            </ul>
+            <a href="/tech/fairphone">
+                Go to article
+            </a>
+            <p class="description">
+                Fairphone, based in Netherlands, brings something
+            back to smartphones that most people don't even
+            realise is missing. Their approach aims to promote
+            user ownership of a device, and longevity.
+            </p>
+        </div>
+    </main>
+    <footer>
+        <div>
+            Made by Hand. Powered by
+        </div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img alt="https://pages.github.com/" src="/images/githubpages.svg" />
+        </a>
+    </footer>
+    <script src="/assets/scripts/populateTopics.js"></script>
+</body>
 
-            const makeButton = () => {
-                const showBtn = document.createElement('button');
-                showBtn.innerText = 'Show more';
-                showBtn.classList.add('hidden');
-                showBtn.addEventListener('click', () => {
-                    topicList.classList.toggle('topic-truncate');
-                    showBtn.innerText == 'Show more' ? 
-                    showBtn.innerText = 'Show less' : 
-                    showBtn.innerText = 'Show more';
-                });
-                return showBtn;
-            }
-
-            const topicContainer = document.querySelector('#topic-list--container');
-            const topicList = document.querySelector('#topic-list');
-            const topics = [
-                ...new Set(
-                    [...document.querySelectorAll('.topic')]
-                        .map(i => i.innerText)
-                )
-            ].sort();
-
-            topics.forEach(topicName => {
-                topicList.appendChild(makeTopicTag(topicName));
-            });
-
-            const showBtn = makeButton();
-            topicContainer.appendChild(showBtn);
-
-            window.addEventListener('resize', function() {
-                if (isOverflow(topicList) || topicList.clientHeight > window.innerHeight * .2) {
-                    showBtn.classList.remove('hidden');
-                } else showBtn.classList.add('hidden')
-            }, true)
-
-            if (isOverflow(topicList)) {
-                showBtn.classList.remove('hidden');
-            } 
-        };
-
-        function filterByTopic() {
-            const selected = document.querySelector('#topic-list>.topic.selected');
-            if (selected) selected.classList.remove('selected');
-
-            const selection = this.innerText;
-            const projects = document.querySelectorAll('.project');
-
-            if (!selected || selected.innerText !== selection) {
-                this.classList.add('selected');
-
-                projects.forEach(project => {
-                    project.classList.add('hidden');
-
-                    const topics = [...project.children[2].children];
-                    for (let topic of topics) {
-                        if (topic.innerText.trim() === selection.trim()) {
-                            project.classList.remove('hidden');
-                        }
-                    }
-                });
-            } else {
-                this.classList.remove('selected');
-
-                projects.forEach(project => project.classList.remove('hidden'));
-            }
-
-        };
-
-        document.addEventListener('DOMContentLoaded', populateTopics);
-  </script>
- </body>
 </html>

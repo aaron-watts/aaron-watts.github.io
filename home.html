@@ -3,7 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="All projects for the AaronWattsDev
+  <meta content="Home page for the AaronWattsDev
     website." name="description"/>
   <title>
    AWD - Projects
@@ -30,50 +30,24 @@
   <h1>
    Hello, World!
   </h1>
-  <div>
-   Description
-  </div>
   <main>
-   <h2>Projects</h2>
-   <div></div>
-   <h3>Latest</h3>
-   <div class="project">
-    <h2>
-     Web Fonts
-    </h2>
-    <time datetime="2025-04-05">
-     5th April, 2025
-    </time>
-    <ul class="topic-container">
-     <li class="topic">
-      webdev
-     </li>
-     <li class="topic">
-      fonts
-     </li>
-     <li class="topic">
-      web fonts
-     </li>
-     <li class="topic">
-      css
-     </li>
-     <li class="topic">
-      html
-     </li>
-     <li class="topic">
-      gdpr
-     </li>
-    </ul>
-    <a href="/projects/web-fonts">
-     Go to project
-    </a>
-    <p class="description">
-     If you've ever used an older or lower spec device, or had a slow connection on a public wifi network, you may have noticed the fonts on a web page get loaded after the content and layout. Most of the time this is virtually unnoticable, but once you've seen it, as with most things traumatic, it is hard to unsee it. But there are a few steps we can take to mitigate this from happening.
-    </p>
-   </div>
+   <h2>Guides</h2>
+   <a href="/guides">Go to guides</a>
+   <p>
+    Some guides on things that I have worked on where resources are
+    either hard to find or scattered. You might save yourself some
+    time or learn something new if you're working on anything that
+    comes up in this section.
+   </p>
    <h2>Tech</h2>
-   <div></div>
-   <h3>Latest</h3>
+   <a href="/tech">Go to tech</a>
+   <p>
+    Technology that I consider to be <em>thoughtful</em>, where
+    there are more meaningful priorities than exponential
+    growth and high profit margins.
+   </p>
+   <h2>Latest</h2>
+
   </main>
   <footer>
    <div>
@@ -83,89 +57,5 @@
     <img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
    </a>
   </footer>
-  <script>
-   const populateTopics = () => {
-            const isOverflow = ({clientHeight, scrollHeight}) => {
-                return scrollHeight > clientHeight;
-            };
-
-            const makeTopicTag = (topicName) => {
-                const topic = document.createElement('ul');
-                topic.classList.add('topic');
-                topic.innerText = topicName;
-                topic.addEventListener('click', filterByTopic);
-                return topic;
-            };
-
-            const makeButton = () => {
-                const showBtn = document.createElement('button');
-                showBtn.innerText = 'Show more';
-                showBtn.classList.add('hidden');
-                showBtn.addEventListener('click', () => {
-                    topicList.classList.toggle('topic-truncate');
-                    showBtn.innerText == 'Show more' ? 
-                    showBtn.innerText = 'Show less' : 
-                    showBtn.innerText = 'Show more';
-                });
-                return showBtn;
-            }
-
-            const topicContainer = document.querySelector('#topic-list--container');
-            const topicList = document.querySelector('#topic-list');
-            const topics = [
-                ...new Set(
-                    [...document.querySelectorAll('.topic')]
-                        .map(i => i.innerText)
-                )
-            ].sort();
-
-            topics.forEach(topicName => {
-                topicList.appendChild(makeTopicTag(topicName));
-            });
-
-            const showBtn = makeButton();
-            topicContainer.appendChild(showBtn);
-
-            window.addEventListener('resize', function() {
-                if (isOverflow(topicList) || topicList.clientHeight > window.innerHeight * .2) {
-                    showBtn.classList.remove('hidden');
-                } else showBtn.classList.add('hidden')
-            }, true)
-
-            if (isOverflow(topicList)) {
-                showBtn.classList.remove('hidden');
-            } 
-        };
-
-        function filterByTopic() {
-            const selected = document.querySelector('#topic-list>.topic.selected');
-            if (selected) selected.classList.remove('selected');
-
-            const selection = this.innerText;
-            const projects = document.querySelectorAll('.project');
-
-            if (!selected || selected.innerText !== selection) {
-                this.classList.add('selected');
-
-                projects.forEach(project => {
-                    project.classList.add('hidden');
-
-                    const topics = [...project.children[2].children];
-                    for (let topic of topics) {
-                        if (topic.innerText.trim() === selection.trim()) {
-                            project.classList.remove('hidden');
-                        }
-                    }
-                });
-            } else {
-                this.classList.remove('selected');
-
-                projects.forEach(project => project.classList.remove('hidden'));
-            }
-
-        };
-
-        document.addEventListener('DOMContentLoaded', populateTopics);
-  </script>
  </body>
 </html>

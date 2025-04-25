@@ -3,36 +3,36 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="All projects for the AaronWattsDev
+  <meta content="All guides for the AaronWattsDev
     website." name="description"/>
   <title>
-   AWD - Projects
+   AWD - Guides
   </title>
   <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
   <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
   <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
   <link href="/site.webmanifest" rel="manifest"/>
-  <link href="https://aaronwatts.dev/projects/feed.xml" rel="alternate" title="Aaron Watts Dev RSS Feed" type="application/rss+xml"/>
+  <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="Aaron Watts Dev RSS Feed" type="application/rss+xml"/>
   <link href="/assets/styles/style.css" rel="stylesheet"/>
  </head>
  <body>
   <header>
     <nav class="breadcrumbs">
         <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-        class="path">/projects $</span>
+        class="path">/guides $</span>
     </nav>
    <div class="rss-container">
-    <a href="https://aaronwatts.dev/projects/feed.xml">
+    <a href="https://aaronwatts.dev/guides/feed.xml">
      <img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
     </a>
    </div>
   </header>
   <h1>
-   Projects
+   Guides
   </h1>
   <div>
    I like to play with computers as a hobby. This is a collection
-   of projects I have completed as well as useful research for
+   of guides I have completed as well as useful research for
    others with an interest in development. Rather than a 
    <em>how to</em> for every single project I've ever worked on,
    I have tried to focus on the things where there wasn't a
@@ -81,7 +81,7 @@
       gdpr
      </li>
     </ul>
-    <a href="/projects/web-fonts">
+    <a href="/guides/web-fonts">
      Go to project
     </a>
     <p class="description">
@@ -106,7 +106,7 @@
       python
      </li>
     </ul>
-    <a href="/projects/watchy">
+    <a href="/guides/watchy">
      Go to project
     </a>
     <p class="description">
@@ -137,7 +137,7 @@
       streaming
      </li>
     </ul>
-    <a href="/projects/firefox-web-apps">
+    <a href="/guides/firefox-web-apps">
      Go to project
     </a>
     <p class="description">
@@ -168,7 +168,7 @@
       javascript
      </li>
     </ul>
-    <a href="/projects/google-calendar-appscript-api">
+    <a href="/guides/google-calendar-appscript-api">
      Go to project
     </a>
     <p class="description">
@@ -196,7 +196,7 @@
       python
      </li>
     </ul>
-    <a href="/projects/github-pages-static-website">
+    <a href="/guides/github-pages-static-website">
      Go to project
     </a>
     <p class="description">
@@ -224,7 +224,7 @@
       daily driver
      </li>
     </ul>
-    <a href="/projects/pi5-desktop">
+    <a href="/guides/pi5-desktop">
      Go to project
     </a>
     <p class="description">
@@ -255,7 +255,7 @@
       handheld
      </li>
     </ul>
-    <a href="/projects/gpicase">
+    <a href="/guides/gpicase">
      Go to project
     </a>
     <p class="description">
@@ -289,7 +289,7 @@
       wiimote
      </li>
     </ul>
-    <a href="/projects/retropie-nespi-4">
+    <a href="/guides/retropie-nespi-4">
      Go to project
     </a>
     <p class="description">
@@ -320,7 +320,7 @@
       gpio
      </li>
     </ul>
-    <a href="/projects/media-keyboard">
+    <a href="/guides/media-keyboard">
      Go to project
     </a>
     <p class="description">
@@ -351,7 +351,7 @@
       streaming
      </li>
     </ul>
-    <a href="/projects/kde-plasma-bigscreen">
+    <a href="/guides/kde-plasma-bigscreen">
      Go to project
     </a>
     <p class="description">
@@ -367,89 +367,6 @@
     <img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
    </a>
   </footer>
-  <script>
-   const populateTopics = () => {
-            const isOverflow = ({clientHeight, scrollHeight}) => {
-                return scrollHeight > clientHeight;
-            };
-
-            const makeTopicTag = (topicName) => {
-                const topic = document.createElement('ul');
-                topic.classList.add('topic');
-                topic.innerText = topicName;
-                topic.addEventListener('click', filterByTopic);
-                return topic;
-            };
-
-            const makeButton = () => {
-                const showBtn = document.createElement('button');
-                showBtn.innerText = 'Show more';
-                showBtn.classList.add('hidden');
-                showBtn.addEventListener('click', () => {
-                    topicList.classList.toggle('topic-truncate');
-                    showBtn.innerText == 'Show more' ? 
-                    showBtn.innerText = 'Show less' : 
-                    showBtn.innerText = 'Show more';
-                });
-                return showBtn;
-            }
-
-            const topicContainer = document.querySelector('#topic-list--container');
-            const topicList = document.querySelector('#topic-list');
-            const topics = [
-                ...new Set(
-                    [...document.querySelectorAll('.topic')]
-                        .map(i => i.innerText)
-                )
-            ].sort();
-
-            topics.forEach(topicName => {
-                topicList.appendChild(makeTopicTag(topicName));
-            });
-
-            const showBtn = makeButton();
-            topicContainer.appendChild(showBtn);
-
-            window.addEventListener('resize', function() {
-                if (isOverflow(topicList) || topicList.clientHeight > window.innerHeight * .2) {
-                    showBtn.classList.remove('hidden');
-                } else showBtn.classList.add('hidden')
-            }, true)
-
-            if (isOverflow(topicList)) {
-                showBtn.classList.remove('hidden');
-            } 
-        };
-
-        function filterByTopic() {
-            const selected = document.querySelector('#topic-list>.topic.selected');
-            if (selected) selected.classList.remove('selected');
-
-            const selection = this.innerText;
-            const projects = document.querySelectorAll('.project');
-
-            if (!selected || selected.innerText !== selection) {
-                this.classList.add('selected');
-
-                projects.forEach(project => {
-                    project.classList.add('hidden');
-
-                    const topics = [...project.children[2].children];
-                    for (let topic of topics) {
-                        if (topic.innerText.trim() === selection.trim()) {
-                            project.classList.remove('hidden');
-                        }
-                    }
-                });
-            } else {
-                this.classList.remove('selected');
-
-                projects.forEach(project => project.classList.remove('hidden'));
-            }
-
-        };
-
-        document.addEventListener('DOMContentLoaded', populateTopics);
-  </script>
+  <script src="/assets/scripts/populateTopics.js"></script>
  </body>
 </html>

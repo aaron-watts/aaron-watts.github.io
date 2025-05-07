@@ -8,7 +8,7 @@
     <category>Technology</category>
     <item>
       <title>Web Fonts</title>
-      <link>/guides/web-fonts</link>
+      <link>https://aaronwatts.dev/guides/web-fonts</link>
       <pubDate>Sat, 05 Apr 2025 08:00:00 GMT</pubDate>
       <description>If you've ever used an older or lower spec device, or had a slow connection on a public wifi network, you may have noticed the fonts on a web page get loaded after the content and layout. Most of the time this is virtually unnoticable, but once you've seen it, as with most things traumatic, it is hard to unsee it. But there are a few steps we can take to mitigate this from happening.</description>
       <guid>https://aaronwatts.dev/guides/web-fonts</guid>
@@ -32,7 +32,7 @@ make
     </item>
     <item>
       <title>Watchy - Arduino IDE</title>
-      <link>/guides/watchy</link>
+      <link>https://aaronwatts.dev/guides/watchy</link>
       <pubDate>Sun, 25 Aug 2024 08:00:00 GMT</pubDate>
       <description>I didn't intend to write an article about Watchy, as I only bought it to satisfy my nerd fetish. But after the trouble I had getting it to work, I thought I might write a short guide to assist anyone who might run into some of the same issues I did.</description>
       <guid>https://aaronwatts.dev/guides/watchy</guid>
@@ -56,7 +56,7 @@ make
     </item>
     <item>
       <title>Firefox Web Apps - Plasma Bigscreen</title>
-      <link>/guides/firefox-web-apps</link>
+      <link>https://aaronwatts.dev/guides/firefox-web-apps</link>
       <pubDate>Thu, 22 Aug 2024 08:00:00 GMT</pubDate>
       <description>With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps.</description>
       <guid>https://aaronwatts.dev/guides/firefox-web-apps</guid>
@@ -80,7 +80,7 @@ make
     </item>
     <item>
       <title>Google Calendar API - Apps Script</title>
-      <link>/guides/google-calendar-appscript-api</link>
+      <link>https://aaronwatts.dev/guides/google-calendar-appscript-api</link>
       <pubDate>Fri, 21 Jun 2024 08:00:00 GMT</pubDate>
       <description>Considering how long they've been around, working with iCal's in the browser is surprisingly difficult. When working with data from Google Calendar, we can use Google's Apps Script to create an API, that will let us pull exactly what we desire down from a Google Calendar.</description>
       <guid>https://aaronwatts.dev/guides/google-calendar-appscript-api</guid>
@@ -104,7 +104,7 @@ make
     </item>
     <item>
       <title>Static Website - Github Pages</title>
-      <link>/guides/github-pages-static-website</link>
+      <link>https://aaronwatts.dev/guides/github-pages-static-website</link>
       <pubDate>Sun, 09 Jun 2024 08:00:00 GMT</pubDate>
       <description>You don't always need a full stack. When all you need to do is show information, a static website is enough. And with Github Pages, it is possible to have a fully functioning website for free, just like this one! It could just be the perfect solution for your portfolio page.</description>
       <guid>https://aaronwatts.dev/guides/github-pages-static-website</guid>
@@ -128,7 +128,7 @@ make
     </item>
     <item>
       <title>Raspberry Pi 5 - Desktop Computer</title>
-      <link>/guides/pi5-desktop</link>
+      <link>https://aaronwatts.dev/guides/pi5-desktop</link>
       <pubDate>Fri, 31 May 2024 08:00:00 GMT</pubDate>
       <description>This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.</description>
       <guid>https://aaronwatts.dev/guides/pi5-desktop</guid>
@@ -152,7 +152,7 @@ make
     </item>
     <item>
       <title>GPi Case 2 - Compute Module 4</title>
-      <link>/guides/gpicase</link>
+      <link>https://aaronwatts.dev/guides/gpicase</link>
       <pubDate>Sun, 28 Apr 2024 08:00:00 GMT</pubDate>
       <description>The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.</description>
       <guid>https://aaronwatts.dev/guides/gpicase</guid>
@@ -176,7 +176,7 @@ make
     </item>
     <item>
       <title>RetroPie - RetroFlag NesPi 4 Case</title>
-      <link>/guides/retropie-nespi-4</link>
+      <link>https://aaronwatts.dev/guides/retropie-nespi-4</link>
       <pubDate>Tue, 23 Apr 2024 08:00:00 GMT</pubDate>
       <description>The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Low power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?</description>
       <guid>https://aaronwatts.dev/guides/retropie-nespi-4</guid>
@@ -200,7 +200,7 @@ make
     </item>
     <item>
       <title>Media Keyboard - Pico Controller</title>
-      <link>/guides/media-keyboard</link>
+      <link>https://aaronwatts.dev/guides/media-keyboard</link>
       <pubDate>Sun, 14 Apr 2024 08:00:00 GMT</pubDate>
       <description>My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.</description>
       <guid>https://aaronwatts.dev/guides/media-keyboard</guid>
@@ -224,7 +224,7 @@ make
     </item>
     <item>
       <title>KDE Plasma Bigscreen - Raspberry Pi 4</title>
-      <link>/guides/kde-plasma-bigscreen</link>
+      <link>https://aaronwatts.dev/guides/kde-plasma-bigscreen</link>
       <pubDate>Tue, 02 Apr 2024 08:00:00 GMT</pubDate>
       <description>I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.</description>
       <guid>https://aaronwatts.dev/guides/kde-plasma-bigscreen</guid>

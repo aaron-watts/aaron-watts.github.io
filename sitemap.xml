@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aaronwatts.dev</loc>
+    <loc>https://aaronwatts.dev/</loc>
   </url>
   <url>
     <loc>https://aaronwatts.dev/home</loc>
   </url>
   <url>
-    <loc>https://aaronwatts.dev/guides</loc>
+    <loc>https://aaronwatts.dev/guides/</loc>
   </url>
   <url>
     <loc>https://aaronwatts.dev/guides/github-pages-static-website</loc>
@@ -40,9 +40,12 @@
     <loc>https://aaronwatts.dev/guides/watchy</loc>
   </url>
   <url>
-    <loc>https://aaronwatts.dev/tech</loc>
+    <loc>https://aaronwatts.dev/tech/</loc>
   </url>
   <url>
     <loc>https://aaronwatts.dev/tech/fairphone</loc>
+  </url>
+  <url>
+    <loc>https://aaronwatts.dev/tech/kobo-ereader</loc>
   </url>
 </urlset>

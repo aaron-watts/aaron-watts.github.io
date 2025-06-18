@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guide to a feature rich blog-type rss feed
+    with good aggregator compatibility">
+    <meta name="keywords" content="webdev, xml, python">
+    <title>AWD - RSS Feeds</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
+    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+</head>
+<body>
+    <header>
+        <nav class="breadcrumbs">
+            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+            class="path">/<a href="/guides">guides</a>/rss-feeds
+            $</span>
+        </nav>
+        <div class="rss-container">
+            <a href="/rss">
+                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#feature-rich">A Feature Rich Feed</a></li>
+            <li><a href="#namespaces">Namespaces</a></li>
+            <li><a href="#atom">Atom</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#content">Content</a></li>
+            <li><a href="#guid">GUID</a></li>
+            <li><a href="#automation">Python Automation</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>RSS Feeds</h1>
+        <time datetime="2025-06-18">18<sup>th</sup> June, 2025</time>
+        <img src="/images/guides/rss-feeds.jpg"
+        alt="An RSS feed displayed as raw HTML inside a web browser">
+        <p id="intro">
+            RSS isn't really womething you heard spoken about too often. But for
+            us nerds, it's an indisposable technology. And thankfully, it still gets
+            used. Most of the time, if you need an RSS feed for content you've made,
+            the software you've used to make said content has probably already done
+            it for you, you might need not even know. But if you had to make one
+            yourself, would you know how?
+        </p>
+        <p>
+            The docs at the <a href="https://www.rssboard.org/" 
+            target="_blank">RSS Advisory Board</a> are ... confusing, to a newcomer.
+            Also, if you try to learn by looking at other website's feeds, it
+            doesn't really work as every single feed is built differently from the
+            last. And not to achieve new objectives, mind you. But I have been exploring
+            the technology a little, and I think I've worked out a relatively simple
+            formula to have a feature rich RSS feed (for something like a blog at least)
+            that should work across most, if not all, RSS feed aggregators.
+        </p>
+
+        <h2 id="feature-rich">A Feature Rich Feed</h2>
+        <p>
+            I previously touched on RSS Feeds in my article about
+            <a href="/guides/github-pages-static-website"
+            target="_blank">Github Pages static websites</a>, where I put together
+            a simple python script to build the RSS feed for this site, among other
+            things. Since then, this website has grown a little, as has the feed.
+            Back then, the feed was already handling atom, as well as including
+            media images. But the most important featur was missing: the
+            <em>content</em>.
+        </p>
+        <p>
+            The best thing about RSS, in my opinion, is being able to read full news
+            articles without ads and pop-ups suggesting that you subscribe or set
+            your cookie permissions. Other feeds often use something called
+            CDATA, but that didn't mix well with the python XML module
+            that I was using. Luckily, I soon worked out that the content namespace
+            included an encoded element, and it turned out this did exactly what I
+            needed it to. Without CDATA, you can use pure html within the element
+            for it to be displayed in it's document form in RSS feed readers. To
+            that means, if you write a blog, or articles, you can include the entire
+            html within that tag (provided you are not relying too heavily in CSS
+            or JavaScript trickery). Here is the current layout of my RSS feeds:
+        </p>
+        <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/"&gt;
+    &lt;channel&gt;
+        &lt;atom:link href="https://aaronwatts.dev/guides/feed.xml" rel="self" type="applications/rss+xml" /&gt;
+        &lt;title&gt;AaronWattsDev Latest&lt;/title&gt;
+        &lt;link&gt;https://aaronwatts.dev/guides&lt;/link&gt;
+        &lt;description&gt;The most recent content on AaronWattsDev&lt;/description&gt;
+        &lt;category&gt;Technology&lt;/category&gt;
+        &lt;item&gt;
+            &lt;title&gt;Web Fonts&lt;/title&gt;
+            &lt;link&gt;https://aaronwatts.dev/guides/web-fonts&lt;/link&gt;
+            &lt;pubDate&gt;Sat, 05 Apr 2025 08:00:00 GMT&lt;/pubDate&gt;
+            &lt;description&gt;
+                Into paragraph goes here
+            &lt;/description&gt;
+            &lt;guid&gt;https://aaronwatts.dev/guides/web-fonts&lt;/guid&gt;
+            &lt;content:encoded&gt;
+                Entire article in escaped HTML goes here
+            &lt;/content:encoded&gt;
+            &lt;enclosure url="https://aaronwatts.dev/images/guides/web-fonts.jpg" length="0" type="image/jpeg" /&gt;
+            &lt;media:thumbnail url="https://aaronwatts.dev/images/guides/web-fonts.jpg" width="1920" height="1080" /&gt;
+            &lt;media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/web-fonts.jpg" /&gt;
+        &lt;/item&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;</code></pre>
+
+        <h2 id="namespaces">Namespaces</h2>
+        <p>
+            If you're familiar with XML, then you already know that namespaces let
+            us extend an XML document with tags that aren't already included within
+            the specification (in this case, RSS) that we are already using. In this
+            feed I have included the namespaces for
+            <a href="http://www.w3.org/2005/Atom" target="_blank">Atom</a>,
+            <a href="http://search.yahoo.com/mrss/" target="_blank">Media</a> and
+            <a href="http://purl.org/rss/1.0/modules/content/" target="_blank">Content</a>.
+        </p>
+        <h2 id="atom">Atom</h2>
+        <p>
+            Atom is another XML feed specification. Without divulging in too much history,
+            it was a new (at the time) XML feed specification that was different from RSS,
+            but by including it's namespace in our RSS feed, and atom:link-ing the feed
+            to itself (which shows as an error in RSS validators, but is also encouraged
+            by the RSS Board - I told you RSS is confusing), our RSS feed also becomes a
+            valid Atom feed. Just put it through an Atom validator to see for yourself.
+        </p>
+        <h2 id="media">Media</h2>
+        <p>
+            The Media namespace lets us include media images. The enclosure element
+            built into the RSS spec also does that, but not every RSS reader will show
+            an enclosure image. Media has a much higher success rate, although while
+            testing different aggregators, I have found that Media also doesn't work
+            with certain readers. There are other ways to show images, but so far I
+            have found that this combination will meet protocol for most, if not all,
+            RSS aggregators.
+        </p>
+        <h2 id="content">Content</h2>
+        <p>
+            The Content namespace lets us include, well, content. The docs for it
+            seem to show CDATA elements, and a lot of RSS feeds outthere do just that.
+            However, I have found that escaped HTML works fine if you just drop it
+            inside the <code>content:encoded</code> element. I haven't found an aggregator
+            yet that doesn't display it, but with the fast and loose rules to RSS, I
+            am sure that said aggregator exists.
+        </p>
+        <h2 id="dates">Dates</h2>
+        <p>
+            I'm only using pubDate in my feed, there are a few other useful elements
+            that are date typed depending on what you are trying to acheive. Dates
+            are RFC 822 format. What does that mean?? Eventually I found out through
+            using an RSS validator, and it does appear to be included in the RSS Board
+            docs now (I'm convinced it wasnt' before, but I could be unobservant and
+            wrong). It means that dates should be formatted like so:
+        </p>
+        <pre class="language-none"><code>Sat, 07 Sep 2002 09:42:31 GMT</code></pre>
+        <h2 id="guid">GUID</h2>
+        <p>
+            GUID stands for Globally Uniquie Identifier. Aggregators use this to
+            check if an RSS item is new. I try to avoid mistakes when I can, but if
+            I need to go back and fix a typo, this element will preventing aggregators
+            from fetching the item a second time. I tend to just use the url path
+            for the article, as it is the only article that will ever have that exact
+            url.
+        </p>
+        <h2 id="automation">Python Automation</h2>
+        <p>
+            I won't go into a lot of detail here, as most of it will already be
+            covered in the previous article about <a href="/guides/github-pages-static-website"
+            target="_blank">Github Pages Static Websites</a>, but there was a little
+            trial and error invloved with getting the pre elements to format correctly
+            in the content encoded RSS elements. Also relative links all needed to
+            be replaced with absolute links, and as a bonus I'll include the date
+            formatting, even though we both know you could have worked that out
+            for yourself pretty easily.
+        </p>
+        <p>
+            Here is the python function to format the content encoded HTML.
+            It prefers to put everything on one line, except for pre elements
+            as they need to include line breaks to be displayed correctly.
+        </p>
+        <pre class="language-python"><code>'''
+format_main_content will remove new lines from html elements
+except for pre elements where it will preserve them
+'''
+def format_main_content(content):
+    content_str = ''
+    for child in content.children:
+        if child.name == 'pre':
+            content_str += str(child)
+        else:
+            content_str += ' '.join(str(child).split())
+    return content_str
+
+'''
+format_main_content is called when scraping the files with
+the BeautifulSoup module
+'''
+main_element = article_soup.select_one('main')
+content = format_main_content(main_element)
+
+articles.append({
+    'content': content
+})
+
+'''
+Finally I need to explicitly remove those new lines,
+the previous formatting will stop any issues with pre
+elements, and finally all relative links are replaced
+with absolute links
+'''
+str(article['content'])
+.strip()
+.replace('\\n', '')
+.replace('="/', '="https://aaronwatts.dev/')</code></pre>
+        <p>
+            The date formatting is pretty straightforward. I don't include
+            a time so I just add an arbitrary one in.
+        </p>
+        <pre class="language-python"><code>'''
+I use a time element for the published date
+'''
+html_date = article_soup.select_one('time')
+article_date = date.fromisoformat(html_date['datetime'])
+formatted_date = article_date.strftime('%a, %d %b %Y')
+
+articles.append({
+    'formatted_date' : formatted_date + ' 08:00:00 GMT',
+})</code></pre>
+    </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+    <noscript class="note">
+        Enable JavaScript to join in the conversation!
+    </noscript>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "rss-feeds"
+        })
+    </script>
+
+    <footer>
+        <div>Made by Hand. Powered by</div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img src="/images/githubpages.svg" 
+            alt="https://pages.github.com/">
+        </a>
+    </footer>
+
+    <script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

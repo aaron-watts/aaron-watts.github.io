@@ -7,6 +7,83 @@
     <description>The most recent content on AaronWattsDev</description>
     <category>Technology</category>
     <item>
+      <title>RSS Feeds</title>
+      <link>https://aaronwatts.dev/guides/rss-feeds</link>
+      <pubDate>Wed, 18 Jun 2025 08:00:00 GMT</pubDate>
+      <description>RSS isn't really womething you heard spoken about too often. But for us nerds, it's an indisposable technology. And thankfully, it still gets used. Most of the time, if you need an RSS feed for content you've made, the software you've used to make said content has probably already done it for you, you might need not even know. But if you had to make one yourself, would you know how?</description>
+      <guid>https://aaronwatts.dev/guides/rss-feeds</guid>
+      <content:encoded>&lt;h1&gt;RSS Feeds&lt;/h1&gt;&lt;time datetime="2025-06-18"&gt;18&lt;sup&gt;th&lt;/sup&gt; June, 2025&lt;/time&gt;&lt;img alt="An RSS feed displayed as raw HTML inside a web browser" src="https://aaronwatts.dev/images/guides/rss-feeds.jpg"/&gt;&lt;p id="intro"&gt; RSS isn't really womething you heard spoken about too often. But for us nerds, it's an indisposable technology. And thankfully, it still gets used. Most of the time, if you need an RSS feed for content you've made, the software you've used to make said content has probably already done it for you, you might need not even know. But if you had to make one yourself, would you know how? &lt;/p&gt;&lt;p&gt; The docs at the &lt;a href="https://www.rssboard.org/" target="_blank"&gt;RSS Advisory Board&lt;/a&gt; are ... confusing, to a newcomer. Also, if you try to learn by looking at other website's feeds, it doesn't really work as every single feed is built differently from the last. And not to achieve new objectives, mind you. But I have been exploring the technology a little, and I think I've worked out a relatively simple formula to have a feature rich RSS feed (for something like a blog at least) that should work across most, if not all, RSS feed aggregators. &lt;/p&gt;&lt;h2 id="feature-rich"&gt;A Feature Rich Feed&lt;/h2&gt;&lt;p&gt; I previously touched on RSS Feeds in my article about &lt;a href="https://aaronwatts.dev/guides/github-pages-static-website" target="_blank"&gt;Github Pages static websites&lt;/a&gt;, where I put together a simple python script to build the RSS feed for this site, among other things. Since then, this website has grown a little, as has the feed. Back then, the feed was already handling atom, as well as including media images. But the most important featur was missing: the &lt;em&gt;content&lt;/em&gt;. &lt;/p&gt;&lt;p&gt; The best thing about RSS, in my opinion, is being able to read full news articles without ads and pop-ups suggesting that you subscribe or set your cookie permissions. Other feeds often use something called CDATA, but that didn't mix well with the python XML module that I was using. Luckily, I soon worked out that the content namespace included an encoded element, and it turned out this did exactly what I needed it to. Without CDATA, you can use pure html within the element for it to be displayed in it's document form in RSS feed readers. To that means, if you write a blog, or articles, you can include the entire html within that tag (provided you are not relying too heavily in CSS or JavaScript trickery). Here is the current layout of my RSS feeds: &lt;/p&gt;&lt;pre class="language-xml"&gt;&lt;code&gt;&amp;lt;?xml version='1.0' encoding='UTF-8'?&amp;gt;
+&amp;lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/"&amp;gt;
+    &amp;lt;channel&amp;gt;
+        &amp;lt;atom:link href="https://aaronwatts.dev/guides/feed.xml" rel="self" type="applications/rss+xml" /&amp;gt;
+        &amp;lt;title&amp;gt;AaronWattsDev Latest&amp;lt;/title&amp;gt;
+        &amp;lt;link&amp;gt;https://aaronwatts.dev/guides&amp;lt;/link&amp;gt;
+        &amp;lt;description&amp;gt;The most recent content on AaronWattsDev&amp;lt;/description&amp;gt;
+        &amp;lt;category&amp;gt;Technology&amp;lt;/category&amp;gt;
+        &amp;lt;item&amp;gt;
+            &amp;lt;title&amp;gt;Web Fonts&amp;lt;/title&amp;gt;
+            &amp;lt;link&amp;gt;https://aaronwatts.dev/guides/web-fonts&amp;lt;/link&amp;gt;
+            &amp;lt;pubDate&amp;gt;Sat, 05 Apr 2025 08:00:00 GMT&amp;lt;/pubDate&amp;gt;
+            &amp;lt;description&amp;gt;
+                Into paragraph goes here
+            &amp;lt;/description&amp;gt;
+            &amp;lt;guid&amp;gt;https://aaronwatts.dev/guides/web-fonts&amp;lt;/guid&amp;gt;
+            &amp;lt;content:encoded&amp;gt;
+                Entire article in escaped HTML goes here
+            &amp;lt;/content:encoded&amp;gt;
+            &amp;lt;enclosure url="https://aaronwatts.dev/images/guides/web-fonts.jpg" length="0" type="image/jpeg" /&amp;gt;
+            &amp;lt;media:thumbnail url="https://aaronwatts.dev/images/guides/web-fonts.jpg" width="1920" height="1080" /&amp;gt;
+            &amp;lt;media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/web-fonts.jpg" /&amp;gt;
+        &amp;lt;/item&amp;gt;
+    &amp;lt;/channel&amp;gt;
+&amp;lt;/rss&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="namespaces"&gt;Namespaces&lt;/h2&gt;&lt;p&gt; If you're familiar with XML, then you already know that namespaces let us extend an XML document with tags that aren't already included within the specification (in this case, RSS) that we are already using. In this feed I have included the namespaces for &lt;a href="http://www.w3.org/2005/Atom" target="_blank"&gt;Atom&lt;/a&gt;, &lt;a href="http://search.yahoo.com/mrss/" target="_blank"&gt;Media&lt;/a&gt; and &lt;a href="http://purl.org/rss/1.0/modules/content/" target="_blank"&gt;Content&lt;/a&gt;. &lt;/p&gt;&lt;h2 id="atom"&gt;Atom&lt;/h2&gt;&lt;p&gt; Atom is another XML feed specification. Without divulging in too much history, it was a new (at the time) XML feed specification that was different from RSS, but by including it's namespace in our RSS feed, and atom:link-ing the feed to itself (which shows as an error in RSS validators, but is also encouraged by the RSS Board - I told you RSS is confusing), our RSS feed also becomes a valid Atom feed. Just put it through an Atom validator to see for yourself. &lt;/p&gt;&lt;h2 id="media"&gt;Media&lt;/h2&gt;&lt;p&gt; The Media namespace lets us include media images. The enclosure element built into the RSS spec also does that, but not every RSS reader will show an enclosure image. Media has a much higher success rate, although while testing different aggregators, I have found that Media also doesn't work with certain readers. There are other ways to show images, but so far I have found that this combination will meet protocol for most, if not all, RSS aggregators. &lt;/p&gt;&lt;h2 id="content"&gt;Content&lt;/h2&gt;&lt;p&gt; The Content namespace lets us include, well, content. The docs for it seem to show CDATA elements, and a lot of RSS feeds outthere do just that. However, I have found that escaped HTML works fine if you just drop it inside the &lt;code&gt;content:encoded&lt;/code&gt; element. I haven't found an aggregator yet that doesn't display it, but with the fast and loose rules to RSS, I am sure that said aggregator exists. &lt;/p&gt;&lt;h2 id="dates"&gt;Dates&lt;/h2&gt;&lt;p&gt; I'm only using pubDate in my feed, there are a few other useful elements that are date typed depending on what you are trying to acheive. Dates are RFC 822 format. What does that mean?? Eventually I found out through using an RSS validator, and it does appear to be included in the RSS Board docs now (I'm convinced it wasnt' before, but I could be unobservant and wrong). It means that dates should be formatted like so: &lt;/p&gt;&lt;pre class="language-none"&gt;&lt;code&gt;Sat, 07 Sep 2002 09:42:31 GMT&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="guid"&gt;GUID&lt;/h2&gt;&lt;p&gt; GUID stands for Globally Uniquie Identifier. Aggregators use this to check if an RSS item is new. I try to avoid mistakes when I can, but if I need to go back and fix a typo, this element will preventing aggregators from fetching the item a second time. I tend to just use the url path for the article, as it is the only article that will ever have that exact url. &lt;/p&gt;&lt;h2 id="automation"&gt;Python Automation&lt;/h2&gt;&lt;p&gt; I won't go into a lot of detail here, as most of it will already be covered in the previous article about &lt;a href="https://aaronwatts.dev/guides/github-pages-static-website" target="_blank"&gt;Github Pages Static Websites&lt;/a&gt;, but there was a little trial and error invloved with getting the pre elements to format correctly in the content encoded RSS elements. Also relative links all needed to be replaced with absolute links, and as a bonus I'll include the date formatting, even though we both know you could have worked that out for yourself pretty easily. &lt;/p&gt;&lt;p&gt; Here is the python function to format the content encoded HTML. It prefers to put everything on one line, except for pre elements as they need to include line breaks to be displayed correctly. &lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;'''
+format_main_content will remove new lines from html elements
+except for pre elements where it will preserve them
+'''
+def format_main_content(content):
+    content_str = ''
+    for child in content.children:
+        if child.name == 'pre':
+            content_str += str(child)
+        else:
+            content_str += ' '.join(str(child).split())
+    return content_str
+
+'''
+format_main_content is called when scraping the files with
+the BeautifulSoup module
+'''
+main_element = article_soup.select_one('main')
+content = format_main_content(main_element)
+
+articles.append({
+    'content': content
+})
+
+'''
+Finally I need to explicitly remove those new lines,
+the previous formatting will stop any issues with pre
+elements, and finally all relative links are replaced
+with absolute links
+'''
+str(article['content'])
+.strip()
+.replace('\', '')
+.replace('="https://aaronwatts.dev/', '="https://aaronwatts.dev/')&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; The date formatting is pretty straightforward. I don't include a time so I just add an arbitrary one in. &lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;'''
+I use a time element for the published date
+'''
+html_date = article_soup.select_one('time')
+article_date = date.fromisoformat(html_date['datetime'])
+formatted_date = article_date.strftime('%a, %d %b %Y')
+
+articles.append({
+    'formatted_date' : formatted_date + ' 08:00:00 GMT',
+})&lt;/code&gt;&lt;/pre&gt;</content:encoded>
+      <enclosure url="https://aaronwatts.dev/images/guides/rss-feeds.jpg" length="0" type="image/jpeg" />
+      <media:thumbnail url="https://aaronwatts.dev/images/guides/rss-feeds.jpg" width="1920" height="1080" />
+      <media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/rss-feeds.jpg" />
+    </item>
+    <item>
       <title>Kobo - E-Reader</title>
       <link>https://aaronwatts.dev/tech/kobo-ereader</link>
       <pubDate>Fri, 23 May 2025 08:00:00 GMT</pubDate>

@@ -47,7 +47,7 @@
         <img src="/images/guides/rss-feeds.jpg"
         alt="An RSS feed displayed as raw HTML inside a web browser">
         <p id="intro">
-            RSS isn't really womething you heard spoken about too often. But for
+            RSS isn't really something you hear spoken about too often. But for
             us nerds, it's an indisposable technology. And thankfully, it still gets
             used. Most of the time, if you need an RSS feed for content you've made,
             the software you've used to make said content has probably already done
@@ -73,7 +73,7 @@
             a simple python script to build the RSS feed for this site, among other
             things. Since then, this website has grown a little, as has the feed.
             Back then, the feed was already handling atom, as well as including
-            media images. But the most important featur was missing: the
+            media images. But the most important feature was missing: the
             <em>content</em>.
         </p>
         <p>
@@ -82,7 +82,7 @@
             your cookie permissions. Other feeds often use something called
             CDATA, but that didn't mix well with the python XML module
             that I was using. Luckily, I soon worked out that the content namespace
-            included an encoded element, and it turned out this did exactly what I
+            included an encoded element, and it turned out that it did exactly what I
             needed it to. Without CDATA, you can use pure html within the element
             for it to be displayed in it's document form in RSS feed readers. To
             that means, if you write a blog, or articles, you can include the entire
@@ -102,7 +102,7 @@
             &lt;link&gt;https://aaronwatts.dev/guides/web-fonts&lt;/link&gt;
             &lt;pubDate&gt;Sat, 05 Apr 2025 08:00:00 GMT&lt;/pubDate&gt;
             &lt;description&gt;
-                Into paragraph goes here
+                Intro paragraph goes here
             &lt;/description&gt;
             &lt;guid&gt;https://aaronwatts.dev/guides/web-fonts&lt;/guid&gt;
             &lt;content:encoded&gt;
@@ -147,7 +147,7 @@
         <h2 id="content">Content</h2>
         <p>
             The Content namespace lets us include, well, content. The docs for it
-            seem to show CDATA elements, and a lot of RSS feeds outthere do just that.
+            seem to show CDATA elements, and a lot of RSS feeds out there do just that.
             However, I have found that escaped HTML works fine if you just drop it
             inside the <code>content:encoded</code> element. I haven't found an aggregator
             yet that doesn't display it, but with the fast and loose rules to RSS, I
@@ -169,7 +169,7 @@
             check if an RSS item is new. I try to avoid mistakes when I can, but if
             I need to go back and fix a typo, this element will preventing aggregators
             from fetching the item a second time. I tend to just use the url path
-            for the article, as it is the only article that will ever have that exact
+            for the article as the ID, as it is the only article that will ever have that exact
             url.
         </p>
         <h2 id="automation">Python Automation</h2>
@@ -209,7 +209,9 @@ main_element = article_soup.select_one('main')
 content = format_main_content(main_element)
 
 articles.append({
-    'content': content
+    ...
+    'content': content,
+    ...
 })
 
 '''
@@ -234,7 +236,9 @@ article_date = date.fromisoformat(html_date['datetime'])
 formatted_date = article_date.strftime('%a, %d %b %Y')
 
 articles.append({
+    ...
     'formatted_date' : formatted_date + ' 08:00:00 GMT',
+    ...
 })</code></pre>
     </main>
 

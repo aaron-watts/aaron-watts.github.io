@@ -90,8 +90,12 @@
             or JavaScript trickery). Here is the current layout of my RSS feeds:
         </p>
         <aside>
-            NOTE: I haven't included the content:encoded element so it doesn't break <em>my</em>
-            RSS feed!
+            NOTE: In a very poetic case of irony, this article is not working
+            on my usual RSS reader (Nextcloud News). I haven't been able to diagnose
+            the issue yet, but it seems mostly fine on other readers I have tested.
+            I am just going to choose to let this article be a comical outlyer
+            for the time being, and update this article if I ever found out what
+            is causing it.
         </aside>
         <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
 &lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/"&gt;
@@ -109,9 +113,9 @@
                 Intro paragraph goes here
             &lt;/description&gt;
             &lt;guid&gt;https://aaronwatts.dev/guides/web-fonts&lt;/guid&gt;
-            &lt;!-- open content:encoded --&gt;
+            &lt;content:encoded&gt;
                 Entire article in escaped HTML goes here
-            &lt;!-- close content:encoded --&gt;
+            &lt;/content:encoded&gt;
             &lt;enclosure url="https://aaronwatts.dev/images/guides/web-fonts.jpg" length="0" type="image/jpeg" /&gt;
             &lt;media:thumbnail url="https://aaronwatts.dev/images/guides/web-fonts.jpg" width="1920" height="1080" /&gt;
             &lt;media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/web-fonts.jpg" /&gt;

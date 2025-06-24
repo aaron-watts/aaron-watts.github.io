@@ -89,6 +89,10 @@
             html within that tag (provided you are not relying too heavily in CSS
             or JavaScript trickery). Here is the current layout of my RSS feeds:
         </p>
+        <aside>
+            NOTE: I haven't closed the content:encoded so it doesn't break <em>my</em>
+            RSS feed!
+        </aside>
         <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
 &lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/"&gt;
     &lt;channel&gt;
@@ -107,7 +111,7 @@
             &lt;guid&gt;https://aaronwatts.dev/guides/web-fonts&lt;/guid&gt;
             &lt;content:encoded&gt;
                 Entire article in escaped HTML goes here
-            &lt;/content:encoded&gt;
+            &lt;!-- close content:encoded --&gt;
             &lt;enclosure url="https://aaronwatts.dev/images/guides/web-fonts.jpg" length="0" type="image/jpeg" /&gt;
             &lt;media:thumbnail url="https://aaronwatts.dev/images/guides/web-fonts.jpg" width="1920" height="1080" /&gt;
             &lt;media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/web-fonts.jpg" /&gt;

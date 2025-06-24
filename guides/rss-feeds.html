@@ -90,7 +90,7 @@
             or JavaScript trickery). Here is the current layout of my RSS feeds:
         </p>
         <aside>
-            NOTE: I haven't closed the content:encoded so it doesn't break <em>my</em>
+            NOTE: I haven't included the content:encoded element so it doesn't break <em>my</em>
             RSS feed!
         </aside>
         <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
@@ -109,7 +109,7 @@
                 Intro paragraph goes here
             &lt;/description&gt;
             &lt;guid&gt;https://aaronwatts.dev/guides/web-fonts&lt;/guid&gt;
-            &lt;content:encoded&gt;
+            &lt;!-- open content:encoded --&gt;
                 Entire article in escaped HTML goes here
             &lt;!-- close content:encoded --&gt;
             &lt;enclosure url="https://aaronwatts.dev/images/guides/web-fonts.jpg" length="0" type="image/jpeg" /&gt;

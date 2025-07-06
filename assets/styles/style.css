@@ -59,7 +59,7 @@ th, td {
 }
 
 img {
-    max-width: 70%;
+    max-width: 90%;
     max-height: 70vh;
     display: block;
     margin-inline: auto;
@@ -160,6 +160,13 @@ nav.breadcrumbs .path a:visited {
 nav.breadcrumbs .path a:hover {
     color: #d7a6ff;
 }
+nav li {
+    line-height: 1.8em;
+}
+body {
+    max-width: 50vw;
+    margin: auto;
+}
 @media only screen and (max-width: 720px) {
     nav.breadcrumbs .host a,
     nav.breadcrumbs .host a:visited {
@@ -168,6 +175,10 @@ nav.breadcrumbs .path a:hover {
     nav.breadcrumbs .path a,
     nav.breadcrumbs .path a:visited {
         color: #d7a6ff;
+    }
+
+    body {
+        max-width: 100vw;
     }
 }
 

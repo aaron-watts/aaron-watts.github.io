@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <atom:link href="https://aaronwatts.dev/tech/feed.xml" rel="self" type="applications/rss+xml" />
-    <title>AaronWattsDev Latest</title>
+    <title>AaronWattsDev Tech</title>
     <link>https://aaronwatts.dev/tech</link>
-    <description>The most recent content on AaronWattsDev</description>
+    <description>Thoughtful tech that offers something different</description>
     <category>Technology</category>
     <item>
       <title>Kobo - E-Reader</title>

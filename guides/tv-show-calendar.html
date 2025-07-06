@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Keep track of your favourite shows across TV and
+    streaming services with your own free TV show calendar.">
+    <meta name="keywords" content="cicd, python, apps script, google">
+    <title>AWD - TV Show Calendar</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
+    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+</head>
+<body>
+    <header>
+        <nav class="breadcrumbs">
+            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+            class="path">/<a href="/guides">guides</a>/tv-show-calendar
+            $</span>
+        </nav>
+        <div class="rss-container">
+            <a href="/rss">
+                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#json">Making the JSON File</a></li>
+            <li><a href="#workflow">Setting Up the Workflow</a></li>
+            <li><a href="#calendar">Putting the Shows Into the Google Calendar</a></li>
+        </ul>
+    </nav>
+    <main class="article">
+        <h1>TV Show Calendar - Github Actions</h1>
+        <time datetime="2025-07-06">6<sup>th</sup> July, 2025</time>
+        <img src="/images/guides/tv-show-calendar.jpg"
+        alt="A list of the season 15 episodes for Bob's Burgers with a thumbnail
+        image showing the show's poster">
+        <p id="intro">
+            It's pretty hard keeping track of my favourite show's nowadays across all
+            the different services. So I set up my own automated workflow that eventually
+            finds it's way to a Google Calendar so I can see at a glance when the next
+            episode of a show I'm following is due to air. And, of course, it's
+            completely free!
+        </p>
+        <p>
+            I am subscribed to my own <a href="https://www.imdb.com/"
+            target="_blank">IMDB</a> watch list, however only about 2 of the many shows
+            I follow give me alerts when a new episode airs - and even of those
+            shows, not every episode makes it into my inbox. There are plenty of services
+            that offer this service or services like it, but I wanted to learn how
+            Github Actions worked, so I decided to use it along side Google Apps Script
+            to set up my own tv show calendar for free.
+        </p>
+        <p>
+            The workflow begins with a Github Action scheduled with cron to run a python
+            script that uses the <a href="https://www.tvmaze.com/"
+            target="_blank">TV Maze</a> API to generate a JSON file within the repo. I then
+            use Google Apps Script to pipe the data from the JSON file directly into
+            a 'TV Shows' calendar. I could theoretically have skipped the Github step
+            entirely, but I haven't looked at Github's CI/CD tools yet and this was a
+            good opportunity to take my first look at that. Also, Google Apps Script's
+            get timed out after 6 seconds on non-premium accounts (like what I use),
+            and if you end up following a lot of shows then that will be a lot of API
+            calls just to get the data before you can even begin to feed it into a
+            calendar. Handling the initial API calls in Github let's us send a single JSON
+            file to Apps Script with all the data we need in it.
+        </p>
+
+        <h2 id="json">Making the JSON File</h2>
+        <p>
+            The first thing we need to do is write a script that generates our json file.
+            I'm going to be using Python because it's quick and easy, but you could use
+            just about any language you want for this step. I began by making a list in
+            it's own file, to make it easy to edit, of the show ID's that the TV Maze
+            API will use to find the data about each of my chosen shows. I include the
+            human readable show name as a comment so I can see at a glance what I've
+            already added.
+        </p>
+
+        <pre class="language-python"><code>shows = [
+    '216', # Rick and Morty
+    '107', # Bob's Burgers
+]</code></pre>
+
+        <p>
+            Next I import the shows list into my main Python file, where I simply
+            iterate through my shows list, making an API call for each one to collect
+            the data I need, and then organise the responses into a Python dictionary.
+            I don't include any shows that don't have a next episode listed in the
+            data, but I keep shows that aren't necessarily running currently in my shows list in case
+            a new season get's scheduled. I wrap the API call in a while loop
+            that sleeps each time it doesn't receive a successful repsonse and then
+            tries again. This is on the advice in the TV Maze API docs, however they
+            also mention this is more likely to be an issue with generic search and
+            show requests and less so with embed requests. From testing both types of
+            requests with bot-like spams I never received anything without a successful
+            200 status code, but it's in there anyway to prevent errors. Lastly, the response data
+            gets dumped into a JSON file called <code>schedule.json</code>.
+        </p>
+
+        <pre class="language-python"><code>#!/usr/bin/env python3
+
+import requests
+from datetime import date
+from shows import shows
+import json
+
+def get_episodes(shows):
+    episodes = {}
+
+    def api_call(url):
+        status_code = 0
+        while status_code != 200:
+            response = requests.get(url)
+            status_code = response.status_code
+            if status_code != 200:
+                sleep(2)
+        return response.json()
+
+    for show_id in shows:
+        show_data = api_call(f'https://api.tvmaze.com/shows/{show_id}?embed=nextepisode')
+
+        if '_embedded' in show_data and 'nextepisode' in show_data['_embedded']:
+            episodes[show_id] = show_data['_embedded']['nextepisode']
+
+    return episodes
+
+def main():
+    schedule = {"schedule": get_episodes(shows)}
+    with open("schedule.json", "w") as fp:
+        json.dump(schedule, fp, indent=4)
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+        <h2 id="workflow">Setting Up the Workflow</h2>
+
+        <p>
+            With the main script done, we need to set up the workflow. In the git
+            repository, we simply need to put a YAML file with the workflow instructions
+            in a <code>.gihtub/workflows/</code> directory. I called mine
+            <code>update.yml</code>. The following will trigger on a push to branch,
+            and also at 1:18am daily (Github advises not to run cron workflows at the
+            top of the hour due to high loads at those times). It will set up a temporary
+            Ubuntu machine with Python and the necessary dependencies, run
+            <code>main.py</code> and then commit any changes to <code>schedule.json</code>.
+            And that's the Github side of things done.
+        </p>
+
+        <pre class="language-yaml"><code>name: Update JSON
+
+on:
+  schedule:
+    - cron: '18 1 * * *'
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run python script
+        run: python main.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Gitub Action'
+          git config --global user.email 'action@github.com'
+          git add schedule.json
+          git commit -m "automated commit"
+          git push</code></pre>
+
+        <h2 id="calendar">Putting the Shows Into the Google Calendar</h2>
+        <p>
+            Finally, we just need to get the data from the JSON file into our
+            Google Calendar. I set up a 'TV Show' calendar specifically for this,
+            so the code can work with it without me having to worry about any
+            other data in it. You will need to create a new Apps Script file
+            in your Google Drive for the script. You can get your Google Calendar's
+            ID in the settings and sharing options in the Google Calendar web page.
+            And you will also need to grant permissions for the script to edit
+            your Google Calendar the first time you run it.
+        </p>
+        <p>
+            Getting the JSON file is quite simple, you can simply use the
+            UrlFetchApp class to fetch the <em>raw</em> JSON file from your Github
+            repository. No need to set up DNS, Github Pages, or anything else
+            like that.
+        </p>
+
+        <pre class="language-js"><code>function getSchedule() {
+    const repsonse = UrlFetchApp.fetch('your-raw-github-json-file');
+    const data = JSON.parse(repsonse.getContentText());
+    return data.schedule;
+};</code></pre>
+
+        <p>
+            Some shceduled TV show episodes have only had dates announced and not
+            air times, so I have written some logic to handle those
+            instances differently, making a normal timed event for shows with
+            airtimes, and all-day events for shows without air times. The
+            function accepts an episode and a calendar argument. The episode
+            being the particular episode within the JSON object, and the calendar
+            being the Calendar class instance we are using for our Google Calendar.
+        </p>
+
+        <pre class="language-js"><code>function addToCalendar(episode, calendar) {
+    if(!!episode.airtime && !!episode.runtime) {
+        const airstamp = new Date(episode.airstamp);
+
+        calendar.createEvent(
+        episode._links.show.name,
+        airstamp,
+        new Date(airstamp.getTime() + episode.runtime * 60000),
+        {
+            description: episode.description,
+        }
+        );
+    } else {
+        const airdate = new Date(episode.airdate);
+        const enddate = new Date(airdate);
+        enddate.setDate(enddate.getDate() + 1);
+
+        calendar.createAllDayEvent(
+        episode._links.show.name,
+        airdate,
+        enddate,
+        {
+            description: episode.description,
+        }
+        );
+    }
+};</code></pre>
+
+        <p>
+            Finally, the main logic for the script iterates through the JSON object,
+            constructing the decsriptions we will use for the Google Calendar entries,
+            and also setting dates for the earliest and latest scheduled shows within
+            our data. The dates will allow us to optimise the Calendar interaction a
+            little by only assessing our Google Calendar for the dates that are relevant
+            to our data, all other entries will be ignored.
+            The Calendar entries are set out with the title being the name of the show,
+            and the description adhering to the follwing format:
+        </p>
+
+        <pre class="language-none"><code>S1E1 Episode Name
+
+Episode Summary
+
+ShowID:EpisodeID</code></pre>
+
+        <p>
+            Having the show and episode ID's at the end make them easy for us to grab
+            to see if we have already added an episode or if it's data needs to be
+            updated - for example an airtime may have been announced, the episode
+            may have been given a summary or had it's title revised.
+            Next the script will cycle through events within the target date range,
+            adding the show ID's it finds in the calendar to an array, and then check for differences between data
+            in the calendar entry and the JSON data, making ammendments where necessary.
+            Finally, we check for negative results to <code>eventsList.indexOf</code> to add any
+            JSON entries to the calendar that do not already exist there yet.
+        </p>
+
+        <pre class="language-js"><code>function main() {
+    const calendar = CalendarApp.getCalendarById(yourCalendarId);
+    const schedule = getSchedule();
+    let startDate = new Date();
+    let endDate = new Date();
+    const eventList = [];
+
+    for(let showID in schedule) {
+        const episode = schedule[showID];
+
+        const summary = !!episode.summary ? episode.summary : '';
+        episode.description = `<b>S${episode.season}E${episode.number} ${episode.name}</b>\n${summary}\n${showID}:${episode.id}`;
+
+        const airstamp = new Date(episode.airstamp);
+        if (airstamp.getTime() < startDate.getTime()) startDate = airstamp;
+        if (airstamp.getTime() > endDate.getTime()) endDate = airstamp;
+    };
+
+    const events = calendar.getEvents(startDate, endDate);
+    
+    for (let event of events) {
+        const description = event.getDescription();
+        const descriptionSplit = description.split(/\W+/);
+        const showId = descriptionSplit[descriptionSplit.length - 2];
+        const episodeId = descriptionSplit[descriptionSplit.length - 1];
+        eventList.push(showId);
+
+        if (schedule[showId]
+        && episodeId == schedule[showId].id
+        && schedule[showId].description != description
+        ) event.setDescription(schedule[showId].description);
+    };
+
+    for (let showID in schedule) {
+        const episode = schedule[showID];
+        if (eventList.indexOf(showID) < 0) {
+        addToCalendar(episode, calendar);
+        }
+    }
+};</code></pre>
+
+        <p>
+            The last thing to do is to set a time trigger to execute the script once
+            per day, and then you have your own TV schedule being piped through to
+            a Google Calendar. Now you will never miss a new episode of a show you
+            love again, and it was all for free! Enjoy!
+        </p>
+
+    </main>
+
+    <a href="#top">Back to Top</a>
+
+    <h4>Comments Section</h4>
+    <div id="comment-section"></div>
+    <noscript class="note">
+        Enable JavaScript to join in the conversation!
+    </noscript>
+
+    <script>
+        initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "aaronwattsdev",
+            commentSectionId: "tv-show-calendar"
+        })
+    </script>
+
+    <footer>
+        <div>Made by Hand. Powered by</div>
+        <a href="https://pages.github.com/" target="_blank">
+            <img src="/images/githubpages.svg" 
+            alt="https://pages.github.com/">
+        </a>
+    </footer>
+
+    <script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

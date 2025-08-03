@@ -48,14 +48,35 @@ pre {
 
 table {
     margin-inline: auto;
+    margin-bottom: 1rem;
     border: 2px solid #aaa;
     border-collapse: collapse;
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: max-content;
+    max-width: 100%;
 }
 
 th, td {
     border: 1px solid #aaa;
     padding: .15em 1em .1em;
     text-align: center;
+}
+
+table.spreadsheet {
+    background: #ddd;
+    color: #222;
+}
+table.spreadsheet th {
+    background: #2A2;
+}
+table.spreadsheet tr:nth-of-type(even) {
+    background: #96c496;
+}
+table.spreadsheet th,
+table.spreadsheet td {
+    text-align: start;
 }
 
 img {

@@ -239,3 +239,25 @@ footer {
 footer > div {
     padding-block: 0 .5rem;
 }
+
+@media print {
+    @page {
+        margin: 1cm;
+    }
+    body {
+        padding: 0;
+        width:100vw;
+        margin-inline: 0;
+        text-align: justify;
+        /* zoom: 80%; */
+    }
+    main {
+        width: 100vw;
+    }
+    table {
+        zoom: 80%
+    }
+    pre {
+        zoom: 90%;
+    }
+}

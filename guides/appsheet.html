@@ -79,12 +79,12 @@
             together a simple web app. Yet, I still find myself going back to AppSheet
             to get something done quickly and for free. I don't have to worry about
             writing an entire codebase or wrangling with CSS. There are caveats, though.
-            Although AppSheet brands itself as a no-code platform, it does do rely heavily
+            Although AppSheet brands itself as a no-code platform, it does rely heavily
             on something far more sinister and ugly: formula. That is, spreadsheet style
             formulae are used to get an app to do just about anything interesting
             at all. One project that I have built which gets used in the real world is
             a rota app, to handle shifts for employees where I work. It has just enough
-            going on in it that's it's a good example to use to start getting familiar
+            going on in it that it's a good example to use to start getting familiar
             with using AppSheet without being overwhelming. The following is a guide to
             assembling a simple rota app using AppSheet with some Google Apps Script
             integration.
@@ -92,8 +92,8 @@
 
         <h2 id="backend">Building the Backend</h2>
         <p>
-            Ha, good one. Our backend is a Google Sheet. It is as simple as using the top
-            row of the sheet. Column headers will be used as <em>"fields"</em> in app. Any
+            Ha, good one. Our backend is a Google Sheet. 
+            Column headers will be used as <em>"fields"</em> in app. Any
             additional rows are considered entries. You can add in directly through Google
             Sheets, but I'd advise using your AppSheet app to avoid any formatting
             inconsistencies.
@@ -220,7 +220,7 @@
         <p>
             In the data view, we can add our data sources using the <kbd>+</kbd> button.
             Find the spreadsheet you created in Google Drive, select it, and select the
-            relevant page for each data source. Depending of what you name each column,
+            relevant page for each data source. Depending on what you name each column,
             AppSheet will hazard a guess at what you want each data type to be, but in
             case it gets it wrong, these are the data types for the Locations and Staff
             tables:
@@ -335,7 +335,7 @@
             interesting things computationally than say, a regular table's app. Here, we
             use the <code>UNIQUEID()</code> function to create a Unique ID for the
             <em>Shift ID</em>. By default, the function generates strings of 8 random
-            characters, with a low probability or creating duplicates. However, over time
+            characters, with a low probability of creating duplicates. However, over time
             and large quantities of data (several thousand entries over the course of years),
             I have encountered multiple instances where AppSheet generates a code that is
             already in use. This isn't a huge deal, but you do have to abandon that
@@ -354,7 +354,7 @@
             <code>UNIQUEID</code> function: <code>"UUID"</code> and
             <code>"PackedUUID"</code>. These both create longer and more complex strings,
             vastly decreasing the chance of repetition. One last thing to touch on here,
-            with respected to using computed values as a key, is that AppSheet can be a
+            with respect to using computed values as a key, is that AppSheet can be a
             little quirky here. Ideally, we would set this as the <em>Initial Value</em>,
             but AppSheet wouldn't let us do that and also select it as a key. If we set
             it as <em>App Formula</em> instead, and tick this field to act as the
@@ -370,7 +370,7 @@
             functions so the same function can be called using lowercase.
         </aside>
         <p>
-            We get to see a few more examples of what can be achived with some simple
+            We get to see a few more examples of what can be achieved with some simple
             formula expressions in the <em>Initial Value</em> fields. For date, we can
             use a template expression to define the format of the date that the user
             must input the date in. I'm in the UK, so please don't be alarmed that I
@@ -420,7 +420,7 @@
         </p>
         <p>
             Next, for the <em>Staff</em> table, set the view type to <em>Table</em>. If we
-            the Column Order to manual, we can choose only the necessary columns to
+            set the Column Order to manual, we can choose only the necessary columns to
             include in the main view, which I have set to <em>Name</em> and
             <em>Employee Number</em> only.
         </p>
@@ -430,7 +430,7 @@
             them both in a dashboard view. The first view will be another deck view,
             with the Position set to Ref so we can place it in the Dashboard view.
             We can sort by Date first, and then Start, both descending, so oldest
-            shifts are placed further down then list. We can also use Group By, to
+            shifts are placed further down the list. We can also use Group By, to
             separate shifts further under a specified header.
             I use a virtual column called week start, in
             descending order. To create the virtual column, simply go back into
@@ -489,7 +489,7 @@ CONCATENATE(
         <p>
             In the summary column on the dashboard, I like to include a weekly
             hour count for each member of staff. It's a useful quick reference
-            to check how many hours each member of staff is rota'd for in a
+            to check how many hours each member of staff is rota'd in for in a
             given week that can be checked at a glance while working in the
             app. In order to work that out, we will first want a virtual
             column to work out each shift duration, then a second to add them
@@ -570,7 +570,7 @@ SUM(
             different records under their own colour codes on the calendar
             view. This is helpful to see who is working on a given day at
             a glance, but to use it, we will need to add a colour code field
-            to staff table.
+            to the staff table.
         </p>
         <p>
             Back in Google Drive, add a Colour Code column to the Spreadsheet,
@@ -585,7 +585,7 @@ SUM(
         </aside>
         <h2 id="workflows">Workflows</h2>
         <p>
-            Now that we have most of our app's front end set up, we should
+            Now that we have most of our app's frontend set up, we should
             write some workflows to get our app to communicate with our
             Google Calendar. We will do this using Google Apps Script.
             There are essentially two ways to get Apps Script to interact
@@ -692,7 +692,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
             <kbd>+</kbd> add new bot button, name it something like
             <em>ShiftAddBot</em>. Choose <em>Configure New Event</em> and click
             <em>Create Event</em>. On the right of the editor screen, name the
-            event to something along the lines <em>Shift Add</em>, set
+            event to something along the lines of <em>Shift Add</em>, set
             <em>App</em> as the event source, <em>Shifts</em> as table that
             should trigger the event, and highlight <em>Adds</em> as the data
             change type. In the <em>Run</em> window click <em>Add Step</em>,
@@ -739,7 +739,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
             Next, add a second step for the ShiftAddBot and name it to the affect
             of <em>Set CalID</em>. Select <em>Custom Action</em> and in the right
             settings pane select <em>Set row values</em>. Set column <em>CalID</em>
-            with the value of <code>[Run Script].[Output]</code>. <em>Run ScriptM</em>
+            with the value of <code>[Run Script].[Output]</code>. <em>Run Script</em>
             being the name of the previous step in the workflow, and <em>Output</em>
             being the return data sent back by the <code>newShift</code> function.
         </p>
@@ -799,7 +799,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
             box on this one.
         </p>
         <p>
-            We need to begin by adding to new sheets to our Rota spreadsheet.
+            We need to begin by adding two new sheets to our Rota spreadsheet.
             <em>Pay Period</em> and <em>Pay Report</em>. Pay Report will simply be
             one column named <em>Staff</em>, with each employee number listed as
             the values for each row. The easiest way to achieve this is to simply
@@ -857,22 +857,29 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
             Once that is done, we will create a fourth main view for our primary
             navigation. Name it <em>Pay Period</em> and set it to the
             <em>Dashboard</em> view type. We will include two views in this
-            dashboard, one named <em>Pay Dates</em>, the will use the
+            dashboard, one named <em>Pay Dates</em>, that will use the
             <em>Pay Period</em> table as it's data source. It will be a
             <em>Detail</em> view type, with both of it's columns added to the
             <em>Quick edit columns</em>. We also want to disable the users
             ability to save, update or delete records here, however we still
             want data to be able to be changed by the app, so instead of
             disabling any of these in the <em>Data</em> settings, we can instead
-            go the <em>Actions</em> menu, and for <em>Pay Period</em> and
+            go to the <em>Actions</em> menu, and for <em>Pay Period</em> and
             <em>Pay Report</em>, set the <em>Add</em>, <em>Edit</em> and
             <em>Delete</em> buttons <em>Behaviour</em> setting for
             <em>Only if this condition is true</em> to <code>TRUE = FALSE</code>.
             These controls will not show now. Instead, when a user sets the
-            Pay Dates, when the app syncs it will tally up each staff
+            Pay Dates and the app syncs, it will tally up each staff
             member's rota'd hours between the two dates selected. We can also
             set the Pay Period <em>End</em> column's <em>Valid If</em> formula
-            to <code>[End] &gt;= [Start]</code>
+            to <code>[End] &gt;= [Start]</code>.
+        </p>
+        <p>
+            Our rota app is now finished. Changes made to shifts will automatically
+            be uploaded to the Google Calendar identified within the Apps Script.
+            This is only a simple app compared to what could potentially be
+            made, but it covers quite a few things that might help you get started
+            in making some useful tools for yourself at a low cost!
         </p>
     </main>
 

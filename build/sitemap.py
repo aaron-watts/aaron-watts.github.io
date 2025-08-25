@@ -1,3 +1,5 @@
+"""Update sitemap for aaronwatts.dev"""
+
 import os
 import xml.etree.ElementTree as ET
 from utils import root_url, sub_directories

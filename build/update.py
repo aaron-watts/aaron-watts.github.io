@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
-import sitemap, articles, feeds
+"""Update aaronwatts.dev feeds, sitemap and home/index pages"""
+
+import sitemap
+import articles
+import feeds
 
 if __name__ == "__main__":
     print('Updating sitemap.xml\n...')

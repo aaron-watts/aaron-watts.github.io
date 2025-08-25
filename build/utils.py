@@ -1,3 +1,5 @@
+"""Utilities for build scripts"""
+
 root_url = 'https://aaronwatts.dev'
 
 sub_directories = [

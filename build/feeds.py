@@ -1,7 +1,9 @@
+"""Update RSS feeds for aaronwatts.dev"""
+
 import xml.etree.ElementTree as ET
-from bs4 import BeautifulSoup
 import os
 from datetime import date
+from bs4 import BeautifulSoup
 from utils import date_sort, sub_directories, root_url, format_main_content
 
 def main():
@@ -13,7 +15,7 @@ def main():
         return element
 
     # builds a rss item from scraped article data
-    def build_item(article, rss_channel):        
+    def build_item(article, rss_channel):
         link_text = f'{root_url}{article["link"]}'
         rss_item = build_element(rss_channel, 'item')
         build_element(rss_item, 'title', article['title'])
@@ -80,7 +82,7 @@ def main():
         # create and populate an item element for each project
         for article in articles[directory]:
             build_item(article, rss_channel)
-        
+
         # build and write the tree
         tree = ET.ElementTree(rss)
         ET.indent(tree)
@@ -122,7 +124,7 @@ def main():
                 keywords = [kw.lstrip() for kw in keywords]
                 main_element = article_soup.select_one('main')
                 content = format_main_content(main_element)
-                
+
                 articles[directory].append({
                     'title' : title,
                     'description' : description,

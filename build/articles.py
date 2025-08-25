@@ -1,6 +1,8 @@
-from bs4 import BeautifulSoup
+"""Update index pages and home with new articles in aaronwatts.dev"""
+
 import os
 from datetime import date
+from bs4 import BeautifulSoup
 from utils import *
 
 def main():
@@ -23,7 +25,7 @@ def main():
                 article_date = date.fromisoformat(html_date['datetime'])
                 keywords = article_soup.select_one('meta[name=keywords]')['content'].split(',')
                 keywords = [kw.lstrip() for kw in keywords]
-                
+
                 articles[directory].append({
                     'title' : title,
                     'description' : description,

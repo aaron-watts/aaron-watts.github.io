@@ -19,14 +19,14 @@ def main():
 
     for directory in sub_directories:
         build_sitemap_url(f'{directory}/')
-        for filename in os.listdir(directory):
+        for filename in os.listdir(f"docs/{directory}"):
             url = filename[:-5]
             if (url != "index" and not filename.endswith('.xml')):
                 build_sitemap_url(f'{directory}/{url}')
 
     tree = ET.ElementTree(urlset)
     ET.indent(tree)
-    tree.write('/docs/sitemap.xml', xml_declaration='version', encoding='UTF-8')
+    tree.write('docs/sitemap.xml', xml_declaration='version', encoding='UTF-8')
 
 if __name__ == "__main__":
     main()

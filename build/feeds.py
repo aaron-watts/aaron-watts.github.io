@@ -51,7 +51,7 @@ def main():
     def build_feed(sub_dir=False):
         feed_url = f'{root_url}' if not sub_dir else f'{root_url}/{sub_dir}'
         page_url = f'{root_url}/home' if not sub_dir else f'{root_url}/{sub_dir}'
-        feed_path = 'feed.xml' if not sub_dir else f'{sub_dir}/feed.xml'
+        feed_path = 'docs/feed.xml' if not sub_dir else f'docs/{sub_dir}/feed.xml'
         directory = 'all' if not sub_dir else sub_dir
         title = feed_data['all']['title'] if not sub_dir else feed_data[sub_dir]['title']
         description = feed_data['all']['description'] if not sub_dir else feed_data[sub_dir]['description']
@@ -110,8 +110,8 @@ def main():
         articles[directory] = []
         for f in os.scandir(f"docs/{directory}"):
             if f.name != "index.html" and not f.name.endswith('.xml'):
-                path_name = f'docs/{directory}/{f.name}'
-                with open(path_name) as articlef:
+                path_name = f'{directory}/{f.name}'
+                with open(f"docs/{path_name}") as articlef:
                     article_txt = articlef.read()
                     article_soup = BeautifulSoup(article_txt, 'lxml')
                 title = article_soup.select_one('h1').text

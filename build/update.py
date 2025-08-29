@@ -15,12 +15,11 @@ if __name__ == "__main__":
     if tests_passed is True:
         print("All tests passed, proceeding with build operation")
         print('Updating sitemap.xml\n...')
-        #sitemap.main()
+        sitemap.main()
         print('Updating home and indexes\n...')
-        #articles.main()
+        articles.main()
         print('Updating RSS feeds\n...')
-        #feeds.main()
+        feeds.main()
         print('Update complete')
     else:
         print('Build operation terminated due to failed test(s)')
-

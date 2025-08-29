@@ -12,7 +12,7 @@ def main():
 
     for directory in sub_directories:
         articles[directory] = []
-        for f in os.scandir(directory):
+        for f in os.scandir(f"docs/{directory}"):
             if f.name != "index.html" and not f.name.endswith('.xml'):
                 path_name = f'docs/{directory}/{f.name}'
                 with open(path_name) as articlef:

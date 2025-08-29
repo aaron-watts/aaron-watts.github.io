@@ -3,7 +3,7 @@
 """Testing for aaronwatts.dev articles"""
 
 import os
-from tests import tests
+from test_documents import tests
 from bs4 import BeautifulSoup
 
 
@@ -17,12 +17,15 @@ def file_valid(file_name):
         return False
     return True
 
-def main():
+def run_tests():
     """Main Function"""
     sub_directories = [
         "guides",
         "tech"
     ]
+    passed = True
+
+    print("Beginning tests...")
 
     for directory in sub_directories:
         for file in os.scandir(f"docs/{directory}"):
@@ -30,15 +33,19 @@ def main():
                 full_path = f"docs/{directory}/{file.name}"
                 with open(full_path) as html_doc:
                     soup = BeautifulSoup(html_doc, "lxml")
-                config = {
+                test_config = {
                     "filename": file.name,
                     "parent_dir": directory,
                     "path": full_path,
                     "soup": soup
                 }
-                print(f"Testing {full_path}...")
                 for test in tests:
-                    test(config)
+                    result = test(test_config)
+                    if not result["passed"]:
+                        print(f"FAILED: {test_config['path']}\n{result['desc']}")
+                        passed = False
+
+    return passed
 
 if __name__ == "__main__":
-    main()
+    run_tests()

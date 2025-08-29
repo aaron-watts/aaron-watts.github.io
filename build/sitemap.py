@@ -26,7 +26,7 @@ def main():
 
     tree = ET.ElementTree(urlset)
     ET.indent(tree)
-    tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')
+    tree.write('/docs/sitemap.xml', xml_declaration='version', encoding='UTF-8')
 
 if __name__ == "__main__":
     main()

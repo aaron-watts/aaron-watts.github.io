@@ -14,7 +14,7 @@ def main():
         articles[directory] = []
         for f in os.scandir(directory):
             if f.name != "index.html" and not f.name.endswith('.xml'):
-                path_name = f'{directory}/{f.name}'
+                path_name = f'docs/{directory}/{f.name}'
                 with open(path_name) as articlef:
                     article_txt = articlef.read()
                     article_soup = BeautifulSoup(article_txt, 'lxml')
@@ -41,7 +41,7 @@ def main():
         articles[category].sort(reverse=True, key=date_sort)
 
     for directory in sub_directories:
-        with open(f'{directory}/index.html') as inf:
+        with open(f'docs/{directory}/index.html') as inf:
             txt = inf.read()
             soup = BeautifulSoup(txt, 'lxml')
 
@@ -74,13 +74,13 @@ def main():
             article_div.append(article_description)
             main_element.append(article_div)
 
-        with open (f'{directory}/index.html', 'w') as outf:
+        with open (f'docs/{directory}/index.html', 'w') as outf:
             outf.write(str(soup))
 
     articles['all'].sort(reverse=True, key=date_sort)
     latest_article = articles['all'][0]
 
-    with open('home.html') as inf:
+    with open('docs/home.html') as inf:
         txt = inf.read()
         soup = BeautifulSoup(txt, 'lxml')
 
@@ -109,7 +109,7 @@ def main():
     latest_description.string = latest_article['description']
     latest.append(latest_description)
 
-    with open('home.html', 'w') as outf:
+    with open('docs/home.html', 'w') as outf:
         outf.write(str(soup))
 
 if __name__ == "__main__":

@@ -3,6 +3,9 @@
 from doc_test.tests import tests
 
 def test_documents(documents):
+    """
+    Run tests HTML documents and return boolean
+    """
     passed = True
     for document in documents:
         for test in tests:

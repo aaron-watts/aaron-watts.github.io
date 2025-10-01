@@ -12,10 +12,11 @@ if __name__ == "__main__":
     articles = get_articles()
     TESTS_PASSED = test_documents(articles)
 
-    doc_tree = get_docs()
+    if TESTS_PASSED:
+        doc_tree = get_docs()
 
-    sitemap = build_sitemap(doc_tree)
-    write_to_xml(sitemap, 'xml_test/sitemap.xml')
+        sitemap = build_sitemap(doc_tree)
+        write_to_xml(sitemap, 'xml_test/sitemap.xml')
 
-    # articles
-    # feeds
+        # articles
+        # feeds

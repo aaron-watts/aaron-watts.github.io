@@ -1,10 +1,12 @@
 import os
 import re
+from config.config import settings as config
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
-ROOT_DIR = "docs"
-ARTICLE_DIRS = ["guides", "tech"]
+ROOT_DIR = config['root']
+ARTICLE_DIRS = config['sub_directories'].split()
+BASE_URL = config['base_url']
 
 def path_to_url(file_path):
     """
@@ -13,7 +15,7 @@ def path_to_url(file_path):
     file_path = file_path.replace("index.html", "")
     file_path = file_path.replace(".html", "")
     file_path = re.sub(r"\W+^", "", file_path)
-    url = f"https://aaronwatts.dev/{file_path}"
+    url = f"{BASE_URL}/{file_path}"
     return url
 
 def file_valid(file_name):

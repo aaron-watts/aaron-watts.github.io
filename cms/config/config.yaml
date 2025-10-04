@@ -1,0 +1,40 @@
+base_url:
+  https://aaronwatts.dev
+root:
+  docs
+sub_directories:
+  guides
+  tech
+sitemap:
+  path:
+    xml_test/sitemap.xml
+feeds:
+  all:
+    path:
+      xml_test/feed.xml
+    title:
+      AaronWattsDev Latest
+    href:
+      https://aaronwatts.dev/feed.xml
+    link:
+      https://aaronwatts.dev/home
+    description: >-
+      The most recent content on AaronWattsDev
+  guides:
+    path:
+      xml_test/guides/feed.xml
+  tech:
+    path:
+      xml_test/tech/feed.xml
+namespaces:
+  sitemap:
+    '':
+      http://www.sitemaps.org/schemas/sitemap/0.9
+  rss:
+    atom:
+      http://www.w3.org/2005/Atom
+    media:
+      http://search.yahoo.com/mrss/
+    content:
+      http://purl.org/rss/1.0/modules/content/
+

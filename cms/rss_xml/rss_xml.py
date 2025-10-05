@@ -1,8 +1,6 @@
-from config.config import settings as config
+from config.settings import FEEDS, NAMESPACES
 from utils import xtree
 from utils.files import path_to_url
-
-NAMESPACES = config['namespaces']['rss']
 
 def build_item(parent):
     item = xtree.child_element(parent, "item")
@@ -12,12 +10,12 @@ def build_rss(doc_tree):
     """
     Return RSS XML as tree object
     """
-    ATOM_LINK_HREF = config['feeds']['all']['link']
-    TITLE = config['feeds']['all']['title']
-    LINK = config['feeds']['all']['link']
-    DESC = config['feeds']['all']['description']
+    ATOM_LINK_HREF = FEEDS['all']['link']
+    TITLE = FEEDS['all']['title']
+    LINK = FEEDS['all']['link']
+    DESC = FEEDS['all']['description']
 
-    rss = xtree.root_element(NAMESPACES, "rss")
+    rss = xtree.root_element(NAMESPACES['rss'], "rss")
     rss = xtree.set_attribute(rss, "version", "2.0")
     channel = xtree.child_element(rss, "channel")
 

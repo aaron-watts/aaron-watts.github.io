@@ -1,4 +1,4 @@
-from config.config import settings as config
+from config.settings import NAMESPACES
 from utils import xtree
 from utils.files import path_to_url
 
@@ -16,7 +16,7 @@ def build_sitemap(doc_tree):
     """
     path_tree = [path_to_url(doc) for doc in doc_tree]
     path_tree = sort_tree(path_tree)
-    namespaces = config['namespaces']['sitemap']
+    namespaces = NAMESPACES['sitemap']
     urlset = xtree.root_element(namespaces, "urlset")
     for doc in path_tree:
         url = xtree.child_element(urlset, "url")

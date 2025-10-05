@@ -1,12 +1,12 @@
 import os
 import re
-from config.config import settings as config
+from config.settings import ROOT, BASE_URL, SUB_DIRECTORIES
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
-ROOT_DIR = config['root']
-ARTICLE_DIRS = config['sub_directories'].split()
-BASE_URL = config['base_url']
+#ROOT = config['root']
+#SUB_DIRECTORIES = config['sub_directories'].split()
+#BASE_URL = config['base_url']
 
 def path_to_url(file_path):
     """
@@ -31,10 +31,10 @@ def get_articles():
     Return list of HTML articles as dict's
     """
     articles = []
-    for directory in ARTICLE_DIRS:
-        for file in os.scandir(f"{ROOT_DIR}/{directory}"):
+    for directory in SUB_DIRECTORIES:
+        for file in os.scandir(f"{ROOT}/{directory}"):
             if file_valid(file.name) and not file.name == "index.html":
-                full_path = f"{ROOT_DIR}/{directory}/{file.name}"
+                full_path = f"{ROOT}/{directory}/{file.name}"
                 with open(full_path) as html_doc:
                     soup = BeautifulSoup(html_doc, "lxml")
                     article_doc = {
@@ -51,9 +51,9 @@ def get_docs():
     Return list of all HTML files as list of strings
     """
     docs = []
-    include_root = [""] + ARTICLE_DIRS
+    include_root = [""] + SUB_DIRECTORIES
     for directory in include_root:
-        for file in os.scandir(f"{ROOT_DIR}/{directory}"):
+        for file in os.scandir(f"{ROOT}/{directory}"):
             if file_valid(file.name):
                 dir_name = directory
                 if len(dir_name) > 0:

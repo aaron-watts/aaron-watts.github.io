@@ -5,9 +5,22 @@ root:
 sub_directories:
   guides
   tech
+selectors:
+  main:
+    main
+  title:
+    h1
+  intro:
+    p#intro
+  time:
+    main > time
+  img:
+    main > img
 sitemap:
   path:
     xml_test/sitemap.xml
+rss:
+  count: 10
 feeds:
   all:
     path:
@@ -37,4 +50,3 @@ namespaces:
       http://search.yahoo.com/mrss/
     content:
       http://purl.org/rss/1.0/modules/content/
-

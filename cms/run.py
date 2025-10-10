@@ -2,8 +2,9 @@
 
 """Run CMS scripts to build aaronwatts.dev"""
 
-from config.settings import SITEMAP, FEEDS
+from config.settings import SUB_DIRECTORIES, SITEMAP, FEEDS
 from utils.files import get_articles, get_docs, write_to_xml
+from utils.soup import extract_data
 from doc_test.doc_test import test_documents
 from sitemap_xml.sitemap_xml import build_sitemap
 from rss_xml.rss_xml import build_rss
@@ -20,7 +21,26 @@ if __name__ == "__main__":
         sitemap = build_sitemap(doc_tree)
         write_to_xml(sitemap, SITEMAP['path'])
 
-        # feeds
+        for article in articles:
+            article = extract_data(article)
+
+        articles.sort(
+                key=lambda article: article['date'],
+                reverse=True
+                )
+
         rss = build_rss(articles)
         write_to_xml(rss, FEEDS['all']['path'])
+
+        filtered_articles = {}
+        for sub_dir in SUB_DIRECTORIES:
+            filtered = filter(
+                    lambda article: article['directory'] == sub_dir,
+                    articles
+                    )
+            filtered_articles[sub_dir] = list(filtered)
+
+            feed = build_rss(filtered_articles[sub_dir])
+            write_to_xml(feed, FEEDS[sub_dir]['path'])
+
         # articles

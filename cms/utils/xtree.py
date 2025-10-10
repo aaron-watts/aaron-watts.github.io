@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 
+
 def root_element(ns, root_elem):
     """
     Return root element of an XML tree as object
@@ -14,6 +15,7 @@ def root_element(ns, root_elem):
         root.set(nsid, ns[namespace])
     return root
 
+
 def child_element(parent, child, innerText=None):
     """
     Return child element of an XML tree as object
@@ -22,6 +24,7 @@ def child_element(parent, child, innerText=None):
     if innerText:
         child.text = innerText
     return child
+
 
 def set_attribute(elem, attr, val):
     """

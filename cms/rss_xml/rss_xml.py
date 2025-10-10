@@ -1,19 +1,36 @@
-from config.settings import FEEDS, NAMESPACES
+from config.settings import BASE_URL, RSS, FEEDS, NAMESPACES
 from utils import xtree
-from utils.files import path_to_url
-
-def build_item(parent):
-    item = xtree.child_element(parent, "item")
-    return item
+from utils.files import path_to_url, image_url_from_file
+from utils.soup import selector, absolute_urls
 
 def build_rss(doc_tree):
     """
     Return RSS XML as tree object
     """
-    ATOM_LINK_HREF = FEEDS['all']['link']
-    TITLE = FEEDS['all']['title']
-    LINK = FEEDS['all']['link']
-    DESC = FEEDS['all']['description']
+    FEED = FEEDS['all']
+
+    rss = build_root(FEED)
+    channel = rss[0]
+    if len(doc_tree) > RSS['count']:
+        for i in range(RSS['count']):
+            build_item(channel, doc_tree[i])
+    else:
+        for doc in doc_tree:
+            build_item(channel, doc)
+
+    return rss
+
+
+def build_root(feed):
+    """
+    Return the roots element of an RSS XML document
+    """
+    # TITLE can be formed from existing data?
+    # DESC should come from html description if not All
+    ATOM_LINK_HREF = feed['link']
+    TITLE = feed['title']
+    LINK = feed['link']
+    DESC = feed['description']
 
     rss = xtree.root_element(NAMESPACES['rss'], "rss")
     rss = xtree.set_attribute(rss, "version", "2.0")
@@ -28,29 +45,51 @@ def build_rss(doc_tree):
     xtree.child_element(channel, "link", LINK)
     xtree.child_element(channel, "description", DESC)
     xtree.child_element(channel, "category", "Technology")
-    # Populate Channel
-    
-    # Populate Items
 
-    # 3 Feeds: All, Guides, Tech
-    # {Titles and descriptions}
-    #   <channel>
-    #       <atom:link href="feed url" rel="self" type="applications/rss+xml"/>
-    #       <title>{Title}</title>
-    #       <description>{Description}</description>
-    #       <category>Technology</category>
-    #   </channel>
-    # Articles exist in doc tree
-    # For each article: extract data from soup:
-    #   <item>
-    #       <title>h1 text<title>
-    #       <link>pathname to url</link>
-    #       <pubDate>format date from time element</pubDate>
-    #       <description>p#intro text</description>
-    #       <guid>pathname to url</guid>
-    #       <content:encoded>format main</content:encoded>
-    #       <enclosure url="img['src']" length="0" type="image/jepg"/>
-    #       <media:thumbnail url="img['src']" width="1920" height="1080"/>
-    #       <media:content type="image/jpeg" url="img['src']"/>
-    #   </item>
     return rss
+
+
+def build_item(parent, doc):
+    """
+    Builds XML item for an article
+    """
+    URL = path_to_url(f"{doc['directory']}/{doc['filename']}")
+    IMG = BASE_URL + selector(doc['soup'], "main > img", "src")
+
+    item = xtree.child_element(parent, "item")
+
+    xtree.child_element(item, "title", doc['title'])
+    xtree.child_element(item, "link", URL)
+    xtree.child_element(item, "pubDate", doc['pub_date'])
+    xtree.child_element(item, "description", doc['description'])
+    xtree.child_element(item, "guid", URL)
+
+    content = absolute_urls(doc['content'])
+    xtree.child_element(item, "content:encoded", content)
+
+    enclosure = xtree.child_element(item, "enclosure")
+    set_img_attrs(enclosure, IMG)
+    thumbnail = xtree.child_element(item, "media:thumbnail")
+    set_img_attrs(thumbnail, IMG)
+    media = xtree.child_element(item, "media:content")
+    set_img_attrs(media, IMG)
+
+    return item
+
+def set_img_attrs(elem, img):
+    """
+    Adds XML attributes to RSS image elements
+    """
+    elem_tag = elem.tag
+    xtree.set_attribute(elem, "url", img)
+
+    if elem_tag == "enclosure":
+        xtree.set_attribute(elem, "type", "image/jpeg")
+        xtree.set_attribute(elem, "length", "0")
+    elif elem_tag == "media:thumbnail":
+        xtree.set_attribute(elem, "width", "1920")
+        xtree.set_attribute(elem, "height", "1080")
+    elif elem_tag == "media:content":
+        xtree.set_attribute(elem, "type", "image/jpeg")
+
+    return elem

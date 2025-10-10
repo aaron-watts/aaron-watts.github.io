@@ -2,13 +2,6 @@ from config.settings import NAMESPACES
 from utils import xtree
 from utils.files import path_to_url
 
-def sort_tree(tree):
-    """
-    Return document tree by folder with index's first
-    """
-    tree.sort()
-    tree.sort(key=lambda doc: doc.count('/'))
-    return tree
 
 def build_sitemap(doc_tree):
     """
@@ -22,3 +15,12 @@ def build_sitemap(doc_tree):
         url = xtree.child_element(urlset, "url")
         loc = xtree.child_element(url, "location", doc)
     return urlset
+
+
+def sort_tree(tree):
+    """
+    Return document tree by folder with index's first
+    """
+    tree.sort()
+    tree.sort(key=lambda doc: doc.count('/'))
+    return tree

@@ -32,13 +32,13 @@ def get_articles():
                 full_path = f"{ROOT}/{directory}/{file.name}"
                 with open(full_path) as html_doc:
                     soup = BeautifulSoup(html_doc, "lxml")
-                    article_doc = {
+                    doc = {
                         "filename": file.name,
                         "directory": directory,
                         "path": full_path,
                         "soup": soup
                             }
-                    articles.append(article_doc)
+                    articles.append(doc)
     return articles
 
 
@@ -49,6 +49,14 @@ def write_to_xml(xml_tree, path):
     tree = ET.ElementTree(xml_tree)
     ET.indent(tree)
     tree.write(path, xml_declaration="version", encoding="UTF-8")
+
+
+def write_to_html(soup, path):
+    """
+    Write HTML soup to path
+    """
+    with open(path, "w") as outf:
+        outf.write(str(soup))
 
 
 def file_valid(file_name):

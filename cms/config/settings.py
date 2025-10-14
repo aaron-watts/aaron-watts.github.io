@@ -5,6 +5,7 @@ with open("cms/config/config.yaml", "r") as f:
 
 BASE_URL = settings['base_url']
 ROOT = settings['root']
+HOME = settings['home']
 SUB_DIRECTORIES = settings['sub_directories'].split()
 SELECTORS = settings['selectors']
 SITEMAP = settings['sitemap']

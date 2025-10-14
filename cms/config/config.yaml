@@ -2,6 +2,8 @@ base_url:
   https://aaronwatts.dev
 root:
   docs
+home:
+  home.html
 sub_directories:
   guides
   tech
@@ -16,6 +18,8 @@ selectors:
     main > time
   img:
     main > img
+  keywords:
+    meta[name=keywords]
 sitemap:
   path:
     xml_test/sitemap.xml

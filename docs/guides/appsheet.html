@@ -40,7 +40,7 @@
     </nav>
     <main class="article">
         <h1>AppSheet - Rota App</h1>
-        <time datetime="2025-08-23">28<sup>th</sup> August, 2025</time>
+        <time datetime="2025-08-28">28<sup>th</sup> August, 2025</time>
         <img src="/images/guides/appsheet.jpg"
         alt="A demonstrative promotional image displaying how AppSheet appears across
         mobile, tablet and computer devices">
@@ -175,13 +175,15 @@
         </p>
         <table class="spreadsheet">
             <thead>
-                <th scope="col">Shift ID</th>
-                <th scope="col">Staff</th>
-                <th scope="col">Date</th>
-                <th scope="col">Location</th>
-                <th scope="col">Start</th>
-                <th scope="col">Finish</th>
-                <th scope="col">Cal ID</th>
+                <tr>
+                  <th scope="col">Shift ID</th>
+                  <th scope="col">Staff</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Start</th>
+                  <th scope="col">Finish</th>
+                  <th scope="col">Cal ID</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -227,7 +229,9 @@
         </p>
         <table>
             <thead>
+              <tr>
                 <th colspan="2">Locations</th>
+              </tr>
             </thead>
             <tr>
                 <td>Name</td>
@@ -240,7 +244,9 @@
         </table>
         <table>
             <thead>
+              <tr>
                 <th colspan="2">Staff</th>
+              <tr>
             </thead>
             <tr>
                 <td>Employee Number</td>
@@ -273,10 +279,12 @@
         </p>
         <table>
             <thead>
+              <tr>
                 <th>Name</th>
                 <th>Type</th>
                 <th>Formula</th>
                 <th>Initial Value</th>
+              </tr>
             </thead>
             <tr>
                 <td>Shift ID</td>
@@ -808,7 +816,9 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
         </p>
         <table class="spreadsheet">
           <thead>
+            <tr>
             <th>Staff</th>
+            </tr>
           </thead>
           <tr>
             <td>12345</td>
@@ -819,8 +829,10 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
         </table>
         <table class="spreadsheet">
           <thead>
+            <tr>
             <th>Start</th>
             <th>End</th>
+            </tr>
           </thead>
           <tr>
             <td>&lt;No Data&gt;</td>
@@ -909,7 +921,6 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
         </a>
     </footer>
 
-    <!-- remove this line if no code or pre used -->
     <script src="/assets/scripts/prism.js"></script>
 </body>
 </html>

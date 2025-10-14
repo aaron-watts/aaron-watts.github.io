@@ -22,13 +22,13 @@ selectors:
     meta[name=keywords]
 sitemap:
   path:
-    xml_test/sitemap.xml
+    sitemap.xml
 rss:
   count: 10
 feeds:
   all:
     path:
-      xml_test/feed.xml
+      feed.xml
     title:
       AaronWattsDev Latest
     href:
@@ -39,10 +39,10 @@ feeds:
       The most recent content on AaronWattsDev
   guides:
     path:
-      xml_test/guides/feed.xml
+      guides/feed.xml
   tech:
     path:
-      xml_test/tech/feed.xml
+      tech/feed.xml
 namespaces:
   sitemap:
     '':

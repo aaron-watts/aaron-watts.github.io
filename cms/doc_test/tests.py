@@ -217,5 +217,5 @@ tests = [
         breadcrumb_matches_path,
         description_not_blank,
         keywords_not_blank,
-        comments_has_id
+        comments_has_id,
         ]

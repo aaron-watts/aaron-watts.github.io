@@ -20,7 +20,7 @@ if __name__ == "__main__":
         doc_tree = get_docs()
 
         sitemap = build_sitemap(doc_tree)
-        write_to_xml(sitemap, SITEMAP['path'])
+        write_to_xml(sitemap, f"{ROOT}/{SITEMAP['path']}")
 
         for article in articles:
             article = extract_data(article)
@@ -31,10 +31,10 @@ if __name__ == "__main__":
                 )
 
         rss = build_rss(articles)
-        write_to_xml(rss, FEEDS['all']['path'])
+        write_to_xml(rss, f"{ROOT}/{FEEDS['all']['path']}")
 
         home_html = home_page(articles[0])
-        write_to_html(home_html, f"xml_test/{HOME}")
+        write_to_html(home_html, f"{ROOT}/{HOME}")
 
         filtered_articles = {}
         for sub_dir in SUB_DIRECTORIES:
@@ -45,12 +45,10 @@ if __name__ == "__main__":
             filtered_articles[sub_dir] = list(filtered)
 
             feed = build_rss(filtered_articles[sub_dir])
-            write_to_xml(feed, FEEDS[sub_dir]['path'])
+            write_to_xml(feed, f"{ROOT}/{FEEDS[sub_dir]['path']}")
 
             index_html = index_page(
                     filtered_articles[sub_dir],
                     f"{ROOT}/{sub_dir}/index.html"
                     )
-            write_to_html(index_html, f"xml_test/{sub_dir}/index.html")
-
-        # articles
+            write_to_html(index_html, f"{ROOT}/{sub_dir}/index.html")

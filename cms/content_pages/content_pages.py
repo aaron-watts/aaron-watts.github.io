@@ -17,6 +17,7 @@ def index_page(articles, index_page):
     """
     index_html = get_soup(index_page)
     article_div = selector(index_html, "main")
+    wipe_content(article_div)
 
     for article in articles:
         build_article(index_html, article_div, article)

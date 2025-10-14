@@ -13,7 +13,7 @@ def build_sitemap(doc_tree):
     urlset = xtree.root_element(namespaces, "urlset")
     for doc in path_tree:
         url = xtree.child_element(urlset, "url")
-        loc = xtree.child_element(url, "location", doc)
+        loc = xtree.child_element(url, "loc", doc)
     return urlset
 
 

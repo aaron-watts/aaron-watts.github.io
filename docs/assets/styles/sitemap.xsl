@@ -16,8 +16,8 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
                 </header>
                 <main>
                     <xsl:for-each select="sm:urlset/sm:url">
-                        <a href="{sm:location}">
-                            <xsl:value-of select="sm:location"/>
+                        <a href="{sm:loc}">
+                            <xsl:value-of select="sm:loc"/>
                         </a><br/>
                     </xsl:for-each>
                 </main>

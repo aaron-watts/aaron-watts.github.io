@@ -9,7 +9,7 @@
             <body>
                 <header>
                     <nav class="breadcrumbs">
-                        <span class="host">aaronwatts@dev</span>:<span class="path">~ $ feed.xml</span>
+                        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span class="path">/<a href="/rss">rss</a>/feed $</span>
                     </nav>
                     <h1>
                         <xsl:value-of select="/rss/channel/title"/>
@@ -24,23 +24,26 @@
                 </header>
                 <main>
                     <xsl:for-each select="/rss/channel/item">
+                        <hr/>
                         <div class="article">
                             <h2>
                                 <xsl:value-of select="title"/>
                             </h2>
-                            <a>
-                                <xsl:attribute name="href">
-                                    <xsl:value-of select="link"/>
-                                </xsl:attribute>
-                                Go to article
-                            </a>
-                            <br/>
                             <date>
-                               <xsl:value-of select="pubDate"/>
-                            </date>
-                            <p class="description">
+                               <xsl:value-of select="substring(pubDate,1,16)"/>
+                           </date>
+                            <div>
+                                <a>
+                                    <xsl:attribute name="href">
+                                        <xsl:value-of select="link"/>
+                                    </xsl:attribute>
+                                    Go to article
+                                </a>
+                            </div>
+                           <p class="description">
                                 <xsl:value-of select="description"/>
                             </p>
+                            <date></date>
                         </div>
                     </xsl:for-each>
                 </main>

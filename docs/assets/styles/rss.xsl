@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" version="1.0" encoding="utf-8" indent="yes"/>
     <xsl:template match="/">
@@ -30,7 +30,7 @@
                                 <xsl:value-of select="title"/>
                             </h2>
                             <date>
-                               <xsl:value-of select="substring(pubDate,1,16)"/>
+                                <xsl:value-of select="substring(pubDate,1,16)"/>
                            </date>
                             <div>
                                 <a>

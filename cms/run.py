@@ -2,9 +2,10 @@
 
 """Run CMS scripts to build aaronwatts.dev"""
 
-from config.settings import ROOT, HOME, SUB_DIRECTORIES, SITEMAP, FEEDS
+from config.settings import ROOT, HOME, SUB_DIRECTORIES, SITEMAP, FEEDS, XSL
 from utils.files import get_articles, get_docs, write_to_xml, write_to_html
 from utils.soup import extract_data
+from utils.xtree import add_xsl
 from doc_test.doc_test import test_documents
 from sitemap_xml.sitemap_xml import build_sitemap
 from rss_xml.rss_xml import build_rss
@@ -20,7 +21,9 @@ if __name__ == "__main__":
         doc_tree = get_docs()
 
         sitemap = build_sitemap(doc_tree)
-        write_to_xml(sitemap, f"{ROOT}/{SITEMAP['path']}")
+        sitemap_path = f"{ROOT}/{SITEMAP['path']}"
+        write_to_xml(sitemap, sitemap_path)
+        add_xsl(sitemap_path, XSL['sitemap'])
 
         for article in articles:
             article = extract_data(article)
@@ -30,8 +33,10 @@ if __name__ == "__main__":
                 reverse=True
                 )
 
+        feed_path_all = f"{ROOT}/{FEEDS['all']['path']}"
         rss = build_rss(articles)
-        write_to_xml(rss, f"{ROOT}/{FEEDS['all']['path']}")
+        write_to_xml(rss, feed_path_all)
+        add_xsl(feed_path_all, XSL['rss'])
 
         home_html = home_page(articles[0])
         write_to_html(home_html, f"{ROOT}/{HOME}")
@@ -44,8 +49,10 @@ if __name__ == "__main__":
                     )
             filtered_articles[sub_dir] = list(filtered)
 
+            feed_path = f"{ROOT}/{FEEDS[sub_dir]['path']}"
             feed = build_rss(filtered_articles[sub_dir])
-            write_to_xml(feed, f"{ROOT}/{FEEDS[sub_dir]['path']}")
+            write_to_xml(feed, feed_path)
+            add_xsl(feed_path, XSL['rss'])
 
             index_html = index_page(
                     filtered_articles[sub_dir],

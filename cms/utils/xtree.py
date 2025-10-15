@@ -1,6 +1,21 @@
 import xml.etree.ElementTree as ET
 
 
+def add_xsl(xml_file, xsl_path):
+    """
+    Adds an XSL style instruction based on xsl_path to an xml_file
+    """
+    with open(xml_file, "r") as inf:
+        contents = inf.readlines()
+
+    transform = f'<?xml-stylesheet href="{xsl_path}" type="text/xsl"?>\n'
+    contents.insert(1, transform)
+
+    with open(xml_file, "w") as outf:
+        contents = "".join(contents)
+        outf.write(contents)
+
+
 def root_element(ns, root_elem):
     """
     Return root element of an XML tree as object

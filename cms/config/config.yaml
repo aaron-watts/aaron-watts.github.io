@@ -54,3 +54,8 @@ namespaces:
       http://search.yahoo.com/mrss/
     content:
       http://purl.org/rss/1.0/modules/content/
+xsl:
+  sitemap:
+    /assets/styles/sitemap.xsl
+  rss:
+    /assets/styles/rss.xsl

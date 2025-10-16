@@ -5,6 +5,13 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
+                <title>
+                    AWD - Sitemap
+                </title>
+                <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+                <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+                <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+                <link href="/site.webmanifest" rel="manifest"/>
                 <link href="/assets/styles/style.css" rel="stylesheet"/>
             </head>
             <body>

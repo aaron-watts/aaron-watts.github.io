@@ -208,6 +208,9 @@ nav.breadcrumbs .path a:visited {
 nav.breadcrumbs .path a:hover {
     color: #d7a6ff;
 }
+nav.breadcrumbs .bash {
+    font-weight: normal;
+}
 nav li {
     line-height: 1.4em;
     margin-bottom: .6em;

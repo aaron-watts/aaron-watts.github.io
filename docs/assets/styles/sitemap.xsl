@@ -15,11 +15,16 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
                     <h1>Sitemap</h1>
                 </header>
                 <main>
-                    <xsl:for-each select="sm:urlset/sm:url">
-                        <a href="{sm:loc}">
-                            <xsl:value-of select="sm:loc"/>
-                        </a><br/>
-                    </xsl:for-each>
+                    <ul>
+                        <xsl:for-each select="sm:urlset/sm:url">
+                            <li>
+                                <xsl:variable name="link" select="substring(sm:loc,23)"/>
+                                <a href="{$link}">
+                                    <xsl:value-of select="$link"/>
+                                </a>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
                 </main>
             </body>
         </html>

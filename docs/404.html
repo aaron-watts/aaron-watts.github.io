@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>AWD - Page Not Found</title>
+  <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="/site.webmanifest" rel="manifest"/>
   <link href="/assets/styles/style.css" rel="stylesheet"/>
 </head>
 <body>
   <header>
     <nav class="breadcrumbs">
       <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span class="path">/ $</span>
-      <span class="bash">cd: no such file or directory: 404</span>
+      <span class="bash">cd: no such file or directory: 
+        <span id="pathname">
+          404
+        </span>
+      </span>
     </nav>
   </header>
 
@@ -38,5 +46,13 @@
     </a>
   </footer>
 
+  <script>
+    function getPath(){
+      const path = document.querySelector('#pathname');
+      path.innerText = location.pathname.substring(1);
+    }
+
+    document.addEventListener('DOMContentLoaded', getPath);
+  </script>
 </body>
 </html>

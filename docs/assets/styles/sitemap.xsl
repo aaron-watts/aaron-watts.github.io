@@ -5,6 +5,8 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
+                <meta charset="utf-8"/>
+                <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
                 <title>
                     AWD - Sitemap
                 </title>

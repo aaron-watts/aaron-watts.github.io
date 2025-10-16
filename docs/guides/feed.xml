@@ -2,10 +2,10 @@
 <?xml-stylesheet href="/assets/styles/rss.xsl" type="text/xsl"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
   <channel>
-    <atom:link href="https://aaronwatts.dev/home" rel="self" type="applications/rss+xml" />
-    <title>AaronWattsDev Latest</title>
-    <link>https://aaronwatts.dev/home</link>
-    <description>The most recent content on AaronWattsDev</description>
+    <atom:link href="https://aaronwatts.dev/guides/feed.xml" rel="self" type="applications/rss+xml" />
+    <title>AaronWattsDev Guides</title>
+    <link>https://aaronwatts.dev/guides</link>
+    <description>The most recent guides on AaronWattsDev</description>
     <category>Technology</category>
     <item>
       <title>AppSheet - Rota App</title>

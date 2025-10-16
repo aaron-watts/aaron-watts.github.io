@@ -19,7 +19,7 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
             <body>
                 <header>
                     <nav class="breadcrumbs">
-                        <span class="host">aaronwatts@dev</span>:<span class="path">~ $ sitemap.xml</span>
+                        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span class="path">~ $ sitemap.xml</span>
                     </nav>
                     <h1>Sitemap</h1>
                 </header>

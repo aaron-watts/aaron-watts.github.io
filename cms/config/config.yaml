@@ -40,9 +40,25 @@ feeds:
   guides:
     path:
       guides/feed.xml
+    title:
+      AaronWattsDev Guides
+    href:
+      https://aaronwatts.dev/guides/feed.xml
+    link:
+      https://aaronwatts.dev/guides
+    description: >-
+      The most recent guides on AaronWattsDev
   tech:
     path:
       tech/feed.xml
+    title:
+      AaronWattsDev Tech
+    href:
+      https://aaronwatts.dev/tech/feed.xml
+    link:
+      https://aaronwatts.dev/tech
+    description: >-
+      The most recent tech on AaronWattsDev
 namespaces:
   sitemap:
     '':

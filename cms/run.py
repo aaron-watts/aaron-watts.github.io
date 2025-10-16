@@ -34,7 +34,7 @@ if __name__ == "__main__":
                 )
 
         feed_path_all = f"{ROOT}/{FEEDS['all']['path']}"
-        rss = build_rss(articles)
+        rss = build_rss(articles, FEEDS['all'])
         write_to_xml(rss, feed_path_all)
         add_xsl(feed_path_all, XSL['rss'])
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             filtered_articles[sub_dir] = list(filtered)
 
             feed_path = f"{ROOT}/{FEEDS[sub_dir]['path']}"
-            feed = build_rss(filtered_articles[sub_dir])
+            feed = build_rss(filtered_articles[sub_dir], FEEDS[sub_dir])
             write_to_xml(feed, feed_path)
             add_xsl(feed_path, XSL['rss'])
 

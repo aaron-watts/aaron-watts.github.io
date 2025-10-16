@@ -3,13 +3,11 @@ from utils import xtree
 from utils.files import path_to_url, image_url_from_file
 from utils.soup import selector, absolute_urls
 
-def build_rss(doc_tree):
+def build_rss(doc_tree, feed):
     """
     Return RSS XML as tree object
     """
-    FEED = FEEDS['all']
-
-    rss = build_root(FEED)
+    rss = build_root(feed)
     channel = rss[0]
     if len(doc_tree) > RSS['count']:
         for i in range(RSS['count']):
@@ -27,7 +25,7 @@ def build_root(feed):
     """
     # TITLE can be formed from existing data?
     # DESC should come from html description if not All
-    ATOM_LINK_HREF = feed['link']
+    ATOM_LINK_HREF = feed['href']
     TITLE = feed['title']
     LINK = feed['link']
     DESC = feed['description']

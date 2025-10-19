@@ -7,6 +7,7 @@ BASE_URL = settings['base_url']
 ROOT = settings['root']
 HOME = settings['home']
 SUB_DIRECTORIES = settings['sub_directories'].split()
+NO_INDEX = settings['no_index'].split()
 SELECTORS = settings['selectors']
 SITEMAP = settings['sitemap']
 RSS = settings['rss']

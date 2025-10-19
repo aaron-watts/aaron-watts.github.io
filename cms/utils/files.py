@@ -1,6 +1,6 @@
 import os
 import re
-from config.settings import ROOT, BASE_URL, SUB_DIRECTORIES
+from config.settings import ROOT, BASE_URL, SUB_DIRECTORIES, NO_INDEX
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
@@ -63,8 +63,8 @@ def file_valid(file_name):
     """
     Check if file is HTML and return boolean
     """
-    if file_name.endswith(".html"):
-        return True
+    if file_name.endswith(".html") and not file_name in NO_INDEX:
+            return True
     return False
 
 

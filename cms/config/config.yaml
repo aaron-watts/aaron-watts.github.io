@@ -7,6 +7,8 @@ home:
 sub_directories:
   guides
   tech
+no_index:
+  404.html
 selectors:
   main:
     main

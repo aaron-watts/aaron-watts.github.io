@@ -16,11 +16,15 @@ def index_page(articles, index_page):
     Returns an index page with all relevant articles included
     """
     index_html = get_soup(index_page)
-    article_div = selector(index_html, "main")
-    wipe_content(article_div)
+    main_elem = selector(index_html, "main")
+    wipe_content(main_elem)
 
     for article in articles:
+        #build_article(index_html, article_div, article)
+        article_div = build_elem(index_html, "div")
+        class_list(article_div, "article")
         build_article(index_html, article_div, article)
+        append_child(main_elem, article_div)
 
     return index_html
 

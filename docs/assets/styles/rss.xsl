@@ -16,7 +16,7 @@
                 <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
                 <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
                 <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-               <link href="/assets/styles/style.css" rel="stylesheet"/>
+                <link href="/assets/styles/style.css" rel="stylesheet"/>
             </head>
             <body>
                 <header>
@@ -40,30 +40,48 @@
                 <main>
                     <xsl:for-each select="/rss/channel/item">
                         <hr/>
-                        <div class="article">
-                            <h2>
-                                <xsl:value-of select="title"/>
-                            </h2>
-                            <date>
-                                <xsl:value-of select="substring(pubDate,1,16)"/>
-                           </date>
-                            <div>
-                                <a>
-                                    <xsl:attribute name="href">
-                                        <xsl:value-of select="link"/>
+                        <article>
+                            <header>
+                                <h2>
+                                    <xsl:value-of select="title"/>
+                                </h2>
+                                <xsl:variable name="year" select="substring(pubDate,13,4)"/>
+                                <xsl:variable name="month">
+                                    <xsl:if test="contains(pubDate,'Jan')">01</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Feb')">02</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Mar')">03</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Apr')">04</xsl:if>
+                                    <xsl:if test="contains(pubDate,'May')">05</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Jun')">06</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Jul')">07</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Aug')">08</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Sep')">09</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Oct')">10</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Nov')">11</xsl:if>
+                                    <xsl:if test="contains(pubDate,'Dec')">12</xsl:if>
+                                </xsl:variable>
+                                <xsl:variable name="day" select="substring(pubDate,6,2)"/>
+                                <time>
+                                    <xsl:attribute name="datetime">
+                                        <xsl:value-of select="concat($year,'-',$month,'-',$day)"/>
                                     </xsl:attribute>
-                                    Go to article
-                                </a>
-                            </div>
+                                    <xsl:value-of select="substring(pubDate,1,16)"/>
+                                </time>
+                            </header>
                            <p class="description">
                                 <xsl:value-of select="description"/>
                             </p>
-                            <date></date>
-                        </div>
+                            <a>
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="link"/>
+                                </xsl:attribute>
+                                Read more
+                            </a>
+                        </article>
                     </xsl:for-each>
                     <hr/>
                 </main>
-                <div id ="help">
+                <section id ="help">
                     <h3><em>HELP!</em> Getting Set Up with RSS</h3>
                     <p>
                         Gone are the days when RSS Feed Readers were bundled in to web
@@ -91,7 +109,7 @@
                         <li><a href="https://apps.nextcloud.com/apps/news" target="_blank">News app for Nextcloud</a></li>
                         <li><a href="https://www.thunderbird.net/en-GB/" target="_blank">Thunderbird email client</a></li>
                     </ul>
-                </div>
+                </section>
                 <footer>
                     <div>
                         Made by Hand. Powered by

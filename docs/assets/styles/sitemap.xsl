@@ -32,7 +32,7 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
                             <li>
                                 <xsl:variable name="link" select="substring(sm:loc,23)"/>
                                 <a href="{$link}">
-                                    <xsl:value-of select="$link"/>
+                                    <xsl:value-of select="sm:loc"/>
                                 </a>
                             </li>
                         </xsl:for-each>

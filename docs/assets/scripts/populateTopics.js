@@ -4,7 +4,7 @@ const populateTopics = () => {
     };
 
     const makeTopicTag = (topicName) => {
-        const topic = document.createElement('ul');
+        const topic = document.createElement('li');
         topic.classList.add('topic');
         topic.innerText = topicName;
         topic.addEventListener('click', filterByTopic);
@@ -13,13 +13,14 @@ const populateTopics = () => {
 
     const makeButton = () => {
         const showBtn = document.createElement('button');
-        showBtn.innerText = 'Show more';
+        showBtn.innerText = 'Show more topics';
         showBtn.classList.add('hidden');
         showBtn.addEventListener('click', () => {
+            topicList.classList.toggle('fade');
             topicList.classList.toggle('topic-truncate');
-            showBtn.innerText == 'Show more' ? 
-            showBtn.innerText = 'Show less' : 
-            showBtn.innerText = 'Show more';
+            showBtn.innerText == 'Show more topics' ? 
+            showBtn.innerText = 'Show less topics' : 
+            showBtn.innerText = 'Show more topics';
         });
         return showBtn;
     }
@@ -43,20 +44,26 @@ const populateTopics = () => {
     window.addEventListener('resize', function() {
         if (isOverflow(topicList) || topicList.clientHeight > window.innerHeight * .2) {
             showBtn.classList.remove('hidden');
-        } else showBtn.classList.add('hidden')
+            topicList.classList.add('fade');
+        } else {
+            showBtn.classList.add('hidden');
+            topicList.classList.remove('fade');
+        }
     }, true)
 
     if (isOverflow(topicList)) {
         showBtn.classList.remove('hidden');
+        topicList.classList.add('fade');
+    } else {
+        topicList.classList.remove('fade');
     } 
 };
 
 function filterByTopic() {
-    const selected = document.querySelector('#topic-list>.topic.selected');
+    const selected = document.querySelector('#topic-list > .topic.selected');
     if (selected) selected.classList.remove('selected');
-
     const selection = this.innerText;
-    const articles = document.querySelectorAll('.article');
+    const articles = document.querySelectorAll('article');
 
     if (!selected || selected.innerText !== selection) {
         this.classList.add('selected');

@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A look at using a Raspberry Pi 5
     as a desktop computer and daily driver.">
     <meta name="keywords" content="raspberry pi, rpi5, computing, daily driver">
+    
     <title>AWD - Raspberry Pi 5 Desktop Computer</title>
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    
     <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
-    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">
+    
     <link rel="stylesheet" href="/assets/styles/style.css">
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
         <nav class="breadcrumbs">
             <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
@@ -33,41 +35,50 @@
         </div>
     </header>
     <nav>
-        <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#why">But, why?</a></li>
-            <li><a href="#good-enough">Is it good enough?</a></li>
-            <li><a href="#setup">My Set Up</a></li>
-            <li><a href="#youtube">Youtube</a></li>
-        </ul>
+      <header>
+        <h2>On This Page</h2>
+      </header>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#why">But, why?</a></li>
+        <li><a href="#good-enough">Is it good enough?</a></li>
+        <li><a href="#setup">My Set Up</a></li>
+        <li><a href="#youtube">Youtube</a></li>
+      </ul>
     </nav>
-    <main class="article">
-        <h1>Raspberry Pi 5 - Desktop Computer</h1>
-        <time datetime="2024-05-31">31<sup>st</sup> May, 2024</time>
-        <img src="/images/guides/pi5-desktop.jpg" 
+    <main>
+      <article>
+        <header>
+          <h1>Raspberry Pi 5 - Desktop Computer</h1>
+          <time datetime="2024-05-31">31st May, 2024</time>
+          <img src="/images/guides/pi5-desktop.avif" 
             alt="Screenshot of the Raspberry Pi desktop, with a terminal
             open to neofetch displaying specs, code editor displaying
             a html file, and a web browser open to onlyoffice document
             editor, with the contents of this web page written within
             the editor.">
-        <p id="intro">
+        </header>
+        <section id="intro">
+          <p id="description">
             This is less of a guide, and more just an outline of how,
             and why, I'm doing it. As well as a review of how it's
             going. It's not here as clickbait, you might not want to
             do it yourself, but I'm here to say that it's working for
             me.
-        </p>
-        <p>
+          </p>
+          <p>
             I know. There are hundreds of articles on this. But they
             are all out to prove that something is worth doing or not.
             This isn't that. It's not hyped up, undeserving praise, nor
             is it phobic criticism. I have genuinely switched from a
             <em>classical</em> desktop computer, to using a Raspberry Pi
             5, and it works for me. Really well, in fact!
-        </p>
+          </p>
+        </section>
 
-        <h2 id="why">But, why?</h2>
-        <p>
+        <section id="why">
+          <h2>But, why?</h2>
+          <p>
             This might be the wrong question. Maybe, it was more: how?
             I don't work in tech, it's just a hobby of mine. Nor do I make
             heaps of expendable money to blow on tech. My last desktop
@@ -92,8 +103,8 @@
             clock in soon. As luck would have it, my Macbook Pro 2012's
             keyboard had just degraded beyond the point of no return a
             week or two prior, which left me a little stuck.
-        </p>
-        <p>
+          </p>
+          <p>
             What I <em>did</em> have, was a Raspberry Pi 4 on my desk.
             Yes, I know, this is about Raspberry Pi 5, I will get to that.
             Anyway, we've all seen the misleading videos on youtube that
@@ -110,15 +121,17 @@
             and my trusty pi 4 was ticking along shouldering its load,
             I got a notification that the pi 5 was now in stock. I bought
             my pi 5, from my pi 4. Neat.
-        </p>
-        <p>
+          </p>
+          <p>
             My pi 4 got reassigned, and I set up the 5 with the new version
             of the argon one case and an M.2. NVME SSD drive, and just ..
             carried on working.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="good-enough">Is it good enough?</h2>
-        <p>
+        <section id="good-enough">
+          <h2>Is it good enough?</h2>
+          <p>
             Yes. I mean, for me, it is. I won't lie, pi 4 can get the job
             done. But it suffers while it does it, and at the end of the
             day, it goes home, falls straight to sleep, all the while
@@ -127,8 +140,8 @@
             evils and injustices of the world, and has enough ambition
             and energy to perform at it's tasks, and get to live a
             good quality of life at the end of the day too.
-        </p>
-        <p>
+          </p>
+          <p>
             What do you want it to do? Personally, I use my pi for the
             work I've already mentioned, some coding, and guides and
             nerdery. I'm not trying to game on it, I'm not trying to
@@ -141,8 +154,8 @@
             case, I've been able to get everything running in a way that
             causes me no hinderence, to the point that this is now the
             only computer on my desk.
-        </p>
-        <p>
+          </p>
+          <p>
             One huge win over using a more typical device, is the
             electricity usage. It uses almost none. I leave this pi, and
             another that I use specifically as a web radio and music
@@ -152,11 +165,13 @@
             energy crisis, that should make you happy. But if like me,
             you are more concerned with keeping your pockets lined with
             copper, then you should also get a kick out of that too.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="setup">My set up</h2>
-        <h3>Operating System and Desktop Environment</h3>
-        <p>
+        <section id="setup">
+          <h2>My set up</h2>
+          <h3>Operating System and Desktop Environment</h3>
+          <p>
             I went with Raspberry Pi OS. I haven't changed the desktop
             environment at all. It defaults to wayland, I've looked at
             the X desktop, but I've found no real reason to switch yet.
@@ -169,17 +184,17 @@
             continue to work on it. Besides, how much time do you spend
             really looking at your desktop and the window textures once
             an app is open?
-        </p>
-        <p>
+          </p>
+          <p>
             You could no doubt choose a more modern looking OS. But pi's
             own OS does everything well enough for me, and as usual I get
             the best possible compatibility with accessories, as well as
             having the best operating system possible for when I work on
             my guides.
-        </p>
+          </p>
 
-        <h3>Software</h3>
-        <p>
+          <h3>Software</h3>
+          <p>
             Nextcloud and KDE Connect both work, and are both available
             in the apt repo's, which is great. For
             writing code I use
@@ -188,8 +203,8 @@
             and has a lot of the same extensions available for it. There
             is a VSCode in apt, but it is from Microsofts repo, so aside
             from installing bloat, some people may not like that.
-        </p>
-        <p>
+          </p>
+          <p>
             LibreOffice is a great office suite, and I genuinely love it.
             However, everyone where I work is inside of the Microsoft
             ecosystem, and LibreOffice doesn't always play well with
@@ -200,17 +215,17 @@
             with ARM architecture. All is not lost, however, as OnlyOffice
             is integrated into Nextcloud, so you can use it online with
             any Nextcloud provider, or even your own.
-        </p>
-        <p>
+          </p>
+          <p>
             Everything else I do is online. Most of my work apps refuse
             to work in aything besides chrome or edge, so I just use
             chromium for work, and I have firefox for play time. There
             isn't much else for me to say on software. I live a simple
             life, do I not?
-        </p>
+          </p>
 
-        <h3>Peripherals</h3>
-        <p>
+          <h3>Peripherals</h3>
+          <p>
             One thing I do have to do online, a lot more often than I
             would like to, is conference calls. My employer uses MS
             Teams, which is a resource hog, and has caused many of my
@@ -221,8 +236,8 @@
             device can be shaky at best if you aren't prepared to do
             an extensive amount of research. If you want to get going
             quickly here, then I have reccomendations.
-        </p>
-        <p>
+          </p>
+          <p>
             The microphone I am using is a <a
             href="https://www.amazon.co.uk/SAMSON-30-10004-Samson-SAMTR-Microphone/dp/B004J3X47A/"
             target="_blank">Samson Meteor Mic</a>, it is a 1950's style,
@@ -231,8 +246,8 @@
             It features a hard mute button, as well as a headphone
             port, for when you need to drown out some background
             noise in order to hear the meeting.
-        </p>
-        <p>
+          </p>
+          <p>
             A microphone is the minimum you need to take part in an
             online meeting, so that's sorted. But people might start
             to talk about you if you are the only one that never turns
@@ -252,10 +267,12 @@
             camera quality as far as webcams go. And also, with chrome
             and ribbon cables all over your desk, you do start to feel
             pretty darn cyberpunk!
-        </p>
+          </p>
+        </section>
 
-        <h2 id="youtube">Youtube</h2>
-        <p>
+        <section id="youtube">
+          <h2>Youtube</h2>
+          <p>
             I suppose we do have to talk about it. It's the real question,
             after all, isn't it? Yes. It's watchable. I can run youtube
             on fullscreen in chromium, at 1080p 60fps. It drops some frames,
@@ -264,33 +281,20 @@
             raspberry pi is all that
             matters to you, then you should maybe look at installing android
             on a raspberry pi instead.
-        </p>
-        
+          </p>
+        </section>
+      </article>        
     </main>
-
-    <a href="#top">Back to Top</a>
-
-    <h4>Comments Section</h4>
-    <div id="comment-section"></div>
-    <noscript class="note">
-        Enable JavaScript to join in the conversation!
-    </noscript>
-
-    <script>
-        initComments({
-            node: document.getElementById("comment-section"),
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-            serverName: "cactus.chat",
-            siteName: "aaronwattsdev",
-            commentSectionId: "pi5-desktop"
-        })
-    </script>
+    <nav>
+      <a href="#top">Back to Top</a>
+    </nav>
 
     <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
+      <div>Made by Hand. Powered by</div>
+      <a href="https://pages.github.com/" target="_blank">
+        <img src="/images/githubpages.svg" 
+        alt="https://pages.github.com/">
+      </a>
     </footer>
-</body>
+  </body>
+</html>

@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A look at the steps necessary to get
     a free-hosted static website set up on Github with Github Pages">
     <meta name="keywords" content="webdev, seo, xml, python">
+    
     <title>AWD - Satic Website with Github Pages</title>
+   
+    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
-    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
+    
+    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/styles/prism.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/assets/styles/style.css">
+  </head>
+  <body>
     <header>
-        <nav class="breadcrumbs">
-            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-            class="path">/<a href="/guides">guides</a>/github-pages-static-website
-            $</span>
-        </nav>
-        <div class="rss-container">
-            <a href="/rss">
-                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-            </a>
-        </div>
+      <nav class="breadcrumbs">
+        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+        class="path">/<a href="/guides">guides</a>/github-pages-static-website
+        $</span>
+      </nav>
+      <div class="rss-container">
+        <a href="/rss">
+          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+        </a>
+      </div>
     </header>
     <nav>
-        <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#cms">Why Not a CMS?</a></li>
-            <li><a href="#github-pages">Github Pages</a></li>
-            <li><a href="#custom-domain">Custom Domain</a></li>
-            <li><a href="#bing">Getting Bing Ready</a></li>
-            <li><a href="#sitemap">Sitemap</a></li>
-            <li><a href="#feed">RSS Feed</a></li>
-            <li><a href="#automating">Automating the Boring Stuff</a></li>
-            <li><a href="#adding-comments-section">Adding a Comments Section</a></li>
-        </ul>
+      <header>
+        <h2>On This Page</h2>
+      </header>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#cms">Why Not a CMS?</a></li>
+        <li><a href="#github-pages">Github Pages</a></li>
+        <li><a href="#custom-domain">Custom Domain</a></li>
+        <li><a href="#bing">Getting Bing Ready</a></li>
+        <li><a href="#sitemap">Sitemap</a></li>
+        <li><a href="#feed">RSS Feed</a></li>
+        <li><a href="#automating">Automating the Boring Stuff</a></li>
+        <li><a href="#adding-comments-section">Adding a Comments Section</a></li>
+      </ul>
     </nav>
-    <main class="article">
-        <h1>Static Website - Github Pages</h1>
-        <time datetime="2024-06-09">9<sup>th</sup> June, 2024</time>
-        <img src="/images/guides/github-pages-static-website.jpg"
-        alt="The google search home page with your name here written
-        in the query input">
-        <p id="intro">
+    <main>
+      <article>
+        <header>
+          <h1>Static Website - Github Pages</h1>
+          <time datetime="2024-06-09">9th June, 2024</time>
+          <img src="/images/guides/github-pages-static-website.avif"
+          alt="The google search home page with your name here written
+          in the query input">
+        </header>
+        <section id="intro">
+          <p id="description">
             You don't always need a full stack. When all you need to
             do is show information, a static website is enough. And
             with Github Pages, it is possible to have a fully
             functioning website for free, just like this one! It could
             just be the perfect solution for your portfolio page.
-        </p>
-        <p>
+          </p>
+          <p>
             In fact, in 2024, static sites can do a bit more than just
             send information. This site, for example, has a 
             <a href="#comment-section">comment section</a> on each
@@ -70,17 +80,19 @@
             building this website and getting it bing-ready, as well
             as some of the interesting things you can get working on
             static websites today.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="cms">Why Not a CMS?</h2>
-        <p>
+        <section id="cms">
+          <h2>Why Not a CMS?</h2>
+          <p>
             Good question. You can absolutely use a Content Management
             System. Github Pages even has one incorporated into it, 
             it's called
             <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.
             But I had a very specific vision for my website. Story time.
-        </p>
-        <p>
+          </p>
+          <p>
             I bought my domain name a while ago. I had been learning
             web development, and thought I might like to do it
             professionally. And so, naturally I would need an online
@@ -95,8 +107,8 @@
             code would lead to more bugs, and the other thing was that
             I was never satisified with a project. I would always want
             to improve or fix something, and nothing ever got finished.
-        </p>
-        <p>
+          </p>
+          <p>
             Then I came across a website, just some
             <a href="https://motherfuckingwebsite.com/" 
             target="_blank">motherfucking website</a>, and I realised
@@ -113,18 +125,20 @@
             fonts, and as much as possible is hosted in the website
             itself. The only external service is the comments because,
             well, static.
-        </p>
-        <p>
+          </p>
+          <p>
             So, to keep to those design principles, I've opted to do
             everything myself (and also because I enjoy coding).
             Although, that doesn't mean things have to be difficult
             either. After looking at the things you need to get done
             to pass the bing test, we will take a look at automating
             some of the tedious stuff with python scripts.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="github-pages">Github Pages</h2>
-        <p>
+        <section id="github-pages">
+          <h2>Github Pages</h2>
+          <p>
             So, assuming you've got a basic website built and ready
             to go, you will need somewhere to serve the files from.
             I'm not savvy enough to want to brave self hosting on
@@ -136,8 +150,8 @@
             Github Pages websites are free, though there are
             limitations to them, but for a portfolio page, a blog,
             or documentation it is ideal.
-        </p>
-        <p>
+          </p>
+          <p>
             There are 2 different types of github pages websites.
             The first is the user/organisation site. This will
             give you a url in the format
@@ -151,10 +165,12 @@
             and without advanced DNS configuration, setting up with
             search engines will involve adding meta tags into the
             site headers for verification.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="custom-domain">Custom Domain Name</h2>
-        <p>
+        <section id="custom-domain">
+          <h2>Custom Domain Name</h2>
+          <p>
             You don't need a custom domain name. But with a DNS
             provider, such as
             <a target="_blank" 
@@ -176,10 +192,12 @@
                 href="https://stackoverflow.com/a/9123911"
                 target="_blank"
             >here</a>.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="bing">Getting Bing Ready</h2>
-        <p>
+        <section id="bing">
+          <h2>Getting Bing Ready</h2>
+          <p>
             Okay, so Bing is not the only search engine. But
             out of Bing and Google, Bing is definitely the
             hard-arse parent that isn't goint to tolerate any
@@ -194,17 +212,17 @@
             I bring up here, but assuming you're starting
             with something like the emmet boilerplate, you
             shouldn't run in to too many more than I did.
-        </p>
-        <h3>H1's</h3>
-        <p>
+          </p>
+          <h3>H1's</h3>
+          <p>
             They tried to tell you. You didn't listen.
             Semantics is important. But you kept following
             those CSS guru's on youtube like they were bitches
             on heat. Now all you know about web dev is how to
             nest spans in divs in spans in divs to make a
             sidemenu icon change shape when the menu is hidden.
-        </p>
-        <p>
+          </p>
+          <p>
             Bing wants to see a h1 on every page. Be smart and
             use it on the <em>main title</em> of the 
             <em>relevant content</em> of each page. I didn't
@@ -212,19 +230,19 @@
             <a href="/" target="_blank"
             >splash page</a>, but Bing flagged it, so I had to
             put one in and cancel the styling on it.
-        </p>
-
-        <h3>Alt-txt</h3>
-        <p>
+          </p>
+        
+          <h3>Alt-txt</h3>
+          <p>
             Yes, semantics is important. And yes, I regularly
             forget to put the alt-txt on images. Oh, fine. I
             just don't bother, I remember and then decide I'm
             too lazy to do it. Anyway, Bing pulled me on it,
             and now I try to be a good web dev.
-        </p>
+          </p>
 
-        <h3>Meta Description</h3>
-        <p>
+          <h3>Meta Description</h3>
+          <p>
             SEO has changed over the years, and search engines
             rely less on the meta tags in html headers than they
             used to. However, Bing still wants a meta desription
@@ -232,10 +250,10 @@
             in the meta keywords lists and all other bells and
             whistles if you wish, but just make sure the description
             is in their, as it seems to be the one Bing cares about.
-        </p>
+          </p>
 
-        <h3>Favicon</h3>
-        <p>
+          <h3>Favicon</h3>
+          <p>
             Technically, this wasn't really an obstacle to getting
             indexed, but it is rumoured that it can improve your
             ranking in search engines, and it also get's rid of that
@@ -248,79 +266,81 @@
             be able to create shortcuts on their homescreen of your
             website - just don't forget to update the name and
             short name values in that file before pushing.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="sitemap">Sitemap</h2>
-        <p>
+        <section id="sitemap">
+          <h2>Sitemap</h2>
+          <p>
             There are two main types of sitemap. The first is 
             html sitemaps, intended for users, but search engines
             can also crawl them to find links to all the pages on
             your site. The second is xml sitemaps, which you can
             submit directly to search engines, so they have an
             immediate directory of your sites urls.
-        </p>
-        <p>
+          </p>
+          <p>
             Creating a html sitemap isn't too difficult if you
             have already managed to code a static website, so
             I'll look at the xml sitemap, as there's a bit to
             learn with xml if you haven't used it much before.
-        </p>
-        <aside>
+          </p>
+          <aside>
             Note: If your site is only one page, you do not need any
             sitemaps.
-        </aside>
-        <p>
+          </aside>
+          <p>
             The sitemap xml file isn't too complicated, and is a
             good thing to look at before moving onto RSS feeds,
             which are similar but have a fair bit more going on
             to them. Let's take a look at the sitemap for this
             website, and then break it down:
-        </p>
-        <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+          </p>
+          <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/&lt;/loc&gt;
-    &lt;/url&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/home/&lt;/loc&gt;
-    &lt;/url&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/guides/gpicase/&lt;/loc&gt;
-    &lt;/url&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/guides/kde-plasma-bigscreen/&lt;/loc&gt;
-    &lt;/url&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/guides/media-keyboard/&lt;/loc&gt;
-    &lt;/url&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/guides/pi5-desktop/&lt;/loc&gt;
-    &lt;/url&gt;
-    &lt;url&gt;
-        &lt;loc&gt;https://aaronwatts.dev/guides/retropie-nespi-4/&lt;/loc&gt;
-    &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/&lt;/loc&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/home/&lt;/loc&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/guides/gpicase/&lt;/loc&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/guides/kde-plasma-bigscreen/&lt;/loc&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/guides/media-keyboard/&lt;/loc&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/guides/pi5-desktop/&lt;/loc&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://aaronwatts.dev/guides/retropie-nespi-4/&lt;/loc&gt;
+  &lt;/url&gt;
 &lt;/urlset&gt;</code></pre>
     
-        <p>
+          <p>
             This should all look a little familiar if you've ever
             played around with svg's in the browser, as it's the
             same type of markup. The first line is just stating
             which version of xml and encoding the document is using.
-        </p>
+          </p>
 
-<pre class="language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
+          <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
 
-        <p>
+          <p>
             The next line is the opening tag for the root element,
             <code>&lt;urlset&gt;</code>. It's what it sounds like, a set of
             url's.
-        </p>
+          </p>
 
-<pre class="language-xml"><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
-    &lt;!-- urls go here --&gt;
+          <pre class="language-html"><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;!-- urls go here --&gt;
 &lt;/urlset&gt;</code></pre>
 
-        <p>
+          <p>
             Nested within the <code>&lt;urlset&gt;</code> element are the
             <code>&lt;url&gt;</code> elements, one for each page in your
             website that you wish to be known to a search engines
@@ -333,22 +353,24 @@
             checking the protocol documenation at 
             <a href="https://sitemaps.org/protocol.html"
             target="_blank">sitemap.org</a>.
-        </p>
+          </p>
 
-<pre class="language-xml"><code>&lt;url&gt;
-    &lt;loc&gt;https://aaronwatts.dev/&lt;/loc&gt;
+          <pre class="language-html"><code>&lt;url&gt;
+  &lt;loc&gt;https://aaronwatts.dev/&lt;/loc&gt;
 &lt;/url&gt;</code></pre>
 
-        <p>
+          <p>
             A CMS would write these out for you, and doing them
             by hand can become a bit boring, and also prone to
             human error, so we will take a look at writing
             scripts to build these xml files for us shortly.
             But first, let's look at the rss feed.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="feed">RSS Feed</h2>
-        <p>
+        <section id="feed">
+          <h2>RSS Feed</h2>
+          <p>
             So, the following xml file contains the bare minimum for
             an rss feed to function in most readers. The required elements
             are all there. We can add more for a far better experience,
@@ -358,45 +380,45 @@
             before we flesh this file out to be a better feed, we would
             be foolish not to get some kind of automation set up to do
             this for us.
-        </p>
-        <p>
+          </p>
+          <p>
             But first, let's have a quick look at what we have so far:
-        </p>
-<pre class="language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+          </p>
+          <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;rss version="2.0"&gt;
-    &lt;channel&gt;
-        &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
-        &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
-        &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
-        &lt;item&gt;
-            &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
-            &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
-            &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-            &lt;title&gt;KDE Plasma Bigscreen - Raspberry Pi 4&lt;/title&gt;
-            &lt;link&gt;https://aaronwatts.dev/guides/kde-plasma-bigscreen&lt;/link&gt;
-            &lt;description&gt;I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.&lt;/description&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-            &lt;title&gt;RetroPie - RetroFlag NesPi 4 Case&lt;/title&gt;
-            &lt;link&gt;https://aaronwatts.dev/guides/retropie-nespi-4&lt;/link&gt;
-            &lt;description&gt;The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Lower power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?&lt;/description&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-            &lt;title&gt;Media Keyboard - Pico Controller&lt;/title&gt;
-            &lt;link&gt;https://aaronwatts.dev/guides/media-keyboard&lt;/link&gt;
-            &lt;description&gt;My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.&lt;/description&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-            &lt;title&gt;GPi Case 2 - Compute Module 4&lt;/title&gt;
-            &lt;link&gt;https://aaronwatts.dev/guides/gpicase&lt;/link&gt;
-            &lt;description&gt;The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.&lt;/description&gt;
-        &lt;/item&gt;
-    &lt;/channel&gt;
+  &lt;channel&gt;
+    &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
+    &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
+    &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
+    &lt;item&gt;
+      &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
+      &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
+      &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;title&gt;KDE Plasma Bigscreen - Raspberry Pi 4&lt;/title&gt;
+      &lt;link&gt;https://aaronwatts.dev/guides/kde-plasma-bigscreen&lt;/link&gt;
+      &lt;description&gt;I built this media centre at the start of 2024. There may be easier methods of installation by now. When I built this project, existing guides mentioned an installation image on KDE's bigscreen page, however, it doesn't seem to exist currently, except for a manjaro image, and I prefer to stick to Raspberry Pi's own debian OS when I can, especially that it ensures the best compatibility with things like cases and accessories.&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;title&gt;RetroPie - RetroFlag NesPi 4 Case&lt;/title&gt;
+      &lt;link&gt;https://aaronwatts.dev/guides/retropie-nespi-4&lt;/link&gt;
+      &lt;description&gt;The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Lower power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;title&gt;Media Keyboard - Pico Controller&lt;/title&gt;
+      &lt;link&gt;https://aaronwatts.dev/guides/media-keyboard&lt;/link&gt;
+      &lt;description&gt;My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;title&gt;GPi Case 2 - Compute Module 4&lt;/title&gt;
+      &lt;link&gt;https://aaronwatts.dev/guides/gpicase&lt;/link&gt;
+      &lt;description&gt;The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
 
-        <p>
+          <p>
             So, ignoring the first line, that is the same as the
             sitemap xml file, we can see that the root element in
             the rss feed is the <code>&lt;rss&gt;</code> element.
@@ -409,18 +431,18 @@
             <code>&lt;description&gt;</code>. This all provides
             the rss aggregators with the information they need about
             the channel itself.
-        </p>
+          </p>
 
-    <pre class="language-xml"><code>&lt;rss version="2.0"&gt;
-    &lt;channel&gt;
-        &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
-        &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
-        &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
-        &lt;!-- rss items go here --&gt;
-    &lt;/channel&gt;
+          <pre class="language-html"><code>&lt;rss version="2.0"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
+    &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
+    &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
+    &lt;!-- rss items go here --&gt;
+  &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
     
-        <p>
+          <p>
             Finally, we have the rss items themselves. These each
             consist of an <code>&lt;item&gt;</code> element, with a
             nested <code>&lt;title&gt;</code>,
@@ -430,17 +452,19 @@
             <a href="/home">home page</a>, where each project is listed
             with links and descriptions. This will come in handy in a
             when we automate the feed.
-        </p>
+          </p>
 
-<pre class="language-xml"><code>&lt;item&gt;
-    &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
-    &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
-    &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
+          <pre class="language-html"><code>&lt;item&gt;
+  &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
+  &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
+  &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
 &lt;/item&gt;</code></pre>
+        </section>
 
-        <h2 id="automating">Automating the Boring Stuff</h2>
+        <section id="automating">
+          <h2>Automating the Boring Stuff</h2>
 
-        <p>
+          <p>
             One of the main benefits of using a CMS, is that you
             don't have to do, or even think about, most of this
             stuff. Not only is ammending the sitemap and rss feed
@@ -457,30 +481,29 @@
             I will talk about the structure I use and how it
             affects or benefits the scripts I'm writing for
             reference.
-        </p>
+          </p>
 
-        <h3>A Sitemap Generator in Python</h3>
+          <h3>A Sitemap Generator in Python</h3>
 
-        <p>
+          <p>
             So the sitemap is essentially just a set of links
             to each html page in the website. Easy, my site
             only has two folders containing any html files at
             all, that's the <code>root/</code> and
             <code>guides/</code> directories.
-        </p>
+          </p>
 
-<pre class="language-none"><code>/
-index.html
-home.html
-guides/
-    gpicase.html
-    kde-plasma-bigscreen.html
-    media-keyboard.html
-    pi5-desktop.html
-    retropie-nespi-4.html
-</code></pre>
+          <pre class="language-treeview"><code>root/
+├── index.html
+├── home.html
+└── guides/
+    ├── gpicase.html
+    ├── kde-plasma-bigscreen.html
+    ├── media-keyboard.html
+    ├── pi5-desktop.html
+    └── retropie-nespie-4.html.html</code></pre>
 
-        <p>
+          <p>
             With this in mind, all we need to do, is build a
             <code>&lt;url&gt;</code> element for each file,
             append it to the root element, and then write it to
@@ -488,8 +511,8 @@ guides/
             probe our filesystem, and the
             <code>xml.etree.ElementTree</code> module parses
             and writes xml. Both are included in python3.
-        </p>
-        <p>
+          </p>
+          <p>
             The following snippet will build a root element,
             and then append a subelement to it, and fill out
             the text. We also have to register the xml
@@ -498,8 +521,8 @@ guides/
             element after we have created it, not doing so
             will result in <code>ns0</code> inserting itself
             within all the following elements down the tree.
-        </p>
-<pre class="language-python"><code>import xml.etree.ElementTree as ET
+          </p>
+          <pre class="language-python"><code>import xml.etree.ElementTree as ET
 
 # create the root element and set namespace
 ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
@@ -511,20 +534,20 @@ url = ET.SubElement(urlset, 'url')
 loc = ET.SubElement(url, 'loc')
 loc.text = 'https://aaronwatts.dev/'</code></pre>
 
-        <p>
+          <p>
             We are going to have to build a lot more url's,
             so that may as well be extracted out to a function.
             We will pass the file<em>path</em> to it as a
             parameter, and use it to build the url itself.
             We will also set the default path param to an empty
             string, for when we need to build the index url.
-        </p>
+          </p>
 <pre class="language-python"><code>def build_url(path=''):
-    url = ET.SubElement(urlset, 'url')
-    loc = ET.SubElement(url, 'loc')
-    loc.text = f'{root_url}{path}'</code></pre>
+  url = ET.SubElement(urlset, 'url')
+  loc = ET.SubElement(url, 'loc')
+  loc.text = f'{root_url}{path}'</code></pre>
 
-        <p>
+          <p>
             I'm going to keep the script simple, and just
             call the two files in the root directory
             directly, as I don't expect these to change any
@@ -534,43 +557,43 @@ loc.text = 'https://aaronwatts.dev/'</code></pre>
             module to iterate through these files, and
             call the build file function, passing the filename with
             the <code>.html</code> extension truncated off.
-        </p>
+          </p>
 
-<pre class="language-python"><code>build_url()
+          <pre class="language-python"><code>build_url()
 build_url('home/')
 
 for filename in os.listdir('guides/'):
-    build_url(f'{filename[:-5]}/')</code></pre>
+  build_url(f'{filename[:-5]}/')</code></pre>
 
-        <p>
+          <p>
             Finally, we just need to declare the element
             tree, indent it for readability, and write it
             to <code>sitemap.xml</code>. We can define the
             xml version and encoding in the write function.
-        </p>
+          </p>
 
-<pre class="language-python"><code>tree = ET.ElementTree(urlset)
+          <pre class="language-python"><code>tree = ET.ElementTree(urlset)
 ET.indent(tree)
 tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
 
-        <p>
+          <p>
             A quick look at the finished script and you will
             see I have stored the base url as a string, to help
             in the build url function. It only gets used on the
             one line within the function, but it makes it easier
             to change later if we need to by declaring it at the
             start of the script
-        </p>
+          </p>
 
-<pre class="language-python"><code>import os
+          <pre class="language-python"><code>import os
 import xml.etree.ElementTree as ET
 
 root_url = 'https://aaronwatts.dev/'
 
 def build_url(path=''):
-    url = ET.SubElement(urlset, 'url')
-    loc = ET.SubElement(url, 'loc')
-    loc.text = f'{root_url}{path}'
+  url = ET.SubElement(urlset, 'url')
+  loc = ET.SubElement(url, 'loc')
+  loc.text = f'{root_url}{path}'
 
 ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
 urlset = ET.Element('urlset')
@@ -580,15 +603,15 @@ build_url()
 build_url('home/')
 
 for filename in os.listdir('guides/'):
-    build_url(f'{filename[:-5]}/')
+  build_url(f'{filename[:-5]}/')
 
 tree = ET.ElementTree(urlset)
 ET.indent(tree)
 tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
 
-        <h3>A Simple RSS Generator in Python</h3>
+          <h3>A Simple RSS Generator in Python</h3>
 
-        <p>
+          <p>
             There is a bit more to do in this script. As well as
             url's for each page, we will need a title and a
             description for each project. Well, that all exists
@@ -596,35 +619,35 @@ tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></p
             python <code>bs4</code>, a.k.a. Beautiful Soup,
             module to read and parse the html file, and extract
             all the data we need.
-        </p>
-        <aside>
+          </p>
+          <aside>
             Beautiful Soup is not a built-in python module, and
             will need to be installed, along with a parser. For
             more information check the
             <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#installing-beautiful-soup"
             target="_blank">documentation</a>.
-        </aside>
-<pre class="language-python"><code>from bs4 import BeautifulSoup
+          </aside>
+          <pre class="language-python"><code>from bs4 import BeautifulSoup
 
 with open('home.html') as f:
-    txt = f.read()
-    soup = BeautifulSoup(txt, 'lxml')
+  txt = f.read()
+  soup = BeautifulSoup(txt, 'lxml')
 
 guides = soup.select('.project')
 
 for project in guides:
-    title = project.select_one('h2').text
-    link = project.select_one('a')['href']
-    description = project.select_one('.description').text</code></pre>
+  title = project.select_one('h2').text
+  link = project.select_one('a')['href']
+  description = project.select_one('.description').text</code></pre>
 
-        <p>
+          <p>
             The next step is to build the xml. Which is
             essentially the same process as with the sitemap,
             however the elements are a little more complex
             for the rss elements.
-        </p>
+          </p>
 
-<pre class="language-python"><code>import xml.etree.ElementTree as ET
+          <pre class="language-python"><code>import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
 # strings for the channel information
@@ -636,21 +659,21 @@ description_text = 'Projects in coding, raspberry pi, linux and more'
 # params: parent, type, text
 # returns: element
 def build_element(el_parent, el_type, el_text=''):
-    element = ET.SubElement(el_parent, el_type)
-    # leaves text blank if empty
-    if len(el_text):
-        element.text = el_text
-    return element
+  element = ET.SubElement(el_parent, el_type)
+  # leaves text blank if empty
+  if len(el_text):
+    element.text = el_text
+  return element
 
 # build rss item element
 # params: title, link, description
 def build_item(title, link, description):
-    link_text = f'{base_url}{link}'
-    rss_item = build_element(rss_channel, 'item')
-    build_element(rss_item, 'title', title)
-    build_element(rss_item, 'link', link_text)
-    # join and split to remove excess whitespace from html formatting
-    build_element(rss_item, 'description', ' '.join(description.split()))
+  link_text = f'{base_url}{link}'
+  rss_item = build_element(rss_channel, 'item')
+  build_element(rss_item, 'title', title)
+  build_element(rss_item, 'link', link_text)
+  # join and split to remove excess whitespace from html formatting
+  build_element(rss_item, 'description', ' '.join(description.split()))
 
 # make root element
 rss = ET.Element('rss')
@@ -664,26 +687,25 @@ build_element(rss_channel, 'description', description_text)
 
 # make soup
 with open('home.html') as f:
-    txt = f.read()
-    soup = BeautifulSoup(txt, 'lxml')
+  txt = f.read()
+  soup = BeautifulSoup(txt, 'lxml')
 
 # parse guides from soup and build rss items with data
 guides = soup.select('.project')
 for project in guides:
-    title = project.select_one('h2').text
-    link = project.select_one('a')['href']
-    description = project.select_one('.description').text
-    build_item(title, link, description)
+  title = project.select_one('h2').text
+  link = project.select_one('a')['href']
+  description = project.select_one('.description').text
+  build_item(title, link, description)
 
 # build and write xml tree
 tree = ET.ElementTree(rss)
 ET.indent(tree)
-tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
-    </code></pre>
+tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
 
-        <h3>A Better RSS Feed</h3>
+          <h3>A Better RSS Feed</h3>
 
-        <p>
+          <p>
             We have the basics now for a working RSS feed,
             but loaded up into an aggregator, it looks a little
             empty compared to other RSS feeds out there. There
@@ -699,8 +721,8 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
             not. And some aggregators use the
             <code>&lt;category&gt;</code> element to categorise
             feeds.
-        </p>
-        <p>
+          </p>
+          <p>
             There are other elements you can include, such as
             dates for updates and published, but I am not yet
             including this information in articles, I may
@@ -708,29 +730,29 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
             rssboard <a href="https://www.rssboard.org/media-rss"
             target="_blank">media-rss documentation</a> for
             more quality-of-life elements around media.
-        </p>
+          </p>
 
-<pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+          <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
 &lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/"&gt;
-    &lt;channel&gt;
-    &lt;atom:link href="https://aaronwatts.dev/feed.xml" rel="self" type="applications/rss+xml" /&gt;
-    &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
-    &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
-    &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
-    &lt;category&gt;Technology&lt;/category&gt;
-    &lt;item&gt;
-        &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
-        &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
-        &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
-        &lt;guid&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/guid&gt;
-        &lt;enclosure url="https://aaronwatts.dev/images/guides/pi5-desktop.jpg" length="0" type="image/jpeg" /&gt;
-        &lt;media:thumbnail url="https://aaronwatts.dev/images/guides/pi5-desktop.jpg" width="1920" height="1080" /&gt;
-        &lt;media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/pi5-desktop.jpg" /&gt;
-    &lt;/item&gt;
-    &lt;/channel&gt;
+  &lt;channel&gt;
+  &lt;atom:link href="https://aaronwatts.dev/feed.xml" rel="self" type="applications/rss+xml" /&gt;
+  &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
+  &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
+  &lt;description&gt;Projects in coding, raspberry pi, linux and more&lt;/description&gt;
+  &lt;category&gt;Technology&lt;/category&gt;
+  &lt;item&gt;
+    &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
+    &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
+    &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
+    &lt;guid&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/guid&gt;
+    &lt;enclosure url="https://aaronwatts.dev/images/guides/pi5-desktop.jpg" length="0" type="image/jpeg" /&gt;
+    &lt;media:thumbnail url="https://aaronwatts.dev/images/guides/pi5-desktop.jpg" width="1920" height="1080" /&gt;
+    &lt;media:content type="image/jpeg" url="https://aaronwatts.dev/images/guides/pi5-desktop.jpg" /&gt;
+  &lt;/item&gt;
+  &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
 
-        <p>
+          <p>
             My design choices and project structure have
             influenced how I have written the script to collect
             all the required information to build the individual
@@ -742,21 +764,19 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')
             it's associated with. So by knowing the page url,
             the script can easily decipher the image url that's
             associated with it.
-        </p>
+          </p>
 
-<pre class="language-none"><code>/
-index.html
-home.html
-guides/
-    gpicase.html
-    kde-plasma-bigscreen.html
-    ...
-images/
-    guides/
-        gpicase.jpg
-        kde-plasma-bigscreen.jpg</code></pre>
+          <pre class="language-treeview"><code>root/
+├── index.html
+├── home.html
+├── guides/
+|   ├── gpicase.html
+|   └── kde-plasma-bigscreen.html
+└── images/
+    ├── gpicase.jpg
+    └── kde-plasma-bigscreen.jpg</code></pre>
 
-        <p>
+          <p>
             A different solution here could be to include a
             hidden element in each project on the home page
             that lists them, with innertext that defines
@@ -765,9 +785,9 @@ images/
             a lot happening, but broken down, it's not too
             different from the simple rss script, it just
             has more jobs to do now:
-        </p>
+          </p>
 
-<pre class="language-python"><code>import xml.etree.ElementTree as ET
+          <pre class="language-python"><code>import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
 base_url = 'https://aaronwatts.dev'
@@ -776,35 +796,35 @@ description_text = 'Projects in coding, raspberry pi, linux and more'
 
 # builds a basic xml element, populates text, and appends to specified parent
 def build_element(el_parent, el_type, el_text=''):
-    element = ET.SubElement(el_parent, el_type)
-    if len(el_text):
-        element.text = el_text
-    return element
+  element = ET.SubElement(el_parent, el_type)
+  if len(el_text):
+    element.text = el_text
+  return element
 
 # builds a rss item from scraped project data
 def build_item(title, link, description):
-    link_text = f'{base_url}{link}'
-    rss_item = build_element(rss_channel, 'item')
-    build_element(rss_item, 'title', title)
-    build_element(rss_item, 'link', link_text)
-    build_element(rss_item, 'description', ' '.join(description.split()))
-    build_element(rss_item, 'guid', link_text)
-    build_media(rss_item, link)
+  link_text = f'{base_url}{link}'
+  rss_item = build_element(rss_channel, 'item')
+  build_element(rss_item, 'title', title)
+  build_element(rss_item, 'link', link_text)
+  build_element(rss_item, 'description', ' '.join(description.split()))
+  build_element(rss_item, 'guid', link_text)
+  build_media(rss_item, link)
 
 # called by build_item: builds complex media elements and appends to item parent
 def build_media(el_parent, el_link):
-    img_link = f'{base_url}/images{el_link}.jpg'
-    enclosure = ET.SubElement(el_parent, 'enclosure')
-    enclosure.set('url', img_link)
-    enclosure.set('length', '0')
-    enclosure.set('type','image/jpeg')
-    media_thumbnail = ET.SubElement(el_parent, 'media:thumbnail')
-    media_thumbnail.set('url', img_link)
-    media_thumbnail.set('width', '1920')
-    media_thumbnail.set('height', '1080')
-    media_content = ET.SubElement(el_parent, 'media:content')
-    media_content.set('type', 'image/jpeg')
-    media_content.set('url', img_link)
+  img_link = f'{base_url}/images{el_link}.jpg'
+  enclosure = ET.SubElement(el_parent, 'enclosure')
+  enclosure.set('url', img_link)
+  enclosure.set('length', '0')
+  enclosure.set('type','image/jpeg')
+  media_thumbnail = ET.SubElement(el_parent, 'media:thumbnail')
+  media_thumbnail.set('url', img_link)
+  media_thumbnail.set('width', '1920')
+  media_thumbnail.set('height', '1080')
+  media_content = ET.SubElement(el_parent, 'media:content')
+  media_content.set('type', 'image/jpeg')
+  media_content.set('url', img_link)
 
 # Declare XML namespaces to be used
 ET.register_namespace('', 'http://www.w3.org/2005/Atom')
@@ -829,24 +849,24 @@ build_element(rss_channel, 'category', 'Technology')
 
 # parse contents of home.html
 with open('home.html') as f:
-    txt = f.read()
-    soup = BeautifulSoup(txt, 'lxml')
+  txt = f.read()
+  soup = BeautifulSoup(txt, 'lxml')
 
 # create and populate an item element for each project
 guides = soup.select('.project')
 for project in guides:
-    title = project.select_one('h2').text
-    link = project.select_one('a')['href']
-    description = project.select_one('.description').text
-    build_item(title, link, description)
+  title = project.select_one('h2').text
+  link = project.select_one('a')['href']
+  description = project.select_one('.description').text
+  build_item(title, link, description)
 
 # build and write the tree
 tree = ET.ElementTree(rss)
 ET.indent(tree)
 tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
 
-        <h3>Further Automation</h3>
-        <p>
+          <h3>Further Automation</h3>
+          <p>
             We could expand on this even further. The list of
             guides in <code>home.html</code> could, with not
             much more work than we've already done, be generated
@@ -868,18 +888,18 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             now, I can feel my pigments fading and I would like to
             go out into the sunlight for a while, so let's start
             wrapping this up.
-        </p>
+          </p>
 
-        <h3>Index Page Generator</h3>
-        <p>
+          <h3>Index Page Generator</h3>
+          <p>
             Eagle eyed readers may have noticed that I have, in fact,
             added published dates to the guides on this site. I
             did also write a script that takes the exisiting guides
             and generates content within the <code>home.html</code>
             page where the full list of guides currently lives.
             It was not an incredibly complex script either.
-        </p>
-        <p>
+          </p>
+          <p>
             Using the Beautiful Soup Python module, the script crawls
             through the <code>guides</code> directory, and scrapes
             the relevant data required to make project summaries and
@@ -889,8 +909,8 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             rewrite the contents of the element that contains the
             full list of guides, which in my case, is the
             <code>main</code> element.
-        </p>
-        <pre class="language-python"><code>from bs4 import BeautifulSoup
+          </p>
+          <pre class="language-python"><code>from bs4 import BeautifulSoup
 import os
 from datetime import date
 
@@ -898,38 +918,38 @@ guides = []
 
 # crawl guides folder
 for f in os.scandir('guides'):
-    path_name = f'guides/{f.name}'
-    with open(path_name) as projectf:
-        project_txt = projectf.read()
-        project_soup = BeautifulSoup(project_txt, 'lxml')
-    # scrape the relevant data
-    title = project_soup.select_one('h1').text
-    intro = project_soup.select_one('p#intro').text
-    description = ' '.join(intro.split())
-    html_date = project_soup.select_one('time')
-    project_date = date.fromisoformat(html_date['datetime'])
-    keywords = project_soup.select_one('meta[name=keywords]')['content'].split(',')
-    keywords = [kw.lstrip() for kw in keywords]
-    
-    guides.append({
-        'title' : title,
-        'description' : description,
-        'keywords' : keywords,
-        'date' : project_date,
-        'datehtml' : html_date,
-        'link': f'/{path_name[:-5]}'
-    })
+  path_name = f'guides/{f.name}'
+  with open(path_name) as projectf:
+    project_txt = projectf.read()
+    project_soup = BeautifulSoup(project_txt, 'lxml')
+  # scrape the relevant data
+  title = project_soup.select_one('h1').text
+  intro = project_soup.select_one('p#intro').text
+  description = ' '.join(intro.split())
+  html_date = project_soup.select_one('time')
+  project_date = date.fromisoformat(html_date['datetime'])
+  keywords = project_soup.select_one('meta[name=keywords]')['content'].split(',')
+  keywords = [kw.lstrip() for kw in keywords]
+  
+  guides.append({
+    'title' : title,
+    'description' : description,
+    'keywords' : keywords,
+    'date' : project_date,
+    'datehtml' : html_date,
+    'link': f'/{path_name[:-5]}'
+  })
 
 # callback function to organise into order of date
 def date_sort(e):
-    return e['date']
+  return e['date']
 
 # sort guides by date - newest first
 guides.sort(reverse=True, key=date_sort)
 
 with open('home.html') as inf:
-    txt = inf.read()
-    soup = BeautifulSoup(txt, 'lxml')
+  txt = inf.read()
+  soup = BeautifulSoup(txt, 'lxml')
 
 # select and clear main element
 main_element = soup.select_one('main')
@@ -937,37 +957,39 @@ main_element.clear()
 
 # for each project, create and add the relevant html to the main element
 for project in guides:
-    project_div = soup.new_tag('div')
-    project_div['class'] = 'project'
-    project_header = soup.new_tag('h2')
-    project_header.string = project['title']
-    project_div.append(project_header)
-    project_date = soup.new_tag('time', datetime=project['datehtml']['datetime'])
-    project_date.string = project['datehtml'].text
-    project_div.append(project_date)
-    project_ul = soup.new_tag('ul')
-    project_ul['class'] = 'topic-container'
-    for topic in project['keywords']:
-        topic_li = soup.new_tag('li')
-        topic_li['class'] = 'topic'
-        topic_li.string = topic
-        project_ul.append(topic_li)
-    project_div.append(project_ul)
-    project_link = soup.new_tag('a', href=project['link'])
-    project_link.string = 'Go to project'
-    project_div.append(project_link)
-    project_description = soup.new_tag('p')
-    project_description['class'] = 'description'
-    project_description.string = project['description']
-    project_div.append(project_description)
-    main_element.append(project_div)
+  project_div = soup.new_tag('div')
+  project_div['class'] = 'project'
+  project_header = soup.new_tag('h2')
+  project_header.string = project['title']
+  project_div.append(project_header)
+  project_date = soup.new_tag('time', datetime=project['datehtml']['datetime'])
+  project_date.string = project['datehtml'].text
+  project_div.append(project_date)
+  project_ul = soup.new_tag('ul')
+  project_ul['class'] = 'topic-container'
+  for topic in project['keywords']:
+    topic_li = soup.new_tag('li')
+    topic_li['class'] = 'topic'
+    topic_li.string = topic
+    project_ul.append(topic_li)
+  project_div.append(project_ul)
+  project_link = soup.new_tag('a', href=project['link'])
+  project_link.string = 'Go to project'
+  project_div.append(project_link)
+  project_description = soup.new_tag('p')
+  project_description['class'] = 'description'
+  project_description.string = project['description']
+  project_div.append(project_description)
+  main_element.append(project_div)
 
 # write changes to file home.html
 with open ('home.html', 'w') as outf:
-    outf.write(BeautifulSoup.prettify(soup))</code></pre>
+  outf.write(BeautifulSoup.prettify(soup))</code></pre>
+        </section>
 
-        <h2 id="adding-comments-section">Adding A Comments Section</h2>
-        <p>
+        <section id="adding-comments-section">
+          <h2>Adding A Comments Section</h2>
+          <p>
             This wasn't something that I was previously aware that
             you could do with static websites, and I'm not even sure
             what first brought my attention to it. But it turns out
@@ -976,8 +998,8 @@ with open ('home.html', 'w') as outf:
             which is actually pretty smart. But the one I chose to go
             with was <a href="https://cactus.chat/"
             target="_blank">Cactus Comments</a>.
-        </p>
-        <p>
+          </p>
+          <p>
             Cactus Comments is free, and doesn't require users to
             sign in like the solutions based on github issues.
             It runs on <a href="https://matrix.org/"
@@ -989,41 +1011,29 @@ with open ('home.html', 'w') as outf:
             alerts of, reply to, and moderate comments (there is
             an arm 64-bit version for linux too, which is great now
             that I do all of my computing on my raspberry pi 5!).
-        </p>
-        <p>
+          </p>
+          <p>
             I won't explain how to get started, the documentation
             for cactus is pretty easy to follow. At first look you'll
             wonder if there's stuff missing from it, as it all seems
             too simple, but it really is as simple as it looks!
-        </p>
+          </p>
+        </section>
+      </article>
     </main>
 
-    <a href="#top">Back to Top</a>
-
-    <h4>Comments Section</h4>
-    <div id="comment-section"></div>
-    <noscript class="note">
-        Enable JavaScript to join in the conversation!
-    </noscript>
-
-    <script>
-        initComments({
-            node: document.getElementById("comment-section"),
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-            serverName: "cactus.chat",
-            siteName: "aaronwattsdev",
-            commentSectionId: "github-static-website"
-        })
-    </script>
+    <nav>
+      <a href="#top">Back to Top</a>
+    </nav>
 
     <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
+      <div>Made by Hand. Powered by</div>
+      <a href="https://pages.github.com/" target="_blank">
+        <img src="/images/githubpages.svg" 
+        alt="https://pages.github.com/">
+      </a>
     </footer>
 
     <script src="/assets/scripts/prism.js"></script>
-</body>
+  </body>
 </html>

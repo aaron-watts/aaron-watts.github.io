@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="How to use fonts in HTML and CSS">
     <meta name="keywords" content="webdev, fonts, web fonts, css, html, gdpr">
+  
     <title>AWD - Web Fonts</title>
+  
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+  
     <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
-    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
+  
+    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/styles/prism.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/assets/styles/style.css">
+  </head>
+
+  <body>
     <header>
-        <nav class="breadcrumbs">
-            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-            class="path">/<a href="/guides">guides</a>/web-fonts $</span>
-        </nav>
-        <div class="rss-container">
-            <a href="/rss">
-                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-            </a>
-        </div>
+      <nav class="breadcrumbs">
+        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+        class="path">/<a href="/guides">guides</a>/web-fonts $</span>
+      </nav>
+      <div class="rss-container">
+        <a href="/rss">
+          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+        </a>
+      </div>
     </header>
+
     <nav>
-        <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#local">Local Font Stack</a></li>
-            <li><a href="#self-hosting">Self Hosting Fonts</a></li>
-            <li><a href="#preloading">Preloading Fonts</a></li>
-        </ul>
+      <header>
+        <h2>On This Page</h2>
+      </header>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#local">Local Font Stack</a></li>
+        <li><a href="#self-hosting">Self Hosting Fonts</a></li>
+        <li><a href="#preloading">Preloading Fonts</a></li>
+      </ul>
     </nav>
-    <main class="article">
-        <h1>Web Fonts</h1>
-        <time datetime="2025-04-05">5<sup>th</sup> April, 2025</time>
-        <img src="/images/guides/web-fonts.jpg"
-        alt="A collection of fonts including sans-serif, serif, comic sans
-        and mono that read 'The lazy dog woffed!'">
-        <p id="intro">
+
+    <main>
+      </article>
+        <header>
+          <h1>Web Fonts</h1>
+          <time datetime="2025-04-05">5th April, 2025</time>
+          <img src="/images/guides/web-fonts.avif"
+          alt="A collection of fonts including sans-serif, serif, comic sans
+          and mono that read 'The lazy dog woffed!'">
+        </header>
+        <section id="intro">
+          <p id="description">
             If you've ever used an older or lower spec device, or had
             a slow connection on a public wifi network, you
             may have noticed the fonts on a web page get loaded after
@@ -52,8 +65,8 @@
             virtually unnoticable, but once you've seen it, as with
             most things traumatic, it is hard to unsee it. But there are
             a few steps we can take to mitigate this from happening.
-        </p>
-        <p>
+          </p>
+          <p>
             I feel like fonts are something that get overlooked when
             learning web development, and also when teaching it.
             Budding web developers tend to be taught how to import a
@@ -62,10 +75,12 @@
             I prefer to avoid external services wherever I can, as
             even the most reliable service can fail on occasion,
             which I've learned from experience.
-        </p>
+          </p>
+        </section>
 
-        <h2 id="local">Local Font Stack</h2>
-        <p>
+        <section id="local">
+          <h2>Local Font Stack</h2>
+          <p>
             Typically, I prefer to go with system fonts whenever I
             can. This website, for example, only sets fonts to
             <code>sans-serif</code> or <code>monospace</code>,
@@ -77,14 +92,14 @@
             for fonts installed locally on the users machine - it
             allows for some more thoughtful design without relying
             on http requests for fonts.
-        </p>
-        <pre class="language-css"><code>font-family: 
-    Consolas,
-    Monaco,
-    'Andale Mono',
-    'Ubuntu Mono',
-    monospace;</code></pre>
-        <p>
+          </p>
+          <pre class="language-css"><code>font-family: 
+  Consolas,
+  Monaco,
+  'Andale Mono',
+  'Ubuntu Mono',
+  monospace;</code></pre>
+          <p>
             If a local font stack is the way you want to go, then I
             highly suggest taking a look at <a href="https://simplecss.org/"
             target="_blank">Simple CSS</a>, a simple CSS framework
@@ -94,19 +109,21 @@
             small) file, but it is still quite handy to even just
             cherry pick from for smaller guides. For example it
             has a very sensible local font stack.
-        </p>
-        <pre class="language-css"><code>:root {
-    /* Set sans-serif & mono fonts */
-    --sans-font: 
-        -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
-        "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
-        "Helvetica Neue", sans-serif;
-    --mono-font: 
-        Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+          </p>
+          <pre class="language-css"><code>:root {
+  /* Set sans-serif & mono fonts */
+  --sans-font: 
+    -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+    "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
+    "Helvetica Neue", sans-serif;
+  --mono-font: 
+    Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 }</code></pre>
+        </section>
 
-        <h2 id="self-hosting">Self Hosting Fonts</h2>
-        <p>
+        <section id="self-hosting">
+          <h2>Self Hosting Fonts</h2>
+          <p>
             Sometimes you need a specific font, and don't want to
             rely on a local stack. For example, I work in a Youth
             Centre, and we often use the <a href="https://opendyslexic.org/"
@@ -114,8 +131,8 @@
             to be easier to read for those with dyslexia - I am
             pleased to see this font being adopted elsewhere, such
             as the Rakuten Kobo eBook readers.
-        </p>
-        <p>
+          </p>
+          <p>
             Every external service that your website connects to is
             a potential point for things to break. Fonts is not
             something I feel that should be fetched from elsewhere
@@ -124,8 +141,8 @@
             import fonts from Google!
             Thankfully, Google Fonts are open source, and can be
             downloaded for self hosting.
-        </p>
-        <p>
+          </p>
+          <p>
             Fonts typically download as TTF format files. TTF, or
             True Type Fonts, are typically what we would use to
             install a font on an operating system. They will include
@@ -142,11 +159,11 @@
             WOFF, but with the insight gained here, it shouldn't be
             too difficult to figure out how to support WOFF in your
             own guides.
-        </p>
-        <blockquote>
+          </p>
+          <blockquote>
             Safari is the new Internet Explorer
-        </blockquote>
-        <p>
+          </blockquote>
+          <p>
             There are online font converters, but we are developers
             and we work in the terminal. Google offer a
             <a href="https://github.com/google/woff2"
@@ -155,35 +172,41 @@
             instructions, you can move the binaries to have global
             access to them within your system - just remember to
             restart your desktop session before calling them globally.
-        </p>
-        <pre class="language-none"><code>cp woff2_compress woff2_decompress ~/.local/bin/</code></pre>
-        <p>
+          </p>
+          <pre class="language-none command-line"
+        data-user="aaronwatts" data-host="dev"><code>cp woff2_compress woff2_decompress ~/.local/bin/</code></pre>
+          <p>
             After converting your fonts to WOFF2, you can now include
             the files in your project.
-        </p>
-        <pre class="language-none"><code>assets/
-    fonts/
-        OpenDyslexic3-Regular.woff2
-index.html</code></pre>
-        <p>
+          </p>
+
+          <pre class="language-treeview"><code>root/
+├── assets/
+|   └── fonts/
+|       └── OpenDyslexic3-Regular.woff2
+└── index.html</code></pre>
+
+          <p>
             In your CSS file, you simply need to create a
             <code>@font-face</code> rule to pull the font into
             your stylesheet. After that, you will be able to
             use the font with whatever you named it as in the
             <code>font-family</code> attribute of the
             <code>@font-face</code> rule.
-        </p>
-        <pre class="language-css"><code>@font-face {
-    font-family: 'OpenDyslexic';
-    src: url('/assets/fonts/OpenDyslexic3-Regular.woff2') format('woff2');
+          </p>
+          <pre class="language-css"><code>@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/assets/fonts/OpenDyslexic3-Regular.woff2') format('woff2');
 }
 
 body {
-    font-family: 'OpenDyslexic';
+  font-family: 'OpenDyslexic';
 }</code></pre>
-        
-        <h2 id="preloading">Preloading Fonts</h2>
-        <p>
+        </section>
+          
+        <section id="preloading">
+          <h2>Preloading Fonts</h2>
+          <p>
             Wether you're fetching or self hosting a font, if it's
             not installed locally on the machine that is viewing
             your web page, it will need to be fetched. You would
@@ -197,8 +220,8 @@ body {
             font still needs to be called from it's url, and this
             can cause some clumsy looking loading on weaker machines
             and slow internet connections.
-        </p>
-        <p>
+          </p>
+          <p>
             To mitigate this, we can simply preload the fonts
             within the html file. This will prevent the web browser
             from rendering any text to the DOM until the font
@@ -212,34 +235,21 @@ body {
             We also need to set the <code>as</code> and <code>type</code>
             attributes, and also include the <code>crossorigin</code>
             attribute.
-        </p>
-        <pre class="language-html"><code>&lt;link rel="preload" href="/assets/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin /&gt;
+          </p>
+          <pre class="language-html"><code>&lt;link rel="preload" href="/assets/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin /&gt;
 &lt;link rel="stylesheet" href="/assets/styles/style.css"&gt;</code></pre>
-        <aside>
+          <aside>
             NOTE: The crossorigin attribute <em>must</em> be included
             even if the fonts url is locally hosted due to the way
             more modern resource types are fetched by the browser.
-        </aside>
-
+          </aside>
+        </section>
+      </article>
     </main>
 
-    <a href="#top">Back to Top</a>
-
-    <h4>Comments Section</h4>
-    <div id="comment-section"></div>
-    <noscript class="note">
-        Enable JavaScript to join in the conversation!
-    </noscript>
-
-    <script>
-        initComments({
-            node: document.getElementById("comment-section"),
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-            serverName: "cactus.chat",
-            siteName: "aaronwattsdev",
-            commentSectionId: "web-fonts"
-        })
-    </script>
+    <nav>
+      <a href="#top">Back to Top</a>
+    </nav>
 
     <footer>
         <div>Made by Hand. Powered by</div>
@@ -250,5 +260,5 @@ body {
     </footer>
 
     <script src="/assets/scripts/prism.js"></script>
-</body>
+  </body>
 </html>

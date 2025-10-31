@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="How to run Progressive Web Apps
     through the Firefox browser in KDE Plasma Big Screen on
     Rapsberry Pi OS">
     <meta name="keywords" content="raspberry pi, rpi4, smart tv, kde bigscreen, streaming">
+
     <title>AWD - Firefox Web Apps</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
     <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
-    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">    
-    <link rel="stylesheet" href="/assets/styles/style.css">
+
+    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/styles/prism.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/assets/styles/style.css">
+  </head>
+  <body>
     <header>
-        <nav class="breadcrumbs">
-            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-            class="path">/<a href="/guides">guides</a>/firefox-web-apps $</span>
-        </nav>
-        <div class="rss-container">
-            <a href="/rss">
-                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-            </a>
-        </div>
+      <nav class="breadcrumbs">
+        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+        class="path">/<a href="/guides">guides</a>/firefox-web-apps $</span>
+      </nav>
+      <div class="rss-container">
+        <a href="/rss">
+          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+        </a>
+      </div>
     </header>
     <nav>
-        <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#firefox">Firefox on Pi</a></li>
-            <li><a href="#install">Installation</a></li>
-            <li><a href="#webapps">Setting Up Web Apps</a></li>
-        </ul>
+      <header>
+        <h2>On This Page</h2>
+      </header>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#firefox">Firefox on Pi</a></li>
+        <li><a href="#install">Installation</a></li>
+        <li><a href="#webapps">Setting Up Web Apps</a></li>
+      </ul>
     </nav>
-    <main class="article">
-        <h1>Firefox Web Apps - Plasma Bigscreen</h1>
-        <time datetime="2024-08-22">22<sup>nd</sup> August, 2024</time>
-        <img src="/images/guides/firefox-web-apps.jpg"
-        alt="A Raspberry Pi 4 running KDE Plasma Bigscreen on a
-        HD TV, firefox browser, aniwave and amazon prime are listed
-        in the recent apps list">
-        <p id="intro">
+    <main>
+      <article>
+        <header>
+          <h1>Firefox Web Apps - Plasma Bigscreen</h1>
+          <time datetime="2024-08-22">22nd August, 2024</time>
+          <img src="/images/guides/firefox-web-apps.avif"
+          alt="A Raspberry Pi 4 running KDE Plasma Bigscreen on a
+          HD TV, firefox browser, aniwave and amazon prime are listed
+          in the recent apps list">
+        </header>
+        <section id="intro">
+          <p id="description">
             With the introduction of Web Manifest V3, ad blocking in
             Chromium based browsers is changing. the new limitations
             and API's for browser extensions means ad blockers, such
@@ -58,24 +68,26 @@
             hinder the user experience for those off us using Plasma
             Bigscreen as a streaming OS. Luckily, Linux is flexible,
             and there's an easy way to get Firefox Web Apps.
-        </p>
-        <p>
+          </p>
+          <p>
             Web Apps on Linux are not new, and while it would be time
             consuming, you could potentially just right your own
             dekstop files to open specified url's in their own
             windows. Thankfully, Linux Mint's Web Apps software has
             been ported over to the Raspberry Pi, so we can get set
             up with Firefox PWA's pretty quickly, and without fuss.
-        </p>
-        <aside>
+          </p>
+          <aside>
             NOTE: This guide is for installing Firefox PWA's on a 
             Raspberry Pi device running KDE Plasma Bigscreen, find 
             out how to get Bigscreen running on a Pi
             <a href="/guides/kde-plasma-bigscreen">here</a>.
-        </aside>
+          </aside>
+        </section>
 
-        <h2 id="firefox">Firefox on Pi</h2>
-        <p>
+        <section id="firefox">
+          <h2>Firefox on Pi</h2>
+          <p>
             Raspberry Pi OS used to ship with Chromium as it's
             default browser, and while the Ubuntu image for
             Rapsberry Pi delivered decent performance with Firefox,
@@ -87,36 +99,42 @@
             <code>UANaughtyList</code>, that simply changes the
             user agent to improve the experience on Youtube and
             Netflix (you <em>ARE</em> naughty, Youtube and Netflix!).
-        </p>
-        <p>
+          </p>
+          <p>
             To install Firefox on Raspberry Pi OS with the necessary
             extensions, open terminal in type the following:
-        </p>
-        <pre><code class="language-none">sudo apt update
+          </p>
+          <pre class="language-none command-line"
+          data-user="aaronwatts" data-host="dev"><code>sudo apt update
 sudo apt install firefox rpi-firefox-mods</code></pre>
+        </section>
 
-        <h2 id="install">Installation</h2>
-        <p>
-            Installation is pretty simple, but you will want the
-            flexibility of multiple windows, so first log out of
-            the Bigscreen session, and log in to the Plasma desktop
-            session before starting.
-        </p>
-        <p>
-            To install Linux Mint's Web Apps software, we first need
-            to install <a href="https://pi-apps.io/"
-            target="_blank">Pi-Apps</a>. Installing Pi-Apps is simple
-            enough and can be done with one line in the terminal:
-        </p>
-        <pre><code class="language-none">wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash</code></pre>
-        <p>
-            Once Pi-Apps is installed, open it, and install 
-            <code>Web Apps</code> from the <code>Internet</code>
-            category in the software list.
-        </p>
+        <section id="install">
+          <h2>Installation</h2>
+          <p>
+          Installation is pretty simple, but you will want the
+          flexibility of multiple windows, so first log out of
+          the Bigscreen session, and log in to the Plasma desktop
+          session before starting.
+          </p>
+          <p>
+          To install Linux Mint's Web Apps software, we first need
+          to install <a href="https://pi-apps.io/"
+          target="_blank">Pi-Apps</a>. Installing Pi-Apps is simple
+          enough and can be done with one line in the terminal:
+          </p>
+          <pre class="language-none command-line"
+          data-user="aaronwatts" data-host="dev"><code>wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash</code></pre>
+          <p>
+          Once Pi-Apps is installed, open it, and install 
+          <code>Web Apps</code> from the <code>Internet</code>
+          category in the software list.
+          </p>
+        </section>
 
-        <h2 id="webapps">Setting Up Web Apps</h2>
-        <p>
+        <section id="webapps">
+          <h2>Setting Up Web Apps</h2>
+          <p>
             Setting up web apps is easy. Just open the Web Apps
             software and click <code>+</code> to create a new app.
             Give the app a name, and enter the url. Once you have
@@ -130,40 +148,28 @@ sudo apt install firefox rpi-firefox-mods</code></pre>
             application in, so if a site struggles in firefox, you
             can select a different browser for that particular
             application.
-        </p>
-        <p>
+          </p>
+          <p>
             That's all there is to it. After setting up your web
             apps, simply log back into the Bigscreen session and
             enjoy your favourite shows.
-        </p>
+          </p>
+        </section>
+      </article>
     </main>
 
-    <a href="#top">Back to Top</a>
-
-    <h4>Comments Section</h4>
-    <div id="comment-section"></div>
-    <noscript class="note">
-        Enable JavaScript to join in the conversation!
-    </noscript>
-
-    <script>
-        initComments({
-            node: document.getElementById("comment-section"),
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-            serverName: "cactus.chat",
-            siteName: "aaronwattsdev",
-            commentSectionId: "firefox-web-apps"
-        })
-    </script>
+    <nav>
+      <a href="#top">Back to Top</a>
+    </nav>
 
     <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
+      <div>Made by Hand. Powered by</div>
+      <a href="https://pages.github.com/" target="_blank">
+        <img src="/images/githubpages.svg" 
+          alt="https://pages.github.com/">
+      </a>
     </footer>
 
     <script src="/assets/scripts/prism.js"></script>
-</body>
+  </body>
 </html>

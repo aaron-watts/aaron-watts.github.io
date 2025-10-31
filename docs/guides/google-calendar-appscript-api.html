@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="How to create a Google Calendar
     API using Apps Script">
     <meta name="keywords" content="webdev, google, ical, apps script, javascript">
+
     <title>AWD - Google Calendar API</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
     <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
-    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">    
-    <link rel="stylesheet" href="/assets/styles/style.css">
+   
+    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/styles/prism.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/assets/styles/style.css">
+  </head>
+  <body>
     <header>
-        <nav class="breadcrumbs">
-            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-            class="path">/<a href="/guides">guides</a>/google-calendar-appscript-api $</span>
-        </nav>
-        <div class="rss-container">
-            <a href="/rss">
-                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-            </a>
-        </div>
+      <nav class="breadcrumbs">
+        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+        class="path">/<a href="/guides">guides</a>/google-calendar-appscript-api
+        $</span>
+      </nav>
+      <div class="rss-container">
+        <a href="/rss">
+          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+        </a>
+      </div>
     </header>
     <nav>
-        <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#use-case">Use Case</a></li>
-            <li><a href="#serving-json">Serving JSON</a></li>
-            <li><a href="#api">Creating the API</a></li>
-            <li><a href="#api-call">Calling the API From a Webpage</a></li>
-            <li><a href="#hide-url">Hiding your script URL</a></li>
-            <li><a href="#google">A Quick Word About Google</a></li>
-        </ul>
+      <header>
+        <h2>On This Page</h2>
+      </header>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#use-case">Use Case</a></li>
+        <li><a href="#serving-json">Serving JSON</a></li>
+        <li><a href="#api">Creating the API</a></li>
+        <li><a href="#api-call">Calling the API From a Webpage</a></li>
+        <li><a href="#hide-url">Hiding your script URL</a></li>
+        <li><a href="#google">A Quick Word About Google</a></li>
+      </ul>
     </nav>
-    <main class="article">
-        <h1>Google Calendar API - Apps Script</h1>
-        <time datetime="2024-06-21">21<sup>st</sup> June, 2024</time>
-        <img src="/images/guides/google-calendar-appscript-api.jpg"
-        alt="Screenshot of calendar entries displayed in HTML
-        on a web page.">
-        <p id="intro">
+    <main>
+      <article>
+        <header>
+          <h1>Google Calendar API - Apps Script</h1>
+          <time datetime="2024-06-21">21st June, 2024</time>
+          <img src="/images/guides/google-calendar-appscript-api.avif"
+          alt="Screenshot of calendar entries displayed in HTML
+          on a web page.">
+        </header>
+        <section id="intro">
+          <p id="description">
             Considering how long they've been around, working with
             iCal's in the browser is surprisingly difficult. When
             working with data from Google Calendar, we can use
             Google's Apps Script to create an API, that will let us
             pull exactly what we desire down from a Google Calendar.
-        </p>
-        <p>
+          </p>
+          <p>
             There is actually a great JavaScript module called
             <a href="https://github.com/kewisch/ical.js/"
             target="_blank">ical.js</a>, but as I write this in June
@@ -66,10 +76,13 @@
             I had built from source, as well as on various iCal JS
             validators online. So hopefully this reaches someone in
             a similar situation that I found myself in.
-        </p>
+          </p>
+          <p><code>=&gt;</code></p>
+        </section>
 
-        <h2 id="use-case">Use Case</h2>
-        <p>
+        <section id="use-case">
+          <h2>Use Case</h2>
+          <p>
             A good static website should require as little work as
             possible, and that work should be as accessible as
             possible. I was making a static website, intended to show
@@ -79,8 +92,8 @@
             decided that the website should just update itself via
             a Google Calendar - easy! Or at least that's what I
             thought.
-        </p>
-        <p>
+          </p>
+          <p>
             Aside from iCalJS, which I've already mentioned, the only
             really easy option here, at least to my knowledge, is to use
             an iFrame which Google provides in it's calendar settings
@@ -91,16 +104,18 @@
             you must, but it worked and best of all it was free. So if
             you can serve HTML via Google's Apps Script service, then
             you should be able to serve some json data too, right?
-        </p>
+          </p>
+        </section>
 
-        <h2 id="serving-json">Serving JSON</h2>
-        <p>
+        <section id="serving-json">
+          <h2>Serving JSON</h2>
+          <p>
             You <em>can</em> serve JSON using Google's Apps Script
             service. But, you can only access it in a Chromium type
             browser - it just won't work in firefox, and CORS makes
             it virtually impossible to work with in a static site.
-        </p>
-        <p>
+          </p>
+          <p>
             To serve HTML web apps or JSON, you need to use the
             <a href="https://developers.google.com/apps-script/guides/content"
             target="_blank">Apps Script Content Service</a>. They do
@@ -108,17 +123,17 @@
             You're not alone if you've never heard of that, I hadn't
             either. It stands for JSON with Padding, and wikipedia
             describes it as
-        </p>
-        <blockquote>
+          </p>
+          <blockquote>
             .. a historical JavaScript technique for requesting data
             by loading a <code>&lt;script&gt;</code> element, which is
             an element intended to load ordinary javascript.
-        </blockquote>
-        <p>
+          </blockquote>
+          <p>
             That sounds both fun and dangerous! Sensibly, Google issues
             a warning for when working with JSONP:
-        </p>
-        <blockquote>
+          </p>
+          <blockquote>
             Warning: Be very careful when using this JSONP technique
             in your scripts. Because it's possible for anyone to embed
             the script tag in their web page, you can be tricked into
@@ -126,22 +141,24 @@
             which can then capture the data returned. Best practice is
             to ensure that JSONP scripts are read-only and only return
             non-sensitive information.
-        </blockquote>
-        <p>
+          </blockquote>
+          <p>
             The script I am making will only be returning GET requests
             with information that is on a public Google calendar, so
             for me at least, it's safe to go on..
-        </p>
+          </p>
+        </section>
 
-        <h2 id="api">Creating the API</h2>
-        <p>
+        <section id="api">
+          <h2>Creating the API</h2>
+          <p>
             To begin, in your Google Drive, select <em>New</em>, then
             <em>More</em>, and if <em>Google Apps Script</em> isn't
             already on that menu, you will need to choose
             <em>Connect More Apps</em> and choose Apps Script from
             there.
-        </p>
-        <p>
+          </p>
+          <p>
             To use the Apps Script Content Service, you need a
             function called <code>doGet</code>, which will send the
             data we want to receive from our API as JSON content.
@@ -153,46 +170,46 @@
             to also invoke the <code>setMimeType</code> method,
             and set it to JAVASCRIPT, so it returns as JSONP, instead
             of JSON.
-        </p>
+          </p>
 
-        <pre class="language-javascript"><code>const doGet = () => {
-    const holidayHoursCalID = '&lt;calendar-id&gt;@group.calendar.google.com';
-    const eventsCalID = '&lt;calendar-id&gt;@group.calendar.google.com';
+          <pre class="language-javascript"><code>const doGet = () =&gt; {
+  const holidayHoursCalID = '&lt;calendar-id&gt;@group.calendar.google.com';
+  const eventsCalID = '&lt;calendar-id&gt;@group.calendar.google.com';
 
-    const res = {
-        'data': {
-            holidayHours: getEvents(holidayHoursCalID),
-            events: getEvents(eventsCalID),
-        }
-    };
+  const res = {
+    'data': {
+      holidayHours: getEvents(holidayHoursCalID),
+      events: getEvents(eventsCalID),
+    }
+  };
 
-    return ContentService.createTextOutput(JSON.stringify(res))
-        .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  return ContentService.createTextOutput(JSON.stringify(res))
+    .setMimeType(ContentService.MimeType.JAVASCRIPT);
 };</code></pre>
 
-        <p>
+          <p>
             The code I am using to get the calendar info to populate
             the <code>response</code> object in <code>doGet</code>
             simply takes each calendar's ID as a parameter, defines
             a start datetime (now), and an end (+1 year), and collects
             and maps the start, end, title and description from
             each calendar entry that is returned.
-        </p>
+          </p>
 
-        <pre class="language-javascript"><code>const getEvents = id => {
-    const cal = CalendarApp.getCalendarById(id);
-    const start = new Date();
-    const end = new Date();
-    end.setFullYear(end.getFullYear() + 1)
+          <pre class="language-javascript"><code>const getEvents = id =&gt; {
+  const cal = CalendarApp.getCalendarById(id);
+  const start = new Date();
+  const end = new Date();
+  end.setFullYear(end.getFullYear() + 1)
 
-    const calData = cal.getEvents(start, end).map(i => ({
-        start: i.getStartTime(),
-        end: i.getEndTime(),
-        title: i.getTitle(),
-        description: i.getDescription()
-    }));
+  const calData = cal.getEvents(start, end).map(i => ({
+    start: i.getStartTime(),
+    end: i.getEndTime(),
+    title: i.getTitle(),
+    description: i.getDescription()
+  }));
 
-    return calData;
+  return calData;
 };</code></pre>
 
         <p>
@@ -207,43 +224,45 @@
         </p>
 
         <pre class="language-javascript"><code>"data": {
-    "holidayHours":[
-        {
-            "start":"2024-07-24T23:00:00.000Z",
-            "end":"2024-08-30T23:00:00.000Z",
-            "title":"Summer Holiday",
-            "description":"Open 12 - 6pm everyday (except bank holidays)"
-        },
-        {
-            "start":"2024-08-25T23:00:00.000Z",
-            "end":"2024-08-26T23:00:00.000Z",
-            "title":"Bank holiday",
-            "description":"CLOSED"
-        }
-    ],
-    "events":[
-        {
-            "start":"2024-06-20T23:00:00.000Z",
-            "end":"2024-06-21T23:00:00.000Z",
-            "title":"Pride event",
-            "description":"An art workshop for Pride!"
-        },
-        {
-            "start":"2024-07-06T15:00:00.000Z",
-            "end":"2024-07-06T17:00:00.000Z",
-            "title":"CLT event",
-            "description":"A community art project:\n\"Postcards From Our Future\""
-        }
-    ]
+  "holidayHours":[
+    {
+      "start":"2024-07-24T23:00:00.000Z",
+      "end":"2024-08-30T23:00:00.000Z",
+      "title":"Summer Holiday",
+      "description":"Open 12 - 6pm everyday (except bank holidays)"
+    },
+    {
+      "start":"2024-08-25T23:00:00.000Z",
+      "end":"2024-08-26T23:00:00.000Z",
+      "title":"Bank holiday",
+      "description":"CLOSED"
+    }
+  ],
+  "events":[
+    {
+      "start":"2024-06-20T23:00:00.000Z",
+      "end":"2024-06-21T23:00:00.000Z",
+      "title":"Pride event",
+      "description":"An art workshop for Pride!"
+    },
+    {
+      "start":"2024-07-06T15:00:00.000Z",
+      "end":"2024-07-06T17:00:00.000Z",
+      "title":"CLT event",
+      "description":"A community art project:\n\"Postcards From Our Future\""
+    }
+  ]
 }</code></pre>
 
-        <aside>
+          <aside>
             NOTE: You will need to update the url in your API call
             whenever you make changes to the API and redeploy.
-        </aside>
+          </aside>
+        </section>
 
-        <h2 id="api-call">Calling the API From a Webpage</h2>
-        <p>
+        <section id="api-call">
+          <h2>Calling the API From a Webpage</h2>
+          <p>
             So this method is free. It works, but you get what you
             pay for, and we can't always be sure it will work every
             time that it's called. There are limits on how many Apps
@@ -257,32 +276,32 @@
             that will become my first port of call, with this Apps
             Script API becoming a fallback for <em>that</em>, and the
             iFrames becoming a final fallback if all else fails.
-        </p>
-        <p>
+          </p>
+          <p>
             I'm not going to go through the in's and out's of
             formatting Date objects and manipulating the DOM, so you
             will have to design your own calendar entry cards or
             calendar table or however you want to display the data.
             Instead, I will just look at calling the API itself, and
             having the iFrames as a fallback.
-        </p>
-        <p>
+          </p>
+          <p>
             I'm using an async function, to call the <code>fetch</code>
             method on the URL provided for the Apps Script API that I've
             set up. Apps Script calls work by being redirected by the
             content service itself, so be sure to include
             <code>redirect: 'follow'</code> as an option.
-        </p>
-        <pre class="language-javascript"><code>const getEvents = async () => {
-    const res = await fetch(
-        'https://script.google.com/macros/s/&lt;script-url&gt;/exec',
-        {
-            redirect: 'follow'
-        }
-    );
+          </p>
+          <pre class="language-javascript"><code>const getEvents = async () =&gt; {
+  const res = await fetch(
+    'https://script.google.com/macros/s/&lt;script-url&gt;/exec',
+    {
+      redirect: 'follow'
+    }
+  );
 
-    const { data } = await res.json();
-    return data;
+  const { data } = await res.json();
+  return data;
 }</code></pre>
         <p>
             Finally, we just need to call that <code>getEvents</code>
@@ -296,38 +315,40 @@
             event listener, which, in my opinion, is good practise most
             of the time when working with the DOM in JavaScript.
         </p>
-        <pre class="language-javascript"><code>const populateLists = async () => {
-    try {
-        const data = await getEvents();
-        const { events, holidayHours } = data;
+        <pre class="language-javascript"><code>const populateLists = async () =&gt; {
+  try {
+    const data = await getEvents();
+    const { events, holidayHours } = data;
 
-        if (events.length) {
-            events.forEach(event => {
-                console.log(event);
-            });
-        } else {
-            console.log('No events information available');
-        };
-        
-        if (holidayHours.length) {
-            holidayHours.forEach(event => {
-                console.log(event);
-            });
-        } else {
-            console.log('No holiday information available');
-        };
-    } catch (e) {
-        const eventFrame = `&lt;iframe&gt;COPY AND PASTED FROM GOOGLE&lt;/iframe&gt;`;
-        const termDateFrame = `&lt;iframe&gt;COPY AND PASTED FROM GOOGLE&lt;/iframe&gt;`;
-        eventList.innerHTML = eventFrame;
-        termDatesList.innerHTML = termDateFrame;
-    }
+    if (events.length) {
+      events.forEach(event => {
+        console.log(event);
+      });
+    } else {
+      console.log('No events information available');
+    };
+    
+    if (holidayHours.length) {
+      holidayHours.forEach(event => {
+        console.log(event);
+      });
+    } else {
+      console.log('No holiday information available');
+    };
+  } catch (e) {
+    const eventFrame = `&lt;iframe&gt;COPY AND PASTED FROM GOOGLE&lt;/iframe&gt;`;
+    const termDateFrame = `&lt;iframe&gt;COPY AND PASTED FROM GOOGLE&lt;/iframe&gt;`;
+    eventList.innerHTML = eventFrame;
+    termDatesList.innerHTML = termDateFrame;
+  }
 };
 
 document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
+        </section>
 
-        <h2 id="hide-url">Hiding your script URL</h2>
-        <p>
+        <section id="hide-url">
+          <h2>Hiding your script URL</h2>
+          <p>
             Having your Apps Script url in your JavaScript file on
             a static website leaves it in plain view of anyone who
             knows how to get to it. To be able to use it in a
@@ -346,8 +367,8 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
             protection. Other providers often offer Lambda
             Functions within their services, much to the same
             affect as Netlify's functions.
-        </p>
-        <p>
+          </p>
+          <p>
             To begin, we will need to create a <code>.env</code>
             file in the root of our webpage directory - but don't
             worry, we don't need the dotenv node module here, so
@@ -356,19 +377,19 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
             testing purposes. In the
             <code>.env</code> file, we do the usual, and list
             our <em>secret</em> with a key and value.
-        </p>
-        <aside>
+          </p>
+          <aside>
             NOTE: If the script url has been published in a public
             repo or file, it may be best to create a new script
             deployment and archive the old one.
-        </aside>
-        <pre class="language-none"><code>APPS_SCRIPT="https://script.google.com/macros/s/&lt;script-url&gt;/exec"</code></pre>
-        <aside>
+          </aside>
+          <pre class="language-none"><code>APPS_SCRIPT="https://script.google.com/macros/s/&lt;script-url&gt;/exec"</code></pre>
+          <aside>
             NOTE: Make sure to add the dotenv file to .gitignore
             if you haven't already got in in your global gitignore
             config.
-        </aside>
-        <p>
+          </aside>
+          <p>
             In your Netlify project, you will also set this as an
             environment variable. Now, to create the netlify
             function, we need to create a <code>netlify</code>
@@ -376,15 +397,15 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
             within that. Any JavaScript files within the
             <code>functions</code> directory will be treated as
             a backend API url.
-        </p>
-        <pre class="language-none"><code>/
-index.html
-assets/
-    ...
-netlify/
-    functions/
-        api.js</code></pre>
-        <p>
+          </p>
+
+          <pre class="language-treeview"><code>root/
+├── index.html
+└── netlify/
+    └── functions/
+        └── api.js</code></pre>
+
+          <p>
             For our API function, we just need to export one
             default function, that takes <code>request</code>
             and <code>context</code> parameters, and returns
@@ -394,18 +415,18 @@ netlify/
             our secret from the dotenv file in development, and
             from the Netlify environment variable we've already
             set up while in production.
-        </p>
-        <pre class="language-javascript"><code>export default async (req, context) => {
-    const api = Netlify.env.get('APPS_SCRIPT');
-    
-    const res = await fetch(api, {
-        redirect: 'follow'
-    });
-    const { data } = await res.json();
+          </p>
+          <pre class="language-javascript"><code>export default async (req, context) => {
+  const api = Netlify.env.get('APPS_SCRIPT');
+  
+  const res = await fetch(api, {
+    redirect: 'follow'
+  });
+  const { data } = await res.json();
 
-    return new Response(JSON.stringify(data));
+  return new Response(JSON.stringify(data));
 };</code></pre>
-        <p>
+          <p>
             Now that we have done that, we just need to update the api
             call in our <code>app.js</code> file on the frontend
             to reflect the changes. URL's for netlify functions
@@ -414,17 +435,19 @@ netlify/
             Note that the <code>.js</code> file extension is not
             included in the url. Once that is completed, just
             push the project, and you're done!
-        </p>
-        <pre class="language-javascript"><code>const getEvents = async () => {
-    const res = await fetch('/.netlify/functions/api');
+          </p>
+          <pre class="language-javascript"><code>const getEvents = async () => {
+  const res = await fetch('/.netlify/functions/api');
 
-    const data = await res.json();
+  const data = await res.json();
 
-    return data;
+  return data;
 }</code></pre>
+        </section>
 
-        <h2 id="google">A Quick Word About Google</h2>
-        <p>
+        <section id="google">
+          <h2>A Quick Word About Google</h2>
+          <p>
             I'm not here to say Google is good or bad, it offers
             amazing services - a lot of them for free. But it is
             a very big entity. There's loads of amazing developers
@@ -443,36 +466,23 @@ netlify/
             that they are under no obligation to do so, and that we
             won't always have the same solutions available to us
             tomorrow.
-        </p>
-
+          </p>
+        </section>
+      </article>
     </main>
 
-    <a href="#top">Back to Top</a>
-
-    <h4>Comments Section</h4>
-    <div id="comment-section"></div>
-    <noscript class="note">
-        Enable JavaScript to join in the conversation!
-    </noscript>
-
-    <script>
-        initComments({
-            node: document.getElementById("comment-section"),
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-            serverName: "cactus.chat",
-            siteName: "aaronwattsdev",
-            commentSectionId: "google-calendar-appscript-api"
-        })
-    </script>
+    <nav>
+      <a href="#top">Back to Top</a>
+    </nav>
 
     <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
+      <div>Made by Hand. Powered by</div>
+      <a href="https://pages.github.com/" target="_blank">
+        <img src="/images/githubpages.svg" 
+        alt="https://pages.github.com/">
+      </a>
     </footer>
 
     <script src="/assets/scripts/prism.js"></script>
-</body>
+  </body>
 </html>

@@ -1,367 +1,383 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How to set up KDE's Plasma Bigscreen
-    on a Raspberry Pi 4.">
-    <meta name="keywords" content="raspberry pi, rpi4, smart tv, kde bigscreen, streaming">
-    <title>AWD - KDE Big Screen</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <script type="text/javascript" src="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/cactus.js"></script>
-    <link rel="stylesheet" href="https://gateway.pinata.cloud/ipfs/QmSiWN27KZZ1XE32jKwifBnS3nWTUcFGNArKzur2nmDgoL/v0.13.0/style.css" type="text/css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-</head>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="How to set up KDE's Plasma Bigscreen
+      on a Raspberry Pi 4.">
+      <meta name="keywords" content="raspberry pi, rpi4, smart tv, kde bigscreen, streaming">
 
-<body>
+      <title>AWD - KDE Big Screen</title>
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+
+      <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+      <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+      <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+
+      <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
+      <link rel="stylesheet" href="/assets/styles/prism.css">
+      <link rel="stylesheet" href="/assets/styles/style.css">
+  </head>
+
+  <body>
     <header>
-        <nav class="breadcrumbs">
-            <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-            class="path">/<a href="/guides">guides</a>/kde-plasma-bigscreen $</span>
-        </nav>
-        <div class="rss-container">
-            <a href="/rss">
-                <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-            </a>
-        </div>
+      <nav class="breadcrumbs">
+        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
+        class="path">/<a href="/guides">guides</a>/kde-plasma-bigscreen $</span>
+      </nav>
+      <div class="rss-container">
+        <a href="/rss">
+          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
+        </a>
+      </div>
     </header>
-    <nav>
+      <nav>
+        <header>
+          <h2>On This Page</h2>
+        </header>
         <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#getting-started">Gettind Started</a></li>
-            <li><a href="#installing-kde-plasma">Installing KDE Plasma</a></li>
-            <li><a href="#setting-up-plasma-bigscreen">Setting Up Plasma Bigscreen</a></li>
-            <li><a href="#controls">Controls</a></li>
-            <li><a href="#some-optional-polish">Some Optional Polish</a></li>
-            <li><a href="#not-quite-full-screen">Not Quite Full Screen</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#getting-started">Gettind Started</a></li>
+          <li><a href="#installing-kde-plasma">Installing KDE Plasma</a></li>
+          <li><a href="#setting-up-plasma-bigscreen">Setting Up Plasma Bigscreen</a></li>
+          <li><a href="#controls">Controls</a></li>
+          <li><a href="#some-optional-polish">Some Optional Polish</a></li>
+          <li><a href="#not-quite-full-screen">Not Quite Full Screen</a></li>
         </ul>
-    </nav>
-    <main class="article">
-        <h1>KDE Plasma Bigscreen - Raspberry Pi 4</h1>
-        <time datetime="2024-04-02">2<sup>nd</sup> April, 2024</time>
-        <img src="/images/guides/kde-plasma-bigscreen.jpg" 
-        alt="A Rspberry Pi 4b in an Argon One M.2. Sata case, powered
-        on and plugged into a TV that is on the KDE Plasma Bigscreen
-        home screen, with a Debian logo wallpaper.">
-        <p id="intro">
-            I built this media centre at the start of 2024. There may
-            be easier methods of installation by now. When I built this
-            project, existing guides mentioned an installation image
-            on KDE's bigscreen page, however, it doesn't seem to exist
-            currently, except for a manjaro image, and I prefer to stick
-            to Raspberry Pi's own debian OS when I can, especially that
-            it ensures the best compatibility with things like cases and
-            accessories.
-        </p>
-        <p>
-            Feel free to change and tweak what you like to what suits you,
-            however, things you will need are:
-        </p>
-        <ul>
-            <li>Raspberry Pi 4b (2GB RAM+)</li>
-            <li>USB storage device</li>
-            <li>Some kind of cooling system</li>
-            <li>Something to do buttons on</li>
-        </ul>
-        <p>
-            I used a pi 4b 4GB RAM model myself for this project, as
-            it was the unit that my pi 5 replaced on my work desk.
-            While testing the system, I never pushed the RAM much past
-            1.7GB, so I think anything 2GB or higher will run okay.
-            Anything lower than a pi 4 is going to struggle rendering
-            KDE - the pi 4 needs an overclock to get everything running
-            smoothly, hence the required cooling system. I used the
-            Argon One case with the sata M.2. drive expansion, however
-            I got similar results with preformance running from a USB
-            3.0 thumb drive. Plasma bigscreen, while offering limited
-            support for remote controls, doesn't come with apps, so we
-            will be using web-apps through the chromium browser, so
-            some kind of keyboard is advised - KDE Connect on an android
-            phone works great here, or you can get mini wireless keyboards
-            with built in track pads on amazon.
-        </p>
+      </nav>
+      <main>
+        <article>
+          <header>
+            <h1>KDE Plasma Bigscreen - Raspberry Pi 4</h1>
+            <time datetime="2024-04-02">2nd April, 2024</time>
+            <img src="/images/guides/kde-plasma-bigscreen.avif" 
+            alt="A Rspberry Pi 4b in an Argon One M.2. Sata case, powered
+            on and plugged into a TV that is on the KDE Plasma Bigscreen
+            home screen, with a Debian logo wallpaper.">
+          </header>
+          <section id="intro">
+            <p id="description">
+              I built this media centre at the start of 2024. There may
+              be easier methods of installation by now. When I built this
+              project, existing guides mentioned an installation image
+              on KDE's bigscreen page, however, it doesn't seem to exist
+              currently, except for a manjaro image, and I prefer to stick
+              to Raspberry Pi's own debian OS when I can, especially that
+              it ensures the best compatibility with things like cases and
+              accessories.
+            </p>
+            <p>
+              Feel free to change and tweak what you like to what suits you,
+              however, things you will need are:
+            </p>
+            <ul>
+              <li>Raspberry Pi 4b (2GB RAM+)</li>
+              <li>USB storage device</li>
+              <li>Some kind of cooling system</li>
+              <li>Something to do buttons on</li>
+            </ul>
+            <p>
+              I used a pi 4b 4GB RAM model myself for this project, as
+              it was the unit that my pi 5 replaced on my work desk.
+              While testing the system, I never pushed the RAM much past
+              1.7GB, so I think anything 2GB or higher will run okay.
+              Anything lower than a pi 4 is going to struggle rendering
+              KDE - the pi 4 needs an overclock to get everything running
+              smoothly, hence the required cooling system. I used the
+              Argon One case with the sata M.2. drive expansion, however
+              I got similar results with preformance running from a USB
+              3.0 thumb drive. Plasma bigscreen, while offering limited
+              support for remote controls, doesn't come with apps, so we
+              will be using web-apps through the chromium browser, so
+              some kind of keyboard is advised - KDE Connect on an android
+              phone works great here, or you can get mini wireless keyboards
+              with built in track pads on amazon.
+            </p>
+          </section>
 
-        <h2 id="getting-started">Getting Started</h2>
-        <p>
-            Start by flashing the latest
-            <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank">
-                64-bit Raspberry Pi OS Lite</a>
-            to a usb device. You may need to
-            <a href="https://www.raspberrystreet.com/learn/how-to-boot-raspberrypi-from-usb-ssd" target="_blank">
-                update the EEPROM</a>
-            if you haven't already in order to boot from USB. Take
-            advantage of rpi imager settings here to enable SSH and
-            change hostname so you can tell it apart from the 6 other
-            pi's you have running around your house. If using a
-            different imaer then don't forget to include the SSH
-            file as you may need it on the next step.
-        </p>
-        <p>
-            After initial boot, the screen may black out, using the
-            same image I had this happen with the USB SSB, but not
-            the USB thumb drive - your guess is as good as mine..
-            If it blacks out then ssh in and vi or nano into
-            <code>/boot/firmware/config.txt</code> and comment out
-            and add the following lines:
-        </p>
-        <pre><code class="language-none">#dtoverlay=vc4-kms-v3d
+          <section id="getting-started">
+            <h2>Getting Started</h2>
+            <p>
+              Start by flashing the latest
+              <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank">
+                  64-bit Raspberry Pi OS Lite</a>
+              to a usb device. You may need to
+              <a href="https://www.raspberrystreet.com/learn/how-to-boot-raspberrypi-from-usb-ssd" target="_blank">
+                  update the EEPROM</a>
+              if you haven't already in order to boot from USB. Take
+              advantage of rpi imager settings here to enable SSH and
+              change hostname so you can tell it apart from the 6 other
+              pi's you have running around your house. If using a
+              different imaer then don't forget to include the SSH
+              file as you may need it on the next step.
+            </p>
+            <p>
+              After initial boot, the screen may black out, using the
+              same image I had this happen with the USB SSB, but not
+              the USB thumb drive - your guess is as good as mine..
+              If it blacks out then ssh in and vi or nano into
+              <code>/boot/firmware/config.txt</code> and comment out
+              and add the following lines:
+            </p>
+            <pre class="language-none"><code>#dtoverlay=vc4-kms-v3d
 dtoverlay=vc4-fkms-v3d</code></pre>
-        <p>
-            Now that the screen is working you can log into the
-            session, and make the usual prayer
-            <code>sudo apt update && sudo apt upgrade -y</code>
-            followed by a <code>sudo reboot</code> for luck.
-        </p>
+            <p>
+              Now that the screen is working you can log into the
+              session, and make the usual prayer
+              <code>sudo apt update && sudo apt upgrade -y</code>
+              followed by a <code>sudo reboot</code> for luck.
+            </p>
+          </section>
 
-        <h2 id="installing-kde-plasma">Installing KDE Plasma</h2>
-        <p>
-            Next we need to istall KDE Plasma; I ooriginally went
-            for <code>kde-plasma-desktop</code> as its the lighter
-            install, but it kept hanging at boot, you ight have more
-            luck, but expect to start again if it fails.
-        </p>
-        <pre><code class="language-none">sudo apt install kde-standard</code></pre>
-        <p>
-            After that, another reboot for luck. Then we need to
-            activate the sddm login manager service, and tell
-            raspi OS that we want to boot into GUI on the next
-            boot:
-        </p>
-        <pre><code class="language-none">sudo systemctl enable sddm
+          <section id="installing-kde-plasma">
+            <h2>Installing KDE Plasma</h2>
+            <p>
+              Next we need to istall KDE Plasma; I ooriginally went
+              for <code>kde-plasma-desktop</code> as its the lighter
+              install, but it kept hanging at boot, you ight have more
+              luck, but expect to start again if it fails.
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code>sudo apt install kde-standard</code></pre>
+            <p>
+              After that, another reboot for luck. Then we need to
+              activate the sddm login manager service, and tell
+              raspi OS that we want to boot into GUI on the next
+              boot:
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code>sudo systemctl enable sddm
 sudo systemctl set-default graphical.target</code></pre>
-        <p>
-            And reboot again. It should now boot into Plasma,
-            and the first thing you should do is disable all the
-            destkop effects; older pi KDE Plasma guides suggest
-            to disable the compositor, but the session defaults
-            to wayland unless you tell it not, and wayland can't
-            run without the compositor - I've noticed no major
-            differences between X11 and wayland myself in this
-            use case (don't believe the hype).
-        </p>
-        <aside>
-            Note: disabling compositor in X causes screen tearing
-            on video playback, so even if you choose to use X,
-            leave the compositor on and just disable effects.
-        </aside>
-        <p>
-            If you're also using an Argon One case, now is the
-            time to open up konsole and install the power and
-            fan control:
-        </p>
-        <pre><code class="language-none">curl https://download.argon40.com/argon1.sh | bash</code></pre>
+            <p>
+              And reboot again. It should now boot into Plasma,
+              and the first thing you should do is disable all the
+              destkop effects; older pi KDE Plasma guides suggest
+              to disable the compositor, but the session defaults
+              to wayland unless you tell it not, and wayland can't
+              run without the compositor - I've noticed no major
+              differences between X11 and wayland myself in this
+              use case (don't believe the hype).
+            </p>
+            <aside>
+              Note: disabling compositor in X causes screen tearing
+              on video playback, so even if you choose to use X,
+              leave the compositor on and just disable effects.
+            </aside>
+            <p>
+              If you're also using an Argon One case, now is the
+              time to open up konsole and install the power and
+              fan control:
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code>curl https://download.argon40.com/argon1.sh | bash</code></pre>
+          </section>
 
-        <h2 id="setting-up-plasma-bigscreen">Setting Up Plasma Bigscreen</h2>
-        <p>
-            Now the effects are disabled, and if you have your
-            cooling set up, now is a good time to overclock,
-            so back into <code>/boot/firmware/config.txt</code>.
-            I just went with the following:
-        </p>
-        <pre><code class="language-none"># Overclock
+          <section id="setting-up-plasma-bigscreen">
+            <h2>Setting Up Plasma Bigscreen</h2>
+            <p>
+              Now the effects are disabled, and if you have your
+              cooling set up, now is a good time to overclock,
+              so back into <code>/boot/firmware/config.txt</code>.
+              I just went with the following:
+            </p>
+            <pre class="language-none"><code># Overclock
 over_voltage=6
 arm_freq=2000
 gpu_freq=700</code></pre>
-        <p>
-            Next we can install the other bits we need:
-        </p>
-        <pre><code class="language-none">sudo apt install chromium-browser rpi-chromium-mods plasma-bigscreen</code></pre>
-        <p>
-            If you want to watch DRM services like netflix you
-            need another package that's not included in lite:
-        </p>
-        <pre><code class="language-none">sudo apt install libwidevinecdm0</code></pre>
-        <p>
-            KDE connect and an android phone make the perfect
-            remote control, connect should already be included
-            in the KDE install. But firewall suggested, with
-            KDE connect and SSH rules:
-        </p>
-        <pre><code class="language-none">sudo apt install ufw
+            <p>
+              Next we can install the other bits we need:
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code>sudo apt install chromium-browser rpi-chromium-mods plasma-bigscreen</code></pre>
+            <p>
+              If you want to watch DRM services like netflix you
+              need another package that's not included in lite:
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code>sudo apt install libwidevinecdm0</code></pre>
+            <p>
+              KDE connect and an android phone make the perfect
+              remote control, connect should already be included
+              in the KDE install. But firewall suggested, with
+              KDE connect and SSH rules:
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code>sudo apt install ufw
 sudo ufw allow 1714:1764/upd
 sudo ufw allow 1714:1764/tcp
 sudo ufw allow 22/tcp
 sudo ufw enable</code></pre>
-        <p>
-            Next open chromium, add the extensions you want,
-            and <em>"install"</em> your <em>"web apps"</em>.
-        </p>
-        <aside>
-            Note: skip the splash screen - instead of installing
-            web app when your on <u>questionable.com</u>, go to
-            <u>questionable.com/home</u> and install from there.
-        </aside>
-        <aside>
-            Note:
-            <a href="https://chromewebstore.google.com/detail/ublock-origin" target="_blank">uBlock Origin</a> and
-            <a href="https://chromewebstore.google.com/detail/privacy-badger" target="_blank">Privacy Badger</a> highly
-            recommended!
-        </aside>
-        <aside>
-            Update: with the introduction of Web Manifest V3 to
-            Chromium based browsers, you may prefer to set your
-            web apps to run through Firefox. Firefox for desktop
-            doesn't support this natively, but there is a guide on
-            how to set this up
-            <a href="/guides/firefox-web-apps">here</a>.
-        </aside>
-        <p>
-            Now open up KDE settings again, select
-            <em>Startup and Shutdown > Login Screen (SDDM)</em>,
-            and then click the behaviour button at the bottom and
-            set plasma to log in automatically and change the session
-            to bigscreen, enter your password to confirm, and it
-            should prompt you to set a password for the keychain.
-            I set a blank password because I want other people to
-            be able to use the TV. Also disbale power saving, or
-            at least getting sent back to the login screen after
-            sleep.
-        </p>
-        <p>
-            Done! Reboot and enjoy!
-        </p>
+            <p>
+              Next open chromium, add the extensions you want,
+              and <em>"install"</em> your <em>"web apps"</em>.
+            </p>
+            <aside>
+              Note: skip the splash screen - instead of installing
+              web app when your on <u>questionable.com</u>, go to
+              <u>questionable.com/home</u> and install from there.
+            </aside>
+            <aside>
+              Note:
+              <a href="https://chromewebstore.google.com/detail/ublock-origin" target="_blank">uBlock Origin</a> and
+              <a href="https://chromewebstore.google.com/detail/privacy-badger" target="_blank">Privacy Badger</a> highly
+              recommended!
+            </aside>
+            <aside>
+              Update: with the introduction of Web Manifest V3 to
+              Chromium based browsers, you may prefer to set your
+              web apps to run through Firefox. Firefox for desktop
+              doesn't support this natively, but there is a guide on
+              how to set this up
+              <a href="/guides/firefox-web-apps">here</a>.
+            </aside>
+            <p>
+              Now open up KDE settings again, select
+              <em>Startup and Shutdown > Login Screen (SDDM)</em>,
+              and then click the behaviour button at the bottom and
+              set plasma to log in automatically and change the session
+              to bigscreen, enter your password to confirm, and it
+              should prompt you to set a password for the keychain.
+              I set a blank password because I want other people to
+              be able to use the TV. Also disbale power saving, or
+              at least getting sent back to the login screen after
+              sleep.
+            </p>
+            <p>
+              Done! Reboot and enjoy!
+            </p>
+          </section>
 
-        <h2 id="controls">Controls</h2>
+          <section id="controls">
+            <h2>Controls</h2>
 
-        <h3>KDE Connect</h3>
-        <p>
-            By far the best option if you have an android phone or
-            tablet lying around. KDE Connect for android is available
-            in the standard
-            <a href="https://f-droid.org/en/packages/org.kde.kdeconnect_tp/" target="_blank">F-Droid repository</a>. The
-            app includes
-            a big screen feature, but you can get most of what you need
-            done using the remote input feature.
-        </p>
-        <aside>
-            As a side, <a href="https://f-droid.org/en/packages/juloo.keyboard2/" target="_blank">Unexpected
-                Keyboard</a> is a configurable
-            keyboard for android that includes all the keys you might
-            need to use the terminal.
-        </aside>
+            <h3>KDE Connect</h3>
+            <p>
+              By far the best option if you have an android phone or
+              tablet lying around. KDE Connect for android is available
+              in the standard
+              <a href="https://f-droid.org/en/packages/org.kde.kdeconnect_tp/" target="_blank">F-Droid repository</a>. The
+              app includes
+              a big screen feature, but you can get most of what you need
+              done using the remote input feature.
+            </p>
+            <aside>
+              As a side, <a href="https://f-droid.org/en/packages/juloo.keyboard2/" target="_blank">Unexpected
+                  Keyboard</a> is a configurable
+              keyboard for android that includes all the keys you might
+              need to use the terminal.
+            </aside>
 
-        <h3>Mini Wireless Keyboard with Touchpad</h3>
-        <p>
-            The
-            <a href="https://www.amazon.co.uk/gp/product/B01G6XGLQQ" target="_blank">Rii K01X1 2.4GHz Mini Wireless
-                Keyboard
-                with Touchpad Remote Control</a> is the perfect companion
-            for interacting with Plasma Bigscreen. However the range
-            doesn't appear to be very long, especially on the Argon
-            One case where the receiver plugged in at the back due to the
-            Argon remote interacting with the front of the case.
-            However this can be easily remedied with a short
-            <a href="https://www.amazon.co.uk/dp/B09LYRRQ91" target="_blank">USB extension cable</a>
-            to point the receiver in the correct
-            direction.
-        </p>
+            <h3>Mini Wireless Keyboard with Touchpad</h3>
+            <p>
+              The
+              <a href="https://www.amazon.co.uk/gp/product/B01G6XGLQQ" target="_blank">Rii K01X1 2.4GHz Mini Wireless
+                  Keyboard
+                  with Touchpad Remote Control</a> is the perfect companion
+              for interacting with Plasma Bigscreen. However the range
+              doesn't appear to be very long, especially on the Argon
+              One case where the receiver plugged in at the back due to the
+              Argon remote interacting with the front of the case.
+              However this can be easily remedied with a short
+              <a href="https://www.amazon.co.uk/dp/B09LYRRQ91" target="_blank">USB extension cable</a>
+              to point the receiver in the correct
+              direction.
+            </p>
 
-        <h3>Argon IR Remote</h3>
-        <p>
-            As I previously mentioned, I am using an Argon One case,
-            which is great as I get to use the Argon IR remote control.
-            However, the debian version of Plasma Bigscreen doesn't
-            have a working option to configure remotes as yet, so the
-            remote is somewhat useless for now - except for the power
-            button that is. And I love being able to power my pi on
-            and off without leaving my sofa and walking the few feet
-            required to do it manually. If you are using an Argon One
-            case, the setup script should get everything installed for
-            you, and then you simply need to type <code>argonone-ir</code>
-            into the terminal to get it set up.
-        </p>
+            <h3>Argon IR Remote</h3>
+            <p>
+              As I previously mentioned, I am using an Argon One case,
+              which is great as I get to use the Argon IR remote control.
+              However, the debian version of Plasma Bigscreen doesn't
+              have a working option to configure remotes as yet, so the
+              remote is somewhat useless for now - except for the power
+              button that is. And I love being able to power my pi on
+              and off without leaving my sofa and walking the few feet
+              required to do it manually. If you are using an Argon One
+              case, the setup script should get everything installed for
+              you, and then you simply need to type <code>argonone-ir</code>
+              into the terminal to get it set up.
+            </p>
+          </section>
 
-        <h2 id="some-optional-polish">Some Optional Polish</h2>
-        <h3>Window Decorations</h3>
-        <p>
-            Plasma Bigscreen is designed to work one window at a time,
-            so if you minus a window without a keyboard, then you've
-            essentially lost it for good. In settings you can remove
-            the titlebar buttons for max/min and hide, and just leave
-            the one to close the window with.
-        </p>
+          <section id="some-optional-polish">
+            <h2>Some Optional Polish</h2>
+            <h3>Window Decorations</h3>
+            <p>
+              Plasma Bigscreen is designed to work one window at a time,
+              so if you minus a window without a keyboard, then you've
+              essentially lost it for good. In settings you can remove
+              the titlebar buttons for max/min and hide, and just leave
+              the one to close the window with.
+            </p>
 
-        <h3>Splashscreen</h3>
-        <p>
-            In KDE settings change the splash screen from the default
-            KDE one to the Plasma Bigscreen one, so that while you wait
-            for your smart TV to boot up, you can relish in your
-            accomplishment of having the most obscure smart TV out of
-            everyone you know.
-        </p>
+            <h3>Splashscreen</h3>
+            <p>
+              In KDE settings change the splash screen from the default
+              KDE one to the Plasma Bigscreen one, so that while you wait
+              for your smart TV to boot up, you can relish in your
+              accomplishment of having the most obscure smart TV out of
+              everyone you know.
+            </p>
 
-        <h3>XScreensaver</h3>
-        <aside>
-            Note: It looks like this version of Bigscreen doesn't cooperate
-            with XScreensaver very well. I've encountered 2 issues so far:
-            firstly: the login scripts don't load up, and secondly:
-            if the login scripts load up, then XScreensaver gets called
-            after "inactivity" when watching content in fullscreen mode,
-            which shouldn't happen. This, however, worked fine when using
-            an X86 device with arch linux and the newer version of
-            Bigscreen.
-        </aside>
-        <p>
-            XScreensaver has a pretty cool analog tv effect screensaver
-            that will cycle through images in a folder and display them
-            with various tv static effects:
-        </p>
-        <pre><code class="language-none">sudo apt install xscreensaver xscreensaver-data-extra</code></pre>
+            <h3>XScreensaver</h3>
+            <aside>
+              Note: It looks like this version of Bigscreen doesn't cooperate
+              with XScreensaver very well. I've encountered 2 issues so far:
+              firstly: the login scripts don't load up, and secondly:
+              if the login scripts load up, then XScreensaver gets called
+              after "inactivity" when watching content in fullscreen mode,
+              which shouldn't happen. This, however, worked fine when using
+              an X86 device with arch linux and the newer version of
+              Bigscreen.
+            </aside>
+            <p>
+              XScreensaver has a pretty cool analog tv effect screensaver
+              that will cycle through images in a folder and display them
+              with various tv static effects:
+            </p>
+            <pre class="language-none command-line"
+            data-user="aaronwatts" data-host="dev"><code class="language-none">sudo apt install xscreensaver xscreensaver-data-extra</code></pre>
+          </section>
 
-        <h2 id="not-quite-full-screen">Not Quite Full Screen</h2>
-        <p>
-            KDE's window management isn't quite perfect, and full screen
-            often falls short by 1 pixel on the right and bottom borders
-            (despite any window rules you might add). This can be an
-            irritant when a bright wallpaper sits behind whatever you're
-            watching. The easiest fix is to set a dark-edged wallpaper.
-            The newer bigscreen lets you use kde settings which is nice
-            as you can set the wallpaper to plain colour black, but in
-            the debian version you have to use the built in wallpaper
-            settings app found in the bigscreen settings menu on the
-            home screen. It will only show you the wallpapers that are
-            installed, so download your dark wallpaper, then move it to
-            the wallpaper folder and then it will show up in the wallpaper
-            changer application:
-        </p>
-        <pre><code class="language-none">sudo mv ~/Downloads/&lt;wallpaper&gt; /usr/share/wallpaper/</code></pre>
-    </main>
+          <section id="not-quite-full-screen">
+            <h2>Not Quite Full Screen</h2>
+            <p>
+              KDE's window management isn't quite perfect, and full screen
+              often falls short by 1 pixel on the right and bottom borders
+              (despite any window rules you might add). This can be an
+              irritant when a bright wallpaper sits behind whatever you're
+              watching. The easiest fix is to set a dark-edged wallpaper.
+              The newer bigscreen lets you use kde settings which is nice
+              as you can set the wallpaper to plain colour black, but in
+              the debian version you have to use the built in wallpaper
+              settings app found in the bigscreen settings menu on the
+              home screen. It will only show you the wallpapers that are
+              installed, so download your dark wallpaper, then move it to
+              the wallpaper folder and then it will show up in the wallpaper
+              changer application:
+            </p>
+            <pre class="language-none command-line"
+                data-user="aaronwatts" data-host="dev"><code class="language-none">sudo mv ~/Downloads/&lt;wallpaper&gt; /usr/share/wallpaper/</code></pre>
+          </section>
+        </article>
+      </main>
 
-    <a href="#top">Back to Top</a>
+      <a href="#top">Back to Top</a>
 
-    <h4>Comments Section</h4>
-    <div id="comment-section"></div>
-    <noscript class="note">
-        Enable JavaScript to join in the conversation!
-    </noscript>
+      <footer>
+          <div>Made by Hand. Powered by</div>
+          <a href="https://pages.github.com/" target="_blank">
+              <img src="/images/githubpages.svg" 
+              alt="https://pages.github.com/">
+          </a>
+      </footer>
 
-    <script>
-        initComments({
-            node: document.getElementById("comment-section"),
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-            serverName: "cactus.chat",
-            siteName: "aaronwattsdev",
-            commentSectionId: "kde-plasma-bigscreen"
-        })
-    </script>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-</body>
+      <script src="/assets/scripts/prism.js"></script>
+  </body>
 
 </html>

@@ -1,101 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The AaronWattsDev website's splash page.">
-    <title>Aaron Watts Dev</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    <style>
-        body {
-            background-color: #000;
-            font-family: monospace;
-            color: #fff;
-            margin: 0;
-            font-size: 3.2vw;
-            letter-spacing: .4vw;
-            line-height: 5vw;
-            overflow: hidden;
-        }
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Home page for the AaronWattsDev website." name="description"/>
+  <title>AWD - Home</title>
+  <link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="/site.webmanifest" rel="manifest"/>
+  <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+  <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+  <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+  <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
+  <link href="/assets/styles/style.css" rel="stylesheet"/>
+  <style>
+    header > nav {
+      display: flex;
+      align-items: center;
+    }
 
-        h1 {
-            font-size: 1em;
-            display: inline;
-        }
+    header > nav > div:not(div:first-of-type) {
+      margin-inline: .6em .4em;
+    }
 
-        a {
-            color: #06e;
-            text-decoration: none;
-            text-shadow: 
-                0 0 .3vw #06e,
-                0 0 1.6vw #06e;
-        }
-        a:visited {
-            color: #06e;
-        }
+    header > nav > a {
+      margin-inline-start: .8em;
+    } 
 
-        a:hover {
-            color: #09f;
-            text-shadow: 
-                0 0 .6vw #06e,
-                0 0 3.2vw #06e;
-        }
+    .svg-container {
+      display: inline-block;
+    }
 
-        div {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .hero,
+    .hero h1{
+      font-family: JetBrainsMono;
+      font-weight: normal;
+      font-size: 2.6vw;
+      letter-spacing: .4vw;
+      margin-block: 8rem 10rem;
+    }
 
-        span.hero-text {
-            font-weight: bold;
-            text-shadow: 
-                0 0 .3vw #ccc,
-                0 0 1.6vw #ccc;
-        }
+    @media only screen and (max-width: 720px) {
+      .hero {
+        font-size: 5vw;
+      }
+    }
 
-        span.cursor {
-            -webkit-animation: flash-cursor 1.2s infinite;
-            animation: flash-cursor 1.2s infinite;
-        }
+    .hero span.hero-text {
+      font-weight: bold;
+      text-shadow:
+        0 0 .23vw currentColor,
+        0 0 1.2vw currentColor;
+    }
 
-        nav {
-            text-shadow: 
-                0 0 .3vw #ccc,
-                0 0 1.6vw #ccc;
-        }
+    .hero h1 {
+      font-size: 1em;
+      display: inline;
+    }
 
-        @-webkit-keyframes flash-cursor {
-            0% { opacity: 1 }
-            50% { opacity: 0 }
-            100% { opacity: 1 }
-        }
+    .hero span.term-cursor::after {
+      content: ' █';
+    }
 
-        @keyframes flash-cursor {
-            0% { opacity: 1 }
-            50% { opacity: 0 }
-            100% { opacity: 1 }
-        }
-    </style>
+    .hero span.term-cursor {
+      -webkit-animation: flash-cursor 2.6s 2;
+      animation: flash-cursor 2.6s 2;
+      opacity: 0;
+    }
+
+    @-webkit-keyframes flash-cursor {
+      0% { opacity: 0 }
+      50% { opacity: 1 }
+      100% { opacity: 0 }
+    }
+
+    @keyframes flash-cursor {
+      0% { opacity: 0 }
+      50% { opacity: 1 }
+      100% { opacity: 0 }
+    }
+  </style>
 </head>
 
 <body>
-    <div>
-        <main>
-            <span class="hero-text"><h1>aaronwatts</h1>@dev:~ $ <span class="cursor">&#9608;</span></span>
-            <nav>. .. <a href="/home">Enter/</a></nav>
-        </main>
+  <header>
+    <nav>
+      <div class="svg-container">
+        <a href="/rss">
+          <img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+        </a>
+      </div>
+      <div class="svg-container">
+        <a href="https://github.com/aaron-watts" target="_blank">
+          <img src="/images/github.svg" alt="Github" class="github-icon">
+        </a>
+      </div>
+      <a href="https://blog.aaronwatts.dev">Visit My Blog</a>
+    </nav>
+
+    <div class="hero">
+      <span class="hero-text">
+        <h1><span class="host">aaronwatts@dev</span></h1><span
+          aria-hidden="true" class="term-dir"></span><span
+          aria-hidden="true" class="term-priv"></span><span
+          aria-hidden="true" class="term-cursor"></span>
+      </span>
     </div>
-</body>
+  </header>
 
+  <main>
+    <nav>
+      <h2>Guides</h2>
+      <p>
+        Some guides on things that I have worked on where resources are
+        either hard to find or scattered. You might save yourself some
+        time or learn something new if you're working on anything that
+        comes up in this section.
+      </p>
+      <a href="/guides">Go to guides</a>
+
+      <h2>Tech</h2>
+      <p>
+        Technology that I consider to be <em>thoughtful</em>, where
+        there are more meaningful priorities than exponential
+        growth and high profit margins.
+      </p>
+      <a href="/tech">Go to tech</a>
+
+      <h2>
+      Latest
+      </h2>
+      <article>
+        <header>
+          <h3>AppSheet - Rota App</h3>
+          <time datetime="2025-08-28">28th August, 2025</time>
+          <ul class="topic-container">
+            <li class="topic">appsheet</li>
+            <li class="topic">apps script</li>
+            <li class="topic">google</li>
+            <li class="topic">sheets</li>
+          </ul>
+        </header>
+        <p class="description">
+        I first found out about AppSheet a
+        number of years ago when it was still a fairly new project.
+        I was running my own skate school and needed something that
+        could organise data while on the move; specifically bookings
+        I had made with clients. I had looked at a lot of options
+        which didn't quite make the cut of what I needed. But then
+        I stumbled across AppSheet, and it did just about everything
+        I needed it to. Well, almost everything. But as it uses Google
+        Sheets as pseudo-databases, I was able to use Apps Script to
+        fill the last few gaps, and have my own custom software .. for
+        free!
+        </p>
+        <a href="/guides/appsheet">Read more</a>
+      </article>
+    </nav>
+  </main>
+  
+  <footer>
+  <div>
+  Made by Hand. Powered by
+  </div>
+  <a href="https://pages.github.com/" target="_blank">
+  <img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+  </a>
+  </footer>
+  </body>
 </html>
-

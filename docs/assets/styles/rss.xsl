@@ -21,7 +21,7 @@
             <body>
                 <header>
                     <nav class="breadcrumbs">
-                        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span class="path">/<a href="/rss">rss</a>/feed $</span>
+                        <span class="host"><a href="/">aaronwatts@dev</a></span>:<span class="path">/<a href="/rss">rss</a>/feed $</span>
                     </nav>
                     <h1>
                         <xsl:value-of select="/rss/channel/title"/>

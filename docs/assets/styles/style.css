@@ -295,6 +295,7 @@ time {
 }
 
 .hero .path,
+.hero .term-priv,
 .breadcrumbs .path,
 .breadcrumbs .path a,
 .breadcrumbs .path a:visited {
@@ -309,7 +310,13 @@ time {
     font-weight: normal;
 }
 
+.hero .term-dir::after {
+    content: ':~';
+}
 
+.hero .term-priv::after {
+    content: ' $';
+}
 
 @media only screen and (max-width: 720px) {
     nav.breadcrumbs .host a,

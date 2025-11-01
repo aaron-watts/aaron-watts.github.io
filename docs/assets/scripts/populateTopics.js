@@ -64,6 +64,7 @@ function filterByTopic() {
     if (selected) selected.classList.remove('selected');
     const selection = this.innerText;
     const articles = document.querySelectorAll('article');
+    console.log(selection)
 
     if (!selected || selected.innerText !== selection) {
         this.classList.add('selected');
@@ -71,7 +72,7 @@ function filterByTopic() {
         articles.forEach(article => {
             article.classList.add('hidden');
 
-            const topics = [...article.children[2].children];
+            const topics = [...article.querySelectorAll('.topic')];
             for (let topic of topics) {
                 if (topic.innerText.trim() === selection.trim()) {
                     article.classList.remove('hidden');

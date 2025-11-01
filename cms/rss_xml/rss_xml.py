@@ -52,7 +52,7 @@ def build_item(parent, doc):
     Builds XML item for an article
     """
     URL = path_to_url(f"{doc['directory']}/{doc['filename']}")
-    IMG = BASE_URL + selector(doc['soup'], "main > img", "src")
+    IMG = BASE_URL + selector(doc['soup'], "article img", "src")
 
     item = xtree.child_element(parent, "item")
 

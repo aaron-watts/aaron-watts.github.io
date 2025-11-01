@@ -8,6 +8,7 @@ def test_documents(documents):
     """
     passed = True
     for document in documents:
+        print(document["filename"])
         for test in tests:
             result = test(document)
             if not result["passed"]:

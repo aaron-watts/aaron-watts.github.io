@@ -23,7 +23,7 @@ def main_img_rsc(html_doc):
     result = {
         "desc": "img[src] should not be blank"
             }
-    img = html_doc["soup"].select_one("main > img")
+    img = html_doc["soup"].select_one("article img")
     src = img["src"]
     if len(src) == 0:
         result["passed"] = False
@@ -38,7 +38,7 @@ def main_img_alt(html_doc):
     result = {
         "desc": "img[alt] should not be blank"
             }
-    img = html_doc["soup"].select_one("main > img")
+    img = html_doc["soup"].select_one("article img")
     alt = img["alt"]
     if len(alt) == 0:
         result["passed"] = False
@@ -54,7 +54,7 @@ def img_exists(html_doc):
     result = {
         "desc": "img[src] should exist in images/"
             }
-    img_src = html_doc["soup"].select_one("main > img")["src"]
+    img_src = html_doc["soup"].select_one("article img")["src"]
     if os.path.exists(f"docs/{img_src}"):
         result["passed"] = True
     else:
@@ -93,7 +93,7 @@ def h1_has_text(html_doc):
     result = {
         "desc": "h1 should not be blank"
             }
-    header1 = html_doc["soup"].select_one("main > h1")
+    header1 = html_doc["soup"].select_one("article h1")
     if len(header1.text) == 0:
         result["passsed"] = False
     else:
@@ -107,7 +107,7 @@ def time_datetime_formatted(html_doc):
     result = {
         "desc": "time element attr date should conform ro yyyy-mm-dd"
             }
-    datetime = html_doc["soup"].select_one("time")["datetime"]
+    datetime = html_doc["soup"].select_one("article header time")["datetime"]
     test = re.search(r"\d{4}-\d{2}-\d{2}", datetime)
     if test is None:
         result["passed"] = False
@@ -122,7 +122,7 @@ def time_innerhtml_formatted(html_doc):
     result = {
         "desc": "time element innerHTML should conform to d mmm, yyyy"
             }
-    time_text = html_doc["soup"].select_one("time").text
+    time_text = html_doc["soup"].select_one("article header time").text
     test = re.search(r"\d{1,2}\w{2}\s\w{3,8},\s\d{4}", time_text)
     if test is None:
         result["passed"] = False
@@ -138,8 +138,8 @@ def intro_is_included(html_doc):
     result = {
         "desc": "First p element in main should have id of 'intro'"
             }
-    intro = html_doc["soup"].select_one("main > p:first-of-type")
-    if not intro["id"] == "intro":
+    intro = html_doc["soup"].select_one("article p:first-of-type")
+    if not intro["id"] == "description":
         result["passed"] = False
     else:
         result["passed"] = True
@@ -189,21 +189,6 @@ def keywords_not_blank(html_doc):
         result["passed"] = False
     return result
 
-def comments_has_id(html_doc):
-    """
-    CactusChat config requires a commentSectionId
-    """
-    result = {
-        "desc": "CactusChat config requires a CommentSectionID"
-            }
-    script = html_doc["soup"].select_one("body > script").string
-    test = re.search(r'commentSectionId: "\S+"', script)
-    if test is None:
-        result["passed"] = False
-    else:
-        result["passed"] = True
-    return result
-
 tests = [
         no_comments,
         main_img_rsc,
@@ -217,5 +202,4 @@ tests = [
         breadcrumb_matches_path,
         description_not_blank,
         keywords_not_blank,
-        comments_has_id,
         ]

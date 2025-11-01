@@ -49,10 +49,17 @@ def format_content(content):
     """
     text = ''
     for child in content.children:
-        if child.name == "pre":
-            text += str(child)
+        if not child.name == "section":
+            if child.name == "pre":
+                text += str(child)
+            else:
+                text += " ".join(str(child).split())
         else:
-            text += " ".join(str(child).split())
+            for descendant in child.children:
+                if descendant.name == "pre":
+                    text += str(descendant)
+                else:
+                    text += " ".join(str(child).split())
     return text
 
 

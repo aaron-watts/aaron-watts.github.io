@@ -3,7 +3,7 @@ base_url:
 root:
   docs
 home:
-  home.html
+  index.html
 sub_directories:
   guides
   tech
@@ -11,15 +11,15 @@ no_index:
   404.html
 selectors:
   main:
-    main
+    article
   title:
     h1
   intro:
-    p#intro
+    article p#description
   time:
-    main > time
+    article time
   img:
-    main > img
+    article img
   keywords:
     meta[name=keywords]
 sitemap:

@@ -12,16 +12,23 @@
   <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
   <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
   <link href="/assets/styles/style.css" rel="stylesheet"/>
+  <style>
+.bash::before {
+  content: ' $ ';
+}
+  </style>
 </head>
 <body>
   <header>
-    <nav class="breadcrumbs">
-      <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span class="path">/ $</span>
-      <span class="bash">cd: no such file or directory: 
-        <span id="pathname">
-          404
-        </span>
-      </span>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li><a 
+            href="/">aaronwatts@dev</a></li><span
+            aria-hidden="true" class="term-dir"></span><li><a 
+            href="" aria-current="page"><span class=bash
+            aria-hidden="true">cd: no such file or directory:
+            </span><span id="pathname">404</span></a></li>
+      </ol>
     </nav>
   </header>
 

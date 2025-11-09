@@ -20,8 +20,15 @@
             </head>
             <body>
                 <header>
-                    <nav class="breadcrumbs">
-                        <span class="host"><a href="/">aaronwatts@dev</a></span>:<span class="path">/<a href="/rss">rss</a>/feed $</span>
+                    <nav aria-label="Breadcrumb">
+                        <ol>
+                          <li><a 
+                              href="/">aaronwatts@dev</a></li><span
+                              aria-hidden="true" class="term-dir"></span><li><a 
+                              href="/rss">rss</a></li><li><a
+                              href="" aria-current="page">feed</a></li><span
+                              aria-hidden="true" class="term-priv"></span>
+                        </ol>
                     </nav>
                     <h1>
                         <xsl:value-of select="/rss/channel/title"/>

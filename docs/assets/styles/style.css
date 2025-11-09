@@ -14,7 +14,7 @@
     --border-color: #777;
     --accent-primary: #44a0eb;
     --accent-primary-light: #55b1fc;
-    --accent-secondary: #be9ae9;
+    --accent-secondary: #be8ae9;
     --accent-secondary-light: #d7a6ff;
     --accent-mono: #aaa;
     --accent-bg-mono-light: #333;
@@ -271,51 +271,65 @@ time {
    transform: scale(1.3);
 }
 
-.breadcrumbs {
+nav[aria-label='Breadcrumb'] {
     font-family: JetBrainsMono;
-    font-weight: bold;
-    color: #ddd;
     font-size: .9rem;
+    font-weight: bold;
     letter-spacing: .09rem;
+    box-sizing: border-box;
+
+    & ol {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    & li {
+        display: inline;
+        
+        & a {
+            text-decoration: none;
+            color: var(--accent-secondary);
+
+            &:hover {
+                color: var(--accent-secondary-light);
+            }
+        }
+    }
+
+    & li:first-of-type a {
+        color: var(--accent-primary);
+
+        &:hover {
+            color: var(--accent-primary-light);
+        }
+    }
+
+    & li:not(li:first-of-type)::before {
+        content: '/'; 
+        color: var(--accent-secondary);
+    }
+
+    & .term-dir::after  {
+        content: ':';
+    }
 }
 
-.breadcrumbs a {
-    text-decoration: none;  
+.path,
+.term-priv {
+    color: var(--accent-secondary);
 }
 
-.hero .host,
-.breadcrumbs .host,
-.breadcrumbs .host a,
-.breadcrumbs .host a:visited {
+.term-priv::after {
+    content: ' $';
+}
+
+.hero .host {
     color: #3787c9;
-}
-
-.breadcrumbs .host a:hover {
-    color: #44a0eb;
-}
-
-.hero .path,
-.hero .term-priv,
-.breadcrumbs .path,
-.breadcrumbs .path a,
-.breadcrumbs .path a:visited {
-    color: #be8ae9;
-}
-
-.breadcrumbs .path a:hover {
-    color: #d7a6ff;
-}
-
-.breadcrumbs .bash {
-    font-weight: normal;
+    color: var(--accent-primary);
 }
 
 .hero .term-dir::after {
     content: ':~';
-}
-
-.hero .term-priv::after {
-    content: ' $';
 }
 
 @media only screen and (max-width: 720px) {

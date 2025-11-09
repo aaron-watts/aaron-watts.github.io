@@ -21,8 +21,14 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
             </head>
             <body>
                 <header>
-                    <nav class="breadcrumbs">
-                        <span class="host"><a href="/">aaronwatts@dev</a></span>:<span class="path">~ $ sitemap.xml</span>
+                    <nav aria-label="Breadcrumb">
+                        <ol>
+                            <li><a 
+                                href="/">aaronwatts@dev</a></li><span
+                                aria-hidden="true" class="term-dir"></span><li><a 
+                                href="" aria-current="page">sitemap</a></li><span
+                                aria-hidden="true" class="term-priv"></span>
+                        </ol>
                     </nav>
                     <h1>Sitemap</h1>
                 </header>

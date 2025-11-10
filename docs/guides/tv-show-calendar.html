@@ -41,16 +41,16 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#json">Making the JSON File</a></li>
         <li><a href="#workflow">Setting Up the Workflow</a></li>
         <li><a href="#calendar">Putting the Shows Into the Google Calendar</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -61,7 +61,7 @@
           alt="A list of the season 15 episodes for Bob's Burgers with a thumbnail
           image showing the show's poster">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             It's pretty hard keeping track of my favourite show's nowadays across all
             the different services. So I set up my own automated workflow that eventually
@@ -94,7 +94,7 @@
           </p>
         </section>
 
-        <section id="json">
+        <section id="json" title="Making the JSON File">
           <h2>Making the JSON File</h2>
           <p>
             The first thing we need to do is write a script that generates our json file.
@@ -163,7 +163,7 @@ if __name__ == "__main__":
   main()</code></pre>
         </section>
 
-        <section id="workflow">
+        <section id="workflow" title="Setting Up the Workflow">
           <h2>Setting Up the Workflow</h2>
 
           <p>
@@ -220,7 +220,8 @@ jobs:
           git push</code></pre>
         </section>
 
-        <section id="calendar">
+        <section id="calendar"
+          title="Putting the Shows Into the Google Calendar">
           <h2>Putting the Shows Into the Google Calendar</h2>
           <p>
             Finally, we just need to get the data from the JSON file into our
@@ -363,8 +364,8 @@ ShowID:EpisodeID</code></pre>
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

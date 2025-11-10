@@ -42,16 +42,16 @@
       </div>
     </header>
 
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#local">Local Font Stack</a></li>
         <li><a href="#self-hosting">Self Hosting Fonts</a></li>
         <li><a href="#preloading">Preloading Fonts</a></li>
-      </ul>
+      </ol>
     </nav>
 
     <main>
@@ -63,7 +63,7 @@
           alt="A collection of fonts including sans-serif, serif, comic sans
           and mono that read 'The lazy dog woffed!'">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             If you've ever used an older or lower spec device, or had
             a slow connection on a public wifi network, you
@@ -85,7 +85,7 @@
           </p>
         </section>
 
-        <section id="local">
+        <section id="local" title="Local Font Stack">
           <h2>Local Font Stack</h2>
           <p>
             Typically, I prefer to go with system fonts whenever I
@@ -128,7 +128,7 @@
 }</code></pre>
         </section>
 
-        <section id="self-hosting">
+        <section id="self-hosting" title="Self Hosting Fonts">
           <h2>Self Hosting Fonts</h2>
           <p>
             Sometimes you need a specific font, and don't want to
@@ -211,7 +211,7 @@ body {
 }</code></pre>
         </section>
           
-        <section id="preloading">
+        <section id="preloading" title="Preloading Fonts">
           <h2>Preloading Fonts</h2>
           <p>
             Wether you're fetching or self hosting a font, if it's
@@ -254,8 +254,8 @@ body {
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

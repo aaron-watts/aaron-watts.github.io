@@ -41,17 +41,17 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#getting-started">Getting Started</a></li>
         <li><a href="#button-setup">Button Set Up</a></li>
         <li><a href="#optimising">Optimising the Code</a></li>
         <li><a href="#finished-code">The Finished Code</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -63,7 +63,7 @@
           up to six coloured buttons, in the pattern of white, blue,
           blue, white, blue, white.">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             My keyboard doesn't include the media keys, so I built a macro
             keyboard to control the media on my desktop computer. It is
@@ -80,7 +80,7 @@
           </p>
         </section>
 
-        <section id="getting-started">
+        <section id="getting-started" title="Getting Started">
           <h2>Getting Started</h2>
           <p>
             When you know how to move data on and off the device and run
@@ -96,7 +96,7 @@
           </p>
         </section> 
 
-        <section id="button-setup">
+        <section id="button-setup" title="Button Set Up">
           <h2>Button Set Up</h2>
           <aside>
             Note: I will assume you know how to wire a button. I'm using
@@ -147,7 +147,7 @@ btn1.pull = digitalio.Pull.DOWN</code></pre>
     cc.send(Consumer.ControlCode.PLAY_PAUSE)</code></pre>
         </section>
 
-        <section id="optimising">
+        <section id="optimising" title="Optimising the Code">
           <h2>Optimising the Code</h2>
           <p>
             As mentioned, going through this process for 6 keys,
@@ -194,7 +194,7 @@ btn1.pull = digitalio.Pull.DOWN</code></pre>
   time.sleep(wait)</code></pre>
         </section>
 
-        <section id="finished-code">
+        <section id="finished-code" title="The Finished Code">
           <h2>The Finished Code</h2>
           <p>
             The following code should be saved on the pico's top-most
@@ -237,8 +237,8 @@ while True:
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

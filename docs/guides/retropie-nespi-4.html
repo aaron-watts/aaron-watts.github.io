@@ -44,11 +44,11 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On  This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#getting-started">Getting Started</a></li>
         <li><a href="#bios">BIOS files</a></li>
@@ -58,7 +58,7 @@
         <li><a href="#lightgun">Lightgun Games</a></li>
         <li><a href="#nintendo-ds">Nintendo DS</a></li>
         <li><a href="#achievements">RetroAchievments</a></li>
-      </ul>
+      </ol>
     </nav>
 
     <main>
@@ -71,7 +71,7 @@
           to show a NES cartridge style SSD case, an 8BitDo SN30 Pro
           controller, and a WiiMote in a pistol lightgun adapter.">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie
             is the ultimate retro gaming rig. Low power consumption? Check.
@@ -92,7 +92,7 @@
           </p>
         </section>
 
-        <section id="getting-started">
+        <section id="getting-started" title="Getting Started">
           <h2>Getting Started</h2>
           <p>
             The NesPi 4 Case gives you the option to use an SSD drive
@@ -128,7 +128,7 @@
           </p>
         </section>
 
-        <section id="bios">
+        <section id="bios" title="BIOS files">
           <h2>BIOS files</h2>
           <p>
             So now games? No. Slow down there. Some of the emulators
@@ -171,7 +171,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
           </p>
         </section>
 
-        <section id="games">
+        <section id="games" title="Getting Games">
           <h2>Getting Games</h2>
           <p>
             I have no idea if I'm legally allowed to tell you where to
@@ -222,7 +222,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
           </aside>
         </section>
 
-        <section id="tweaks">
+        <section id="tweaks" title="Performance Tweaks">
           <h2>Performance Tweaks</h2>
           <p>
             Aside from the obvious performance tweaks (cooling system,
@@ -277,7 +277,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
           </p>
         </section> 
 
-        <section id="menu-music">
+        <section id="menu-music" title="Menu Music">
           <h2>Menu Music</h2>
           <p>
             But RetroPie doesn't have menu music, I hear you say. That
@@ -327,7 +327,7 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
         <p>Reboot for moods.</p>
         </section>
 
-        <section id="lightgun">
+        <section id="lightgun" title="Lightgun Games">
           <h2>Lightgun Games</h2>
           <p>
             This was surprisingly simple to get going. I don't really
@@ -510,7 +510,7 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
           </aside>
         </section>
 
-        <section id="nintendo-ds">
+        <section id="nintendo-ds" title="Nintendo DS">
           <h2>Nintendo DS</h2>
           <p>
             Drastic is the suggested DS emulator for RetroPie. It is
@@ -544,7 +544,7 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
           </p>
         </section>
 
-        <section id="achievements">
+        <section id="achievements" title="RetroAchievements">
           <h2>RetroAchievements</h2>
           <p>
             Trophies! Set up an account at
@@ -561,8 +561,8 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

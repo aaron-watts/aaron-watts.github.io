@@ -41,17 +41,17 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#why">But, why?</a></li>
         <li><a href="#good-enough">Is it good enough?</a></li>
         <li><a href="#setup">My Set Up</a></li>
         <li><a href="#youtube">Youtube</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -65,7 +65,7 @@
             editor, with the contents of this web page written within
             the editor.">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             This is less of a guide, and more just an outline of how,
             and why, I'm doing it. As well as a review of how it's
@@ -83,7 +83,7 @@
           </p>
         </section>
 
-        <section id="why">
+        <section id="why" title="But, why?">
           <h2>But, why?</h2>
           <p>
             This might be the wrong question. Maybe, it was more: how?
@@ -136,7 +136,7 @@
           </p>
         </section>
 
-        <section id="good-enough">
+        <section id="good-enough" title="Is it good enough?">
           <h2>Is it good enough?</h2>
           <p>
             Yes. I mean, for me, it is. I won't lie, pi 4 can get the job
@@ -175,7 +175,7 @@
           </p>
         </section>
 
-        <section id="setup">
+        <section id="setup" title="My set up">
           <h2>My set up</h2>
           <h3>Operating System and Desktop Environment</h3>
           <p>
@@ -277,7 +277,7 @@
           </p>
         </section>
 
-        <section id="youtube">
+        <section id="youtube" title="Youtube">
           <h2>Youtube</h2>
           <p>
             I suppose we do have to talk about it. It's the real question,
@@ -292,8 +292,9 @@
         </section>
       </article>        
     </main>
-    <nav>
-      <a href="#top">Back to Top</a>
+
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

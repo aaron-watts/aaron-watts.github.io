@@ -43,11 +43,11 @@
         </a>
       </div>
     </header>
-      <nav>
+      <nav aria-labelledby="page-nav">
         <header>
-          <h2>On This Page</h2>
+          <h2 id="page-nav">On This Page</h2>
         </header>
-        <ul>
+        <ol>
           <li><a href="#intro">Intro</a></li>
           <li><a href="#getting-started">Gettind Started</a></li>
           <li><a href="#installing-kde-plasma">Installing KDE Plasma</a></li>
@@ -55,7 +55,7 @@
           <li><a href="#controls">Controls</a></li>
           <li><a href="#some-optional-polish">Some Optional Polish</a></li>
           <li><a href="#not-quite-full-screen">Not Quite Full Screen</a></li>
-        </ul>
+        </ol>
       </nav>
       <main>
         <article>
@@ -67,7 +67,7 @@
             on and plugged into a TV that is on the KDE Plasma Bigscreen
             home screen, with a Debian logo wallpaper.">
           </header>
-          <section id="intro">
+          <section id="intro" title="Intro">
             <p id="description">
               I built this media centre at the start of 2024. There may
               be easier methods of installation by now. When I built this
@@ -107,7 +107,7 @@
             </p>
           </section>
 
-          <section id="getting-started">
+          <section id="getting-started" title="Getting Started">
             <h2>Getting Started</h2>
             <p>
               Start by flashing the latest
@@ -141,7 +141,7 @@ dtoverlay=vc4-fkms-v3d</code></pre>
             </p>
           </section>
 
-          <section id="installing-kde-plasma">
+          <section id="installing-kde-plasma" title="Installing KDE Plasma">
             <h2>Installing KDE Plasma</h2>
             <p>
               Next we need to istall KDE Plasma; I ooriginally went
@@ -184,7 +184,8 @@ sudo systemctl set-default graphical.target</code></pre>
             data-user="aaronwatts" data-host="dev"><code>curl https://download.argon40.com/argon1.sh | bash</code></pre>
           </section>
 
-          <section id="setting-up-plasma-bigscreen">
+          <section id="setting-up-plasma-bigscreen"
+            title="Setting Up Plasma Bigscreen">
             <h2>Setting Up Plasma Bigscreen</h2>
             <p>
               Now the effects are disabled, and if you have your
@@ -259,7 +260,7 @@ sudo ufw enable</code></pre>
             </p>
           </section>
 
-          <section id="controls">
+          <section id="controls" title="Controls">
             <h2>Controls</h2>
 
             <h3>KDE Connect</h3>
@@ -311,7 +312,7 @@ sudo ufw enable</code></pre>
             </p>
           </section>
 
-          <section id="some-optional-polish">
+          <section id="some-optional-polish" title="Some Optional Polish">
             <h2>Some Optional Polish</h2>
             <h3>Window Decorations</h3>
             <p>
@@ -351,7 +352,7 @@ sudo ufw enable</code></pre>
             data-user="aaronwatts" data-host="dev"><code class="language-none">sudo apt install xscreensaver xscreensaver-data-extra</code></pre>
           </section>
 
-          <section id="not-quite-full-screen">
+          <section id="not-quite-full-screen" title="Not Quite Full Screen">
             <h2>Not Quite Full Screen</h2>
             <p>
               KDE's window management isn't quite perfect, and full screen
@@ -374,7 +375,9 @@ sudo ufw enable</code></pre>
         </article>
       </main>
 
-      <a href="#top">Back to Top</a>
+      <nav aria-labelledby"to-top">
+        <a href="#top" id="to-top">Back to Top</a>
+      </nav>
 
       <footer>
           <div>Made by Hand. Powered by</div>

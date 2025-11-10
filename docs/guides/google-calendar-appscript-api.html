@@ -39,11 +39,11 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#use-case">Use Case</a></li>
         <li><a href="#serving-json">Serving JSON</a></li>
@@ -51,7 +51,7 @@
         <li><a href="#api-call">Calling the API From a Webpage</a></li>
         <li><a href="#hide-url">Hiding your script URL</a></li>
         <li><a href="#google">A Quick Word About Google</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -62,7 +62,7 @@
           alt="Screenshot of calendar entries displayed in HTML
           on a web page.">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             Considering how long they've been around, working with
             iCal's in the browser is surprisingly difficult. When
@@ -85,7 +85,7 @@
           <p><code>=&gt;</code></p>
         </section>
 
-        <section id="use-case">
+        <section id="use-case" title="Use Case">
           <h2>Use Case</h2>
           <p>
             A good static website should require as little work as
@@ -112,7 +112,7 @@
           </p>
         </section>
 
-        <section id="serving-json">
+        <section id="serving-json" title="Serving JSON">
           <h2>Serving JSON</h2>
           <p>
             You <em>can</em> serve JSON using Google's Apps Script
@@ -154,7 +154,7 @@
           </p>
         </section>
 
-        <section id="api">
+        <section id="api" title="Creating the API">
           <h2>Creating the API</h2>
           <p>
             To begin, in your Google Drive, select <em>New</em>, then
@@ -265,7 +265,8 @@
           </aside>
         </section>
 
-        <section id="api-call">
+        <section id="api-call"
+          title="Calling the API From a Webpage">
           <h2>Calling the API From a Webpage</h2>
           <p>
             So this method is free. It works, but you get what you
@@ -351,7 +352,7 @@
 document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
         </section>
 
-        <section id="hide-url">
+        <section id="hide-url" title="Hiding your script URL">
           <h2>Hiding your script URL</h2>
           <p>
             Having your Apps Script url in your JavaScript file on
@@ -450,7 +451,7 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
 }</code></pre>
         </section>
 
-        <section id="google">
+        <section id="google" title="A Quick Word About Google">
           <h2>A Quick Word About Google</h2>
           <p>
             I'm not here to say Google is good or bad, it offers
@@ -476,8 +477,8 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

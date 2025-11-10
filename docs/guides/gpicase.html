@@ -43,17 +43,17 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#setting-up">Setting Up</a></li>
         <li><a href="#bios">BIOS's</a></li>
         <li><a href="#roms">Adding ROMs</a></li>
         <li><a href="#tweaks">Tweaks and Polish</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -63,7 +63,7 @@
           <img src="/images/guides/gpicase.avif" 
               alt="GPi Case 2 powered on, showing the recalbox menu screen">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             The GPi Case 2 with Raspberry Pi's Compute Module 4 is the
             ultimate portable gaming device. The case offers amazing
@@ -104,7 +104,7 @@
           </p>
         </section>
 
-        <section id="setting-up">
+        <section id="setting-up" title="Setting Up">
           <h2>Setting Up</h2>
           <aside>
             Note: I use Linux computers only, so these instructions
@@ -167,7 +167,7 @@ make</code></pre>
           </p>
         </section>
 
-        <section id="bios">
+        <section id="bios" title="BIOS's">
           <h2>BIOS's</h2>
           <p>
             You can get a full set of the RetroPie BIOS's at
@@ -187,7 +187,7 @@ make</code></pre>
           </p>
         </section>
 
-        <section id="roms">
+        <section id="roms" title="Adding ROMs">
           <h2>Adding ROMs</h2>
           <p>
             I'm not going to tell you where to get copies of ROMs
@@ -205,7 +205,7 @@ make</code></pre>
           </p>
         </section>
 
-        <section id="tweaks">
+        <section id="tweaks" title="Tweaks and Polish">
           <h2>Tweaks and Polish</h2>
           <h3>Theme</h3>
           <p>
@@ -259,8 +259,8 @@ make</code></pre>
       </article>        
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

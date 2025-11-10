@@ -41,11 +41,11 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#cms">Why Not a CMS?</a></li>
         <li><a href="#github-pages">Github Pages</a></li>
@@ -55,7 +55,7 @@
         <li><a href="#feed">RSS Feed</a></li>
         <li><a href="#automating">Automating the Boring Stuff</a></li>
         <li><a href="#adding-comments-section">Adding a Comments Section</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -66,7 +66,7 @@
           alt="The google search home page with your name here written
           in the query input">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             You don't always need a full stack. When all you need to
             do is show information, a static website is enough. And
@@ -77,7 +77,7 @@
           <p>
             In fact, in 2024, static sites can do a bit more than just
             send information. This site, for example, has a 
-            <a href="#comment-section">comment section</a> on each
+            <s>comment section</s> on each
             project page (scroll down and see for yourself). There's
             an oceans-worth of webdev lessons and tutorials out there,
             but not many really talk about getting the site up, and
@@ -89,7 +89,7 @@
           </p>
         </section>
 
-        <section id="cms">
+        <section id="cms" title="Why Not a CMS?">
           <h2>Why Not a CMS?</h2>
           <p>
             Good question. You can absolutely use a Content Management
@@ -142,7 +142,7 @@
           </p>
         </section>
 
-        <section id="github-pages">
+        <section id="github-pages" title="Github Pages">
           <h2>Github Pages</h2>
           <p>
             So, assuming you've got a basic website built and ready
@@ -174,7 +174,7 @@
           </p>
         </section>
 
-        <section id="custom-domain">
+        <section id="custom-domain" title="Custom Domain Name">
           <h2>Custom Domain Name</h2>
           <p>
             You don't need a custom domain name. But with a DNS
@@ -201,7 +201,7 @@
           </p>
         </section>
 
-        <section id="bing">
+        <section id="bing" title="Getting Bing Ready">
           <h2>Getting Bing Ready</h2>
           <p>
             Okay, so Bing is not the only search engine. But
@@ -275,7 +275,7 @@
           </p>
         </section>
 
-        <section id="sitemap">
+        <section id="sitemap" title="Sitemap">
           <h2>Sitemap</h2>
           <p>
             There are two main types of sitemap. The first is 
@@ -374,7 +374,7 @@
           </p>
         </section>
 
-        <section id="feed">
+        <section id="feed" title="RSS Feed">
           <h2>RSS Feed</h2>
           <p>
             So, the following xml file contains the bare minimum for
@@ -467,7 +467,7 @@
 &lt;/item&gt;</code></pre>
         </section>
 
-        <section id="automating">
+        <section id="automating" title="Automating the Boring Stuff">
           <h2>Automating the Boring Stuff</h2>
 
           <p>
@@ -993,7 +993,8 @@ with open ('home.html', 'w') as outf:
   outf.write(BeautifulSoup.prettify(soup))</code></pre>
         </section>
 
-        <section id="adding-comments-section">
+        <section id="adding-comments-section"
+          title="Adding A Comments Section">
           <h2>Adding A Comments Section</h2>
           <p>
             This wasn't something that I was previously aware that
@@ -1028,8 +1029,8 @@ with open ('home.html', 'w') as outf:
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

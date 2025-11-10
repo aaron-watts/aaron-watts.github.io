@@ -41,11 +41,11 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#feature-rich">A Feature Rich Feed</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
@@ -54,7 +54,7 @@
         <li><a href="#content">Content</a></li>
         <li><a href="#guid">GUID</a></li>
         <li><a href="#automation">Python Automation</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -64,7 +64,7 @@
           <img src="/images/guides/rss-feeds.avif"
           alt="An RSS feed displayed as raw HTML inside a web browser">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             RSS isn't really something you hear spoken about too often. But for
             us nerds, it's an indisposable technology. And thankfully, it still gets
@@ -85,7 +85,7 @@
           </p>
         </section>
 
-        <section id="feature-rich">
+        <section id="feature-rich" title="A Feature Rich FeedA Feature Rich Feed">
           <h2>A Feature Rich Feed</h2>
           <p>
             I previously touched on RSS Feeds in my article about
@@ -145,7 +145,7 @@
 &lt;/rss&gt;</code></pre>
         </section>
 
-        <section id="namespaces">
+        <section id="namespaces" title="Namespaces">
           <h2>Namespaces</h2>
           <p>
             If you're familiar with XML, then you already know that namespaces let
@@ -158,7 +158,7 @@
           </p>
         </section>
 
-        <section id="atom">
+        <section id="atom" title="Atom">
           <h2>Atom</h2>
           <p>
             Atom is another XML feed specification. Without divulging in too much history,
@@ -170,7 +170,7 @@
           </p>
         </section>
 
-        <section id="media">
+        <section id="media" title="Media">
           <h2>Media</h2>
           <p>
             The Media namespace lets us include media images. The enclosure element
@@ -183,7 +183,7 @@
           </p>
         </section>
 
-        <section id="content">
+        <section id="content" title="Content">
           <h2>Content</h2>
           <p>
             The Content namespace lets us include, well, content. The docs for it
@@ -195,7 +195,7 @@
           </p>
         </section>
 
-        <section id="dates">
+        <section id="dates" title="Dates">
           <h2>Dates</h2>
           <p>
             I'm only using pubDate in my feed, there are a few other useful elements
@@ -208,7 +208,7 @@
           <pre class="language-none"><code>Sat, 07 Sep 2002 09:42:31 GMT</code></pre>
         </section>
 
-        <section id="guid">
+        <section id="guid" title="GUID">
           <h2>GUID</h2>
           <p>
             GUID stands for Globally Uniquie Identifier. Aggregators use this to
@@ -220,7 +220,7 @@
           </p>
         </section>
 
-        <section id="automation">
+        <section id="automation" title="Python Automation">
           <h2>Python Automation</h2>
           <p>
             I won't go into a lot of detail here, as most of it will already be
@@ -293,8 +293,8 @@ articles.append({
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

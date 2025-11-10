@@ -42,16 +42,16 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
-      <ul>
+      <ol>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#firefox">Firefox on Pi</a></li>
         <li><a href="#install">Installation</a></li>
         <li><a href="#webapps">Setting Up Web Apps</a></li>
-      </ul>
+      </ol>
     </nav>
     <main>
       <article>
@@ -63,7 +63,7 @@
           HD TV, firefox browser, aniwave and amazon prime are listed
           in the recent apps list">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
           <p id="description">
             With the introduction of Web Manifest V3, ad blocking in
             Chromium based browsers is changing. the new limitations
@@ -92,7 +92,7 @@
           </aside>
         </section>
 
-        <section id="firefox">
+        <section id="firefox" title="Firefox on Pi">
           <h2>Firefox on Pi</h2>
           <p>
             Raspberry Pi OS used to ship with Chromium as it's
@@ -116,7 +116,7 @@
 sudo apt install firefox rpi-firefox-mods</code></pre>
         </section>
 
-        <section id="install">
+        <section id="install" title="Installation">
           <h2>Installation</h2>
           <p>
           Installation is pretty simple, but you will want the
@@ -139,7 +139,7 @@ sudo apt install firefox rpi-firefox-mods</code></pre>
           </p>
         </section>
 
-        <section id="webapps">
+        <section id="webapps" title="Setting Up Web Apps">
           <h2>Setting Up Web Apps</h2>
           <p>
             Setting up web apps is easy. Just open the Web Apps
@@ -165,8 +165,8 @@ sudo apt install firefox rpi-firefox-mods</code></pre>
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

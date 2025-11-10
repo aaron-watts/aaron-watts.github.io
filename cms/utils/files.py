@@ -46,6 +46,7 @@ def write_to_xml(xml_tree, path):
     """
     Write XML tree to path
     """
+    print(f"Writing to {path}")
     tree = ET.ElementTree(xml_tree)
     ET.indent(tree)
     tree.write(path, xml_declaration="version", encoding="UTF-8")

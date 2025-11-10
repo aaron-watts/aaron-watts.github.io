@@ -53,13 +53,13 @@ def format_content(content):
             for descendant in child.children:
                 if descendant.name == "pre":
                     text += str(descendant)
-                else:
-                    text += " ".join(str(child).split())
+                elif not descendant.name == None:
+                    text += " ".join(str(descendant).split())
 
         elif not child.name == "section" and not child.name == None:
             if child.name == "pre":
                 text += str(child)
-            else:
+            elif not child.name == None:
                 text += " ".join(str(child).split())
 
     return text

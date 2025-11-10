@@ -61,7 +61,6 @@ def build_item(parent, doc):
     xtree.child_element(item, "pubDate", doc['pub_date'])
     xtree.child_element(item, "description", doc['description'])
     xtree.child_element(item, "guid", URL)
-
     content = absolute_urls(doc['content'])
     xtree.child_element(item, "content:encoded", content)
 

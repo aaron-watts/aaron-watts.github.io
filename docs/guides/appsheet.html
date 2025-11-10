@@ -65,9 +65,9 @@
         </a>
       </div>
     </header>
-    <nav>
+    <nav aria-labelledby="page-nav">
       <header>
-        <h2>On This Page</h2>
+        <h2 id="page-nav">On This Page</h2>
       </header>
       <ul>
         <li><a href="#intro">Intro</a></li>
@@ -87,7 +87,7 @@
           alt="A demonstrative promotional image displaying how AppSheet appears across
           mobile, tablet and computer devices">
         </header>
-        <section id="intro">
+        <section id="intro" title="Intro">
            <p id="description">
               I first found out about AppSheet a number of years ago when it was still
               a fairly new project. I was running my own skate school and needed something
@@ -135,7 +135,7 @@
           </p>
         </section>
 
-        <section id="backend">
+        <section id="backend" title="Building the Backend">
           <h2>Building the Backend</h2>
           <p>
               Ha, good one. Our backend is a Google Sheet. 
@@ -254,7 +254,7 @@
           </table>
         </section>
 
-        <section id="frontend">
+        <section id="frontend" title="Building the Frontend">
           <h2>Building the Frontend</h2>
           <p>
               No code, anyone can do it! But, if you want your app to have any kind of
@@ -642,7 +642,7 @@ SUM(
           </aside>
         </section>
 
-        <section id="workflows">
+        <section id="workflows" title="Workflows">
           <h2>Workflows</h2>
           <p>
               Now that we have most of our app's frontend set up, we should
@@ -811,7 +811,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
        
         </section>
         
-        <section id="bugs">
+        <section id="bugs" title="Fixing Some Bugs">
           <h2>Fixing Some Bugs</h2>
           <p>
               The bulk of the app is pretty much finished here. There are some
@@ -841,7 +841,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
           </p>
         </section>
 
-        <section id="filtering">
+        <section id="filtering" title="Filtering Data">
           <h2>Filtering Data</h2>
           <p>
               One last thing worth looking at before going on your own data organising
@@ -956,8 +956,8 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
       </article>
     </main>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

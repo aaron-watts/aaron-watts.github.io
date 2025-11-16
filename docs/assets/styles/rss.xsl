@@ -42,9 +42,11 @@
                         into your favourite feed reader to get new articles sent to you
                         as soon as they get published!
                     </p>
-                    <aside>
-                        Want more help getting set up with RSS? <a href="#help">Click here</a>
-                    </aside>
+                    <small>
+                        <p>
+                            Want more help getting set up with RSS? <a href="#help">Click here</a>
+                        </p>
+                    </small>
                 </header>
                 <main>
                     <xsl:for-each select="/rss/channel/item">

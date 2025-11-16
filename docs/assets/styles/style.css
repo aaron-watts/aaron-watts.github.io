@@ -174,14 +174,16 @@ img {
     margin-inline: auto;
 }
 
-aside {
+small:has(> p) {
+    display: block;
     font-style: italic;
     font-size: .9em;
     margin: 1em;
-}
-aside em,
-aside i {
-    font-style: normal;
+
+    & em,
+    & i {
+        font-style: normal;
+    }
 }
 
 blockquote {

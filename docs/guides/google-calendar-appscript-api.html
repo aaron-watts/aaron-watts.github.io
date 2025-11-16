@@ -261,10 +261,12 @@
   ]
 }</code></pre>
 
-          <aside>
+          <small>
+            <p>
             NOTE: You will need to update the url in your API call
             whenever you make changes to the API and redeploy.
-          </aside>
+            </p>
+          </small>
         </section>
 
         <section id="api-call"
@@ -386,17 +388,21 @@ document.addEventListener('DOMContentLoaded', populateLists)</code></pre>
             <code>.env</code> file, we do the usual, and list
             our <em>secret</em> with a key and value.
           </p>
-          <aside>
+          <small>
+            <p>
             NOTE: If the script url has been published in a public
             repo or file, it may be best to create a new script
             deployment and archive the old one.
-          </aside>
+            </p>
+          </small>
           <pre class="language-none"><code>APPS_SCRIPT="https://script.google.com/macros/s/&lt;script-url&gt;/exec"</code></pre>
-          <aside>
+          <small>
+            <p>
             NOTE: Make sure to add the dotenv file to .gitignore
             if you haven't already got in in your global gitignore
             config.
-          </aside>
+            </p>
+          </small>
           <p>
             In your Netlify project, you will also set this as an
             environment variable. Now, to create the netlify

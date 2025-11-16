@@ -304,7 +304,7 @@ nav[aria-label='Breadcrumb'] {
         }
     }
 
-    & li:not(li:first-of-type)::before {
+    & span.breadcrumb--seperator::before {
         content: '/'; 
         color: var(--accent-secondary);
     }

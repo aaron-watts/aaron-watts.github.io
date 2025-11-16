@@ -24,8 +24,10 @@
                         <ol>
                           <li><a 
                               href="/">aaronwatts@dev</a></li><span
-                              aria-hidden="true" class="term-dir"></span><li><a 
-                              href="/rss">rss</a></li><li><a
+                              aria-hidden="true" class="term-dir"></span><li><span
+                              aria-hidden="true" class="breadcrumb--seperator"></span><a 
+                              href="/rss">rss</a></li><li><span
+                              aria-hidden="true" class="breadcrumb--seperator"></span><a
                               href="" aria-current="page">feed</a></li><span
                               aria-hidden="true" class="term-priv"></span>
                         </ol>

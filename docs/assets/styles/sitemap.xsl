@@ -25,7 +25,8 @@ xmlns:sm="http://www.sitemaps.org/schemas/sitemap/0.9">
                         <ol>
                             <li><a 
                                 href="/">aaronwatts@dev</a></li><span
-                                aria-hidden="true" class="term-dir"></span><li><a 
+                                aria-hidden="true" class="term-dir"></span><li><span
+              aria-hidden="true" class="breadcrumb--seperator"></span><a 
                                 href="" aria-current="page">sitemap</a></li><span
                                 aria-hidden="true" class="term-priv"></span>
                         </ol>

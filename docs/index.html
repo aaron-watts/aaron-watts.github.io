@@ -33,26 +33,22 @@
       display: inline-block;
     }
 
-    .hero,
-    .hero h1{
+    .hero {
       font-family: JetBrainsMono;
       font-weight: normal;
       font-size: 2.6vw;
       letter-spacing: .4vw;
+      font-weight: bold;
       margin-block: 8rem 10rem;
+      text-shadow:
+        0 0 .23vw currentColor,
+        0 0 1.2vw currentColor;
     }
 
     @media only screen and (max-width: 720px) {
       .hero {
         font-size: 5vw;
       }
-    }
-
-    .hero span.hero-text {
-      font-weight: bold;
-      text-shadow:
-        0 0 .23vw currentColor,
-        0 0 1.2vw currentColor;
     }
 
     .hero h1 {
@@ -91,12 +87,7 @@
 <img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
 </a>
 </div>
-<div class="svg-container">
-<a href="https://github.com/aaron-watts" target="_blank">
-<img alt="Github" class="github-icon" src="/images/github.svg"/>
-</a>
-</div>
-<a href="https://blog.aaronwatts.dev">Visit My Blog</a>
+<a href="https://sites.aaronwatts.dev">More by aaronwatts@dev</a>
 </nav>
 <div class="hero">
 <span class="hero-text">

@@ -72,7 +72,7 @@ a:visited:hover {
     color: var(--accent-secondary-light);
 }
 
-button {
+button:not(.topic) {
     border-style: none;
     background: none;
     font-size: 1em;
@@ -215,6 +215,28 @@ time {
     padding: 0;
 }
 
+search#topic-list--container {
+    & ul {
+        list-style-type: none;
+
+        & li {
+            display: inline;
+            
+            & button {
+                border: none;
+                color: var(--color);
+                cursor: pointer;
+
+                &:hover,
+                &.filterTopic {
+                    background-color: #666;
+                }
+            }
+        }
+        
+    }
+}
+
 .topic {
     display: inline-block;
     background-color: #444;
@@ -224,12 +246,14 @@ time {
     white-space: nowrap;
     font-size: .8rem;
     font-style: italic;
+    letter-spacing: .06rem;
+    font-weight: 500;
 }
 
 .topic::before {
     content: '# ';
 }
-
+/*
 .topic-truncate {
     max-height: 20vh;
     overflow: hidden;
@@ -258,7 +282,7 @@ time {
 .topic.selected {
     background-color: #666;
 }
-
+*/
 .hidden {
     display: none;
 }

@@ -2,12 +2,16 @@
 
 function filterTopic() {
     const currentFilter = document.querySelector('button.topic.filterTopic');
-    if (currentFilter) currentFilter.classList.remove('filterTopic');
+    if (currentFilter) {
+        currentFilter.classList.remove('filterTopic');
+        currentFilter.ariaPressed = 'false';
+    }
     const topic = this.innerText;
     const articles = document.querySelectorAll('article');
 
     if (!currentFilter || currentFilter.innerText !== topic) {
         this.classList.add('filterTopic');
+        this.ariaPressed = 'true';
 
         articles.forEach(article => {
             article.classList.add('hidden');
@@ -21,14 +25,13 @@ function filterTopic() {
         });
     } else {
         this.classList.remove('filterTopic');
+        this.ariaPressed = 'false';
         articles.forEach(article => article.classList.remove('hidden'));
     }
 
 }
 
 function populateFilter() {
-    console.log('populateFilter');
-
     const topicContainer = document.querySelector('#topic-list--container');
     const topicList = document.querySelector('#topic-list');
 
@@ -49,6 +52,7 @@ function populateFilter() {
         topicBtn.innerText = topicName;
         topicBtn.classList.add('topic');
         topicBtn.addEventListener('click', filterTopic);
+        topicBtn.ariaPressed = 'false';
         topicLi.appendChild(topicBtn);
         return topicLi;
     };

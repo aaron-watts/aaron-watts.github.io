@@ -32,8 +32,7 @@ function filterTopic() {
 }
 
 function populateFilter() {
-    const topicContainer = document.querySelector('#topic-list--container');
-    const topicList = document.querySelector('#topic-list');
+    const topicList = document.querySelector('search#topics ul');
 
     const topics = [
         ...new Set(

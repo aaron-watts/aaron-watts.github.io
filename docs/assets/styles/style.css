@@ -217,7 +217,7 @@ search#topics {
 
         &.collapse {
             max-height: 22vh;
-            overflow: hidden;
+            overflow-y: clip;
             position: relative;
  
             &:after {
@@ -226,7 +226,7 @@ search#topics {
                 height: 100%;
                 width: 100%;
                 position: absolute;
-                top: 0;
+                bottom: 0;
                 left: 0;
                 background: linear-gradient(
                     to bottom,

@@ -1,10 +1,36 @@
 'use strict'
 
+document.addEventListener('DOMContentLoaded', function()  {
+    const topicList = document.querySelector('search#topics ul');
+
+    populateFilter(topicList);
+
+    truncateTopics(topicList);
+    window.addEventListener('resize', function() {
+        truncateTopics(topicList);
+    });
+});
+
+function truncateTopics(topicList) {
+    if (isOverflow(topicList)) {
+        topicList.classList.add('collapse');
+    } else {
+        topicList.classList.remove('collapse');
+    }
+};
+
+function isOverflow({scrollHeight}) {
+    return scrollHeight > (window.innerHeight / 3);
+};
+
 function filterTopic() {
     const currentFilter = document.querySelector('button.topic.filterTopic');
+    const usrMsg = document.querySelector('search #usr-msg');
+
     if (currentFilter) {
         currentFilter.classList.remove('filterTopic');
         currentFilter.ariaPressed = 'false';
+        usrMsg.innerText = "Select a topic to filter articles.";
     }
     const topic = this.innerText;
     const articles = document.querySelectorAll('article');
@@ -12,6 +38,7 @@ function filterTopic() {
     if (!currentFilter || currentFilter.innerText !== topic) {
         this.classList.add('filterTopic');
         this.ariaPressed = 'true';
+        usrMsg.innerText = "Click current filter to remove it, or choose a new filter."
 
         articles.forEach(article => {
             article.classList.add('hidden');
@@ -31,9 +58,7 @@ function filterTopic() {
 
 }
 
-function populateFilter() {
-    const topicList = document.querySelector('search#topics ul');
-
+function populateFilter(topicList) {
     const topics = [
         ...new Set(
             [...document.querySelectorAll('.topic')]
@@ -56,5 +81,3 @@ function populateFilter() {
         return topicLi;
     };
 }
-
-document.addEventListener('DOMContentLoaded', populateFilter);

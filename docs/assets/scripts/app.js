@@ -5,57 +5,13 @@ document.addEventListener('DOMContentLoaded', function()  {
     const topics = getTopics();
 
     populateFilter(topicList, topics);
-
     truncateTopics(topicList, topics);
 });
 
-function truncateTopics(topicList, topics) {
-    const truncMsg = document.querySelector('span#truncated');
-
-    if (topics.length > 6) {
-        topicList.classList.add('truncated');
-        truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`;
-        makeShowBtn();
-    }
-
-    function makeShowBtn() {
-        const btnContainer = document.querySelector('#showBtn--container');
-        const showBtn = document.createElement('button');
-        showBtn.innerText = "Show all topics"
-        showBtn.addEventListener('click', showBtnHandler);
-        btnContainer.appendChild(showBtn);
-    };
-
-    function showBtnHandler() {
-        topicList.classList.toggle('truncated');
-
-        if (topicList.classList.contains('truncated')) {
-            this.innerText = "Show all topics";
-            truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`
-        } else {
-            this.innerText = "Show fewer topics";
-            truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`
-        }
-    };
-
-    /*
-    if (isOverflow(topicList)) {
-        topicList.classList.add('collapse');
-    } else {
-        topicList.classList.remove('collapse');
-    }
-    */
-};
-
-/*
-function isOverflow({scrollHeight}) {
-    return scrollHeight > (window.innerHeight / 3);
-};
-*/
 
 function filterTopic() {
     const currentFilter = document.querySelector('button.topic.filterTopic');
-    const usrMsg = document.querySelector('search #usr-msg');
+    const usrMsg = document.querySelector('#usr-msg #filter');
 
     if (currentFilter) {
         currentFilter.classList.remove('filterTopic');
@@ -68,7 +24,7 @@ function filterTopic() {
     if (!currentFilter || currentFilter.innerText !== topic) {
         this.classList.add('filterTopic');
         this.ariaPressed = 'true';
-        usrMsg.innerText = "Click current filter to remove it, or choose a new filter."
+        usrMsg.innerText = "Click current filter to remove it, or select a new filter."
 
         articles.forEach(article => {
             article.classList.add('hidden');
@@ -102,6 +58,36 @@ function populateFilter(topicList, topics) {
         topicBtn.ariaPressed = 'false';
         topicLi.appendChild(topicBtn);
         return topicLi;
+    };
+};
+
+function truncateTopics(topicList, topics) {
+    const truncMsg = document.querySelector('#usr-msg #truncated');
+
+    if (topics.length > 6) {
+        topicList.classList.add('truncated');
+        truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`;
+        makeShowBtn();
+    }
+
+    function makeShowBtn() {
+        const btnContainer = document.querySelector('#showBtn--container');
+        const showBtn = document.createElement('button');
+        showBtn.innerText = "Show all topics"
+        showBtn.addEventListener('click', showBtnHandler);
+        btnContainer.appendChild(showBtn);
+    };
+
+    function showBtnHandler() {
+        topicList.classList.toggle('truncated');
+
+        if (topicList.classList.contains('truncated')) {
+            this.innerText = "Show all topics";
+            truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`
+        } else {
+            this.innerText = "Show fewer topics";
+            truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`
+        }
     };
 };
 

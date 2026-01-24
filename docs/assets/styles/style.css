@@ -174,7 +174,8 @@ img {
     margin-inline: auto;
 }
 
-small:has(> p) {
+small:has(> p),
+search #usr-msg{
     display: block;
     font-style: italic;
     font-size: .9em;

@@ -2,26 +2,56 @@
 
 document.addEventListener('DOMContentLoaded', function()  {
     const topicList = document.querySelector('search#topics ul');
+    const topics = getTopics();
 
-    populateFilter(topicList);
+    populateFilter(topicList, topics);
 
-    truncateTopics(topicList);
-    window.addEventListener('resize', function() {
-        truncateTopics(topicList);
-    });
+    truncateTopics(topicList, topics);
 });
 
-function truncateTopics(topicList) {
+function truncateTopics(topicList, topics) {
+    const truncMsg = document.querySelector('span#truncated');
+
+    if (topics.length > 6) {
+        topicList.classList.add('truncated');
+        truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`;
+        makeShowBtn();
+    }
+
+    function makeShowBtn() {
+        const btnContainer = document.querySelector('#showBtn--container');
+        const showBtn = document.createElement('button');
+        showBtn.innerText = "Show all topics"
+        showBtn.addEventListener('click', showBtnHandler);
+        btnContainer.appendChild(showBtn);
+    };
+
+    function showBtnHandler() {
+        topicList.classList.toggle('truncated');
+
+        if (topicList.classList.contains('truncated')) {
+            this.innerText = "Show all topics";
+            truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`
+        } else {
+            this.innerText = "Show fewer topics";
+            truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`
+        }
+    };
+
+    /*
     if (isOverflow(topicList)) {
         topicList.classList.add('collapse');
     } else {
         topicList.classList.remove('collapse');
     }
+    */
 };
 
+/*
 function isOverflow({scrollHeight}) {
     return scrollHeight > (window.innerHeight / 3);
 };
+*/
 
 function filterTopic() {
     const currentFilter = document.querySelector('button.topic.filterTopic');
@@ -58,14 +88,7 @@ function filterTopic() {
 
 }
 
-function populateFilter(topicList) {
-    const topics = [
-        ...new Set(
-            [...document.querySelectorAll('.topic')]
-                .map(i  => i.innerText)
-        )
-    ].sort();
-
+function populateFilter(topicList, topics) {
     topics.forEach(topicName => {
         topicList.appendChild(makeTopicBtn(topicName));
     });
@@ -80,4 +103,15 @@ function populateFilter(topicList) {
         topicLi.appendChild(topicBtn);
         return topicLi;
     };
-}
+};
+
+function getTopics() {
+     const topics = [
+        ...new Set(
+            [...document.querySelectorAll('.topic')]
+                .map(i  => i.innerText)
+        )
+    ].sort();
+
+    return topics;
+};

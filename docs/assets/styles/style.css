@@ -214,7 +214,8 @@ search#topics {
     & ul {
         list-style-type: none;
         box-sizing: border-box;
-
+        
+        /*
         &.collapse {
             max-height: 22vh;
             overflow-y: clip;
@@ -235,6 +236,7 @@ search#topics {
                 );
             }
         }
+        */
 
         & li {
             display: inline;
@@ -252,6 +254,10 @@ search#topics {
                     background-color: var(--border-color);
                 }
             }
+        }
+
+        &.truncated li:nth-of-type(n+7) {
+            display: none;
         }
         
     }

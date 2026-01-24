@@ -175,7 +175,7 @@ img {
 }
 
 small:has(> p),
-search #usr-msg{
+search #usr-msg {
     display: block;
     font-style: italic;
     font-size: .9em;

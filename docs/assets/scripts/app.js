@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function()  {
 
 function filterTopic(filter, topicList, topics) {
     const currentFilter = document.querySelector('button.topic.filterTopic');
-    const usrMsg = document.querySelector('#usr-msg #filter');
+    const usrMsg = document.querySelector('#usr-msg--filter');
 
     if (currentFilter) {
         currentFilter.classList.remove('filterTopic');
@@ -67,16 +67,10 @@ function truncateTopics(topicList, topics) {
     if (topics.length > 6) {
         topicList.classList.add('truncated');
         updateTruncMsg(topicList, topics);
-        makeShowBtn();
     }
 
-    function makeShowBtn() {
-        const btnContainer = document.querySelector('#showBtn--container');
-        const showBtn = document.createElement('button');
-        showBtn.innerText = "Show all topics"
-        showBtn.addEventListener('click', showBtnHandler);
-        btnContainer.appendChild(showBtn);
-    };
+    const showBtn = document.querySelector('#showBtn');
+    showBtn.addEventListener('click', showBtnHandler);
 
     function showBtnHandler() {
         topicList.classList.toggle('truncated');
@@ -92,15 +86,15 @@ function truncateTopics(topicList, topics) {
 };
 
 function updateTruncMsg(topicList, topics) {
-    const truncMsg = document.querySelector('#usr-msg #truncated');
+    const truncMsg = document.querySelector('#usr-msg--truncated');
     const activeFilter = topicList.querySelector('button[aria-pressed="true"]');
     const slice = activeFilter && topics.indexOf(activeFilter.innerText) > 5 ?
         7 : 6;
    
     if (topicList.classList.contains('truncated')) {
-        truncMsg.innerText = `(Showing ${slice} of ${topics.length} topics)`;
+        truncMsg.innerText = `Showing ${slice} of ${topics.length} topics`;
     } else {
-        truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`;
+        truncMsg.innerText = `Showing ${topics.length} of ${topics.length} topics`;
     }
 };
 

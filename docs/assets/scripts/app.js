@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function()  {
     truncateTopics(topicList, topics);
 });
 
-
-function filterTopic() {
+function filterTopic(filter, topicList, topics) {
     const currentFilter = document.querySelector('button.topic.filterTopic');
     const usrMsg = document.querySelector('#usr-msg #filter');
 
@@ -18,12 +17,12 @@ function filterTopic() {
         currentFilter.ariaPressed = 'false';
         usrMsg.innerText = "Select a topic to filter articles.";
     }
-    const topic = this.innerText;
+    const topic = filter.innerText;
     const articles = document.querySelectorAll('article');
 
     if (!currentFilter || currentFilter.innerText !== topic) {
-        this.classList.add('filterTopic');
-        this.ariaPressed = 'true';
+        filter.classList.add('filterTopic');
+        filter.ariaPressed = 'true';
         usrMsg.innerText = "Click current filter to remove it, or select a new filter."
 
         articles.forEach(article => {
@@ -37,11 +36,12 @@ function filterTopic() {
             }
         });
     } else {
-        this.classList.remove('filterTopic');
-        this.ariaPressed = 'false';
+        filter.classList.remove('filterTopic');
+        filter.ariaPressed = 'false';
         articles.forEach(article => article.classList.remove('hidden'));
     }
 
+    updateTruncMsg(topicList, topics);
 }
 
 function populateFilter(topicList, topics) {
@@ -54,7 +54,9 @@ function populateFilter(topicList, topics) {
         const topicBtn = document.createElement('button');
         topicBtn.innerText = topicName;
         topicBtn.classList.add('topic');
-        topicBtn.addEventListener('click', filterTopic);
+        topicBtn.addEventListener('click', function() {
+            filterTopic(this, topicList, topics);
+        });
         topicBtn.ariaPressed = 'false';
         topicLi.appendChild(topicBtn);
         return topicLi;
@@ -62,11 +64,9 @@ function populateFilter(topicList, topics) {
 };
 
 function truncateTopics(topicList, topics) {
-    const truncMsg = document.querySelector('#usr-msg #truncated');
-
     if (topics.length > 6) {
         topicList.classList.add('truncated');
-        truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`;
+        updateTruncMsg(topicList, topics);
         makeShowBtn();
     }
 
@@ -82,17 +82,26 @@ function truncateTopics(topicList, topics) {
         topicList.classList.toggle('truncated');
 
         if (topicList.classList.contains('truncated')) {
-            const activeFilter = topicList.querySelector('button[aria-pressed="true"]');
-            const slice = activeFilter && topics.indexOf(activeFilter.innerText) > 5 ?
-                7 : 6;
-            
             this.innerText = "Show all topics";
-            truncMsg.innerText = `(Showing ${slice} of ${topics.length} topics)`;
         } else {
             this.innerText = "Show fewer topics";
-            truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`;
         }
+
+        updateTruncMsg(topicList, topics);
     };
+};
+
+function updateTruncMsg(topicList, topics) {
+    const truncMsg = document.querySelector('#usr-msg #truncated');
+    const activeFilter = topicList.querySelector('button[aria-pressed="true"]');
+    const slice = activeFilter && topics.indexOf(activeFilter.innerText) > 5 ?
+        7 : 6;
+   
+    if (topicList.classList.contains('truncated')) {
+        truncMsg.innerText = `(Showing ${slice} of ${topics.length} topics)`;
+    } else {
+        truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`;
+    }
 };
 
 function getTopics() {

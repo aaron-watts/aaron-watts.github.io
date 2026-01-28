@@ -1,6 +1,8 @@
 'use strict'
 
 document.addEventListener('DOMContentLoaded', function()  {
+    document.querySelector('search#topics').classList.remove('noscript');
+
     const topicList = document.querySelector('search#topics ul');
     const topics = getTopics();
 

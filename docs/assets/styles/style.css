@@ -212,6 +212,10 @@ time {
 }
 
 search#topics {
+    &.noscript > *:not(noscript) {
+        display: none;
+    }
+     
     & ul {
         list-style-type: none;
         box-sizing: border-box;

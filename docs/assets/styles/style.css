@@ -216,29 +216,6 @@ search#topics {
         list-style-type: none;
         box-sizing: border-box;
         
-        /*
-        &.collapse {
-            max-height: 22vh;
-            overflow-y: clip;
-            position: relative;
- 
-            &:after {
-                content: '';
-                pointer-events: none;
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                background: linear-gradient(
-                    to bottom,
-                    var(--bg-alpha-low) 60%,
-                    var(--bg-alpha-high) 100%
-                );
-            }
-        }
-        */
-
         & li {
             display: inline;
             
@@ -251,16 +228,22 @@ search#topics {
                 &:hover {
                     background-color: var(--topic-selected);
                 }
-                &.filterTopic {
-                    background-color: var(--border-color);
-                }
             }
         }
 
-        &.truncated li:nth-of-type(n+7) {
-            display: none;
+        & button[aria-pressed="true"] {
+            background-color: var(--border-color);
         }
-        
+
+        &.truncated li {
+            &:nth-of-type(n+7) {
+                display: none;
+            }
+
+            &:has(button[aria-pressed="true"]) {
+                display: inline;
+            }
+        }
     }
 }
 
@@ -389,7 +372,6 @@ footer > div {
         width:100vw;
         margin-inline: 0;
         text-align: justify;
-        /* zoom: 80%; */
     }
     main {
         width: 100vw;

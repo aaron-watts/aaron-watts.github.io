@@ -82,11 +82,15 @@ function truncateTopics(topicList, topics) {
         topicList.classList.toggle('truncated');
 
         if (topicList.classList.contains('truncated')) {
+            const activeFilter = topicList.querySelector('button[aria-pressed="true"]');
+            const slice = activeFilter && topics.indexOf(activeFilter.innerText) > 5 ?
+                7 : 6;
+            
             this.innerText = "Show all topics";
-            truncMsg.innerText = `(Showing 6 of ${topics.length} topics)`
+            truncMsg.innerText = `(Showing ${slice} of ${topics.length} topics)`;
         } else {
             this.innerText = "Show fewer topics";
-            truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`
+            truncMsg.innerText = `(Showing ${topics.length} of ${topics.length} topics)`;
         }
     };
 };

@@ -5,12 +5,32 @@ document.addEventListener('DOMContentLoaded', function()  {
 
     const topicList = document.querySelector('search#topics ul');
     const topics = getTopics();
+    const truncIndex = parseInt(getTruncIndex());
 
-    populateFilter(topicList, topics);
-    truncateTopics(topicList, topics);
+    populateFilter(topicList, topics, truncIndex);
+    truncateTopics(topicList, topics, truncIndex);
 });
 
-function filterTopic(filter, topicList, topics) {
+function populateFilter(topicList, topics, truncIndex) {
+    topics.forEach(topicName => {
+        topicList.appendChild(makeTopicBtn(topicName));
+    });
+
+    function makeTopicBtn(topicName) {
+        const topicLi = document.createElement('li');
+        const topicBtn = document.createElement('button');
+        topicBtn.innerText = topicName;
+        topicBtn.classList.add('topic');
+        topicBtn.addEventListener('click', function() {
+            filterTopic(this, topicList, topics, truncIndex);
+        });
+        topicBtn.ariaPressed = 'false';
+        topicLi.appendChild(topicBtn);
+        return topicLi;
+    };
+};
+
+function filterTopic(filter, topicList, topics, truncIndex) {
     const currentFilter = document.querySelector('button.topic.filterTopic');
     const usrMsg = document.querySelector('#usr-msg--filter');
 
@@ -43,32 +63,13 @@ function filterTopic(filter, topicList, topics) {
         articles.forEach(article => article.classList.remove('hidden'));
     }
 
-    updateTruncMsg(topicList, topics);
+    updateTruncMsg(topicList, topics, truncIndex);
 }
 
-function populateFilter(topicList, topics) {
-    topics.forEach(topicName => {
-        topicList.appendChild(makeTopicBtn(topicName));
-    });
-
-    function makeTopicBtn(topicName) {
-        const topicLi = document.createElement('li');
-        const topicBtn = document.createElement('button');
-        topicBtn.innerText = topicName;
-        topicBtn.classList.add('topic');
-        topicBtn.addEventListener('click', function() {
-            filterTopic(this, topicList, topics);
-        });
-        topicBtn.ariaPressed = 'false';
-        topicLi.appendChild(topicBtn);
-        return topicLi;
-    };
-};
-
-function truncateTopics(topicList, topics) {
-    if (topics.length > 6) {
+function truncateTopics(topicList, topics, truncIndex) {
+    if (topics.length > truncIndex - 1) {
         topicList.classList.add('truncated');
-        updateTruncMsg(topicList, topics);
+        updateTruncMsg(topicList, topics, truncIndex);
     }
 
     const showBtn = document.querySelector('#showBtn');
@@ -83,15 +84,15 @@ function truncateTopics(topicList, topics) {
             this.innerText = "Show fewer topics";
         }
 
-        updateTruncMsg(topicList, topics);
+        updateTruncMsg(topicList, topics, truncIndex);
     };
 };
 
-function updateTruncMsg(topicList, topics) {
+function updateTruncMsg(topicList, topics, truncIndex) {
     const truncMsg = document.querySelector('#usr-msg--truncated');
     const activeFilter = topicList.querySelector('button[aria-pressed="true"]');
-    const slice = activeFilter && topics.indexOf(activeFilter.innerText) > 5 ?
-        7 : 6;
+    const slice = activeFilter && topics.indexOf(activeFilter.innerText) > truncIndex - 2 ?
+        truncIndex : truncIndex - 1;
    
     if (topicList.classList.contains('truncated')) {
         truncMsg.innerText = `Showing ${slice} of ${topics.length} topics`;
@@ -110,3 +111,21 @@ function getTopics() {
 
     return topics;
 };
+
+function getTruncIndex() {
+    const rules = document.styleSheets[0].cssRules;
+
+    for (let rule of rules) {
+        if (rule.selectorText == 'search#topics') {
+            return getNumberAfterSubstring('nth-of-type', rule.cssText);
+        }
+    }
+};
+
+function getNumberAfterSubstring(substring, text) {
+    let re = new RegExp(substring + '.*?(\\d\)'), match = re.exec(text);
+    if (match === null) {
+        return '';
+    }
+    return match[1];
+}

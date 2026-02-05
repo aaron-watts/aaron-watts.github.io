@@ -12,6 +12,8 @@ no_index:
 selectors:
   main:
     article
+  index:
+    nav#articles
   title:
     h1
   intro:

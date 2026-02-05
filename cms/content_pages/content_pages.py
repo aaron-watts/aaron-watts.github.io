@@ -1,4 +1,4 @@
-from config.settings import ROOT, HOME
+from config.settings import ROOT, HOME, SELECTORS
 from utils.soup import *
 
 def home_page(article):
@@ -17,7 +17,7 @@ def index_page(articles, index_page):
     Returns an index page with all relevant articles included
     """
     index_html = get_soup(index_page)
-    main_elem = selector(index_html, "main")
+    main_elem = selector(index_html, SELECTORS["index"])
     wipe_content(main_elem)
 
     for article in articles:

@@ -22,19 +22,21 @@
 <header>
 <nav aria-label="Breadcrumb">
 <ol>
-<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">tech</a></li><span aria-hidden="true" class="term-priv"></span>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">tech</a></li><span aria-hidden="true" class="term-priv"></span>
 </ol>
+</nav>
 <div class="rss-container">
 <a href="/rss">
 <img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
 </a>
 </div>
-</nav></header>
+</header>
+<main>
+<header>
 <h1>
-   Technology
-  </h1>
-<div>
+   Tech
+</h1>
+<p>
    Technology that I consider to be
    <em>
     thoughtful
@@ -42,20 +44,27 @@
    , where
     there are more meaningful priorities than exponential
     growth and high profit margins.
-  </div>
-<p class="note">
-   Filter by topic:
-  </p>
-<search id="topic-list--container">
-<ul class="topic-truncate" id="topic-list">
-</ul>
-</search>
+</p>
+</header>
+<search class="noscript" id="topics">
+<header>
+<h2>Filter by Topic</h2>
+<p aria-live="polite" id="usr-msg--filter" role="status">
+      Select a topic to filter articles.
+    </p>
+</header>
+<button aria-describedby="usr-msg--truncated" id="showBtn">Show all topics</button>
+<p aria-live="polite" id="usr-msg--truncated" role="status">
+</p>
+<ul aria-describedby="usr-msg--filter"></ul>
 <noscript class="note">
-   This page does have some search features to make
-        finding stuff easier if you were to enable script ...
-        no pressure.
+    This page does have some search features to make
+    finding stuff easier if you were to enable script ...
+    no pressure.
   </noscript>
-<main><article><header><h3>Simple CSS</h3><time datetime="2025-11-02">2nd November, 2025</time><ul class="topic-container"><li class="topic">webdev</li><li class="topic">css</li><li class="topic">html</li></ul></header><p class="description">Simple CSS was suggested to me by a friend. At the time I had been making an effort to try and learn web development. In essence, it is yet another CSS framework to bootstrap your HTML for fast production. Except, it's not, not really. I'd argue, it's better.</p><a href="/tech/simple-css">Read More</a></article><article><header><h3>Kobo - E-Reader</h3><time datetime="2025-05-23">23rd May, 2025</time><ul class="topic-container"><li class="topic">e-book</li><li class="topic">e-reader</li><li class="topic">e-ink</li></ul></header><p class="description">Kobo e-reader's won't do too much more than an Amazon Kindle, unless you are outside of the US. Kobo do just enough differently that I'd consider them to be thoughtful technology.</p><a href="/tech/kobo-ereader">Read More</a></article><article><header><h3>Fairphone - Smartphone</h3><time datetime="2025-05-07">7th May, 2025</time><ul class="topic-container"><li class="topic">fairphone</li><li class="topic">smartphone</li><li class="topic">android</li><li class="topic">diy</li><li class="topic">repair</li></ul></header><p class="description">Fairphone, based in Netherlands, brings something back to smartphones that most people don't even realise is missing. Their approach aims to promote user ownership of a device, and longevity.</p><a href="/tech/fairphone">Read More</a></article></main>
+</search>
+<nav id="articles"><article><header><h3>Simple CSS</h3><time datetime="2025-11-02">2nd November, 2025</time><ul class="topic-container"><li class="topic">webdev</li><li class="topic">css</li><li class="topic">html</li></ul></header><p class="description">Simple CSS was suggested to me by a friend. At the time I had been making an effort to try and learn web development. In essence, it is yet another CSS framework to bootstrap your HTML for fast production. Except, it's not, not really. I'd argue, it's better.</p><a href="/tech/simple-css">Read More</a></article><article><header><h3>Kobo - E-Reader</h3><time datetime="2025-05-23">23rd May, 2025</time><ul class="topic-container"><li class="topic">e-book</li><li class="topic">e-reader</li><li class="topic">e-ink</li></ul></header><p class="description">Kobo e-reader's won't do too much more than an Amazon Kindle, unless you are outside of the US. Kobo do just enough differently that I'd consider them to be thoughtful technology.</p><a href="/tech/kobo-ereader">Read More</a></article><article><header><h3>Fairphone - Smartphone</h3><time datetime="2025-05-07">7th May, 2025</time><ul class="topic-container"><li class="topic">fairphone</li><li class="topic">smartphone</li><li class="topic">android</li><li class="topic">diy</li><li class="topic">repair</li></ul></header><p class="description">Fairphone, based in Netherlands, brings something back to smartphones that most people don't even realise is missing. Their approach aims to promote user ownership of a device, and longevity.</p><a href="/tech/fairphone">Read More</a></article></nav>
+</main>
 <footer>
 <div>
     Made by Hand. Powered by
@@ -64,7 +73,7 @@
 <img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
 </a>
 </footer>
-<script src="/assets/scripts/populateTopics.js">
+<script src="/assets/scripts/filter.js">
 </script>
 </body>
 </html>

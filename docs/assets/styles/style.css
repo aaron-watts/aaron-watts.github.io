@@ -212,8 +212,13 @@ time {
 }
 
 search#topics {
-    &.noscript > *:not(noscript) {
-        display: none;
+    &.noscript {
+        & > header,
+        & > button,
+        & > p,
+        & > ul {
+            display: none;
+        }
     }
      
     & ul {

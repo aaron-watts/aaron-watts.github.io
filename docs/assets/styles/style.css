@@ -251,6 +251,10 @@ search#topics {
     }
 }
 
+ul.topic-container {
+    padding-inline: 2%;
+}
+
 .topic {
     display: inline-block;
     background-color: #444;

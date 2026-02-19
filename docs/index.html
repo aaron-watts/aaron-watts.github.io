@@ -41,8 +41,16 @@
       font-weight: bold;
       margin-block: 8rem 10rem;
       text-shadow:
-        0 0 .23vw currentColor,
-        0 0 1.2vw currentColor;
+        0 0 .0357vw currentColor,
+        0 0 .15vw currentColor;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .hero {
+        text-shadow:
+          0 0 .23vw currentColor,
+          0 0 1.2vw currentColor;
+      }
     }
 
     @media only screen and (max-width: 720px) {

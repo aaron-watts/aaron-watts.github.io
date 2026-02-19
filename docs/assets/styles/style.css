@@ -4,27 +4,44 @@
 }
 
 :root {
-    --bg-color: #222;
-    --bg-alpha-low: #2220;
-    --bg-alpha-high: #222f;
+    --bg-color: #fff;
     --bg-color-dark: #f5f2f0;
-    --color: #ddd;
-    --color-dark: #bbb;
-    --color-light: #444;
+    --color: #111;
+    --color-dark: #000;
+    --color-light: #ccc;
     --border-color: #777;
-    --accent-primary: #44a0eb;
-    --accent-primary-light: #55b1fc;
-    --accent-secondary: #be8ae9;
-    --accent-secondary-light: #d7a6ff;
-    --accent-mono: #aaa;
-    --accent-bg-mono-light: #333;
-    --accent-mono-light: #ccc;
-    --topic-selected: #666;
+    --accent-primary: #03f;
+    --accent-primary-light: #35f;
+    --accent-secondary: #51c;
+    --accent-secondary-light: #72f;
+    --accent-mono: #888;
+    --accent-bg-mono-light: #ccc;
+    --accent-mono-light: #333;
+    --topic-selected: #bbb;
     --font-size: 17px;
     --letter-spacing: .06em;
     --line-height: 1.8em;
     --body-padding: 2.5rem;
-   }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #222;
+        --bg-color-dark: #f5f2f0;
+        --color: #ddd;
+        --color-dark: #bbb;
+        --color-light: #444;
+        --border-color: #777;
+        --accent-primary: #44a0eb;
+        --accent-primary-light: #55b1fc;
+        --accent-secondary: #be8ae9;
+        --accent-secondary-light: #d7a6ff;
+        --accent-mono: #aaa;
+        --accent-bg-mono-light: #333;
+        --accent-mono-light: #ccc;
+        --topic-selected: #666;
+    }
+}
 
 html {
     scroll-behavior: smooth;
@@ -83,8 +100,8 @@ button:not(.topic) {
 code:not([class*=language-]) {
     font-family: JetBrainsMono;
     font-size: .8em;
-    background-color: #f5f2f0;
-    color: #444;
+    background-color: var(--bg-color-dark);
+    color: var(--color-light);
     padding: .4em .3em .2em;
 }
 
@@ -164,7 +181,7 @@ table.spreadsheet th::before {
     left: -1rem;
     bottom: .15rem;
     position: relative;
-    border-bottom: 2px solid #aaa;
+    border-bottom: 2px solid var(--accent-mono);
 }
 
 img {
@@ -190,11 +207,11 @@ search #usr-msg {
 blockquote {
     font-style: italic;
     font-size: .9em;
-    color: #ccc;
-    border-left: solid 4px #777;
+    color: var(--accent-mono-light);
+    border-left: solid 4px var(--border-color);
     padding: .5em .8em;
     margin-inline: 1em;
-    background: #333;
+    background: var(--accent-bg-mono-light);
 }
 
 p#description {
@@ -207,7 +224,7 @@ time {
     margin: -1em .5em 1em;
     font-size: .9em;
     font-style: italic;
-    color: #bbb;
+    color: var(--color-dark);
     font-variant-numeric: ordinal;
 }
 
@@ -262,7 +279,7 @@ ul.topic-container {
 
 .topic {
     display: inline-block;
-    background-color: #444;
+    background-color: var(--color-light);
     padding: .1rem .6rem .15rem;
     margin: .4rem .2rem;
     line-height: inherit;
@@ -344,7 +361,6 @@ nav[aria-label='Breadcrumb'] {
 }
 
 .hero .host {
-    color: #3787c9;
     color: var(--accent-primary);
 }
 
@@ -355,11 +371,11 @@ nav[aria-label='Breadcrumb'] {
 @media only screen and (max-width: 720px) {
     nav.breadcrumbs .host a,
     nav.breadcrumbs .host a:visited {
-        color: #44a0eb;
+        color: var(--accent-primary);
     }
     nav.breadcrumbs .path a,
     nav.breadcrumbs .path a:visited {
-        color: #d7a6ff;
+        color: var(--accent-secondary-light);
     }
 
     body {

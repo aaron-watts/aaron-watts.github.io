@@ -100,8 +100,8 @@ button:not(.topic) {
 code:not([class*=language-]) {
     font-family: JetBrainsMono;
     font-size: .8em;
-    background-color: var(--bg-color-dark);
-    color: var(--color-light);
+    background-color: #f5f2f0;
+    color: #444;
     padding: .4em .3em .2em;
 }
 
@@ -146,12 +146,12 @@ th, td {
 }
 
 table.spreadsheet {
-    --ss-bg: var(--color);
-    --ss-color: var(--bg-color);
+    --ss-bg: #eee;
+    --ss-color: #222;
     --ss-bg-head: #2a2;
     --ss-bg-row-even: #96c496;
-    --ss-label-bg: var(--accent-mono-light);
-    --ss-label-color: var(--accent-bg-mono-light);
+    --ss-label-bg: #ccc;
+    --ss-label-color: #333;
     background: var(--ss-bg);
     color: var(--ss-color);
 }

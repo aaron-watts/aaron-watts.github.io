@@ -146,42 +146,42 @@ th, td {
 }
 
 table.spreadsheet {
-    --ss-bg: #eee;
+    --ss-bg: #fff;
     --ss-color: #222;
     --ss-bg-head: #2a2;
-    --ss-bg-row-even: #96c496;
+    --ss-bg-row-even: #8d8;
     --ss-label-bg: #ccc;
     --ss-label-color: #333;
     background: var(--ss-bg);
     color: var(--ss-color);
-}
 
-table.spreadsheet th {
-    background: var(--ss-bg-head);
-}
+    & th {
+        background: var(--ss-bg-head);
+    }
 
-table.spreadsheet tr:nth-of-type(even) {
-    background: var(--ss-bg-row-even);
-}
+    & tr:nth-of-type(even) {
+        background: var(--ss-bg-row-even);
+    }
 
-table.spreadsheet thead {
-    counter-reset: column-refs;
-}
-
-table.spreadsheet th::before {
-    counter-increment: column-refs;
-    content: counters(column-refs, '', upper-alpha);
-    display: block;
-    background: var(--ss-label-bg);
-    color: var(--ss-label-color);
-    font-weight: normal;
-    width: 100%;
-    padding: 0 1rem .1rem;
-    text-align: center;
-    left: -1rem;
-    bottom: .15rem;
-    position: relative;
-    border-bottom: 2px solid var(--accent-mono);
+    & thead {
+        counter-reset: column-refs;
+    }
+    
+    & th::before {
+        counter-increment: column-refs;
+        content: counters(column-refs, '', upper-alpha);
+        display: block;
+        background: var(--ss-label-bg);
+        color: var(--ss-label-color);
+        font-weight: normal;
+        width: 100%;
+        padding: 0 1rem .1rem;
+        text-align: center;
+        left: -1rem;
+        bottom: .15rem;
+        position: relative;
+        border-bottom: 2px solid var(--accent-mono);
+    }
 }
 
 img {
@@ -191,8 +191,7 @@ img {
     margin-inline: auto;
 }
 
-small:has(> p),
-search #usr-msg {
+small:has(> p) {
     display: block;
     font-style: italic;
     font-size: .9em;
@@ -288,10 +287,10 @@ ul.topic-container {
     font-style: italic;
     letter-spacing: .06rem;
     font-weight: 500;
-}
 
-.topic::before {
-    content: '# ';
+    &::before {
+        content: '# ';
+    }
 }
 
 .hidden {

@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
+    <link rel="canonical" href="https://aaronwatts.dev/tech/fairphone"/>
     <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
     <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
@@ -24,8 +25,18 @@
   <body>
     <header>
       <nav class="breadcrumbs">
-        <span class="host"><a href="/home">aaronwatts@dev</a></span>:<span
-        class="path">/<a href="/tech">tech</a>/<!-- include filename here --> $</span>
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a 
+              href="/">aaronwatts@dev</a></li><span
+              aria-hidden="true" class="term-dir"></span><li><span
+              aria-hidden="true" class="breadcrumb--seperator"></span><a 
+              href="/tech/">tech</a></li><li><span
+              aria-hidden="true" class="breadcrumb--seperator"></span><a
+              href="" aria-current="page"><!-- Page name here --></a></li><span
+              aria-hidden="true" class="term-priv"></span>
+        </ol>
+      </nav>
       </nav>
       <div class="rss-container">
         <a href="/rss">
@@ -50,8 +61,8 @@
       </p>
     </article>
 
-    <nav>
-      <a href="#top">Back to Top</a>
+    <nav aria-labelledby="to-top">
+      <a href="#top" id="to-top">Back to Top</a>
     </nav>
 
     <footer>

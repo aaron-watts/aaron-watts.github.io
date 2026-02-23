@@ -64,7 +64,15 @@ h2,
 h3,
 h4 {
     line-height: 1.2em;
-    font-weight: bold;
+    padding-block: .7em .1em;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+h2, h3, h4 {
+    font-weight: 400;
 }
 
 nav li {
@@ -379,6 +387,12 @@ nav[aria-label='Breadcrumb'] {
 
     body {
         max-width: 100vw;
+    }
+
+    pre {
+        margin-inline: .1em !important;
+        font-size: .8em !important;
+
     }
 }
 

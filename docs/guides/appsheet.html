@@ -1,97 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="A guide to building a simple rota app using AppSheet"/>
-    <meta name="keywords" content="appsheet, apps script, google, sheets"/>
-
-    <title>AWD - AppSheet</title>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"/>
-    <link rel="manifest" href="/site.webmanifest"/>
-
-    <link rel="canonical" href="https://aaronwatts.dev/guides/appsheet"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-
-    <meta property="og:title" content="AWD - Appsheet"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description" content="A guide to building a simple rota app using AppSheet"/>
-    <meta property="og:url" content="https://aaronwatts.dev/guides/appsheet"/>
-    <meta property="og:image" content="https://aaronwatts.dev/images/guides/appsheet.avif"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time" content="2025-08-28"/>
-
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-
-    <script type="application/ld+json">
-    {
-      "@context":"http://schema.org",
-      "@type":"Article",
-      "mainEntityOfPage":{
-        "@type":"WebPage",
-        "@id":"https://aaronwatts.dev/guides/appsheet"
-      },
-      "headline":"AppSheet",
-      "datePublished":"2025-08-28",
-      "description":"A guide to building a simple rota app using AppSheet",
-      "author":{
-        "@type":"Person",
-        "name":"aaronwatts@dev"
-      }
-    }
-    </script>
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">appsheet</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#backend">Building the Backend</a></li>
-        <li><a href="#frontend">Building the Frontend</a></li>
-        <li><a href="#workflows">Workflows</a></li>
-        <li><a href="#bugs">Fixing Some Bugs</a></li>
-        <li><a href="#filtering">Filtering Data</a></li>
-      </ol>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h1>AppSheet - Rota App</h1>
-          <time datetime="2025-08-28">28th August, 2025</time>
-          <img src="/images/guides/appsheet.avif"
-          alt="A demonstrative promotional image displaying how AppSheet appears across
-          mobile, tablet and computer devices">
-        </header>
-        <section id="intro" title="Intro">
-           <p id="description">
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="I first found out about AppSheet a number of years ago when it was still a fairly new project. I was running my own skate school and needed something that could organise data while on the move; specifically bookings I had made with clients. I had looked at a lot of options which didn't quite make the cut of what I needed. But then I stumbled across AppSheet, and it did just about everything I needed it to. Well, almost everything. But as it uses Google Sheets as pseudo-databases, I was able to use Apps Script to fill the last few gaps, and have my own custom software .. for free!" name="description"/>
+<meta content="appsheet, apps script, google, sheets" name="keywords"/>
+<title>AWD - AppSheet</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/appsheet" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="AppSheet - Rota App" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="I first found out about AppSheet a number of years ago when it was still a fairly new project. I was running my own skate school and needed something that could organise data while on the move; specifically bookings I had made with clients. I had looked at a lot of options which didn't quite make the cut of what I needed. But then I stumbled across AppSheet, and it did just about everything I needed it to. Well, almost everything. But as it uses Google Sheets as pseudo-databases, I was able to use Apps Script to fill the last few gaps, and have my own custom software .. for free!" property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/appsheet" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/appsheet.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2025-08-28" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/appsheet"
+  },
+  "headline": "AppSheet - Rota App",
+  "datePublished": "2025-08-28",
+  "description": "I first found out about AppSheet a number of years ago when it was still a fairly new project. I was running my own skate school and needed something that could organise data while on the move; specifically bookings I had made with clients. I had looked at a lot of options which didn't quite make the cut of what I needed. But then I stumbled across AppSheet, and it did just about everything I needed it to. Well, almost everything. But as it uses Google Sheets as pseudo-databases, I was able to use Apps Script to fill the last few gaps, and have my own custom software .. for free!",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">appsheet</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#backend">Building the Backend</a></li>
+<li><a href="#frontend">Building the Frontend</a></li>
+<li><a href="#workflows">Workflows</a></li>
+<li><a href="#bugs">Fixing Some Bugs</a></li>
+<li><a href="#filtering">Filtering Data</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>AppSheet - Rota App</h1>
+<time datetime="2025-08-28">28th August, 2025</time>
+<img alt="A demonstrative promotional image displaying how AppSheet appears across
+          mobile, tablet and computer devices" src="/images/guides/appsheet.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
               I first found out about AppSheet a number of years ago when it was still
               a fairly new project. I was running my own skate school and needed something
               that could organise data while on the move; specifically bookings I had made
@@ -101,7 +85,7 @@
               Google Sheets as pseudo-databases, I was able to use Apps Script to fill the
               last few gaps, and have my own custom software .. for free!
           </p>
-          <p>
+<p>
               I <em>really</em> like low cost and no cost solutions. the free tier on
               AppSheet can be a little limiting, that is unless you know you're way around
               Google's Apps Script feature. When it was still new, 
@@ -119,7 +103,7 @@
               it's ecosystem (here's hoping they don't send another great project to the
               <a href="https://killedbygoogle.com/" target="_blank">Google Graveyard</a>)
           </p>
-          <p>
+<p>
               I discovered AppSheet at a time where coding was something I occasionally
               dabbled in and I certainly would not have been able to put together a web app
               at the time. Now I'm deeper into the rabbit hole, and could confidently put
@@ -136,73 +120,72 @@
               assembling a simple rota app using AppSheet with some Google Apps Script
               integration.
           </p>
-        </section>
-
-        <section id="backend" title="Building the Backend">
-          <h2>Building the Backend</h2>
-          <p>
+</section>
+<section id="backend" title="Building the Backend">
+<h2>Building the Backend</h2>
+<p>
               Ha, good one. Our backend is a Google Sheet. 
               Column headers will be used as <em>"fields"</em> in app. Any
               additional rows are considered entries. You can add in directly through Google
               Sheets, but I'd advise using your AppSheet app to avoid any formatting
               inconsistencies.
           </p>
-          <p>
+<p>
               We can use sheets, or pages, within our spreadsheet as separate data sources.
               We can also use multiple types of data sources within apps, including multiple
               spreadsheets, but this app isn't likely to get so large so quickly that having
               everything tidily in one spreadsheet is likely to become a problem at any point.
           </p>
-          <p>
+<p>
               Our main sheet will be a <em>shifts</em> table, with additional tables for
               <em>staff</em> and <em>locations</em>. Our team at work do occasionally have
               to work away from the main site, so it's a niche feature that we use, but I am
               including it here just to demonstrate some neat stuff you can do between
               AppSheet and Google Suite. The staff and location tables will be structured thus:
           </p>
-           <table class="spreadsheet">
-              <thead>
-                  <tr>
-                      <th scope="col">Employee Number</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Email</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>12345</td>
-                      <td>Joe Bloggs</td>
-                      <td>071234567</td>
-                      <td>joe@work.com</td>
-                  </tr>
-                  <tr>
-                      <td>12346</td>
-                      <td>John Hancock</td>
-                      <td>071234568</td>
-                      <td>john@work.com</td>
-                  </tr>
-              </tbody>
-          </table>
-          <table class="spreadsheet">
-              <thead>
-                  <tr>
-                      <th scope="col">Name</th>
-                      <th scope="col">Address</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>Work</td>
-                      <td>Work Street, Liberty City</td>
-                  </tr>
-                  <tr>
-                      <td>Home</td>
-                      <td>Home</td>
-                  </tr>
-              </tbody>
-          </table>
-          <p>
+<table class="spreadsheet">
+<thead>
+<tr>
+<th scope="col">Employee Number</th>
+<th scope="col">Name</th>
+<th scope="col">Phone</th>
+<th scope="col">Email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12345</td>
+<td>Joe Bloggs</td>
+<td>071234567</td>
+<td>joe@work.com</td>
+</tr>
+<tr>
+<td>12346</td>
+<td>John Hancock</td>
+<td>071234568</td>
+<td>john@work.com</td>
+</tr>
+</tbody>
+</table>
+<table class="spreadsheet">
+<thead>
+<tr>
+<th scope="col">Name</th>
+<th scope="col">Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work</td>
+<td>Work Street, Liberty City</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>Home</td>
+</tr>
+</tbody>
+</table>
+<p>
               As previously mentioned, it's best to wait to enter the individual records
               through the AppSheet app. AppSheet is pretty feature rich, it's not difficult
               at all to include hot buttons in the app to make phone calls and emails.
@@ -214,7 +197,7 @@
               location to <em>home</em> on a users device in Google Maps, the omniscient
               Google normally has a good idea of where <em>home</em> is per user.
           </p>
-          <p>
+<p>
               Next, we need somewhere for the work shifts to be stored. So we can make the
               shifts table. To allow the app to differentiate between shifts we will include
               a Shift ID column that will be automatically populated by AppSheet itself, 
@@ -222,56 +205,55 @@
               Cal ID column, which an Apps Script will pass into AppSheet at the end of
               specific workflows.
           </p>
-          <table class="spreadsheet">
-              <thead>
-                  <tr>
-                    <th scope="col">Shift ID</th>
-                    <th scope="col">Staff</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Start</th>
-                    <th scope="col">Finish</th>
-                    <th scope="col">Cal ID</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>(AppSheet Generated)</td>
-                      <td>12345</td>
-                      <td>31/07/2025</td>
-                      <td>Work</td>
-                      <td>09:00</td>
-                      <td>17:00</td>
-                      <td>(Apps Script Generated)</td>
-                  </tr>
-                  <tr>
-                      <td>(AppSheet Generated)</td>
-                      <td>12346</td>
-                      <td>31/07/2025</td>
-                      <td>Home</td>
-                      <td>10:00</td>
-                      <td>16:00</td>
-                      <td>(Apps Script Generated)</td>
-                  </tr>
-              </tbody>
-          </table>
-        </section>
-
-        <section id="frontend" title="Building the Frontend">
-          <h2>Building the Frontend</h2>
-          <p>
+<table class="spreadsheet">
+<thead>
+<tr>
+<th scope="col">Shift ID</th>
+<th scope="col">Staff</th>
+<th scope="col">Date</th>
+<th scope="col">Location</th>
+<th scope="col">Start</th>
+<th scope="col">Finish</th>
+<th scope="col">Cal ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(AppSheet Generated)</td>
+<td>12345</td>
+<td>31/07/2025</td>
+<td>Work</td>
+<td>09:00</td>
+<td>17:00</td>
+<td>(Apps Script Generated)</td>
+</tr>
+<tr>
+<td>(AppSheet Generated)</td>
+<td>12346</td>
+<td>31/07/2025</td>
+<td>Home</td>
+<td>10:00</td>
+<td>16:00</td>
+<td>(Apps Script Generated)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="frontend" title="Building the Frontend">
+<h2>Building the Frontend</h2>
+<p>
               No code, anyone can do it! But, if you want your app to have any kind of
               useful or advanced functionality it will be less simple. The design UI is
               good, although, out of the box AppSheet is already doing quite a lot, so
               even building your first simple app can be a bit of a learning curve.
           </p>
-          <p>
+<p>
               The main aspect of the UI are in the menu bar on the left of the screen,
               for now we only need to worry about <em>data</em> and <em>views</em>. We
               will also use <em>automation</em>. These are where we make our app work.
           </p>
-          <h3>Data</h3>
-          <p>
+<h3>Data</h3>
+<p>
               In the data view, we can add our data sources using the <kbd>+</kbd> button.
               Find the spreadsheet you created in Google Drive, select it, and select the
               relevant page for each data source. Depending on what you name each column,
@@ -279,45 +261,45 @@
               case it gets it wrong, these are the data types for the Locations and Staff
               tables:
           </p>
-          <table>
-              <thead>
-                <tr>
-                  <th colspan="2">Locations</th>
-                </tr>
-              </thead>
-              <tr>
-                  <td>Name</td>
-                  <td>Name</td>
-              </tr>
-              <tr>
-                  <td>Address</td>
-                  <td>Address</td>
-              </tr>
-          </table>
-          <table>
-              <thead>
-                <tr>
-                  <th colspan="2">Staff</th>
-                <tr>
-              </thead>
-              <tr>
-                  <td>Employee Number</td>
-                  <td>Number</td>
-              </tr>
-              <tr>
-                  <td>Name</td>
-                  <td>Name</td>
-              </tr>
-              <tr>
-                  <td>Phone</td>
-                  <td>Phone</td>
-              </tr>
-              <tr>
-                  <td>Email</td>
-                  <td>Email</td>
-              </tr>
-          </table>
-          <p>
+<table>
+<thead>
+<tr>
+<th colspan="2">Locations</th>
+</tr>
+</thead>
+<tr>
+<td>Name</td>
+<td>Name</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>Address</td>
+</tr>
+</table>
+<table>
+<thead>
+<tr>
+<th colspan="2">Staff</th>
+</tr><tr>
+</tr></thead>
+<tr>
+<td>Employee Number</td>
+<td>Number</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Name</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Phone</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Email</td>
+</tr>
+</table>
+<p>
               For those, you will also want to set the key and labels. For Locations the
               Name column will be both key and label. For Staff, the employee number will
               be the key, and the name will be the label. The key is how the app deciphers
@@ -325,63 +307,63 @@
               readable identifier, so that we aren't expected to figure out what staff is
               being referenced by a particular key.
           </p>
-          <p>
+<p>
               The Shifts table is a little more complex, so I will include a few more of
               the option fields for this one:
           </p>
-          <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Formula</th>
-                  <th>Initial Value</th>
-                </tr>
-              </thead>
-              <tr>
-                  <td>Shift ID</td>
-                  <td>Text</td>
-                  <td>UNIQUEID("UUID")</td>
-                  <td></td>
-              </tr>
-              <tr>
-                  <td>Staff</td>
-                  <td>Ref</td>
-                  <td></td>
-                  <td></td>
-              </tr>
-              <tr>
-                  <td>Date</td>
-                  <td>Date</td>
-                  <td></td>
-                  <td>"{DD/MM/YYYY}"</td>
-              </tr>
-              <tr>
-                  <td>Location</td>
-                  <td>Ref</td>
-                  <td></td>
-                  <td>"Work"</td>
-              </tr>
-              <tr>
-                  <td>Start</td>
-                  <td>Time</td>
-                  <td></td>
-                  <td>"00:00"</td>
-              </tr>
-              <tr>
-                  <td>Finish</td>
-                  <td>Time</td>
-                  <td></td>
-                  <td>[Start]+"006:00:00"</td>
-              </tr>
-              <tr>
-                  <td>Cal ID</td>
-                  <td>Text</td>
-                  <td></td>
-                  <td></td>
-              </tr>
-          </table>
-          <p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Formula</th>
+<th>Initial Value</th>
+</tr>
+</thead>
+<tr>
+<td>Shift ID</td>
+<td>Text</td>
+<td>UNIQUEID("UUID")</td>
+<td></td>
+</tr>
+<tr>
+<td>Staff</td>
+<td>Ref</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Date</td>
+<td></td>
+<td>"{DD/MM/YYYY}"</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>Ref</td>
+<td></td>
+<td>"Work"</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>Time</td>
+<td></td>
+<td>"00:00"</td>
+</tr>
+<tr>
+<td>Finish</td>
+<td>Time</td>
+<td></td>
+<td>[Start]+"006:00:00"</td>
+</tr>
+<tr>
+<td>Cal ID</td>
+<td>Text</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>
               The <em>Ref</em> datatype is a reference to another table or data source.
               To set what each one references use the <kbd>Edit</kbd> button on the left,
               which is a pen emoji, and then set the source table to the relevant one
@@ -389,7 +371,7 @@
               required, as we want to leave that blank for an Apps Script to populate
               later on.
           </p>
-          <p>
+<p>
               We have now had our first tastes of AppSheet's formula in the <em>Formula</em>
               and <em>Initial Value</em> fields. Formula's allow AppSheet to do some more
               interesting things computationally than say, a regular table's app. Here, we
@@ -406,10 +388,10 @@
               colleagues have had to start over while logging orders into the skate shop POS).
               In my defence, the AppSheet documentation claims that:
           </p>
-          <blockquote>
+<blockquote>
               The chance of a duplicate ID being generated is virtually zero.
           </blockquote>
-          <p>
+<p>
               Since making that app though, AppSheet have added arguments to the
               <code>UNIQUEID</code> function: <code>"UUID"</code> and
               <code>"PackedUUID"</code>. These both create longer and more complex strings,
@@ -424,14 +406,13 @@
               <code>[Shift ID]</code> represents the value in that column, or field, for
               this particular row, or record.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             NOTE: Like spreadsheet formula, AppSheet functions are uppercase. This used
               to be strict, but at some point AppSheet removed case sensitivity from their
               functions so the same function can be called using lowercase.
             </p>
-          </small>
-          <p>
+<p>
               We get to see a few more examples of what can be achieved with some simple
               formula expressions in the <em>Initial Value</em> fields. For date, we can
               use a template expression to define the format of the date that the user
@@ -453,15 +434,14 @@
               what the time defined in the Start field is, and then adds 6 hours to it
               as a sensible default.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
               NOTE: Virtual Columns, like the one created by AppSheet for the _ComputedKey
               are useful for working algorithmically using data that already exists within
               the spreadsheets. We will look over a few examples later in this article.
             </p>
-          </small>
-          <h3>Views</h3>
-          <p>
+<h3>Views</h3>
+<p>
               The <em>Views</em> panel is where we make the <em>views</em> that the user
               will interact with in the app. There's a few to look at, but the ones we
               will be using in this app are <em>Deck</em>, <em>Table</em>, <em>Calendar</em>
@@ -469,7 +449,7 @@
               views for each data source, but we can create our own when we want a little
               more control over what's on screen at a given time.
           </p>
-          <p>
+<p>
               Starting with the simplest table, <em>Locations</em>, we can select
               <em>Deck</em> for view type and choose where on the menu bar we want it to
               show up. Options here are <em>first</em>, <em>next</em>, <em>middle</em>,
@@ -482,13 +462,13 @@
               for Actions, and remove any unwanted fluff like the map view button, and
               just keep the edit and delete buttons showing.
           </p>
-          <p>
+<p>
               Next, for the <em>Staff</em> table, set the view type to <em>Table</em>. If we
               set the Column Order to manual, we can choose only the necessary columns to
               include in the main view, which I have set to <em>Name</em> and
               <em>Employee Number</em> only.
           </p>
-          <p>
+<p>
               For the <em>Shifts</em> view, we can do something a little more
               interesting. Instead of a single view, we will make two views and include
               them both in a dashboard view. The first view will be another deck view,
@@ -502,7 +482,7 @@
               button in the top right corner to add a new virtual column. We can
               also set up an End of Week virtual column that will be useful later on.
           </p>
-          <pre class="language-none"><code># Virtual Column: Start of Week 
+<pre class="language-none"><code># Virtual Column: Start of Week 
 DATE(
   EOWEEK(
     DATE([Date] - 1)
@@ -515,7 +495,7 @@ Date(
     DATE([Date] -1)
   ) + 1
 )</code></pre>
-          <p>
+<p>
               Spreadsheet style formula with nested functions is hard to read whatever
               way you right it, but I think multiline notation is the only way to not
               go cross-eyed when  writing some of the more complex formula's in
@@ -524,15 +504,15 @@ Date(
               the name and location in the secondary header by concatenating both
               columns into one virtual column.
           </p>
-          <pre class="language-none"><code>CONCATENATE([Staff].[Name], "/", [Location].[Name])</code></pre>
-          <p>
+<pre class="language-none"><code>CONCATENATE([Staff].[Name], "/", [Location].[Name])</code></pre>
+<p>
               We reference the table reference here and the column we want to use, as
               using the relevant column from this table would just pull in the <em>key</em>
               rather than the <em>label</em>. We can use multiple virtual columns on
               concatenate functions to display the data, start and finish in the primary
               header.
           </p>
-          <pre class="language-none"><code># Virtual Column: Shift
+<pre class="language-none"><code># Virtual Column: Shift
 CONCATENATE(
   TEXT([Start],"HH:MM")," - ",TEXT([Finish],"HH:MM")
 )
@@ -541,7 +521,7 @@ CONCATENATE(
 CONCATENATE(
   TEXT([Date], "DD/MM/YYYY"), ", ", [Shift]
 )</code></pre>
-          <p>
+<p>
               The "Shift Date Time" column will be what is used for the primary
               header. We can use the <code>TEXT</code> function to declare the
               formats to be used when displaying dates and times. In my experience,
@@ -550,7 +530,7 @@ CONCATENATE(
               it up into two steps across two virtual columns hasn't caused me
               any issues in all the time I've been using AppSheet.
           </p>
-          <p>
+<p>
               In the summary column on the dashboard, I like to include a weekly
               hour count for each member of staff. It's a useful quick reference
               to check how many hours each member of staff is rota'd in for in a
@@ -560,7 +540,7 @@ CONCATENATE(
               together. The Start of Week and End of Week virtual columns are
               both helpful here in the calculations.
           </p>
-          <pre class="language-none"><code># Virtual Column: Shift Duration
+<pre class="language-none"><code># Virtual Column: Shift Duration
 TOTALMINUTES(
   TIME([Finish])-TIME([Start])
 ) / 60
@@ -576,7 +556,7 @@ SUM(
   )
  )
 )</code></pre>
-          <p>
+<p>
               Virtual columns are useful, but as we add more in, the form views
               and details views that are automatically generated by AppSheet for
               each data source begin to get cluttered with irrelevant information
@@ -588,72 +568,70 @@ SUM(
               This should just leave us with the original columns from the
               spreadsheet:
           </p>
-          <ul>
-              <li>Shift ID</li>
-              <li>Date</li>
-              <li>Start</li>
-              <li>Finish</li>
-              <li>Staff</li>
-              <li>Location</li>
-          </ul>
-          <p>
+<ul>
+<li>Shift ID</li>
+<li>Date</li>
+<li>Start</li>
+<li>Finish</li>
+<li>Staff</li>
+<li>Location</li>
+</ul>
+<p>
               The same process can be repeated for forms for other data sets,
               and also for details views, however, you might choose to display
               some of the virtual columns in the details views if they are
               useful to the app user.
           </p>
-          <p>
+<p>
               Next, we can build a Calendar view, and set the data source again
               to <em>Shifts</em>. In case AppSheet doesn't get the info correct 
               in the view options settings, we want the following set up:
           </p>
-          <table>
-            <tr>
-              <td>Start date</td>
-              <td>Date</td>
-            </tr>
-            <tr>
-              <td>Start time</td>
-              <td>Start</td>
-            </tr>
-            <tr>
-              <td>End date</td>
-              <td>Date</td>
-            </tr>
-            <tr>
-              <td>End time</td>
-              <td>Finish</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>Staff Name</td>
-            </tr>
-          </table>
-          <p>
+<table>
+<tr>
+<td>Start date</td>
+<td>Date</td>
+</tr>
+<tr>
+<td>Start time</td>
+<td>Start</td>
+</tr>
+<tr>
+<td>End date</td>
+<td>Date</td>
+</tr>
+<tr>
+<td>End time</td>
+<td>Finish</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Staff Name</td>
+</tr>
+</table>
+<p>
               There is also an option for category, this will categorise
               different records under their own colour codes on the calendar
               view. This is helpful to see who is working on a given day at
               a glance, but to use it, we will need to add a colour code field
               to the staff table.
           </p>
-          <p>
+<p>
               Back in Google Drive, add a Colour Code column to the Spreadsheet,
               then in Data view for the staff table press the
               <kbd>Regenerate Schema</kbd> button in the top right corner.
               Make sure the data type is set to <em>color</em>, and then we
               can add a colour to each staff member in the live preview mode.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
               NOTE: If you are using the <em>Desktop design</em> optimisation
               feature, you may need to open the desktop preview to make edits.
             </p>
-          </small>
-        </section>
-
-        <section id="workflows" title="Workflows">
-          <h2>Workflows</h2>
-          <p>
+</section>
+<section id="workflows" title="Workflows">
+<h2>Workflows</h2>
+<p>
               Now that we have most of our app's frontend set up, we should
               write some workflows to get our app to communicate with our
               Google Calendar. We will do this using Google Apps Script.
@@ -670,7 +648,7 @@ SUM(
               applying Apps Script to individual records. Let's write our
               script and then we can hook it up to the app after.
           </p>
-          <p>
+<p>
               Start a new Apps Script in Google Drive, advisably in the same,
               or an adjacent, folder as the Spreadsheet we built earlier.
               We are going to need some helper functions first though; one to
@@ -680,7 +658,7 @@ SUM(
               to understand them, and the final one to allow the API to make
               sense of the colour codes being passed in.
           </p>
-          <pre class="language-js"><code>const getCalendar = () =&gt; {
+<pre class="language-js"><code>const getCalendar = () =&gt; {
   return CalendarApp.getOwnedCalendarById('&lt;calendar-id&gt;@group.calendar.google.com');
 };
 
@@ -703,7 +681,7 @@ const assignColor = color =&gt; {
     default : return 5;
   };
 };</code></pre>
-          <p>
+<p>
               Next, we can set our write, edit and delete functions for shifts.
               <code>newShift</code> and <code>changeShift</code> both return the
               Event ID from the Google Calendar, this will allow AppSheet to
@@ -714,7 +692,7 @@ const assignColor = color =&gt; {
               <code>deleteShift</code> only requires an <code>id</code> and does
               not return any data.
           </p>
-          <pre class="language-js"><code>const deleteShift = (id) =&gt; {
+<pre class="language-js"><code>const deleteShift = (id) =&gt; {
   const cal = getCalendar();
 
   const shift = cal.getEventById(id);
@@ -755,7 +733,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
 
   return event.getId();
 };</code></pre>
-          <p>
+<p>
               Nice and simple! Now we need to go back to AppSheet editor view,
               and click on <em>Automation</em> in the menu bar. Click the
               <kbd>+</kbd> add new bot button, name it something like
@@ -774,37 +752,37 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               parameters. These are the parameters for the <em>changeShift</em>
               function, any of the other functions only use a subset of these each:
           </p>
-          <table>
-            <tr>
-              <td>id</td>
-              <td>[CalID]</td>
-            </tr>
-            <tr>
-              <td>date</td>
-              <td>[Date]</td>
-            </tr>
-            <tr>
-              <td>start</td>
-              <td>[Start]</td>
-            </tr>
-            <tr>
-              <td>end</td>
-              <td>[Finish]</td>
-            </tr>
-            <tr>
-              <td>location</td>
-              <td>[Location].[Address]</td>
-            </tr>
-            <tr>
-              <td>staff</td>
-              <td>[Staff Name]</td>
-            </tr>
-            <tr>
-              <td>color</td>
-              <td>[Staff].[Colour]</td>
-            </tr>
-          </table>
-          <p>
+<table>
+<tr>
+<td>id</td>
+<td>[CalID]</td>
+</tr>
+<tr>
+<td>date</td>
+<td>[Date]</td>
+</tr>
+<tr>
+<td>start</td>
+<td>[Start]</td>
+</tr>
+<tr>
+<td>end</td>
+<td>[Finish]</td>
+</tr>
+<tr>
+<td>location</td>
+<td>[Location].[Address]</td>
+</tr>
+<tr>
+<td>staff</td>
+<td>[Staff Name]</td>
+</tr>
+<tr>
+<td>color</td>
+<td>[Staff].[Colour]</td>
+</tr>
+</table>
+<p>
               Next, add a second step for the ShiftAddBot and name it to the affect
               of <em>Set CalID</em>. Select <em>Custom Action</em> and in the right
               settings pane select <em>Set row values</em>. Set column <em>CalID</em>
@@ -812,17 +790,15 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               being the name of the previous step in the workflow, and <em>Output</em>
               being the return data sent back by the <code>newShift</code> function.
           </p>
-          <p>
+<p>
               Repeat this process for a <em>ShiftUpdateBot</em> and a
               <em>ShiftDeleteBot</em>. The delete shift workflow only requires one step
               as we aren't handling any return data with that one.
           </p>
-       
-        </section>
-        
-        <section id="bugs" title="Fixing Some Bugs">
-          <h2>Fixing Some Bugs</h2>
-          <p>
+</section>
+<section id="bugs" title="Fixing Some Bugs">
+<h2>Fixing Some Bugs</h2>
+<p>
               The bulk of the app is pretty much finished here. There are some
               controls we can add to prevent errors and a few things we ought to tidy
               up a little. The first thing I want to address is a bug, where if you
@@ -831,7 +807,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               simple solution to this, which is to disable the edit and delete buttons
               entirely until a calendar ID is present within the data.
           </p>
-          <p>
+<p>
               On the left menu bar, click on <em>Actions</em>, under <em>Shifts</em>
               select <em>Edit</em>, and under <em>Behaviour</em>, we want to enter a
               condition for <em>Only if this condition is true</em>. Click on the
@@ -839,7 +815,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               the <em>Delete</em> button, and then a user will not be able to trigger
               the bug while using the app.
           </p>
-          <p>
+<p>
               Next, it would be wise to prevent data entry that could cause errors
               with the Calendar API script we have made. The glaring opportunity
               for error here being that <code>Finish</code> should always be
@@ -848,11 +824,10 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               <em>Finish</em>, and under <em>Data Validity</em> set <em>Valid If</em>
               to <code>[Finish] &gt; [Start]</code>.
           </p>
-        </section>
-
-        <section id="filtering" title="Filtering Data">
-          <h2>Filtering Data</h2>
-          <p>
+</section>
+<section id="filtering" title="Filtering Data">
+<h2>Filtering Data</h2>
+<p>
               One last thing worth looking at before going on your own data organising
               journey with AppSheet is filtering data. AppSheet has something built
               in called <em>Slices</em>. A slice will take a chunk of data, and generate
@@ -866,7 +841,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               occurring today. However, slices aren't dynamic in the sense that the filter
               conditions are hard coded.
           </p>
-          <p>
+<p>
               To look at creating a dynamic filter, we can make an hours tally for each
               member of staff, that we can then filter by selecting the start and end
               dates of a period of time to see how many hours each staff member has
@@ -874,7 +849,7 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               intuitive at all like slices are, so we will need to think outside of the
               box on this one.
           </p>
-          <p>
+<p>
               We need to begin by adding two new sheets to our Rota spreadsheet.
               <em>Pay Period</em> and <em>Pay Report</em>. Pay Report will simply be
               one column named <em>Staff</em>, with each employee number listed as
@@ -882,39 +857,39 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               copy and paste that column from the staff sheet into this one. Pay Period
               will be only two columns: <em>Start</em> and <em>End</em>.
           </p>
-          <table class="spreadsheet">
-            <thead>
-              <tr>
-              <th>Staff</th>
-              </tr>
-            </thead>
-            <tr>
-              <td>12345</td>
-            </tr>
-            <tr>
-              <td>12346</td>
-            </tr>
-          </table>
-          <table class="spreadsheet">
-            <thead>
-              <tr>
-              <th>Start</th>
-              <th>End</th>
-              </tr>
-            </thead>
-            <tr>
-              <td>&lt;No Data&gt;</td>
-              <td>&lt;No Data&gt;</td>
-            </tr>
-          </table>
-          <p>
+<table class="spreadsheet">
+<thead>
+<tr>
+<th>Staff</th>
+</tr>
+</thead>
+<tr>
+<td>12345</td>
+</tr>
+<tr>
+<td>12346</td>
+</tr>
+</table>
+<table class="spreadsheet">
+<thead>
+<tr>
+<th>Start</th>
+<th>End</th>
+</tr>
+</thead>
+<tr>
+<td>&lt;No Data&gt;</td>
+<td>&lt;No Data&gt;</td>
+</tr>
+</table>
+<p>
               Once these tables are connected as new data sources into AppSheet, set the
               Staff datatype to <em>Ref</em> in the Pay Report table, and the Start and
               End datatypes to <em>Date</em> in the Pay Period table. In the Pay Report
               table, add a virtual column named <em>Hours</em> with a datatype of
               <em>Decimal</em>, and set the formula to the following:
           </p>
-          <pre class="language-none"><code>SUM(
+<pre class="language-none"><code>SUM(
   SELECT(
     Shifts[Shift Duration],
     AND(
@@ -924,14 +899,14 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
     )
   )
 )</code></pre>
-          <p>
+<p>
               This formula will add together all of the hours a staff member has
               been rota'd to work, where the date for the shift matches ANY record
               within the Pay Period table's <em>Start</em> and <em>Finish</em>
               dates. The reason we can use <code>ANY</code> here is that there will
               only be one record in this table.
           </p>
-          <p>
+<p>
               Next we need to make sure there is a view created for the Pay Period
               table and enter only <b>one</b> record for it with arbitrary dates.
               Once that is done, we will create a fourth main view for our primary
@@ -954,29 +929,25 @@ const newShift = (date, start, end, location, staff, color) =&gt; {
               set the Pay Period <em>End</em> column's <em>Valid If</em> formula
               to <code>[End] &gt;= [Start]</code>.
           </p>
-          <p>
+<p>
               Our rota app is now finished. Changes made to shifts will automatically
               be uploaded to the Google Calendar identified within the Apps Script.
               This is only a simple app compared to what could potentially be
               made, but it covers quite a few things that might help you get started
               in making some useful tools for yourself at a low cost!
           </p>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-      <div>Made by Hand. Powered by</div>
-      <a href="https://pages.github.com/" target="_blank">
-        <img src="/images/githubpages.svg" 
-          alt="https://pages.github.com/">
-      </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

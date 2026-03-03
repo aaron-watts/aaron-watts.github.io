@@ -1,80 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How to use fonts in HTML and CSS">
-    <meta name="keywords" content="webdev, fonts, web fonts, css, html, gdpr">
-  
-    <title>AWD - Web Fonts</title>
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-  
-    <link rel="canonical" href="https://aaronwatts.dev/guides/web-fonts"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-   
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">web-fonts</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#local">Local Font Stack</a></li>
-        <li><a href="#self-hosting">Self Hosting Fonts</a></li>
-        <li><a href="#preloading">Preloading Fonts</a></li>
-      </ol>
-    </nav>
-
-    <main>
-      <article>
-        <header>
-          <h1>Web Fonts</h1>
-          <time datetime="2025-04-05">5th April, 2025</time>
-          <img src="/images/guides/web-fonts.avif"
-          alt="A collection of fonts including sans-serif, serif, comic sans
-          and mono that read 'The lazy dog woffed!'">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="If you've ever used an older or lower spec device, or had a slow connection on a public wifi network, you may have noticed the fonts on a web page get loaded after the content and layout. Most of the time this is virtually unnoticable, but once you've seen it, as with most things traumatic, it is hard to unsee it. But there are a few steps we can take to mitigate this from happening." name="description"/>
+<meta content="webdev, fonts, web fonts, css, html, gdpr" name="keywords"/>
+<title>AWD - Web Fonts</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/web-fonts" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="Web Fonts" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="If you've ever used an older or lower spec device, or had a slow connection on a public wifi network, you may have noticed the fonts on a web page get loaded after the content and layout. Most of the time this is virtually unnoticable, but once you've seen it, as with most things traumatic, it is hard to unsee it. But there are a few steps we can take to mitigate this from happening." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/web-fonts" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/web-fonts.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2025-04-05" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/web-fonts"
+  },
+  "headline": "Web Fonts",
+  "datePublished": "2025-04-05",
+  "description": "If you've ever used an older or lower spec device, or had a slow connection on a public wifi network, you may have noticed the fonts on a web page get loaded after the content and layout. Most of the time this is virtually unnoticable, but once you've seen it, as with most things traumatic, it is hard to unsee it. But there are a few steps we can take to mitigate this from happening.",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">web-fonts</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#local">Local Font Stack</a></li>
+<li><a href="#self-hosting">Self Hosting Fonts</a></li>
+<li><a href="#preloading">Preloading Fonts</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>Web Fonts</h1>
+<time datetime="2025-04-05">5th April, 2025</time>
+<img alt="A collection of fonts including sans-serif, serif, comic sans
+          and mono that read 'The lazy dog woffed!'" src="/images/guides/web-fonts.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             If you've ever used an older or lower spec device, or had
             a slow connection on a public wifi network, you
             may have noticed the fonts on a web page get loaded after
@@ -83,7 +82,7 @@
             most things traumatic, it is hard to unsee it. But there are
             a few steps we can take to mitigate this from happening.
           </p>
-          <p>
+<p>
             I feel like fonts are something that get overlooked when
             learning web development, and also when teaching it.
             Budding web developers tend to be taught how to import a
@@ -93,33 +92,30 @@
             even the most reliable service can fail on occasion,
             which I've learned from experience.
           </p>
-        </section>
-
-        <section id="local" title="Local Font Stack">
-          <h2>Local Font Stack</h2>
-          <p>
+</section>
+<section id="local" title="Local Font Stack">
+<h2>Local Font Stack</h2>
+<p>
             Typically, I prefer to go with system fonts whenever I
             can. This website, for example, only sets fonts to
             <code>sans-serif</code> or <code>monospace</code>,
             and will just let the
             browser choose it's favourite if the user hasn't set
-            their own preferences. <a href="https://prismjs.com/"
-            target="_blank">Prism JS</a>, which I use for my
+            their own preferences. <a href="https://prismjs.com/" target="_blank">Prism JS</a>, which I use for my
             code snippets, sets a sensible font stack, and looks
             for fonts installed locally on the users machine - it
             allows for some more thoughtful design without relying
             on http requests for fonts.
           </p>
-          <pre class="language-css"><code>font-family: 
+<pre class="language-css"><code>font-family: 
   Consolas,
   Monaco,
   'Andale Mono',
   'Ubuntu Mono',
   monospace;</code></pre>
-          <p>
+<p>
             If a local font stack is the way you want to go, then I
-            highly suggest taking a look at <a href="https://simplecss.org/"
-            target="_blank">Simple CSS</a>, a simple CSS framework
+            highly suggest taking a look at <a href="https://simplecss.org/" target="_blank">Simple CSS</a>, a simple CSS framework
             that is intended as a starting point rather than a solution.
             I haven't used Simple CSS in any guides yet that are
             big enough to warrant including the entire (albeit, very
@@ -127,8 +123,8 @@
             cherry pick from for smaller guides. For example it
             has a very sensible local font stack.
           </p>
-          <pre class="language-css"><code>:root {
-  /* Set sans-serif & mono fonts */
+<pre class="language-css"><code>:root {
+  /* Set sans-serif &amp; mono fonts */
   --sans-font: 
     -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
     "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
@@ -136,20 +132,18 @@
   --mono-font: 
     Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 }</code></pre>
-        </section>
-
-        <section id="self-hosting" title="Self Hosting Fonts">
-          <h2>Self Hosting Fonts</h2>
-          <p>
+</section>
+<section id="self-hosting" title="Self Hosting Fonts">
+<h2>Self Hosting Fonts</h2>
+<p>
             Sometimes you need a specific font, and don't want to
             rely on a local stack. For example, I work in a Youth
-            Centre, and we often use the <a href="https://opendyslexic.org/"
-            target="_blank">OpenDyslexic</a> font, which is designed
+            Centre, and we often use the <a href="https://opendyslexic.org/" target="_blank">OpenDyslexic</a> font, which is designed
             to be easier to read for those with dyslexia - I am
             pleased to see this font being adopted elsewhere, such
             as the Rakuten Kobo eBook readers.
           </p>
-          <p>
+<p>
             Every external service that your website connects to is
             a potential point for things to break. Fonts is not
             something I feel that should be fetched from elsewhere
@@ -159,7 +153,7 @@
             Thankfully, Google Fonts are open source, and can be
             downloaded for self hosting.
           </p>
-          <p>
+<p>
             Fonts typically download as TTF format files. TTF, or
             True Type Fonts, are typically what we would use to
             install a font on an operating system. They will include
@@ -177,33 +171,29 @@
             too difficult to figure out how to support WOFF in your
             own guides.
           </p>
-          <blockquote>
+<blockquote>
             Safari is the new Internet Explorer
           </blockquote>
-          <p>
+<p>
             There are online font converters, but we are developers
             and we work in the terminal. Google offer a
-            <a href="https://github.com/google/woff2"
-            target="_blank">WOFF2 converter</a> that is easy to
+            <a href="https://github.com/google/woff2" target="_blank">WOFF2 converter</a> that is easy to
             install and simple to use. After folling the install
             instructions, you can move the binaries to have global
             access to them within your system - just remember to
             restart your desktop session before calling them globally.
           </p>
-          <pre class="language-none command-line"
-        data-user="aaronwatts" data-host="dev"><code>cp woff2_compress woff2_decompress ~/.local/bin/</code></pre>
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>cp woff2_compress woff2_decompress ~/.local/bin/</code></pre>
+<p>
             After converting your fonts to WOFF2, you can now include
             the files in your project.
           </p>
-
-          <pre class="language-treeview"><code>root/
+<pre class="language-treeview"><code>root/
 ├── assets/
 |   └── fonts/
 |       └── OpenDyslexic3-Regular.woff2
 └── index.html</code></pre>
-
-          <p>
+<p>
             In your CSS file, you simply need to create a
             <code>@font-face</code> rule to pull the font into
             your stylesheet. After that, you will be able to
@@ -211,7 +201,7 @@
             <code>font-family</code> attribute of the
             <code>@font-face</code> rule.
           </p>
-          <pre class="language-css"><code>@font-face {
+<pre class="language-css"><code>@font-face {
   font-family: 'OpenDyslexic';
   src: url('/assets/fonts/OpenDyslexic3-Regular.woff2') format('woff2');
 }
@@ -219,11 +209,10 @@
 body {
   font-family: 'OpenDyslexic';
 }</code></pre>
-        </section>
-          
-        <section id="preloading" title="Preloading Fonts">
-          <h2>Preloading Fonts</h2>
-          <p>
+</section>
+<section id="preloading" title="Preloading Fonts">
+<h2>Preloading Fonts</h2>
+<p>
             Wether you're fetching or self hosting a font, if it's
             not installed locally on the machine that is viewing
             your web page, it will need to be fetched. You would
@@ -238,7 +227,7 @@ body {
             can cause some clumsy looking loading on weaker machines
             and slow internet connections.
           </p>
-          <p>
+<p>
             To mitigate this, we can simply preload the fonts
             within the html file. This will prevent the web browser
             from rendering any text to the DOM until the font
@@ -253,31 +242,26 @@ body {
             attributes, and also include the <code>crossorigin</code>
             attribute.
           </p>
-          <pre class="language-html"><code>&lt;link rel="preload" href="/assets/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin /&gt;
+<pre class="language-html"><code>&lt;link rel="preload" href="/assets/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin /&gt;
 &lt;link rel="stylesheet" href="/assets/styles/style.css"&gt;</code></pre>
-          <small>
-            <p>
+<small>
+</small><p>
             NOTE: The crossorigin attribute <em>must</em> be included
             even if the fonts url is locally hosted due to the way
             more modern resource types are fetched by the browser.
             </p>
-          </small>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

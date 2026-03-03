@@ -1,80 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How to run Progressive Web Apps
-    through the Firefox browser in KDE Plasma Big Screen on
-    Rapsberry Pi OS">
-    <meta name="keywords" content="raspberry pi, rpi4, smart tv, kde bigscreen, streaming">
-
-    <title>AWD - Firefox Web Apps</title>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="canonical" href="https://aaronwatts.dev/guides/firefox-web-apps"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">firefox-web-apps</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#firefox">Firefox on Pi</a></li>
-        <li><a href="#install">Installation</a></li>
-        <li><a href="#webapps">Setting Up Web Apps</a></li>
-      </ol>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h1>Firefox Web Apps - Plasma Bigscreen</h1>
-          <time datetime="2024-08-22">22nd August, 2024</time>
-          <img src="/images/guides/firefox-web-apps.avif"
-          alt="A Raspberry Pi 4 running KDE Plasma Bigscreen on a
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps." name="description"/>
+<meta content="raspberry pi, rpi4, smart tv, kde bigscreen, streaming" name="keywords"/>
+<title>AWD - Firefox Web Apps</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/firefox-web-apps" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="Firefox Web Apps - Plasma Bigscreen" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/firefox-web-apps" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/firefox-web-apps.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2024-08-22" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/firefox-web-apps"
+  },
+  "headline": "Firefox Web Apps - Plasma Bigscreen",
+  "datePublished": "2024-08-22",
+  "description": "With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps.",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">firefox-web-apps</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#firefox">Firefox on Pi</a></li>
+<li><a href="#install">Installation</a></li>
+<li><a href="#webapps">Setting Up Web Apps</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>Firefox Web Apps - Plasma Bigscreen</h1>
+<time datetime="2024-08-22">22nd August, 2024</time>
+<img alt="A Raspberry Pi 4 running KDE Plasma Bigscreen on a
           HD TV, firefox browser, aniwave and amazon prime are listed
-          in the recent apps list">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+          in the recent apps list" src="/images/guides/firefox-web-apps.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             With the introduction of Web Manifest V3, ad blocking in
             Chromium based browsers is changing. the new limitations
             and API's for browser extensions means ad blockers, such
@@ -86,7 +86,7 @@
             Bigscreen as a streaming OS. Luckily, Linux is flexible,
             and there's an easy way to get Firefox Web Apps.
           </p>
-          <p>
+<p>
             Web Apps on Linux are not new, and while it would be time
             consuming, you could potentially just right your own
             dekstop files to open specified url's in their own
@@ -94,19 +94,17 @@
             been ported over to the Raspberry Pi, so we can get set
             up with Firefox PWA's pretty quickly, and without fuss.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             NOTE: This guide is for installing Firefox PWA's on a 
             Raspberry Pi device running KDE Plasma Bigscreen, find 
             out how to get Bigscreen running on a Pi
             <a href="/guides/kde-plasma-bigscreen">here</a>.
             </p>
-          </small>
-        </section>
-
-        <section id="firefox" title="Firefox on Pi">
-          <h2>Firefox on Pi</h2>
-          <p>
+</section>
+<section id="firefox" title="Firefox on Pi">
+<h2>Firefox on Pi</h2>
+<p>
             Raspberry Pi OS used to ship with Chromium as it's
             default browser, and while the Ubuntu image for
             Rapsberry Pi delivered decent performance with Firefox,
@@ -119,41 +117,36 @@
             user agent to improve the experience on Youtube and
             Netflix (you <em>ARE</em> naughty, Youtube and Netflix!).
           </p>
-          <p>
+<p>
             To install Firefox on Raspberry Pi OS with the necessary
             extensions, open terminal in type the following:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>sudo apt update
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>sudo apt update
 sudo apt install firefox rpi-firefox-mods</code></pre>
-        </section>
-
-        <section id="install" title="Installation">
-          <h2>Installation</h2>
-          <p>
+</section>
+<section id="install" title="Installation">
+<h2>Installation</h2>
+<p>
           Installation is pretty simple, but you will want the
           flexibility of multiple windows, so first log out of
           the Bigscreen session, and log in to the Plasma desktop
           session before starting.
           </p>
-          <p>
+<p>
           To install Linux Mint's Web Apps software, we first need
-          to install <a href="https://pi-apps.io/"
-          target="_blank">Pi-Apps</a>. Installing Pi-Apps is simple
+          to install <a href="https://pi-apps.io/" target="_blank">Pi-Apps</a>. Installing Pi-Apps is simple
           enough and can be done with one line in the terminal:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash</code></pre>
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash</code></pre>
+<p>
           Once Pi-Apps is installed, open it, and install 
           <code>Web Apps</code> from the <code>Internet</code>
           category in the software list.
           </p>
-        </section>
-
-        <section id="webapps" title="Setting Up Web Apps">
-          <h2>Setting Up Web Apps</h2>
-          <p>
+</section>
+<section id="webapps" title="Setting Up Web Apps">
+<h2>Setting Up Web Apps</h2>
+<p>
             Setting up web apps is easy. Just open the Web Apps
             software and click <code>+</code> to create a new app.
             Give the app a name, and enter the url. Once you have
@@ -168,27 +161,23 @@ sudo apt install firefox rpi-firefox-mods</code></pre>
             can select a different browser for that particular
             application.
           </p>
-          <p>
+<p>
             That's all there is to it. After setting up your web
             apps, simply log back into the Bigscreen session and
             enjoy your favourite shows.
           </p>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-      <div>Made by Hand. Powered by</div>
-      <a href="https://pages.github.com/" target="_blank">
-        <img src="/images/githubpages.svg" 
-          alt="https://pages.github.com/">
-      </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

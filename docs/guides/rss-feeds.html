@@ -1,81 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A guide to a feature rich blog-type rss feed
-    with good aggregator compatibility">
-    <meta name="keywords" content="webdev, xml, python">
-    
-    <title>AWD - RSS Feeds</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <link rel="canonical" href="https://aaronwatts.dev/guides/rss-feeds"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-  
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-   
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">rss-feeds</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#feature-rich">A Feature Rich Feed</a></li>
-        <li><a href="#namespaces">Namespaces</a></li>
-        <li><a href="#atom">Atom</a></li>
-        <li><a href="#media">Media</a></li>
-        <li><a href="#content">Content</a></li>
-        <li><a href="#guid">GUID</a></li>
-        <li><a href="#automation">Python Automation</a></li>
-      </ol>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h1>RSS Feeds</h1>
-          <time datetime="2025-06-18">18th June, 2025</time>
-          <img src="/images/guides/rss-feeds.avif"
-          alt="An RSS feed displayed as raw HTML inside a web browser">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="RSS isn't really something you hear spoken about too often. But for us nerds, it's an indisposable technology. And thankfully, it still gets used. Most of the time, if you need an RSS feed for content you've made, the software you've used to make said content has probably already done it for you, you might need not even know. But if you had to make one yourself, would you know how?" name="description"/>
+<meta content="webdev, xml, python" name="keywords"/>
+<title>AWD - RSS Feeds</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/rss-feeds" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="RSS Feeds" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="RSS isn't really something you hear spoken about too often. But for us nerds, it's an indisposable technology. And thankfully, it still gets used. Most of the time, if you need an RSS feed for content you've made, the software you've used to make said content has probably already done it for you, you might need not even know. But if you had to make one yourself, would you know how?" property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/rss-feeds" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/rss-feeds.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2025-06-18" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/rss-feeds"
+  },
+  "headline": "RSS Feeds",
+  "datePublished": "2025-06-18",
+  "description": "RSS isn't really something you hear spoken about too often. But for us nerds, it's an indisposable technology. And thankfully, it still gets used. Most of the time, if you need an RSS feed for content you've made, the software you've used to make said content has probably already done it for you, you might need not even know. But if you had to make one yourself, would you know how?",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">rss-feeds</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#feature-rich">A Feature Rich Feed</a></li>
+<li><a href="#namespaces">Namespaces</a></li>
+<li><a href="#atom">Atom</a></li>
+<li><a href="#media">Media</a></li>
+<li><a href="#content">Content</a></li>
+<li><a href="#guid">GUID</a></li>
+<li><a href="#automation">Python Automation</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>RSS Feeds</h1>
+<time datetime="2025-06-18">18th June, 2025</time>
+<img alt="An RSS feed displayed as raw HTML inside a web browser" src="/images/guides/rss-feeds.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             RSS isn't really something you hear spoken about too often. But for
             us nerds, it's an indisposable technology. And thankfully, it still gets
             used. Most of the time, if you need an RSS feed for content you've made,
@@ -83,9 +84,8 @@
             it for you, you might need not even know. But if you had to make one
             yourself, would you know how?
           </p>
-          <p>
-            The docs at the <a href="https://www.rssboard.org/" 
-            target="_blank">RSS Advisory Board</a> are ... confusing, to a newcomer.
+<p>
+            The docs at the <a href="https://www.rssboard.org/" target="_blank">RSS Advisory Board</a> are ... confusing, to a newcomer.
             Also, if you try to learn by looking at other website's feeds, it
             doesn't really work as every single feed is built differently from the
             last. And not to achieve new objectives, mind you. But I have been exploring
@@ -93,21 +93,19 @@
             formula to have a feature rich RSS feed (for something like a blog at least)
             that should work across most, if not all, RSS feed aggregators.
           </p>
-        </section>
-
-        <section id="feature-rich" title="A Feature Rich FeedA Feature Rich Feed">
-          <h2>A Feature Rich Feed</h2>
-          <p>
+</section>
+<section id="feature-rich" title="A Feature Rich FeedA Feature Rich Feed">
+<h2>A Feature Rich Feed</h2>
+<p>
             I previously touched on RSS Feeds in my article about
-            <a href="/guides/github-pages-static-website"
-            target="_blank">Github Pages static websites</a>, where I put together
+            <a href="/guides/github-pages-static-website" target="_blank">Github Pages static websites</a>, where I put together
             a simple python script to build the RSS feed for this site, among other
             things. Since then, this website has grown a little, as has the feed.
             Back then, the feed was already handling atom, as well as including
             media images. But the most important feature was missing: the
             <em>content</em>.
           </p>
-          <p>
+<p>
             The best thing about RSS, in my opinion, is being able to read full news
             articles without ads and pop-ups suggesting that you subscribe or set
             your cookie permissions. Other feeds often use something called
@@ -120,8 +118,8 @@
             html within that tag (provided you are not relying too heavily in CSS
             or JavaScript trickery). Here is the current layout of my RSS feeds:
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             NOTE: In a very poetic case of irony, this article is not working
             on my usual RSS reader (Nextcloud News). I haven't been able to diagnose
             the issue yet, but it seems mostly fine on other readers I have tested.
@@ -129,8 +127,7 @@
             for the time being, and update this article if I ever found out what
             is causing it.
             </p>
-          </small>
-          <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+<pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
 &lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/"&gt;
   &lt;channel&gt;
     &lt;atom:link href="https://aaronwatts.dev/guides/feed.xml" rel="self" type="applications/rss+xml" /&gt;
@@ -155,11 +152,10 @@
     &lt;/item&gt;
   &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
-        </section>
-
-        <section id="namespaces" title="Namespaces">
-          <h2>Namespaces</h2>
-          <p>
+</section>
+<section id="namespaces" title="Namespaces">
+<h2>Namespaces</h2>
+<p>
             If you're familiar with XML, then you already know that namespaces let
             us extend an XML document with tags that aren't already included within
             the specification (in this case, RSS) that we are already using. In this
@@ -168,11 +164,10 @@
             <a href="http://search.yahoo.com/mrss/" target="_blank">Media</a> and
             <a href="http://purl.org/rss/1.0/modules/content/" target="_blank">Content</a>.
           </p>
-        </section>
-
-        <section id="atom" title="Atom">
-          <h2>Atom</h2>
-          <p>
+</section>
+<section id="atom" title="Atom">
+<h2>Atom</h2>
+<p>
             Atom is another XML feed specification. Without divulging in too much history,
             it was a new (at the time) XML feed specification that was different from RSS,
             but by including it's namespace in our RSS feed, and atom:link-ing the feed
@@ -180,11 +175,10 @@
             by the RSS Board - I told you RSS is confusing), our RSS feed also becomes a
             valid Atom feed. Just put it through an Atom validator to see for yourself.
           </p>
-        </section>
-
-        <section id="media" title="Media">
-          <h2>Media</h2>
-          <p>
+</section>
+<section id="media" title="Media">
+<h2>Media</h2>
+<p>
             The Media namespace lets us include media images. The enclosure element
             built into the RSS spec also does that, but not every RSS reader will show
             an enclosure image. Media has a much higher success rate, although while
@@ -193,11 +187,10 @@
             have found that this combination will meet protocol for most, if not all,
             RSS aggregators.
           </p>
-        </section>
-
-        <section id="content" title="Content">
-          <h2>Content</h2>
-          <p>
+</section>
+<section id="content" title="Content">
+<h2>Content</h2>
+<p>
             The Content namespace lets us include, well, content. The docs for it
             seem to show CDATA elements, and a lot of RSS feeds out there do just that.
             However, I have found that escaped HTML works fine if you just drop it
@@ -205,11 +198,10 @@
             yet that doesn't display it, but with the fast and loose rules to RSS, I
             am sure that said aggregator exists.
           </p>
-        </section>
-
-        <section id="dates" title="Dates">
-          <h2>Dates</h2>
-          <p>
+</section>
+<section id="dates" title="Dates">
+<h2>Dates</h2>
+<p>
             I'm only using pubDate in my feed, there are a few other useful elements
             that are date typed depending on what you are trying to acheive. Dates
             are RFC 822 format. What does that mean?? Eventually I found out through
@@ -217,12 +209,11 @@
             docs now (I'm convinced it wasnt' before, but I could be unobservant and
             wrong). It means that dates should be formatted like so:
           </p>
-          <pre class="language-none"><code>Sat, 07 Sep 2002 09:42:31 GMT</code></pre>
-        </section>
-
-        <section id="guid" title="GUID">
-          <h2>GUID</h2>
-          <p>
+<pre class="language-none"><code>Sat, 07 Sep 2002 09:42:31 GMT</code></pre>
+</section>
+<section id="guid" title="GUID">
+<h2>GUID</h2>
+<p>
             GUID stands for Globally Uniquie Identifier. Aggregators use this to
             check if an RSS item is new. I try to avoid mistakes when I can, but if
             I need to go back and fix a typo, this element will preventing aggregators
@@ -230,26 +221,24 @@
             for the article as the ID, as it is the only article that will ever have that exact
             url.
           </p>
-        </section>
-
-        <section id="automation" title="Python Automation">
-          <h2>Python Automation</h2>
-          <p>
+</section>
+<section id="automation" title="Python Automation">
+<h2>Python Automation</h2>
+<p>
             I won't go into a lot of detail here, as most of it will already be
-            covered in the previous article about <a href="/guides/github-pages-static-website"
-            target="_blank">Github Pages Static Websites</a>, but there was a little
+            covered in the previous article about <a href="/guides/github-pages-static-website" target="_blank">Github Pages Static Websites</a>, but there was a little
             trial and error invloved with getting the pre elements to format correctly
             in the content encoded RSS elements. Also relative links all needed to
             be replaced with absolute links, and as a bonus I'll include the date
             formatting, even though we both know you could have worked that out
             for yourself pretty easily.
           </p>
-          <p>
+<p>
             Here is the python function to format the content encoded HTML.
             It prefers to put everything on one line, except for pre elements
             as they need to include line breaks to be displayed correctly.
           </p>
-          <pre class="language-python"><code>'''
+<pre class="language-python"><code>'''
 format_main_content will remove new lines from html elements
 except for pre elements where it will preserve them
 '''
@@ -285,11 +274,11 @@ str(article['content'])
 .strip()
 .replace('\\n', '')
 .replace('="/', '="https://aaronwatts.dev/')</code></pre>
-          <p>
+<p>
             The date formatting is pretty straightforward. I don't include
             a time so I just add an arbitrary one in.
           </p>
-          <pre class="language-python"><code>'''
+<pre class="language-python"><code>'''
 I use a time element for the published date
 '''
 html_date = article_soup.select_one('time')
@@ -301,22 +290,18 @@ articles.append({
   'formatted_date' : formatted_date + ' 08:00:00 GMT',
   ...
 })</code></pre>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
 </body>
 </html>

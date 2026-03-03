@@ -1,80 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Building a macro keypad using a
-    Raspberry Pi Pico microcontroller and python.">
-    <meta name="keywords" content="pico, microcontroller, circuitpython, python, gpio">
-    
-    <title>AWD - Media Keyboard</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <link rel="canonical" href="https://aaronwatts.dev/guides/media-keyboard"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
- 
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-   
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">media-keyboard</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#button-setup">Button Set Up</a></li>
-        <li><a href="#optimising">Optimising the Code</a></li>
-        <li><a href="#finished-code">The Finished Code</a></li>
-      </ol>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h1>Media Keyboard - Pico Controller</h1>
-          <time datetime="2024-04-14">14th April, 2024</time>
-          <img src="/images/guides/media-keyboard.avif" 
-          alt="A Raspberry Pi Pico controller on a breadboard, wired
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually." name="description"/>
+<meta content="pico, microcontroller, circuitpython, python, gpio" name="keywords"/>
+<title>AWD - Media Keyboard</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/media-keyboard" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="Media Keyboard - Pico Controller" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/media-keyboard" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/media-keyboard.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2024-04-14" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/media-keyboard"
+  },
+  "headline": "Media Keyboard - Pico Controller",
+  "datePublished": "2024-04-14",
+  "description": "My keyboard doesn't include the media keys, so I built a macro keyboard to control the media on my desktop computer. It is plug'n'play and requires no configuration to work between different devices. The project can be easily tweaked to program macro's for work, steam games, and whatever else you can't be bothered to type out manually.",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">media-keyboard</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#button-setup">Button Set Up</a></li>
+<li><a href="#optimising">Optimising the Code</a></li>
+<li><a href="#finished-code">The Finished Code</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>Media Keyboard - Pico Controller</h1>
+<time datetime="2024-04-14">14th April, 2024</time>
+<img alt="A Raspberry Pi Pico controller on a breadboard, wired
           up to six coloured buttons, in the pattern of white, blue,
-          blue, white, blue, white.">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+          blue, white, blue, white." src="/images/guides/media-keyboard.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             My keyboard doesn't include the media keys, so I built a macro
             keyboard to control the media on my desktop computer. It is
             plug'n'play and requires no configuration to work between
@@ -82,17 +83,16 @@
             macro's for work, steam games, and whatever else you can't be
             bothered to type out manually.
           </p>
-          <p>
+<p>
             I won't be going through the first time setup of the pico here,
             so that is something you're going to have to look up yourself.
             Once you know how to get some python code on the device and
             get it to run, you're ready, so see you then!
           </p>
-        </section>
-
-        <section id="getting-started" title="Getting Started">
-          <h2>Getting Started</h2>
-          <p>
+</section>
+<section id="getting-started" title="Getting Started">
+<h2>Getting Started</h2>
+<p>
             When you know how to move data on and off the device and run
             some python on it, you will want to install
             <a href="https://circuitpython.org/downloads">CircuitPython</a>
@@ -104,64 +104,56 @@
             download, and copy the <code>adafruit_hid/</code> directory into
             the <code>lib/</code> directory on the pico.
           </p>
-        </section> 
-
-        <section id="button-setup" title="Button Set Up">
-          <h2>Button Set Up</h2>
-          <small>
-            <p>
+</section>
+<section id="button-setup" title="Button Set Up">
+<h2>Button Set Up</h2>
+<small>
+</small><p>
             Note: I will assume you know how to wire a button. I'm using
             the same ground pin for all 6. I have used GPIO pins 16 to
             21, which keeps things nice and tidy as the are all in one
             corner of the pico.
             </p>
-          </small>
-          <p>
+<p>
             First we need to import the libraries we need, including the
             adafruit consumer control modules:
           </p>
-
-          <pre class="language-python"><code>import time
+<pre class="language-python"><code>import time
 import digitalio
 import board
 import usb_hid
 from adafruit_hid.consumer_control import ConsumerControl
 from adafruit_hid.consumer_control_code import ConsumerControlCode</code></pre>
-
-          <p>
+<p>
             Next we can look at how to set up a single key:
           </p>
-
-          <pre class="language-python"><code>cc = ConsumerControl(usb_hid.devices)
+<pre class="language-python"><code>cc = ConsumerControl(usb_hid.devices)
 wait = 0.125
 
 btn1 = digitalio.DigitalInOut(board.GP21)
 btn1.direction = digitalio.Direction.INPUT
 btn1.pull = digitalio.Pull.DOWN</code></pre>
-
-          <p>
+<p>
             If you have ever set up buttons using GPIO on a raspberry
             pi, then this should all be looking pretty familiar.
             We assign <code>btn1</code> a GPIO address, state that
             the GPIO is receiving input, and identify whether the
             buttons <em>awake</em> state should be when UP or DOWN.
           </p>
-          <p>
+<p>
             Of course this is a long process to go through for multiple
             buttons, and we will use some syntactic prowess to make this
             easier. But for now, let's finally look at the program loop
             that will be listening for key presses:
           </p>
-
-          <pre class="language-python"><code>while True:
+<pre class="language-python"><code>while True:
   if btn1.value:
     print('key pressed')
     cc.send(Consumer.ControlCode.PLAY_PAUSE)</code></pre>
-        </section>
-
-        <section id="optimising" title="Optimising the Code">
-          <h2>Optimising the Code</h2>
-          <p>
+</section>
+<section id="optimising" title="Optimising the Code">
+<h2>Optimising the Code</h2>
+<p>
             As mentioned, going through this process for 6 keys,
             and setting up the conditional logic to handle key
             presses would be a little tedious. To remedy this, we
@@ -169,8 +161,7 @@ btn1.pull = digitalio.Pull.DOWN</code></pre>
             create a list of each GPIO address, and what event
             that each specific event will correspond to:
           </p>
-
-          <pre class="language-python"><code>media_keys = [
+<pre class="language-python"><code>media_keys = [
   {'pin':board.GP21, 'code':ConsumerControlCode.MUTE},
   {'pin':board.GP16, 'code':ConsumerControlCode.VOLUME_DECREMENT},
   {'pin':board.GP20, 'code':ConsumerControlCode.VOLUME_INCREMENT},
@@ -178,44 +169,38 @@ btn1.pull = digitalio.Pull.DOWN</code></pre>
   {'pin':board.GP17, 'code':ConsumerControlCode.PLAY_PAUSE},
   {'pin':board.GP18, 'code':ConsumerControlCode.SCAN_NEXT_TRACK}
 ]</code></pre>
-
-          <p>
+<p>
             Neat, right? What about assigning the active states to
             each key? Rather than add repeated information into our
             keys list, we can just use a for loop to add this info
             to each dictionary in the list:
           </p>
-
-          <pre class="language-python"><code>for media_key in media_keys:
+<pre class="language-python"><code>for media_key in media_keys:
   media_key['btn'] = digitalio.DigitalInOut(media_key['pin'])
   media_key['btn'].direction = digitalio.Direction.INPUT
   media_key['btn'].pull = digitalio.Pull.DOWN</code></pre>
-
-          <p>
+<p>
             Isn't python great? Lastly we can use a for loop again,
             this time for the key listener loop, making use of the
             power of python to save us typing out tedious and
             repetitive code:
           </p>
-
-          <pre><code class="language-python">while True:
+<pre><code class="language-python">while True:
   for media_key in media_keys:
     if media_key['btn'].value:
       cc.send(media_key['code'])
       time.sleep(wait)
   time.sleep(wait)</code></pre>
-        </section>
-
-        <section id="finished-code" title="The Finished Code">
-          <h2>The Finished Code</h2>
-          <p>
+</section>
+<section id="finished-code" title="The Finished Code">
+<h2>The Finished Code</h2>
+<p>
             The following code should be saved on the pico's top-most
             directory as <code>code.py</code>. Adding print statements
             to the while loop should aid in debugging if you find it
             doesn't work correctly.
           </p>
-
-          <pre class="language-python"><code>import time
+<pre class="language-python"><code>import time
 import digitalio
 import board
 import usb_hid
@@ -245,22 +230,18 @@ while True:
       cc.send(media_key['code'])
       time.sleep(wait)
   time.sleep(wait)</code></pre>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

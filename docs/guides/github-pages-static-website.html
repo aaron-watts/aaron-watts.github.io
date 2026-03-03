@@ -1,90 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A look at the steps necessary to get
-    a free-hosted static website set up on Github with Github Pages">
-    <meta name="keywords" content="webdev, seo, xml, python">
-    
-    <title>AWD - Satic Website with Github Pages</title>
-   
-    <link rel="canonical" href="https://aaronwatts.dev/guides/github-pages-static-website"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
- 
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>   
-
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">github-pages-static-website</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-       </nav>
-       <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#cms">Why Not a CMS?</a></li>
-        <li><a href="#github-pages">Github Pages</a></li>
-        <li><a href="#custom-domain">Custom Domain</a></li>
-        <li><a href="#bing">Getting Bing Ready</a></li>
-        <li><a href="#sitemap">Sitemap</a></li>
-        <li><a href="#feed">RSS Feed</a></li>
-        <li><a href="#automating">Automating the Boring Stuff</a></li>
-        <li><a href="#adding-comments-section">Adding a Comments Section</a></li>
-      </ol>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h1>Static Website - Github Pages</h1>
-          <time datetime="2024-06-09">9th June, 2024</time>
-          <img src="/images/guides/github-pages-static-website.avif"
-          alt="The google search home page with your name here written
-          in the query input">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="You don't always need a full stack. When all you need to do is show information, a static website is enough. And with Github Pages, it is possible to have a fully functioning website for free, just like this one! It could just be the perfect solution for your portfolio page." name="description"/>
+<meta content="webdev, seo, xml, python" name="keywords"/>
+<title>AWD - Satic Website with Github Pages</title>
+<link href="https://aaronwatts.dev/guides/github-pages-static-website" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="Static Website - Github Pages" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="You don't always need a full stack. When all you need to do is show information, a static website is enough. And with Github Pages, it is possible to have a fully functioning website for free, just like this one! It could just be the perfect solution for your portfolio page." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/github-pages-static-website" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/github-pages-static-website.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2024-06-09" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/github-pages-static-website"
+  },
+  "headline": "Static Website - Github Pages",
+  "datePublished": "2024-06-09",
+  "description": "You don't always need a full stack. When all you need to do is show information, a static website is enough. And with Github Pages, it is possible to have a fully functioning website for free, just like this one! It could just be the perfect solution for your portfolio page.",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">github-pages-static-website</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#cms">Why Not a CMS?</a></li>
+<li><a href="#github-pages">Github Pages</a></li>
+<li><a href="#custom-domain">Custom Domain</a></li>
+<li><a href="#bing">Getting Bing Ready</a></li>
+<li><a href="#sitemap">Sitemap</a></li>
+<li><a href="#feed">RSS Feed</a></li>
+<li><a href="#automating">Automating the Boring Stuff</a></li>
+<li><a href="#adding-comments-section">Adding a Comments Section</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>Static Website - Github Pages</h1>
+<time datetime="2024-06-09">9th June, 2024</time>
+<img alt="The google search home page with your name here written
+          in the query input" src="/images/guides/github-pages-static-website.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             You don't always need a full stack. When all you need to
             do is show information, a static website is enough. And
             with Github Pages, it is possible to have a fully
             functioning website for free, just like this one! It could
             just be the perfect solution for your portfolio page.
           </p>
-          <p>
+<p>
             In fact, in 2024, static sites can do a bit more than just
             send information. This site, for example, has a 
             <s>comment section</s> on each
@@ -97,18 +98,17 @@
             as some of the interesting things you can get working on
             static websites today.
           </p>
-        </section>
-
-        <section id="cms" title="Why Not a CMS?">
-          <h2>Why Not a CMS?</h2>
-          <p>
+</section>
+<section id="cms" title="Why Not a CMS?">
+<h2>Why Not a CMS?</h2>
+<p>
             Good question. You can absolutely use a Content Management
             System. Github Pages even has one incorporated into it, 
             it's called
             <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.
             But I had a very specific vision for my website. Story time.
           </p>
-          <p>
+<p>
             I bought my domain name a while ago. I had been learning
             web development, and thought I might like to do it
             professionally. And so, naturally I would need an online
@@ -124,10 +124,9 @@
             I was never satisified with a project. I would always want
             to improve or fix something, and nothing ever got finished.
           </p>
-          <p>
+<p>
             Then I came across a website, just some
-            <a href="https://motherfuckingwebsite.com/" 
-            target="_blank">motherfucking website</a>, and I realised
+            <a href="https://motherfuckingwebsite.com/" target="_blank">motherfucking website</a>, and I realised
             then, that less is more. When I decided I wanted to build
             this website to log my guides, I decided I wanted it to
             follow those design principles (or lack there of). In
@@ -142,7 +141,7 @@
             itself. The only external service is the comments because,
             well, static.
           </p>
-          <p>
+<p>
             So, to keep to those design principles, I've opted to do
             everything myself (and also because I enjoy coding).
             Although, that doesn't mean things have to be difficult
@@ -150,24 +149,22 @@
             to pass the bing test, we will take a look at automating
             some of the tedious stuff with python scripts.
           </p>
-        </section>
-
-        <section id="github-pages" title="Github Pages">
-          <h2>Github Pages</h2>
-          <p>
+</section>
+<section id="github-pages" title="Github Pages">
+<h2>Github Pages</h2>
+<p>
             So, assuming you've got a basic website built and ready
             to go, you will need somewhere to serve the files from.
             I'm not savvy enough to want to brave self hosting on
             a home server, so I opted for
-            <a href="https://pages.github.com/"
-            target="_blank">Github Pages</a>. 
+            <a href="https://pages.github.com/" target="_blank">Github Pages</a>. 
             If you're here reading this, then chances are you either
             have a github account, or are familiar with the git CLI.
             Github Pages websites are free, though there are
             limitations to them, but for a portfolio page, a blog,
             or documentation it is ideal.
           </p>
-          <p>
+<p>
             There are 2 different types of github pages websites.
             The first is the user/organisation site. This will
             give you a url in the format
@@ -182,15 +179,13 @@
             search engines will involve adding meta tags into the
             site headers for verification.
           </p>
-        </section>
-
-        <section id="custom-domain" title="Custom Domain Name">
-          <h2>Custom Domain Name</h2>
-          <p>
+</section>
+<section id="custom-domain" title="Custom Domain Name">
+<h2>Custom Domain Name</h2>
+<p>
             You don't need a custom domain name. But with a DNS
             provider, such as
-            <a target="_blank" 
-            href="https://www.namecheap.com/">namecheap</a>,
+            <a href="https://www.namecheap.com/" target="_blank">namecheap</a>,
             you get the benefit of advnaced DNS configuration,
             making it far easier to set up SEO, using CNAME and
             txt records, instead of uglying up your code with
@@ -199,21 +194,14 @@
             <code>&lt;yourname&gt;.github.io</code>. The process for getting
             custom domains set up for user and organisation
             pages is pretty thoroughly documented by gihtub
-            <a 
-                href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site"
-                target="_blank"
-            >here</a>. For project pages, there is a solution
+            <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank">here</a>. For project pages, there is a solution
             that worked for me over at Stack Overflow
-            <a 
-                href="https://stackoverflow.com/a/9123911"
-                target="_blank"
-            >here</a>.
+            <a href="https://stackoverflow.com/a/9123911" target="_blank">here</a>.
           </p>
-        </section>
-
-        <section id="bing" title="Getting Bing Ready">
-          <h2>Getting Bing Ready</h2>
-          <p>
+</section>
+<section id="bing" title="Getting Bing Ready">
+<h2>Getting Bing Ready</h2>
+<p>
             Okay, so Bing is not the only search engine. But
             out of Bing and Google, Bing is definitely the
             hard-arse parent that isn't goint to tolerate any
@@ -229,8 +217,8 @@
             with something like the emmet boilerplate, you
             shouldn't run in to too many more than I did.
           </p>
-          <h3>H1's</h3>
-          <p>
+<h3>H1's</h3>
+<p>
             They tried to tell you. You didn't listen.
             Semantics is important. But you kept following
             those CSS guru's on youtube like they were bitches
@@ -238,27 +226,24 @@
             nest spans in divs in spans in divs to make a
             sidemenu icon change shape when the menu is hidden.
           </p>
-          <p>
+<p>
             Bing wants to see a h1 on every page. Be smart and
             use it on the <em>main title</em> of the 
             <em>relevant content</em> of each page. I didn't
             really see the need for one on my
-            <a href="/" target="_blank"
-            >splash page</a>, but Bing flagged it, so I had to
+            <a href="/" target="_blank">splash page</a>, but Bing flagged it, so I had to
             put one in and cancel the styling on it.
           </p>
-        
-          <h3>Alt-txt</h3>
-          <p>
+<h3>Alt-txt</h3>
+<p>
             Yes, semantics is important. And yes, I regularly
             forget to put the alt-txt on images. Oh, fine. I
             just don't bother, I remember and then decide I'm
             too lazy to do it. Anyway, Bing pulled me on it,
             and now I try to be a good web dev.
           </p>
-
-          <h3>Meta Description</h3>
-          <p>
+<h3>Meta Description</h3>
+<p>
             SEO has changed over the years, and search engines
             rely less on the meta tags in html headers than they
             used to. However, Bing still wants a meta desription
@@ -267,9 +252,8 @@
             whistles if you wish, but just make sure the description
             is in their, as it seems to be the one Bing cares about.
           </p>
-
-          <h3>Favicon</h3>
-          <p>
+<h3>Favicon</h3>
+<p>
             Technically, this wasn't really an obstacle to getting
             indexed, but it is rumoured that it can improve your
             ranking in search engines, and it also get's rid of that
@@ -283,11 +267,10 @@
             website - just don't forget to update the name and
             short name values in that file before pushing.
           </p>
-        </section>
-
-        <section id="sitemap" title="Sitemap">
-          <h2>Sitemap</h2>
-          <p>
+</section>
+<section id="sitemap" title="Sitemap">
+<h2>Sitemap</h2>
+<p>
             There are two main types of sitemap. The first is 
             html sitemaps, intended for users, but search engines
             can also crawl them to find links to all the pages on
@@ -295,26 +278,25 @@
             submit directly to search engines, so they have an
             immediate directory of your sites urls.
           </p>
-          <p>
+<p>
             Creating a html sitemap isn't too difficult if you
             have already managed to code a static website, so
             I'll look at the xml sitemap, as there's a bit to
             learn with xml if you haven't used it much before.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             Note: If your site is only one page, you do not need any
             sitemaps.
             </p>
-          </small>
-          <p>
+<p>
             The sitemap xml file isn't too complicated, and is a
             good thing to look at before moving onto RSS feeds,
             which are similar but have a fair bit more going on
             to them. Let's take a look at the sitemap for this
             website, and then break it down:
           </p>
-          <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
   &lt;url&gt;
     &lt;loc&gt;https://aaronwatts.dev/&lt;/loc&gt;
@@ -338,27 +320,22 @@
     &lt;loc&gt;https://aaronwatts.dev/guides/retropie-nespi-4/&lt;/loc&gt;
   &lt;/url&gt;
 &lt;/urlset&gt;</code></pre>
-    
-          <p>
+<p>
             This should all look a little familiar if you've ever
             played around with svg's in the browser, as it's the
             same type of markup. The first line is just stating
             which version of xml and encoding the document is using.
           </p>
-
-          <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
-
-          <p>
+<pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
+<p>
             The next line is the opening tag for the root element,
             <code>&lt;urlset&gt;</code>. It's what it sounds like, a set of
             url's.
           </p>
-
-          <pre class="language-html"><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+<pre class="language-html"><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
   &lt;!-- urls go here --&gt;
 &lt;/urlset&gt;</code></pre>
-
-          <p>
+<p>
             Nested within the <code>&lt;urlset&gt;</code> element are the
             <code>&lt;url&gt;</code> elements, one for each page in your
             website that you wish to be known to a search engines
@@ -369,26 +346,22 @@
             <code>&lt;url&gt;</code> tag,
             but you can check what other tags can be included by
             checking the protocol documenation at 
-            <a href="https://sitemaps.org/protocol.html"
-            target="_blank">sitemap.org</a>.
+            <a href="https://sitemaps.org/protocol.html" target="_blank">sitemap.org</a>.
           </p>
-
-          <pre class="language-html"><code>&lt;url&gt;
+<pre class="language-html"><code>&lt;url&gt;
   &lt;loc&gt;https://aaronwatts.dev/&lt;/loc&gt;
 &lt;/url&gt;</code></pre>
-
-          <p>
+<p>
             A CMS would write these out for you, and doing them
             by hand can become a bit boring, and also prone to
             human error, so we will take a look at writing
             scripts to build these xml files for us shortly.
             But first, let's look at the rss feed.
           </p>
-        </section>
-
-        <section id="feed" title="RSS Feed">
-          <h2>RSS Feed</h2>
-          <p>
+</section>
+<section id="feed" title="RSS Feed">
+<h2>RSS Feed</h2>
+<p>
             So, the following xml file contains the bare minimum for
             an rss feed to function in most readers. The required elements
             are all there. We can add more for a far better experience,
@@ -399,10 +372,10 @@
             be foolish not to get some kind of automation set up to do
             this for us.
           </p>
-          <p>
+<p>
             But first, let's have a quick look at what we have so far:
           </p>
-          <pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="language-html"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;rss version="2.0"&gt;
   &lt;channel&gt;
     &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
@@ -435,8 +408,7 @@
     &lt;/item&gt;
   &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
-
-          <p>
+<p>
             So, ignoring the first line, that is the same as the
             sitemap xml file, we can see that the root element in
             the rss feed is the <code>&lt;rss&gt;</code> element.
@@ -450,8 +422,7 @@
             the rss aggregators with the information they need about
             the channel itself.
           </p>
-
-          <pre class="language-html"><code>&lt;rss version="2.0"&gt;
+<pre class="language-html"><code>&lt;rss version="2.0"&gt;
   &lt;channel&gt;
     &lt;title&gt;AaronWattsDev Projects&lt;/title&gt;
     &lt;link&gt;https://aaronwatts.dev/home&lt;/link&gt;
@@ -459,8 +430,7 @@
     &lt;!-- rss items go here --&gt;
   &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
-    
-          <p>
+<p>
             Finally, we have the rss items themselves. These each
             consist of an <code>&lt;item&gt;</code> element, with a
             nested <code>&lt;title&gt;</code>,
@@ -471,18 +441,15 @@
             with links and descriptions. This will come in handy in a
             when we automate the feed.
           </p>
-
-          <pre class="language-html"><code>&lt;item&gt;
+<pre class="language-html"><code>&lt;item&gt;
   &lt;title&gt;Raspberry Pi 5 - Desktop Computer&lt;/title&gt;
   &lt;link&gt;https://aaronwatts.dev/guides/pi5-desktop&lt;/link&gt;
   &lt;description&gt;This is less of a guide, and more just an outline of how, and why, I'm doing it. As well as a review of how it's going. It's not here as clickbait, you might not want to do it yourself, but I'm here to say that it's working for me.&lt;/description&gt;
 &lt;/item&gt;</code></pre>
-        </section>
-
-        <section id="automating" title="Automating the Boring Stuff">
-          <h2>Automating the Boring Stuff</h2>
-
-          <p>
+</section>
+<section id="automating" title="Automating the Boring Stuff">
+<h2>Automating the Boring Stuff</h2>
+<p>
             One of the main benefits of using a CMS, is that you
             don't have to do, or even think about, most of this
             stuff. Not only is ammending the sitemap and rss feed
@@ -500,18 +467,15 @@
             affects or benefits the scripts I'm writing for
             reference.
           </p>
-
-          <h3>A Sitemap Generator in Python</h3>
-
-          <p>
+<h3>A Sitemap Generator in Python</h3>
+<p>
             So the sitemap is essentially just a set of links
             to each html page in the website. Easy, my site
             only has two folders containing any html files at
             all, that's the <code>root/</code> and
             <code>guides/</code> directories.
           </p>
-
-          <pre class="language-treeview"><code>root/
+<pre class="language-treeview"><code>root/
 ├── index.html
 ├── home.html
 └── guides/
@@ -520,8 +484,7 @@
     ├── media-keyboard.html
     ├── pi5-desktop.html
     └── retropie-nespie-4.html.html</code></pre>
-
-          <p>
+<p>
             With this in mind, all we need to do, is build a
             <code>&lt;url&gt;</code> element for each file,
             append it to the root element, and then write it to
@@ -530,7 +493,7 @@
             <code>xml.etree.ElementTree</code> module parses
             and writes xml. Both are included in python3.
           </p>
-          <p>
+<p>
             The following snippet will build a root element,
             and then append a subelement to it, and fill out
             the text. We also have to register the xml
@@ -540,7 +503,7 @@
             will result in <code>ns0</code> inserting itself
             within all the following elements down the tree.
           </p>
-          <pre class="language-python"><code>import xml.etree.ElementTree as ET
+<pre class="language-python"><code>import xml.etree.ElementTree as ET
 
 # create the root element and set namespace
 ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
@@ -551,8 +514,7 @@ urlset.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
 url = ET.SubElement(urlset, 'url')
 loc = ET.SubElement(url, 'loc')
 loc.text = 'https://aaronwatts.dev/'</code></pre>
-
-          <p>
+<p>
             We are going to have to build a lot more url's,
             so that may as well be extracted out to a function.
             We will pass the file<em>path</em> to it as a
@@ -564,8 +526,7 @@ loc.text = 'https://aaronwatts.dev/'</code></pre>
   url = ET.SubElement(urlset, 'url')
   loc = ET.SubElement(url, 'loc')
   loc.text = f'{root_url}{path}'</code></pre>
-
-          <p>
+<p>
             I'm going to keep the script simple, and just
             call the two files in the root directory
             directly, as I don't expect these to change any
@@ -576,25 +537,21 @@ loc.text = 'https://aaronwatts.dev/'</code></pre>
             call the build file function, passing the filename with
             the <code>.html</code> extension truncated off.
           </p>
-
-          <pre class="language-python"><code>build_url()
+<pre class="language-python"><code>build_url()
 build_url('home/')
 
 for filename in os.listdir('guides/'):
   build_url(f'{filename[:-5]}/')</code></pre>
-
-          <p>
+<p>
             Finally, we just need to declare the element
             tree, indent it for readability, and write it
             to <code>sitemap.xml</code>. We can define the
             xml version and encoding in the write function.
           </p>
-
-          <pre class="language-python"><code>tree = ET.ElementTree(urlset)
+<pre class="language-python"><code>tree = ET.ElementTree(urlset)
 ET.indent(tree)
 tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
-
-          <p>
+<p>
             A quick look at the finished script and you will
             see I have stored the base url as a string, to help
             in the build url function. It only gets used on the
@@ -602,8 +559,7 @@ tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></p
             to change later if we need to by declaring it at the
             start of the script
           </p>
-
-          <pre class="language-python"><code>import os
+<pre class="language-python"><code>import os
 import xml.etree.ElementTree as ET
 
 root_url = 'https://aaronwatts.dev/'
@@ -626,10 +582,8 @@ for filename in os.listdir('guides/'):
 tree = ET.ElementTree(urlset)
 ET.indent(tree)
 tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
-
-          <h3>A Simple RSS Generator in Python</h3>
-
-          <p>
+<h3>A Simple RSS Generator in Python</h3>
+<p>
             There is a bit more to do in this script. As well as
             url's for each page, we will need a title and a
             description for each project. Well, that all exists
@@ -638,16 +592,14 @@ tree.write('sitemap.xml', xml_declaration='version', encoding='UTF-8')</code></p
             module to read and parse the html file, and extract
             all the data we need.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             Beautiful Soup is not a built-in python module, and
             will need to be installed, along with a parser. For
             more information check the
-            <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#installing-beautiful-soup"
-            target="_blank">documentation</a>.
+            <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#installing-beautiful-soup" target="_blank">documentation</a>.
             </p>
-          </small>
-          <pre class="language-python"><code>from bs4 import BeautifulSoup
+<pre class="language-python"><code>from bs4 import BeautifulSoup
 
 with open('home.html') as f:
   txt = f.read()
@@ -659,15 +611,13 @@ for project in guides:
   title = project.select_one('h2').text
   link = project.select_one('a')['href']
   description = project.select_one('.description').text</code></pre>
-
-          <p>
+<p>
             The next step is to build the xml. Which is
             essentially the same process as with the sitemap,
             however the elements are a little more complex
             for the rss elements.
           </p>
-
-          <pre class="language-python"><code>import xml.etree.ElementTree as ET
+<pre class="language-python"><code>import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
 # strings for the channel information
@@ -722,10 +672,8 @@ for project in guides:
 tree = ET.ElementTree(rss)
 ET.indent(tree)
 tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
-
-          <h3>A Better RSS Feed</h3>
-
-          <p>
+<h3>A Better RSS Feed</h3>
+<p>
             We have the basics now for a working RSS feed,
             but loaded up into an aggregator, it looks a little
             empty compared to other RSS feeds out there. There
@@ -742,17 +690,15 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             <code>&lt;category&gt;</code> element to categorise
             feeds.
           </p>
-          <p>
+<p>
             There are other elements you can include, such as
             dates for updates and published, but I am not yet
             including this information in articles, I may
             implement it in the near future. Check the
-            rssboard <a href="https://www.rssboard.org/media-rss"
-            target="_blank">media-rss documentation</a> for
+            rssboard <a href="https://www.rssboard.org/media-rss" target="_blank">media-rss documentation</a> for
             more quality-of-life elements around media.
           </p>
-
-          <pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+<pre class="language-xml"><code>&lt;?xml version='1.0' encoding='UTF-8'?&gt;
 &lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/"&gt;
   &lt;channel&gt;
   &lt;atom:link href="https://aaronwatts.dev/feed.xml" rel="self" type="applications/rss+xml" /&gt;
@@ -771,8 +717,7 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
   &lt;/item&gt;
   &lt;/channel&gt;
 &lt;/rss&gt;</code></pre>
-
-          <p>
+<p>
             My design choices and project structure have
             influenced how I have written the script to collect
             all the required information to build the individual
@@ -785,8 +730,7 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             the script can easily decipher the image url that's
             associated with it.
           </p>
-
-          <pre class="language-treeview"><code>root/
+<pre class="language-treeview"><code>root/
 ├── index.html
 ├── home.html
 ├── guides/
@@ -795,8 +739,7 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
 └── images/
     ├── gpicase.jpg
     └── kde-plasma-bigscreen.jpg</code></pre>
-
-          <p>
+<p>
             A different solution here could be to include a
             hidden element in each project on the home page
             that lists them, with innertext that defines
@@ -806,8 +749,7 @@ tree.write('rss.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             different from the simple rss script, it just
             has more jobs to do now:
           </p>
-
-          <pre class="language-python"><code>import xml.etree.ElementTree as ET
+<pre class="language-python"><code>import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
 base_url = 'https://aaronwatts.dev'
@@ -884,9 +826,8 @@ for project in guides:
 tree = ET.ElementTree(rss)
 ET.indent(tree)
 tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
-
-          <h3>Further Automation</h3>
-          <p>
+<h3>Further Automation</h3>
+<p>
             We could expand on this even further. The list of
             guides in <code>home.html</code> could, with not
             much more work than we've already done, be generated
@@ -909,9 +850,8 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             go out into the sunlight for a while, so let's start
             wrapping this up.
           </p>
-
-          <h3>Index Page Generator</h3>
-          <p>
+<h3>Index Page Generator</h3>
+<p>
             Eagle eyed readers may have noticed that I have, in fact,
             added published dates to the guides on this site. I
             did also write a script that takes the exisiting guides
@@ -919,7 +859,7 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             page where the full list of guides currently lives.
             It was not an incredibly complex script either.
           </p>
-          <p>
+<p>
             Using the Beautiful Soup Python module, the script crawls
             through the <code>guides</code> directory, and scrapes
             the relevant data required to make project summaries and
@@ -930,7 +870,7 @@ tree.write('feed.xml', xml_declaration='version', encoding='UTF-8')</code></pre>
             full list of guides, which in my case, is the
             <code>main</code> element.
           </p>
-          <pre class="language-python"><code>from bs4 import BeautifulSoup
+<pre class="language-python"><code>from bs4 import BeautifulSoup
 import os
 from datetime import date
 
@@ -1005,56 +945,47 @@ for project in guides:
 # write changes to file home.html
 with open ('home.html', 'w') as outf:
   outf.write(BeautifulSoup.prettify(soup))</code></pre>
-        </section>
-
-        <section id="adding-comments-section"
-          title="Adding A Comments Section">
-          <h2>Adding A Comments Section</h2>
-          <p>
+</section>
+<section id="adding-comments-section" title="Adding A Comments Section">
+<h2>Adding A Comments Section</h2>
+<p>
             This wasn't something that I was previously aware that
             you could do with static websites, and I'm not even sure
             what first brought my attention to it. But it turns out
             there are quite a few options here. There seems to an
             option or two that use github issues to serve the comments,
             which is actually pretty smart. But the one I chose to go
-            with was <a href="https://cactus.chat/"
-            target="_blank">Cactus Comments</a>.
+            with was <a href="https://cactus.chat/" target="_blank">Cactus Comments</a>.
           </p>
-          <p>
+<p>
             Cactus Comments is free, and doesn't require users to
             sign in like the solutions based on github issues.
-            It runs on <a href="https://matrix.org/"
-            target="_blank">matrix</a>, which is a defederated chat and
+            It runs on <a href="https://matrix.org/" target="_blank">matrix</a>, which is a defederated chat and
             messaging service. And I'm a big fan of defederation.
             As it runs on matrix, you can use the
-            <a href="https://element.io/"
-            target="_blank">element</a> PC and mobile apps to get
+            <a href="https://element.io/" target="_blank">element</a> PC and mobile apps to get
             alerts of, reply to, and moderate comments (there is
             an arm 64-bit version for linux too, which is great now
             that I do all of my computing on my raspberry pi 5!).
           </p>
-          <p>
+<p>
             I won't explain how to get started, the documentation
             for cactus is pretty easy to follow. At first look you'll
             wonder if there's stuff missing from it, as it all seems
             too simple, but it really is as simple as it looks!
           </p>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-      <div>Made by Hand. Powered by</div>
-      <a href="https://pages.github.com/" target="_blank">
-        <img src="/images/githubpages.svg" 
-        alt="https://pages.github.com/">
-      </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

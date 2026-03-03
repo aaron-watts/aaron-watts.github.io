@@ -1,88 +1,88 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A guide for using watchy,
-    specifically v2 models.">
-    <meta name="keywords" content="watchy, arduino, python">
-
-    <title>AWD - Watchy</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="canonical" href="https://aaronwatts.dev/guides/watchy"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
- 
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">watchy</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#signs">First Signs Something Is Wrong</a></li>
-        <li><a href="#model">Figuring Out Which Model You Have</a></li>
-        <li><a href="#arduino">Setting Up The Arduino IDE</a></li>
-        <li><a href="#customising">Customising Watchy</a></li>
-      </ol>
-    </nav>
-
-    <main>
-      <article>
-        <header>
-          <h1>Watchy - Arduino IDE</h1>
-          <time datetime="2024-08-25">25th August, 2024</time>
-          <img src="/images/guides/watchy.avif"
-          alt="A Watchy with gun metal case displaying the time, date,
-          weather and a steps count in a custom monospace font.">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="I didn't intend to write an article about Watchy, as I only bought it to satisfy my nerd fetish. But after the trouble I had getting it to work, I thought I might write a short guide to assist anyone who might run into some of the same issues I did." name="description"/>
+<meta content="watchy, arduino, python" name="keywords"/>
+<title>AWD - Watchy</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/watchy" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="Watchy - Arduino IDE" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="I didn't intend to write an article about Watchy, as I only bought it to satisfy my nerd fetish. But after the trouble I had getting it to work, I thought I might write a short guide to assist anyone who might run into some of the same issues I did." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/watchy" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/watchy.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2024-08-25" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/watchy"
+  },
+  "headline": "Watchy - Arduino IDE",
+  "datePublished": "2024-08-25",
+  "description": "I didn't intend to write an article about Watchy, as I only bought it to satisfy my nerd fetish. But after the trouble I had getting it to work, I thought I might write a short guide to assist anyone who might run into some of the same issues I did.",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">watchy</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#signs">First Signs Something Is Wrong</a></li>
+<li><a href="#model">Figuring Out Which Model You Have</a></li>
+<li><a href="#arduino">Setting Up The Arduino IDE</a></li>
+<li><a href="#customising">Customising Watchy</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>Watchy - Arduino IDE</h1>
+<time datetime="2024-08-25">25th August, 2024</time>
+<img alt="A Watchy with gun metal case displaying the time, date,
+          weather and a steps count in a custom monospace font." src="/images/guides/watchy.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             I didn't intend to write an article about Watchy, as I
             only bought it to satisfy my nerd fetish. But after the
             trouble I had getting it to work, I thought I might write
             a short guide to assist anyone who might run into some of
             the same issues I did.
           </p>
-          <p>
-            <a href="https://watchy.sqfmi.com/" 
-            target="_blank">Watchy</a>, by SQFMI, is an awesome
+<p>
+<a href="https://watchy.sqfmi.com/" target="_blank">Watchy</a>, by SQFMI, is an awesome
             gadget. In short it's a programmable watch, that you
             assemble yourself, with added wifi and accelerometer.
             It doesn't necessarily connect to your phone, so it's
@@ -91,21 +91,17 @@
             is somewhat lacking. Unless you end up with the V3 watchy,
             the little documentation there is, is utterly useless.
           </p>
-          <p>
-            I bought mine from the <a href="https://thepihut.com"
-            target="_blank">The Pi Hut</a>, which, according to the
+<p>
+            I bought mine from the <a href="https://thepihut.com" target="_blank">The Pi Hut</a>, which, according to the
             description on their site is a V2. If you end up with
             anything less than a V3, don't even bother with the
-            <a href="https://watchy.sqfmi.com/docs/getting-started/"
-            target="_blank">documentation</a> beyond the initial
+            <a href="https://watchy.sqfmi.com/docs/getting-started/" target="_blank">documentation</a> beyond the initial
             assembly, because it won't work.
           </p>
-        </section>
-
-        <section id="signs"
-          title="First Signs Something Is Wrong">
-          <h2>First Signs Something Is Wrong</h2>
-          <p>
+</section>
+<section id="signs" title="First Signs Something Is Wrong">
+<h2>First Signs Something Is Wrong</h2>
+<p>
             So after assembly, and following the documentation to a
             tee, I tried the first seemingly obvious and easy thing
             to customise my watchy; I tried to change the watch
@@ -119,7 +115,7 @@
             compiled (very slowly!), and it flashed - common sense and
             a good error message had saved the day, or so it seemed.
           </p>
-          <p>
+<p>
             Once the code had written to the flash storage, it went
             to reset the device. It seemed to hang on that message.
             No bother, things sometimes take a while, I'll go make a
@@ -133,7 +129,7 @@
             time had passed for me to be sure the time wasn't
             updating.
           </p>
-          <p>
+<p>
             Even in the preloaded demo, the buttons seemed somewhat
             unresponsive when trying to operate the Watchy. In
             particular, I couldn't seem to get the thing to reset or
@@ -144,12 +140,10 @@
             though something has sneezed metal across the board once
             I was done with it.
           </p>
-        </section>
-
-        <section id="model"
-          title="Figuring Out Which Model You Have">
-          <h2>Figuring Out Which Model You Have</h2>
-          <p>
+</section>
+<section id="model" title="Figuring Out Which Model You Have">
+<h2>Figuring Out Which Model You Have</h2>
+<p>
             So, as I mentioned, the docs are useless now. There is
             a Discord server where you can find some help, but
             personally, I'm not the biggest fan of chat rooms - they
@@ -159,19 +153,17 @@
             messages that aren't necessarily the same conversation
             as you are partaking in, then be my guest.
           </p>
-          <p>
+<p>
             One issue with working with Watchy in Arduino IDE, is
             that it's slow, <em>really slow</em>. Luckily, there's
             a python package and a couple of binaries we can use to
             quickly figure out if which version of Watchy we have.
-            Szybet's <a href="https://github.com/Szybet/InkWatchy/wiki/Trying-out-the-demo-firmware"
-            target="_blank">InkWatchy</a> firmware has a couple of
-            <a href="https://github.com/Szybet/InkWatchy/releases"
-            target="_blank">binary demo's</a> we can quickly flash
+            Szybet's <a href="https://github.com/Szybet/InkWatchy/wiki/Trying-out-the-demo-firmware" target="_blank">InkWatchy</a> firmware has a couple of
+            <a href="https://github.com/Szybet/InkWatchy/releases" target="_blank">binary demo's</a> we can quickly flash
             to Watchy, and see which one works. To do so, we will
             need a Python package called ESPTool.
           </p>
-          <p>
+<p>
             I have mentioned quite a few times before, in previous
             articles, that nowadays I compute exclusively on a
             Raspberry Pi. Unfortunately there wasn't an esptool
@@ -184,16 +176,12 @@
             create a virtual environment where you can install
             esptool.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             NOTE: always make sure to deactivate the virtual
             environment before closing your terminal!
             </p>
-          </small>
-          
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"
-          data-output="1,3-4,6-7,9-10"><code># create virtual environment
+<pre class="language-none command-line" data-host="dev" data-output="1,3-4,6-7,9-10" data-user="aaronwatts"><code># create virtual environment
 python -m venv esptoolenv
 
 # activate virtual environment
@@ -204,16 +192,15 @@ pip3 install esptool==4.5.dev2
 
 # deactivate virtual environment
 deactivate</code></pre>
-          <p>
+<p>
             Now we have the virtual environment set up, copy those
             two firmware binaries over to the parent directory of
             the vitrual environment, and we can try to flash each
             one using the following instructions.
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>source esptoolenv/bin/activate
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>source esptoolenv/bin/activate
 esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
-          <p>
+<p>
             If <code>Watchy_3-demo.bin</code> works, you have a
             V3 Watchy, and you probably just need to make sure you
             are using up to date versions of the esprissif ESP
@@ -222,12 +209,10 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
             lower, and will need to change a few things in your
             Arduino IDE to get the Watchy to flash, so read on.
           </p>
-        </section>
-
-        <section id="arduino"
-          title="Setting Up The Arduino IDE">
-          <h2>Setting Up The Arduino IDE</h2>
-          <p>
+</section>
+<section id="arduino" title="Setting Up The Arduino IDE">
+<h2>Setting Up The Arduino IDE</h2>
+<p>
             If you are also using a Raspberry Pi 5 like me, you
             might have noticed that the Arduino IDE has gone missing
             from the reccomended software app. We still have a few
@@ -235,18 +220,16 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
             but it's ugly as hell and the menu's don't pick up on the
             theming. There is also a version in Pi-Apps, but to be
             safe, I am using the
-            <a href="https://docs.arduino.cc/software/ide-v1/tutorials/Linux/"
-            target="_blank">legacy version</a> from the official
+            <a href="https://docs.arduino.cc/software/ide-v1/tutorials/Linux/" target="_blank">legacy version</a> from the official
             website, and everything works with it. You will still
             want to follow the instructions in the
-            <a href="https://watchy.sqfmi.com/docs/getting-started#arduino-setup"
-            target="_blank">Watchy Docs</a> with regards to setting
+            <a href="https://watchy.sqfmi.com/docs/getting-started#arduino-setup" target="_blank">Watchy Docs</a> with regards to setting
             up Arduino, except instead of installing
             <code>v2.0.17+</code> of the esp32 platform, install
             <code>v2.0.11</code>. And, instead of the latest version
             of the Watchy library, install <code>1.4.7</code>.
           </p>
-          <p>
+<p>
             Instead of choosing the ESP32S3-Dev Module board, scroll
             down in the <em>ESP Arduino</em> boards list until you
             find <em>Watchy</em>, and select that. Under
@@ -258,11 +241,10 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
             using the Arduino IDE should now work, so don't throw it 
             in the parts bin!
           </p>
-        </section>
-
-        <section id="customising" title="Customising Watchy">
-          <h2>Customising Watchy</h2>
-          <p>
+</section>
+<section id="customising" title="Customising Watchy">
+<h2>Customising Watchy</h2>
+<p>
             I'm not going to go into detail here, after all this is
             the fun of having a Watchy. Go hack and learn some stuff
             about programming. However, as a hint, the Watchy
@@ -273,13 +255,11 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
             temperature when it doesn't have a wifi connection to
             retreive weather data. And if you want to try another
             firmware on top of the two we've seen here,
-            <a href="https://github.com/GuruSR/Watchy_GSR/tree/master"
-            target="_blank">Watchy_GSR</a> is worth a look and has
+            <a href="https://github.com/GuruSR/Watchy_GSR/tree/master" target="_blank">Watchy_GSR</a> is worth a look and has
             much better documentation than Watchy does itself!
           </p>
-
-          <h3>Fonts</h3>
-          <p>
+<h3>Fonts</h3>
+<p>
             The online font converter was down when I went to use it.
             It seems to be back online now. But just in case there is
             an issue with it when you go to use it yourself, you can
@@ -288,26 +268,21 @@ esptool.py write_flash 0x00000 &lt;demo-name&gt;.bin</code></pre>
             directory and <code>make</code> the binary yourself, then
             you can convert your fonts for Watchy yourself.
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>cd ~/Arduino/libraries/Adafruit_GFX_Library/fontconvert
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>cd ~/Arduino/libraries/Adafruit_GFX_Library/fontconvert
 make
 ./fontconvert &lt;path-to-font&gt; &lt;size&gt; &gt;&gt; my_font.h</code></pre>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
 </body>
 </html>

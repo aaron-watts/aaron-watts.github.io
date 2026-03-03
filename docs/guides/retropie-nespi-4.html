@@ -1,95 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A home retro gaming system with a
-    Raspberry Pi 4, Retroflag's Nespi 4 case, and retropie's
-    emulationstation frontend.">
-    <meta name="keywords" content="raspberry pi, rpi4, retropie, gaming, lightgun, wiimote">
-    
-    <title>AWD - RetroPie NesPi 4</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <link rel="canonical" href="https://aaronwatts.dev/guides/retropie-nespi-4"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-  
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-   
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">retropie-nespi-4</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#bios">BIOS files</a></li>
-        <li><a href="#games">Getting Games</a></li>
-        <li><a href="#tweaks">Performance Tweaks</a></li>
-        <li><a href="#menu-music">Menu Music</a></li>
-        <li><a href="#lightgun">Lightgun Games</a></li>
-        <li><a href="#nintendo-ds">Nintendo DS</a></li>
-        <li><a href="#achievements">RetroAchievments</a></li>
-      </ol>
-    </nav>
-
-    <main>
-      <article>
-        <header>
-          <h1>RetroPie - RetroFlag NesPi 4 Case</h1>
-          <time datetime="2024-04-23">23rd April, 2024</time>
-          <img src="/images/guides/retropie-nespi-4.avif" 
-          alt="A NesPi-4 cased Raspberry Pi 4b, with the slot open
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Low power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?" name="description"/>
+<meta content="raspberry pi, rpi4, retropie, gaming, lightgun, wiimote" name="keywords"/>
+<title>AWD - RetroPie NesPi 4</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/retropie-nespi-4" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="RetroPie - RetroFlag NesPi 4 Case" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Low power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?" property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/retropie-nespi-4" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/retropie-nespi-4.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2024-04-23" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/retropie-nespi-4"
+  },
+  "headline": "RetroPie - RetroFlag NesPi 4 Case",
+  "datePublished": "2024-04-23",
+  "description": "The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie is the ultimate retro gaming rig. Low power consumption? Check. Light gun games? You got it. Great customisation options? Of course. Did you know you can even use a wiimote as the stylus for the Drastic Nintendo DS Emulator?? Did I hear someone say Wario Ware?",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">retropie-nespi-4</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#bios">BIOS files</a></li>
+<li><a href="#games">Getting Games</a></li>
+<li><a href="#tweaks">Performance Tweaks</a></li>
+<li><a href="#menu-music">Menu Music</a></li>
+<li><a href="#lightgun">Lightgun Games</a></li>
+<li><a href="#nintendo-ds">Nintendo DS</a></li>
+<li><a href="#achievements">RetroAchievments</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>RetroPie - RetroFlag NesPi 4 Case</h1>
+<time datetime="2024-04-23">23rd April, 2024</time>
+<img alt="A NesPi-4 cased Raspberry Pi 4b, with the slot open
           to show a NES cartridge style SSD case, an 8BitDo SN30 Pro
-          controller, and a WiiMote in a pistol lightgun adapter.">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+          controller, and a WiiMote in a pistol lightgun adapter." src="/images/guides/retropie-nespi-4.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             The Raspberry Pi 4, with Retroflag's NesPi 4 Case, running RetroPie
             is the ultimate retro gaming rig. Low power consumption? Check.
             Light gun games? You got it. Great customisation options? Of course.
             Did you know you can even use a wiimote as the stylus for the Drastic
             Nintendo DS Emulator?? Did I hear someone say Wario Ware?
           </p>
-          <p>
+<p>
             I've gone through a few different renditions of hardware, cases
             and software for my retrogaming rig. I use Recalbox on a GPi case
             2 with compute module 4 (no wifi), and have also used it on this
@@ -100,11 +97,10 @@
             to occasionally break after updates - not often, but often enough
             for me to notice a pattern.
           </p>
-        </section>
-
-        <section id="getting-started" title="Getting Started">
-          <h2>Getting Started</h2>
-          <p>
+</section>
+<section id="getting-started" title="Getting Started">
+<h2>Getting Started</h2>
+<p>
             The NesPi 4 Case gives you the option to use an SSD drive
             cunningly disguised as a NES cartridge for additional storage.
             But, given the faster speeds and greater reliability of SSD
@@ -117,32 +113,28 @@
             if you so choose. If you didn't get the adapter, you will want
             to dig one out from your drawer of wires, or order one online.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             Note: RetroPie images can be found in the Raspberry Pi Imager, or
             online at <a href="https://retropie.org.uk/download/">RetroPie</a>.
             </p>
-          </small>
-          <p>
+<p>
             First boot should prompt you to map your gamepad. Once done
             you can get your pi online and get its IP from the RetroPie
             menu, and ssh into it to install the NesPi 4 safe shutdown
             script:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>wget -O - "https://raw.githubusercontent.com/RetroFlag/retroflag-picase/master/install.sh" | sudo bash</code></pre>
-
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>wget -O - "https://raw.githubusercontent.com/RetroFlag/retroflag-picase/master/install.sh" | sudo bash</code></pre>
+<p>
             There's plenty of themes and splash screens to choose from,
             so make the pi yours (I went with a smart looking Nintendo
             theme and splash myself), and move to the next step when
             you're ready.
           </p>
-        </section>
-
-        <section id="bios" title="BIOS files">
-          <h2>BIOS files</h2>
-          <p>
+</section>
+<section id="bios" title="BIOS files">
+<h2>BIOS files</h2>
+<p>
             So now games? No. Slow down there. Some of the emulators
             are plug'n'play, but for some to run you will need BIOS's.
             As much as I love being told to google it by people in
@@ -152,42 +144,37 @@
             on github, you can simply copy all contents into
             your BIOS directory, or copy in as needed.
           </p>
-          <p>
+<p>
             If you're not familiar with how git works, and need some
             extra help just follow the steps below.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             Note: these instructions are assuming you are working on
             a different device to the pi.
             </p>
-          </small>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>git clone https://github.com/archtaurus/RetroPieBIOS.git
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>git clone https://github.com/archtaurus/RetroPieBIOS.git
 cd RetroPieBIOS</code></pre>
-          <p>
+<p>
             Get your pi's local IP address, but don't SSH in. Either copy
             the entire BIOS set over, or cherry pick what you need:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"
-          data-output="1,3-4"><code># to copy entire directory
+<pre class="language-none command-line" data-host="dev" data-output="1,3-4" data-user="aaronwatts"><code># to copy entire directory
 rsync -r BIOS/ &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BIOS
 
 # or to pick out a single file
 cd BIOS
 rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code></pre>
-          <p>
+<p>
             If that scares yesterdays dinner out of you, then just
             plug your SSD (or SD card if you are unwilling to take good
             advice) back into the computer and do it all the old
             fashioned way.
           </p>
-        </section>
-
-        <section id="games" title="Getting Games">
-          <h2>Getting Games</h2>
-          <p>
+</section>
+<section id="games" title="Getting Games">
+<h2>Getting Games</h2>
+<p>
             I have no idea if I'm legally allowed to tell you where to
             download digital copies of games you already own, but
             <a href="https://www.techpout.com/safe-rom-sites/">these guys</a>
@@ -197,13 +184,12 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
             which you can <em>right click</em> and choose <em>save as</em>
             to download.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             Note: workaround doesn't work when there are multiple download
             sources on a page - a common thing for Dreamcast images.
             </p>
-          </small>
-          <pre class="language-javascript"><code>// ==UserScript==
+<pre class="language-javascript"><code>// ==UserScript==
 // @name         EmuParadise Download Workaround - 1.1.1
 // @version      1.1.2
 // @description  Replaces the download button link with a working one
@@ -219,31 +205,29 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
   var id = ((document.URL).split("/"))[5];
   $(".download-link").prepend(
     `&lt;a target="_blank"
-      href="/roms/get-download.php?gid=`+id+`&test=true"
+      href="/roms/get-download.php?gid=`+id+`&amp;test=true"
       title="Download using the workaround script"
     &gt;Download using the workaround script&lt;/a&gt;&lt;br&gt;&lt;br&gt;`);
 })();</code></pre>
-          <p>
+<p>
             To get your games over to your pi, check the
             <a href="https://retropie.org.uk/docs/">RetroPie Docs</a> to
             make sure that your roms are in the correct format, then copy
             them over the old fashioned way or with rsync to the correct
             directory. Otherwise, if you're chicken, use USB.
           </p>
-          <small>
-            <p>
+<small>
+</small><p>
             Note: Use the built in scrapers on the RetroPie
             start menu to get cover art and game descriptions, you might
             need to run each once to get all your games list done. If some
             still don't work, they may need their file names adjusted in
             order to be found.
             </p>
-          </small>
-        </section>
-
-        <section id="tweaks" title="Performance Tweaks">
-          <h2>Performance Tweaks</h2>
-          <p>
+</section>
+<section id="tweaks" title="Performance Tweaks">
+<h2>Performance Tweaks</h2>
+<p>
             Aside from the obvious performance tweaks (cooling system,
             overclock, installing the operating system on a SSD or USB),
             There's a few things you can do for emulators which can tend
@@ -251,8 +235,8 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
             but that's what you get for not doing an X86 build with a
             graphics card instead. You pay peanuts, you get 480p.
           </p>
-          <h3>N64</h3>
-          <p>
+<h3>N64</h3>
+<p>
             I've seen a load of tips online on how to imrove N64
             performance. None of them worked for me. The sad truth is
             N64 just works the pi too hard. But you can make your games
@@ -260,7 +244,7 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
             if you plugged a real N64 into your TV you think you're going
             to get better resolution?
           </p>
-          <p>
+<p>
             Launch a game, and interrupt the runcommand dialog by pressing
             A, choose <em>Select video mode for lr-mupen64plus-next</em>,
             and scroll down and select
@@ -270,8 +254,8 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
             Granted the trophy overlays look like shit, but this is the
             dirty world of emulation, pirates aren't known for being clean.
           </p>
-          <h3>Dreamcast</h3>
-          <p>
+<h3>Dreamcast</h3>
+<p>
             If, like me, you bought a lot of the indie games by the likes
             of NG:Dev.Team, Red Spot and HuCast, then those bad boys are
             most likely going to run in full 1080. Tap yourself on the back
@@ -286,19 +270,16 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
             Don't forget, the Dreamcast ran at 480 anyway, if you want more
             then you will want to look at doing a X86 build.
           </p>
-          <h3>PSP</h3>
-          <p>
+<h3>PSP</h3>
+<p>
             Start here: 
-            <a target="_blank"
-            href="https://retropie.org.uk/docs/PSP/#performance"
-                >https://retropie.org.uk/docs/PSP/#performance</a>. Good luck!
+            <a href="https://retropie.org.uk/docs/PSP/#performance" target="_blank">https://retropie.org.uk/docs/PSP/#performance</a>. Good luck!
             It's playable enough ..    
           </p>
-        </section> 
-
-        <section id="menu-music" title="Menu Music">
-          <h2>Menu Music</h2>
-          <p>
+</section>
+<section id="menu-music" title="Menu Music">
+<h2>Menu Music</h2>
+<p>
             But RetroPie doesn't have menu music, I hear you say. That
             may be, but out of the linux based emulation station
             frontends, it's the least opinionated, so we can just add it
@@ -308,53 +289,44 @@ rsync &lt;bios_file&gt; &lt;user&gt;@&lt;ip_address&gt;:~/RetroPie/BOIS/</code><
             menu soundtrack to go with my nintendo theme. Next install
             mpg123:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>sudo apt install mpg123</code></pre>
-
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>sudo apt install mpg123</code></pre>
+<p>
             Next we will want to add the following to the
             <code>/opt/retropie/configs/all/autostart.sh</code> file:
           </p>
-
-          <pre class="language-bash"><code>while pgrep omxplayer >/dev/null; do sleep 1; done
-(sleep 10; mpg123 -Z /home/pi/bgm/*.mp3 >/dev/null 2>&1) &
+<pre class="language-bash"><code>while pgrep omxplayer &gt;/dev/null; do sleep 1; done
+(sleep 10; mpg123 -Z /home/pi/bgm/*.mp3 &gt;/dev/null 2&gt;&amp;1) &amp;
     
 emulationstation #auto</code></pre>
-
-          <p>
+<p>
             And in the
             <code>/opt/retropie/configs/all/runcommand-onstart.sh</code>
             file, create one if it doesn't already exist:
           </p>
-
-          <pre class="language-bash"><code>pkill -STOP mpg123</code></pre>
-
-          <p>
+<pre class="language-bash"><code>pkill -STOP mpg123</code></pre>
+<p>
             And then the
             <code>/opt/retropie/configs/all/runcommand-onend.sh</code>
             file, again: create if it doesn't exist:
           </p>
-
-          <pre class="language-bash"><code>pkill -CONT mpg123</code></pre>
-          <p>
+<pre class="language-bash"><code>pkill -CONT mpg123</code></pre>
+<p>
             And finally we just need to make those last two files
             executable:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>sudo chmod a+x /opt/retropie/configs/all/runcommand-onstart.sh
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>sudo chmod a+x /opt/retropie/configs/all/runcommand-onstart.sh
 sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
-        <p>Reboot for moods.</p>
-        </section>
-
-        <section id="lightgun" title="Lightgun Games">
-          <h2>Lightgun Games</h2>
-          <p>
+<p>Reboot for moods.</p>
+</section>
+<section id="lightgun" title="Lightgun Games">
+<h2>Lightgun Games</h2>
+<p>
             This was surprisingly simple to get going. I don't really
             play MAME games, and there's plenty of guides for the
             MAME lightgun games anyway, jfgi if that's what you're
             here for. We will be looking at PSX and Dreamcast instead.
           </p>
-          <p>
+<p>
             You will need a
             <a href="https://www.amazon.co.uk/Mayflash-W010-Dolphin-Bar-Wireless/dp/B00HZWEB74" target="_blank">Mayflash
                 Dolphin Bar</a>, a wiimote, and to do it properly,
@@ -366,7 +338,7 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             emulate mouse and cursor control, but the brave and/or rich
             among you are welcome to give it a try.
           </p>
-          <p>
+<p>
             Key mapping in emulation station and retroarch respectively
             can be a pain. So I will go through the basic setup for PSX
             and Dreamcast. First, once you've synced your wiimote up to
@@ -380,41 +352,41 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             us from getting our way. For the Emulation Station input
             use the following mapping:
           </p>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Wiimote</th>
-                <th scope="col">Input</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Start</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Select</td>
-              </tr>
-              <tr>
-                <td>D-Pad</td>
-                <td>D-Pad</td>
-              </tr>
-              <tr>
-                <td>+</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td>-</td>
-                <td>B</td>
-              </tr>
-              <tr>
-                <td>-</td>
-                <td>Hotkey</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>
+<table>
+<thead>
+<tr>
+<th scope="col">Wiimote</th>
+<th scope="col">Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Start</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Select</td>
+</tr>
+<tr>
+<td>D-Pad</td>
+<td>D-Pad</td>
+</tr>
+<tr>
+<td>+</td>
+<td>A</td>
+</tr>
+<tr>
+<td>-</td>
+<td>B</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Hotkey</td>
+</tr>
+</tbody>
+</table>
+<p>
             This is enough to select our games and access the settings
             menu if we need to. The next steps differ slightly between
             Dreamcast and PSX. Newer versions of RetroPie use Redream
@@ -432,57 +404,57 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             <em>select emulator for ROM</em> and set it to lr-flycast,
             and then launch the game.
           </p>
-          <p>
+<p>
             Once the game has launch, trigger the RetroArch menu using
             <em>Hotkey + X</em>. In the <em>quick menu</em>, select
             <em>controls, port 1 controls</em>, then set 
             <em>device type</em> to <em>lightgun</em>. Then choose
             <em>manage remap files</em>, and <em>save remap file</em>.
           </p>
-          <p>
+<p>
             Next, go back to <em>quick menu</em>, then back once more to
             <em>main menu</em>, choose
             <em>settings, input, retropad binds, port 1 controls</em>, and
             set the following mappings:
           </p>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Wiimote</th>
-                <th scope="col">Input</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>B</td>
-                <td>Gun Trigger</td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Gun Reload</td>
-              </tr>
-              <tr>
-                <td>+</td>
-                <td>Gun Start</td>
-              </tr>
-              <tr>
-                <td>D-Pad</td>
-                <td>D-Pad</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>
+<table>
+<thead>
+<tr>
+<th scope="col">Wiimote</th>
+<th scope="col">Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>Gun Trigger</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Gun Reload</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Gun Start</td>
+</tr>
+<tr>
+<td>D-Pad</td>
+<td>D-Pad</td>
+</tr>
+</tbody>
+</table>
+<p>
             Next, go back to <em>quick menu</em>, select 
             <em>core options, input</em>, and set the gun crosshair
             1 display by choosing which crosshair you would like.
           </p>
-          <p>
+<p>
             Finally, back in the <em>main menu</em>, select
             <em>configuration file</em>, and then
             <em>save current configuration</em> for settings to
             persist the next time you load the game.
           </p>
-          <p>
+<p>
             For PSX, we will be using the same emulator as with
             every other game, so we don't need to change anything
             there. The set up is similar to Dreamcast, except for
@@ -491,49 +463,47 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             <em>lightgun</em>, choose <em>guncon</em>. And, for
             Time Crisis at least, this is the better mapping:
           </p>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Wiimote</th>
-                <th scope="col">Input</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>B</td>
-                <td>Gun Trigger</td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Gun Aux A</td>
-              </tr>
-              <tr>
-                <td>Home</td>
-                <td>Gun Reload</td>
-              </tr>
-              <tr>
-                <td>+</td>
-                <td>Gun Start</td>
-              </tr>
-              <tr>
-                <td>D-Pad</td>
-                <td>D-Pad</td>
-              </tr>
-            </tbody>
-          </table>
-          <small>
-            <p>
+<table>
+<thead>
+<tr>
+<th scope="col">Wiimote</th>
+<th scope="col">Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>Gun Trigger</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Gun Aux A</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>Gun Reload</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Gun Start</td>
+</tr>
+<tr>
+<td>D-Pad</td>
+<td>D-Pad</td>
+</tr>
+</tbody>
+</table>
+<small>
+</small><p>
             Note: you will need to play around with different mappings
             for different games depending on the controls they use,
             however these mappings are a decent starting point to work
             from.
             </p>
-          </small>
-        </section>
-
-        <section id="nintendo-ds" title="Nintendo DS">
-          <h2>Nintendo DS</h2>
-          <p>
+</section>
+<section id="nintendo-ds" title="Nintendo DS">
+<h2>Nintendo DS</h2>
+<p>
             Drastic is the suggested DS emulator for RetroPie. It is
             experimental but works quite well from what I've played
             on it. In the RetroPie settings menu, choose
@@ -541,7 +511,7 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             <em>manage packages, manage experimental packages</em>,
             and then install drastic.
           </p>
-          <p>
+<p>
             You may need to map some buttons, I can't remember if
             the home button is the default one to open the settings
             menu, but make sure you keep a key mapped for it,
@@ -556,18 +526,17 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             money for a quality experience so go cry in a corner.
             You wouldn't steal a car, would you?
           </p>
-          <p>
+<p>
             If you have a Mayflash Dolphin Bar set to mode 2, and a
             synced wiimote, you already have a stylus, it's already
             set up. Don't believe me? Try it out ... I know right, I 
             was stoked on that too! What are you waiting for? Go play
             WarioWare!
           </p>
-        </section>
-
-        <section id="achievements" title="RetroAchievements">
-          <h2>RetroAchievements</h2>
-          <p>
+</section>
+<section id="achievements" title="RetroAchievements">
+<h2>RetroAchievements</h2>
+<p>
             Trophies! Set up an account at
             <a href="https://retroachievements.org/">RetroAchievements</a>
             to add replay value to all your old favourites! You'll
@@ -578,23 +547,18 @@ sudo chmod a+x /opt/retropie/configs/all/runcommand-onend.sh</code></pre>
             the lr cores for different ones, it should run on every
             other emulator you will be using.
           </p>
-        </section>
-      </article>
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
-
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

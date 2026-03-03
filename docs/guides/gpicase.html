@@ -1,87 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GPi Case 2, using Raspberry Pi Compute
-    module 4, and recalbox's emulationstation frontend to create a portable 
-    gaming device.">
-    <meta name="keywords" content="raspberry pi, cm4, recalbox, gaming, handheld">
-
-    <title>AWD - GPi Case 2</title>
-
-    <link rel="canonical" href="https://aaronwatts.dev/guides/gpicase"/>
-    <link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
-    <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <meta property="og:title"/>
-    <meta property="og:site_name" content="aaronwatts@dev"/>
-    <meta property="og:description"/>
-    <meta property="og:url"/>
-    <meta property="og:image"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:article:published_time"/>
-
-    <link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/assets/styles/prism.css">
-    <link rel="stylesheet" href="/assets/styles/style.css">
-  </head>
-
-  <body>
-    <header>
-      <nav aria-label="Breadcrumb">
-        <ol>
-          <li><a 
-              href="/">aaronwatts@dev</a></li><span
-              aria-hidden="true" class="term-dir"></span><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a 
-              href="/guides/">guides</a></li><li><span
-              aria-hidden="true" class="breadcrumb--seperator"></span><a
-              href="" aria-current="page">gpicase</a></li><span
-              aria-hidden="true" class="term-priv"></span>
-        </ol>
-      </nav>
-      <div class="rss-container">
-        <a href="/rss">
-          <img class="rss-icon" src="/images/rss.svg" alt="RSS feed">
-        </a>
-      </div>
-    </header>
-    <nav aria-labelledby="page-nav">
-      <header>
-        <h2 id="page-nav">On This Page</h2>
-      </header>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#setting-up">Setting Up</a></li>
-        <li><a href="#bios">BIOS's</a></li>
-        <li><a href="#roms">Adding ROMs</a></li>
-        <li><a href="#tweaks">Tweaks and Polish</a></li>
-      </ol>
-    </nav>
-    <main>
-      <article>
-        <header>
-          <h1>GPi Case 2 - Compute Module 4</h1>
-          <time datetime="2024-04-28">28th April, 2024</time>
-          <img src="/images/guides/gpicase.avif" 
-              alt="GPi Case 2 powered on, showing the recalbox menu screen">
-        </header>
-        <section id="intro" title="Intro">
-          <p id="description">
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience." name="description"/>
+<meta content="raspberry pi, cm4, recalbox, gaming, handheld" name="keywords"/>
+<title>AWD - GPi Case 2</title>
+<link href="https://aaronwatts.dev/guides/gpicase" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="GPi Case 2 - Compute Module 4" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/gpicase" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/gpicase.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2024-04-28" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/gpicase"
+  },
+  "headline": "GPi Case 2 - Compute Module 4",
+  "datePublished": "2024-04-28",
+  "description": "The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.",
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">gpicase</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#setting-up">Setting Up</a></li>
+<li><a href="#bios">BIOS's</a></li>
+<li><a href="#roms">Adding ROMs</a></li>
+<li><a href="#tweaks">Tweaks and Polish</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>GPi Case 2 - Compute Module 4</h1>
+<time datetime="2024-04-28">28th April, 2024</time>
+<img alt="GPi Case 2 powered on, showing the recalbox menu screen" src="/images/guides/gpicase.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">
             The GPi Case 2 with Raspberry Pi's Compute Module 4 is the
             ultimate portable gaming device. The case offers amazing
             functionality, and when combined with a CM4 and 64-bit
             Recalbox, there is little that can challenge it for a
             portable retro gaming experience.
           </p>
-          <p>
+<p>
             For this project, I went with a Compute Module 4, with 32Gb
             eMMC storage, and 4Gb RAM. I also went with no wireless, as
             this is my portable gaming device, and I don't require any
@@ -112,63 +111,53 @@
             collection of emulators, as well as lots of homebrew game
             ROMs, which is a very nice touch!
           </p>
-        </section>
-
-        <section id="setting-up" title="Setting Up">
-          <h2>Setting Up</h2>
-          <small>
-            <p>
+</section>
+<section id="setting-up" title="Setting Up">
+<h2>Setting Up</h2>
+<small>
+</small><p>
             Note: I use Linux computers only, so these instructions
             might not be of use to you if you are using Windows or
             Mac OS.
             </p>
-          </small>
-          <p>
+<p>
             First you will need to flash Recalbox to the eMMC storage
             on the compute module 4. Either use the image provided in
             the Raspberry Pi Imager (Recalbox - Raspberry Pi 4 / 400
             (64 bits)), or download the image from
-            <a 
-                href="https://www.recalbox.com/download/stable/handheld/gpicase2/alternative/"
-                target="_blank">
+            <a href="https://www.recalbox.com/download/stable/handheld/gpicase2/alternative/" target="_blank">
             Recalbox</a> and install using your software of choice.
             To install directly onto the CM4's flash storage, we will
             need a piece of software that overrides the boot method
             on the CM4, and registers the device instead, as a storage
             device.
           </p>
-          <p>
+<p>
             First, we will need to check that
             <code>libusb-1.0-0-dev</code> is installed on your computer
             that you will be using to flash the CM4. Check using:
           </p>
-          <pre class="language-none command-line"
-          data-user="aaronwatts" data-host="dev"><code>apt list --installed | grep libusb</code></pre>
-          <p>
-            <code>libusb-1.0-0-dev</code> should be in the list. If it's
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>apt list --installed | grep libusb</code></pre>
+<p>
+<code>libusb-1.0-0-dev</code> should be in the list. If it's
             not, then install it using:
           </p>
-          <pre class="language-none command-line"
-            data-user="aaronwatts" data-host="dev"><code>sudo apt install libusb-1.0-0-dev</code></pre>
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>sudo apt install libusb-1.0-0-dev</code></pre>
+<p>
             Next, we need to clone the
-            <a href="https://github.com/raspberrypi/usbboot"
-            target="_blank">Raspberry Pi USB Boot</a> repository.
+            <a href="https://github.com/raspberrypi/usbboot" target="_blank">Raspberry Pi USB Boot</a> repository.
           </p>
-          <pre class="language-none command-line"
-            data-user="aaronwatts" data-host="dev"><code>git clone --depth=1 https://github.com/raspberrypi/usbboot</code></pre>
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>git clone --depth=1 https://github.com/raspberrypi/usbboot</code></pre>
+<p>
             Next we need to build the software:
           </p>
-          <pre class="language-none command-line"
-            data-user="aaronwatts" data-host="dev"><code>cd usbboot
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>cd usbboot
 make</code></pre>
-          <p>
+<p>
             Now we can run the software:
           </p>
-          <pre class="language-none command-line"
-              data-user="aaronwatts" data-host="dev"><code>sudo ./rpiboot</code></pre>
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>sudo ./rpiboot</code></pre>
+<p>
             Now, plug the GPiCase 2, with compute module 4 board
             installed, into your PC while the usbboot software is
             still running. You need to use the micro USB socket on
@@ -177,60 +166,49 @@ make</code></pre>
             recognise the CM4 as a storage device. You can install
             the image just as you would an SD card.
           </p>
-        </section>
-
-        <section id="bios" title="BIOS's">
-          <h2>BIOS's</h2>
-          <p>
+</section>
+<section id="bios" title="BIOS's">
+<h2>BIOS's</h2>
+<p>
             You can get a full set of the RetroPie BIOS's at
-            <a href="https://github.com/archtaurus/RetroPieBIOS"
-            target="_blank">this repo</a> (if you need help getting
+            <a href="https://github.com/archtaurus/RetroPieBIOS" target="_blank">this repo</a> (if you need help getting
             BIOS's from it, have a look at my
-            <a href="/guides/retropie-nespi-4#bios"
-            >NesPi-4 guide</a> for instructions).
+            <a href="/guides/retropie-nespi-4#bios">NesPi-4 guide</a> for instructions).
             I haven't checked every single one,
             but they should cover most of what you'll need for
             Recalbox. Check where to load each BIOS in the
-            <a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx"
-            target="_blank"
-            >RecalBox Documentation</a>. Use the installation
+            <a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx" target="_blank">RecalBox Documentation</a>. Use the installation
             instructions described in the next section about ROMs
             to install BIOS's onto the device.
           </p>
-        </section>
-
-        <section id="roms" title="Adding ROMs">
-          <h2>Adding ROMs</h2>
-          <p>
+</section>
+<section id="roms" title="Adding ROMs">
+<h2>Adding ROMs</h2>
+<p>
             I'm not going to tell you where to get copies of ROMs
             you already own physical copies of, but if you need
             help with it, take a look at the
-            <a href="/guides/retropie-nespi-4#games"
-            >Getting Games</a> section in the Nespi-4 guide.
+            <a href="/guides/retropie-nespi-4#games">Getting Games</a> section in the Nespi-4 guide.
             To load the ROMs to CM4, you will need to run the
             <code>usbboot</code> software again, as with the
             installation. Games will need to be loaded onto
             the <em>Share</em> partition, check out the
-            <a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx"
-            target="_blank">RecalBox docs</a> for the correct
+            <a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx" target="_blank">RecalBox docs</a> for the correct
             location and formats of ROMs for specific emulators.
           </p>
-        </section>
-
-        <section id="tweaks" title="Tweaks and Polish">
-          <h2>Tweaks and Polish</h2>
-          <h3>Theme</h3>
-          <p>
-            The <a href="https://github.com/SamYStudiO/es-theme-next-pixel"
-            target="_blank">Next Pixel</a> theme is great for the small
+</section>
+<section id="tweaks" title="Tweaks and Polish">
+<h2>Tweaks and Polish</h2>
+<h3>Theme</h3>
+<p>
+            The <a href="https://github.com/SamYStudiO/es-theme-next-pixel" target="_blank">Next Pixel</a> theme is great for the small
             LCD screen on the GPiCase. It looks great and the font sizes
             are large enough to be readable. To install just clone the repo
             to your computer, then drop the folder into the
             <code>recalbox/themes</code> folder on the CM4 device.
           </p>
-          <pre class="language-none command-line"
-              data-user="aaronwatts" data-host="dev"><code>git clone https://github.com/SamYStudiO/es-theme-next-pixel.git</code></pre>
-          <p>
+<pre class="language-none command-line" data-host="dev" data-user="aaronwatts"><code>git clone https://github.com/SamYStudiO/es-theme-next-pixel.git</code></pre>
+<p>
             Then, from the Recalbox start menu, select <em>UI Settings
             &gt; Theme &gt; Theme Set</em>, and select the
             <em>ES-THEME-NEXT-PIXEL-V2-4X4-240P</em> theme from the menu.
@@ -238,20 +216,20 @@ make</code></pre>
             the font is so small, and it's not hard to memorise the few
             UI controls.
           </p>
-          <h3>Other Polish</h3>
-          <p>
-            In the <em>UI Settings > Popup Settings</em> menu, I set
+<h3>Other Polish</h3>
+<p>
+            In the <em>UI Settings &gt; Popup Settings</em> menu, I set
             <em>Help Popup Duration</em> to 1 second, and
             <em>Music Popup Duration</em> to 0 seconds to hide music
             popups.
           </p>
-          <p>
+<p>
             Recalbox menu controls default to a PSX style layout,
             but as we have a Nintendo style layout, you can also set
             <em>Swap Validate/Cancel Buttons</em> in the UI settings
             to <em>On</em>.
           </p>
-          <p>
+<p>
             The <em>Start</em> and <em>Home</em> buttons are incredibly
             close together on the GPiCase 2, and if your thumbs are
             as large as mine, it can be easy to accidentally hit
@@ -261,28 +239,24 @@ make</code></pre>
             will show a popup and require a second press to quit the
             game - a real frustration saver!
           </p>
-          <p>
+<p>
             To use the scraper, you will need an internet connection.
             I've found that the easiest way to achieve this, is to plug
             your phone into the USB-C port at the bottom, using a USB
             to USB-C adaptor, and use your phones USB hotspot tethering.
           </p>
-        </section>
-      </article>        
-    </main>
-
-    <nav aria-labelledby="to-top">
-      <a href="#top" id="to-top">Back to Top</a>
-    </nav>
-
-    <footer>
-        <div>Made by Hand. Powered by</div>
-        <a href="https://pages.github.com/" target="_blank">
-            <img src="/images/githubpages.svg" 
-            alt="https://pages.github.com/">
-        </a>
-    </footer>
-
-    <script src="/assets/scripts/prism.js"></script>
-  </body>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
 </html>

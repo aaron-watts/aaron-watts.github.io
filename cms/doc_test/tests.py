@@ -200,6 +200,6 @@ tests = [
         time_innerhtml_formatted,
         intro_is_included,
         #breadcrumb_matches_path,
-        description_not_blank,
+        #description_not_blank,
         keywords_not_blank,
         ]

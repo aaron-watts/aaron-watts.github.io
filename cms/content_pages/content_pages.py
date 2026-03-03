@@ -1,5 +1,47 @@
-from config.settings import ROOT, HOME, SELECTORS
+from config.settings import ROOT, HOME, SELECTORS, BASE_URL
 from utils.soup import *
+import json
+
+def article_page(article):
+    """
+    Inserts OpenGraph and JSON Schema into article page
+    """
+    head = selector(article['soup'], "head")
+
+    description = selector(head, "meta[name='description']")
+    description['content'] = article['description']
+
+    og_title = selector(head, "meta[property='og:title']")
+    og_title['content'] = article['title']
+    og_desc = selector(head, "meta[property='og:description']")
+    og_desc['content'] = article['description']
+    og_url = selector(head, "meta[property='og:url']")
+    og_url['content'] = article['URL']
+    og_image = selector(head, "meta[property='og:image']")
+    og_image['content'] = article['IMG']
+    og_time = selector(head, "meta[property='og:article:published_time']")
+    og_time['content'] = article['date_attr']
+
+    json_ld = selector(head, "script[type='application/ld+json']")
+    json_ld_data = {
+              "@context": "http://schema.org",
+              "@type": "Article",
+              "mainEntityOfPage":{
+                    "@type": "WebPage",
+                    "@id": article['URL']
+              },
+              "headline": article['title'],
+              "datePublished": article['date_attr'],
+              "description": article['description'],
+              "author":{
+                    "@type": "Person",
+                    "name": "aaronwatts@dev"
+              }
+        }
+
+    json_ld_str = json.dumps(json_ld_data, indent=2)
+    json_ld.string = json_ld_str
+
 
 def home_page(article):
     """

@@ -1,6 +1,5 @@
 from config.settings import BASE_URL, RSS, FEEDS, NAMESPACES
 from utils import xtree
-from utils.files import path_to_url, image_url_from_file
 from utils.soup import selector, absolute_urls
 
 def build_rss(doc_tree, feed):
@@ -51,25 +50,22 @@ def build_item(parent, doc):
     """
     Builds XML item for an article
     """
-    URL = path_to_url(f"{doc['directory']}/{doc['filename']}")
-    IMG = BASE_URL + selector(doc['soup'], "article img", "src")
-
     item = xtree.child_element(parent, "item")
 
     xtree.child_element(item, "title", doc['title'])
-    xtree.child_element(item, "link", URL)
+    xtree.child_element(item, "link", doc['URL'])
     xtree.child_element(item, "pubDate", doc['pub_date'])
     xtree.child_element(item, "description", doc['description'])
-    xtree.child_element(item, "guid", URL)
+    xtree.child_element(item, "guid", doc['URL'])
     content = absolute_urls(doc['content'])
     xtree.child_element(item, "content:encoded", content)
 
     enclosure = xtree.child_element(item, "enclosure")
-    set_img_attrs(enclosure, IMG)
+    set_img_attrs(enclosure, doc['IMG'])
     thumbnail = xtree.child_element(item, "media:thumbnail")
-    set_img_attrs(thumbnail, IMG)
+    set_img_attrs(thumbnail, doc['IMG'])
     media = xtree.child_element(item, "media:content")
-    set_img_attrs(media, IMG)
+    set_img_attrs(media, doc['IMG'])
 
     return item
 

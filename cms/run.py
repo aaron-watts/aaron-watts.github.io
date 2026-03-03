@@ -9,7 +9,7 @@ from utils.xtree import add_xsl
 from doc_test.doc_test import test_documents
 from sitemap_xml.sitemap_xml import build_sitemap
 from rss_xml.rss_xml import build_rss
-from content_pages.content_pages import home_page, index_page
+from content_pages.content_pages import article_page, home_page, index_page
 
 if __name__ == "__main__":
     print("Build aaronwatts.dev")
@@ -27,6 +27,9 @@ if __name__ == "__main__":
 
         for article in articles:
             article = extract_data(article)
+            article_page(article)
+            article_path = f"{ROOT}/{article['directory']}/{article['filename']}"
+            write_to_html(article['soup'], article_path)
 
         articles.sort(
                 key=lambda article: article['date'],

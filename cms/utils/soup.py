@@ -1,7 +1,7 @@
 from datetime import date
 from config.settings import BASE_URL, SELECTORS
 from bs4 import BeautifulSoup
-
+from utils.files import path_to_url
 
 def wipe_content(parent):
     parent.clear()
@@ -81,6 +81,8 @@ def extract_data(doc):
     doc['main'] = doc['soup'].select_one(SELECTORS['main'])
     doc['content'] = format_content(doc['main'])
     doc['keywords'] = [kw.lstrip() for kw in keywords]
+    doc['URL'] = path_to_url(f"{doc['directory']}/{doc['filename']}")
+    doc['IMG'] = BASE_URL + selector(doc['soup'], "article img", "src")
     return doc
 
 def absolute_urls(html):

@@ -23,7 +23,7 @@ if __name__ == "__main__":
         sitemap = build_sitemap(doc_tree)
         sitemap_path = f"{ROOT}/{SITEMAP['path']}"
         write_to_xml(sitemap, sitemap_path)
-        add_xsl(sitemap_path, XSL['sitemap'])
+        #add_xsl(sitemap_path, XSL['sitemap'])
 
         for article in articles:
             article = extract_data(article)
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         feed_path_all = f"{ROOT}/{FEEDS['all']['path']}"
         rss = build_rss(articles, FEEDS['all'])
         write_to_xml(rss, feed_path_all)
-        add_xsl(feed_path_all, XSL['rss'])
+        #add_xsl(feed_path_all, XSL['rss'])
 
         home_html = home_page(articles[0])
         write_to_html(home_html, f"{ROOT}/{HOME}")
@@ -55,7 +55,7 @@ if __name__ == "__main__":
             feed_path = f"{ROOT}/{FEEDS[sub_dir]['path']}"
             feed = build_rss(filtered_articles[sub_dir], FEEDS[sub_dir])
             write_to_xml(feed, feed_path)
-            add_xsl(feed_path, XSL['rss'])
+            #add_xsl(feed_path, XSL['rss'])
 
             index_html = index_page(
                     filtered_articles[sub_dir],

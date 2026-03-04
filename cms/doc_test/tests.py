@@ -189,6 +189,97 @@ def keywords_not_blank(html_doc):
         result["passed"] = False
     return result
 
+def has_meta_desc(html_doc):
+    result = {
+        "desc": "Head should include meta description",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    meta_desc = head.select_one("meta[name='description']")
+
+    if meta_desc is None:
+        result["passed"] = False
+
+    return result
+
+def has_og_title(html_doc):
+    result = {
+        "desc": "Head should include OpenGraph title",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    og_title = head.select_one("meta[property='og:title']")
+
+    if og_title is None:
+        result["passed"] = False
+
+    return result
+
+def has_og_desc(html_doc):
+    result = {
+        "desc": "Head should include OpenGraph description",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    og_desc = head.select_one("meta[property='og:description']")
+
+    if og_desc is None:
+        result["passed"] = False
+
+    return result
+
+def has_og_url(html_doc):
+    result = {
+        "desc": "Head should include OpenGraph URL",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    og_url = head.select_one("meta[property='og:url']")
+
+    if og_url is None:
+        result["passed"] = False
+
+    return result
+
+def has_og_image(html_doc):
+    result = {
+        "desc": "Head should include OpenGraph image",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    og_image = head.select_one("meta[property='og:image']")
+
+    if og_image is None:
+        result["passed"] = False
+
+    return result
+
+def has_og_time(html_doc):
+    result = {
+        "desc": "Head should include OpenGraph time",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    og_time = head.select_one("meta[property='og:article:published_time']")
+
+    if og_time is None:
+        result["passed"] = False
+
+    return result
+
+def has_json_ld(html_doc):
+    result = {
+        "desc": "Head should include JSON Linked Data",
+        "passed": True
+            }
+    head = html_doc["soup"].select_one("head")
+    json_ld = head.select_one("script[type='application/ld+json']")
+
+    if json_ld is None:
+        result["passed"] = False
+
+    return result
+
 tests = [
         no_comments,
         main_img_rsc,
@@ -202,4 +293,11 @@ tests = [
         #breadcrumb_matches_path,
         #description_not_blank,
         keywords_not_blank,
+        has_meta_desc,
+        has_og_title,
+        has_og_desc,
+        has_og_url,
+        has_og_image,
+        has_og_time,
+        has_json_ld,
         ]

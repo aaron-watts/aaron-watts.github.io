@@ -13,9 +13,9 @@
   <link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
   <link href="/assets/styles/style.css" rel="stylesheet"/>
   <style>
-.bash::before {
-  content: ' $ ';
-}
+    .bash::before {
+      content: ' $ ';
+    }
   </style>
 </head>
 <body>
@@ -38,14 +38,12 @@
     <img src="/images/404.jpg" alt="Missing Image">
     <p>
       It looks like the page you're looking for does not exist.
-      Here are some links to pages that might be heplful:
+      Return to the <a href="/">home page</a> to find what you
+      are looking for.
     </p>
-    <h2>Home</h2>
-    <a href="/home">Go to page</a>
-    <p>Start here for all content on the website.</p>
-    <h2>Sitemap</h2>
-    <a href="/sitemap">Go to page</a>
-    <p>A full list of pages across the website</p>
+    <nav aria-labelledby="home">
+      <a href="/" id="home">Go to home page</a>
+    </nav>
   </main>
 
   <footer>

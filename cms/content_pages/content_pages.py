@@ -33,6 +33,9 @@ def article_page(article):
               "headline": article['title'],
               "datePublished": article['date_attr'],
               "description": article['description'],
+              "image": [
+                article['IMG']
+                  ],
               "author":{
                     "@type": "Person",
                     "name": "aaronwatts@dev"

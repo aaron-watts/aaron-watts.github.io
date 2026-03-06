@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case." name="description"/>
+<meta content="webdev, seo, html, python" name="keywords"/>
+<title>AWD - Better Meta</title>
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://aaronwatts.dev/guides/better-meta" rel="canonical"/>
+<link href="https://aaronwatts.dev/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - All" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/guides/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Guides" type="application/rss+xml"/>
+<link href="https://aaronwatts.dev/tech/feed.xml" rel="alternate" title="AaronWattsDev RSS Feed - Tech" type="application/rss+xml"/>
+<meta content="Better Meta" property="og:title"/>
+<meta content="aaronwatts@dev" property="og:site_name"/>
+<meta content="I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case." property="og:description"/>
+<meta content="https://aaronwatts.dev/guides/better-meta" property="og:url"/>
+<meta content="https://aaronwatts.dev/images/guides/better-meta.avif" property="og:image"/>
+<meta content="article" property="og:type"/>
+<meta content="2026-03-06" property="og:article:published_time"/>
+<link as="font" crossorigin="" href="/assets/fonts/JetBrainsMono.woff2" rel="preload" type="font/woff2"/>
+<link href="/assets/styles/prism.css" rel="stylesheet"/>
+<link href="/assets/styles/style.css" rel="stylesheet"/>
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aaronwatts.dev/guides/better-meta"
+  },
+  "headline": "Better Meta",
+  "datePublished": "2026-03-06",
+  "description": "I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case.",
+  "image": [
+    "https://aaronwatts.dev/images/guides/better-meta.avif"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "aaronwatts@dev"
+  }
+}</script>
+</head>
+<body>
+<header>
+<nav aria-label="Breadcrumb">
+<ol>
+<li><a href="/">aaronwatts@dev</a></li><span aria-hidden="true" class="term-dir"></span><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a href="/guides/">guides</a></li><li><span aria-hidden="true" class="breadcrumb--seperator"></span><a aria-current="page" href="">better-meta</a></li><span aria-hidden="true" class="term-priv"></span>
+</ol>
+</nav>
+<div class="rss-container">
+<a href="/rss">
+<img alt="RSS feed" class="rss-icon" src="/images/rss.svg"/>
+</a>
+</div>
+</header>
+<nav aria-labelledby="page-nav">
+<header>
+<h2 id="page-nav">On This Page</h2>
+</header>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#robots">Robots</a></li>
+<li><a href="#opengraph">OpenGraph</a></li>
+<li><a href="#schema">Schema</a></li>
+<li><a href="#automating">Automating the Process</a></li>
+</ol>
+</nav>
+<main>
+<article>
+<header>
+<h1>Better Meta</h1>
+<time datetime="2026-03-06">6th February, 2026</time>
+<img alt="A 3D representation
+          a Google weeb crawler inspecting web pages with a magnifying glass" src="/images/guides/better-meta.avif"/>
+</header>
+<section id="intro" title="Intro">
+<p id="description">I have another website, that I manage
+          with CMS (Content Management Software). I haven't bothered
+          setting up anything for Google or Bing indexing for that site
+          yet, I was waiting to see if I would keep using the site first.
+          But content I was putting on that site was getting indexed
+          anyway, and it also looked good in the search results. So I
+          decided to investigate why this was the case.
+          </p>
+<p>SEO. Isn't it always the answer? I put my hands up, I'm
+          not an expert on it, it's quite a broad subject. I prefer
+          playing in a terminal. But if a website can get itself indexed
+          on it's own, to a high standard and without any human hands
+          getting involved, then it's worth knowing about.
+          </p>
+<p><small>NOTE: Keep in mind, this relies on web crawler bots
+          coming to your site. So while it automates page indexing, if you
+          want things done fast you may still want to use other methods.
+          </small></p>
+</section>
+<section id="robots" title="Robots">
+<h2>Robots</h2>
+<p>Let's start with the simplest thing first. The
+          <code>robots.txt</code> file. I've only read about this
+          file being used to <em>limit</em> web crawler activity on a
+          website. It seems obvious now I've seen it, but if it can
+          tell robots to go away, then it can also tell them to come
+          in.
+          </p>
+<pre class="language-none"><code>User-agent: *
+Disallow:
+Sitemap: https://aaronwatts.dev/sitemap.xml</code></pre>
+<p>There we go: all crawlers welcome, here's my site
+          directory. I had been using an XSL template for my sitemap
+          previously, which has since broken on Chromium. Chromium
+          is in the process of removing XSL support from the blink
+          web engine, I'm not sure if that's likely to effect certain
+          web crawlers too, but just to be safe I have removed the XSL
+          instruction from the XML sitemap file.</p>
+</section>
+<section id="opengraph" title="OpenGraph">
+<h2>OpenGraph</h2>
+<p>The <a href="https://ogp.me/" target="_blank">OpenGraph</a> protocol is a standard that
+          allows relevant information to be picked out by social media
+          applications to generate thumbnails. Not dissimilar from the
+          standard meta description tag, but <em>richer</em>.</p>
+<p>Making use of the tool is just a case of adding the
+          necessary meta elements to your document head.</p>
+<pre class="language-html"><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta property="og:title" content="Better Meta"/&gt;
+    &lt;meta property="og:site_name" content="aaronwatts@dev"/&gt;
+    &lt;meta property="og:description" content="intro text here"/&gt;
+    &lt;meta property="og:url" content="https://aaronwatts.dev/guides/better-meta"/&gt;
+    &lt;meta property="og:image" content="https://aaronwatts.dev/images/guides/better-meta.avif"/&gt;
+    &lt;meta property="og:type" content="article"/&gt;
+    &lt;meta property="og:article:published_time" content="2026-03-05"/&gt;
+  &lt;/head&gt;
+  ...
+&lt;/html&gt;</code></pre>
+<p>The content required for the tags already all exists somewhere
+          within the document itself, so this can all be done programmatically,
+          which I will look at shortly. Automating the process also redduces the
+          risk of breaking something with a typo.</p>
+<p>Twitter has an OpenGraph property for it's cards, which I am not
+          currently implementing here, but will do soon. I have used this page
+          as an example, which would count as an article, but the schema is
+          vast, and it's worth consulting the documentation for what kind of
+          clues you can provide, about what type of content your material is,
+          to other sites that might display links to your site.</p>
+</section>
+<section id="schema" title="Schema">
+<h2>Schema</h2>
+<p>Similar to OpenGraph, there are also rich content identifiers
+          specifically for search engines. Google, along with other search engines, use the
+          <a href="https://schema.org/" target="_blank">schema.org</a>
+          vocabulary.</p>
+<p>The easiest way to work with schema is using
+          <a href="https://json-ld.org/" target="_blank">json-ld</a> (JSON
+          Linked Data). Some schema classifications have required attributes,
+          and <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank">Google's developer documentation</a> has helpful
+          guidance and what ought to be included, and what is complimentary.</p>
+<pre class="language-html"><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;script type="application/ld+json"&gt;{
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://aaronwatts.dev/guides/better-meta"
+      },
+      "headline": "Better Meta",
+      "datePublished": "2025-03-05",
+      "description": "intro text here",
+      "image": [
+        "https://aaronwatts.dev/images/guides/better-meta.avif"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "aaronwatts@dev"
+      }
+    }&lt;/script&gt;
+  &lt;/head&gt;
+  ...
+&lt;/html&gt;</code></pre>
+<p>To implement a schema using json-ld, you just need
+          a <code>script</code> tag in the <code>head</code> of the
+          document, with a <code>type</code> attribute of
+          <code>application/ld+json</code>. As with the data required to
+          populate the OpenGraph content, all the required data is contained
+          somewhere within the document, so it can be done programmatically.</p>
+</section>
+<section id="automating" title="Automating the Process">
+<h2>Automating the Process</h2>
+<p>If you are using a CMS, this stuff is likely being handled for you.
+          But if not, it can be automated. How you acheive this will depend on
+          the tech stack you use for a given website, and your preferred or
+          available technologies. A PHP-like templating engine will be the
+          simplest way to automate. For my use case, I have already made a CMS
+          module in Python, and so have implemented the automation into that.
+          Without looking too deeply into my CMS module, I'll outline how I have
+          automated updating the meta for my articles using Python.</p>
+<pre class="language-html"><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"/&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;
+  &lt;meta name="description"/&gt;
+  ...
+  &lt;meta property="og:title"/&gt;
+  &lt;meta property="og:site_name" content="aaronwatts@dev"/&gt;
+  &lt;meta property="og:description"/&gt;
+  &lt;meta property="og:url"/&gt;
+  &lt;meta property="og:image"/&gt;
+  &lt;meta property="og:type" content="article"/&gt;
+  &lt;meta property="og:article:published_time"/&gt;
+
+  &lt;script type="application/ld+json"&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+<p>Before I even run any Python code, my HTML documents for my articles
+          will already contain the necessary OpenGraph <code>meta</code> tags and an empty
+          <code>script</code> tag with a <code>type</code> of
+          <code>application/ld+json</code>. Anything that is page specific will not have
+          any data applied yet for the <code>content</code> attributes.
+          I am also programmatically populating the
+          <code>content</code> attribute for the standard <code>meta</code>
+<code>description</code> too for consistency. When I run my Python CMS module, it will
+          first run a series of tests on each document and make sure the tags it
+          is expecting to work with are all present in the document. If anything is
+          missing, or other tests fail, it will <code>exit</code> the program and log
+          what tests have failed.</p>
+<pre class="language-python"><code>def extract_data(doc):
+  doc['title'] = doc['soup'].select_one(SELECTORS['title']).text
+  doc['intro'] = doc['soup'].select_one(SELECTORS['intro']).text
+  doc['description'] = " ".join(doc['intro'].split())
+  doc['html_date'] = doc['soup'].select_one(SELECTORS['time'])
+  doc['date_attr'] = doc['html_date']['datetime']
+  doc['URL'] = path_to_url(f"{doc['directory']}/{doc['filename']}")
+  doc['IMG'] = BASE_URL + selector(doc['soup'], "article img", "src")
+  return doc
+</code></pre>
+<p>My CMS already iterates through documents to extract the required
+        data to be able to create the RSS feeds, and add new articles to the
+        index pages. So I already have all my data readily available. There
+        are custom functions here to build a url from a specified file path,
+        and a selector function to get an attributes content (I am not using
+        that function to get the datetime attribute as I also use the
+        <code>html_date</code> to format dates to <code>RFC 822</code>
+        for the RSS feed). My CSS selectors are
+        all pulled out of a config file, so if I decide
+        to change my document structure, I just need to alter the config file
+        and not the code itself. The <code>doc</code> being passed into the
+        function is a dictionary for each article document, with keys and values
+        for <code>filename</code>, <code>directory</code>,  and
+        <code>soup</code>.</p>
+<p><small>NOTE: I've only included the relevant extractions in the
+        function above. More data gets extracted from each document, but they
+        are not relevant to building the meta for the page and are instead
+        used elsewhere, such as the RSS feeds.</small></p>
+<pre class="language-python"><code>def add_meta_content(article):
+  head = selector(article['soup'], "head")
+
+  description = selector(head, "meta[name='description']")
+  description['content'] = article['description']
+
+  og_title = selector(head, "meta[property='og:title']")
+  og_title['content'] = article['title']
+  og_desc = selector(head, "meta[property='og:description']")
+  og_desc['content'] = article['description']
+  og_url = selector(head, "meta[property='og:url']")
+  og_url['content'] = article['URL']
+  og_image = selector(head, "meta[property='og:image']")
+  og_image['content'] = article['IMG']
+  og_time = selector(head, "meta[property='og:article:published_time']")
+  og_time['content'] = article['date_attr']
+
+  json_ld = selector(head, "script[type='application/ld+json']")
+  json_ld_data = {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage":{
+      "@type": "WebPage",
+      "@id": article['URL']
+    },
+    "headline": article['title'],
+    "datePublished": article['date_attr'],
+    "description": article['description'],
+    "image": [
+      article['IMG']
+        ],
+    "author":{
+          "@type": "Person",
+          "name": "aaronwatts@dev"
+    }
+  }
+
+  json_ld_str = json.dumps(json_ld_data, indent=2)
+  json_ld.string = json_ld_str</code></pre>
+<p>The extended article data is then passed into a function that
+          populates the required <code>meta</code> tags with the applicable
+          data. The Python <code>json</code> module is used to convert
+          a Python dictionary into a JSON string.</p>
+<pre class="language-python"><code>article_path = f"{ROOT}/{article['directory']}/{article['filename']}"
+write_to_html(article['soup'], article_path)
+
+def write_to_html(soup, path):
+  with open(path, "w") as outf:
+    outf.write(str(soup))
+</code></pre>
+<p>Each document's <code>soup</code> retains all adjustments
+          made, so the final step is simply to write the modified
+          <code>soup</code> back into the file it has been taken from.</p>
+</section>
+</article>
+</main>
+<nav aria-labelledby="to-top">
+<a href="#top" id="to-top">Back to Top</a>
+</nav>
+<footer>
+<div>Made by Hand. Powered by</div>
+<a href="https://pages.github.com/" target="_blank">
+<img alt="https://pages.github.com/" src="/images/githubpages.svg"/>
+</a>
+</footer>
+<script src="/assets/scripts/prism.js"></script>
+</body>
+</html>

@@ -7,6 +7,119 @@
     <description>The most recent content on AaronWattsDev</description>
     <category>Technology</category>
     <item>
+      <title>Better Meta</title>
+      <link>https://aaronwatts.dev/guides/better-meta</link>
+      <pubDate>Fri, 06 Mar 2026 08:00:00 GMT</pubDate>
+      <description>I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case.</description>
+      <guid>https://aaronwatts.dev/guides/better-meta</guid>
+      <content:encoded>&lt;header&gt; &lt;h1&gt;Better Meta&lt;/h1&gt; &lt;time datetime="2026-03-06"&gt;6th February, 2026&lt;/time&gt; &lt;img alt="A 3D representation a Google weeb crawler inspecting web pages with a magnifying glass" src="https://aaronwatts.dev/images/guides/better-meta.avif"/&gt; &lt;/header&gt;&lt;p id="description"&gt;I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case. &lt;/p&gt;&lt;p&gt;SEO. Isn't it always the answer? I put my hands up, I'm not an expert on it, it's quite a broad subject. I prefer playing in a terminal. But if a website can get itself indexed on it's own, to a high standard and without any human hands getting involved, then it's worth knowing about. &lt;/p&gt;&lt;p&gt;&lt;small&gt;NOTE: Keep in mind, this relies on web crawler bots coming to your site. So while it automates page indexing, if you want things done fast you may still want to use other methods. &lt;/small&gt;&lt;/p&gt;&lt;h2&gt;Robots&lt;/h2&gt;&lt;p&gt;Let's start with the simplest thing first. The &lt;code&gt;robots.txt&lt;/code&gt; file. I've only read about this file being used to &lt;em&gt;limit&lt;/em&gt; web crawler activity on a website. It seems obvious now I've seen it, but if it can tell robots to go away, then it can also tell them to come in. &lt;/p&gt;&lt;pre class="language-none"&gt;&lt;code&gt;User-agent: *
+Disallow:
+Sitemap: https://aaronwatts.dev/sitemap.xml&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There we go: all crawlers welcome, here's my site directory. I had been using an XSL template for my sitemap previously, which has since broken on Chromium. Chromium is in the process of removing XSL support from the blink web engine, I'm not sure if that's likely to effect certain web crawlers too, but just to be safe I have removed the XSL instruction from the XML sitemap file.&lt;/p&gt;&lt;h2&gt;OpenGraph&lt;/h2&gt;&lt;p&gt;The &lt;a href="https://ogp.me/" target="_blank"&gt;OpenGraph&lt;/a&gt; protocol is a standard that allows relevant information to be picked out by social media applications to generate thumbnails. Not dissimilar from the standard meta description tag, but &lt;em&gt;richer&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;Making use of the tool is just a case of adding the necessary meta elements to your document head.&lt;/p&gt;&lt;pre class="language-html"&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;meta property="og:title" content="Better Meta"/&amp;gt;
+    &amp;lt;meta property="og:site_name" content="aaronwatts@dev"/&amp;gt;
+    &amp;lt;meta property="og:description" content="intro text here"/&amp;gt;
+    &amp;lt;meta property="og:url" content="https://aaronwatts.dev/guides/better-meta"/&amp;gt;
+    &amp;lt;meta property="og:image" content="https://aaronwatts.dev/images/guides/better-meta.avif"/&amp;gt;
+    &amp;lt;meta property="og:type" content="article"/&amp;gt;
+    &amp;lt;meta property="og:article:published_time" content="2026-03-05"/&amp;gt;
+  &amp;lt;/head&amp;gt;
+  ...
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The content required for the tags already all exists somewhere within the document itself, so this can all be done programmatically, which I will look at shortly. Automating the process also redduces the risk of breaking something with a typo.&lt;/p&gt;&lt;p&gt;Twitter has an OpenGraph property for it's cards, which I am not currently implementing here, but will do soon. I have used this page as an example, which would count as an article, but the schema is vast, and it's worth consulting the documentation for what kind of clues you can provide, about what type of content your material is, to other sites that might display links to your site.&lt;/p&gt;&lt;h2&gt;Schema&lt;/h2&gt;&lt;p&gt;Similar to OpenGraph, there are also rich content identifiers specifically for search engines. Google, along with other search engines, use the &lt;a href="https://schema.org/" target="_blank"&gt;schema.org&lt;/a&gt; vocabulary.&lt;/p&gt;&lt;p&gt;The easiest way to work with schema is using &lt;a href="https://json-ld.org/" target="_blank"&gt;json-ld&lt;/a&gt; (JSON Linked Data). Some schema classifications have required attributes, and &lt;a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank"&gt;Google's developer documentation&lt;/a&gt; has helpful guidance and what ought to be included, and what is complimentary.&lt;/p&gt;&lt;pre class="language-html"&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;script type="application/ld+json"&amp;gt;{
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://aaronwatts.dev/guides/better-meta"
+      },
+      "headline": "Better Meta",
+      "datePublished": "2025-03-05",
+      "description": "intro text here",
+      "image": [
+        "https://aaronwatts.dev/images/guides/better-meta.avif"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "aaronwatts@dev"
+      }
+    }&amp;lt;/script&amp;gt;
+  &amp;lt;/head&amp;gt;
+  ...
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To implement a schema using json-ld, you just need a &lt;code&gt;script&lt;/code&gt; tag in the &lt;code&gt;head&lt;/code&gt; of the document, with a &lt;code&gt;type&lt;/code&gt; attribute of &lt;code&gt;application/ld+json&lt;/code&gt;. As with the data required to populate the OpenGraph content, all the required data is contained somewhere within the document, so it can be done programmatically.&lt;/p&gt;&lt;h2&gt;Automating the Process&lt;/h2&gt;&lt;p&gt;If you are using a CMS, this stuff is likely being handled for you. But if not, it can be automated. How you acheive this will depend on the tech stack you use for a given website, and your preferred or available technologies. A PHP-like templating engine will be the simplest way to automate. For my use case, I have already made a CMS module in Python, and so have implemented the automation into that. Without looking too deeply into my CMS module, I'll outline how I have automated updating the meta for my articles using Python.&lt;/p&gt;&lt;pre class="language-html"&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+  &amp;lt;meta charset="UTF-8"/&amp;gt;
+  &amp;lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&amp;gt;
+  &amp;lt;meta name="description"/&amp;gt;
+  ...
+  &amp;lt;meta property="og:title"/&amp;gt;
+  &amp;lt;meta property="og:site_name" content="aaronwatts@dev"/&amp;gt;
+  &amp;lt;meta property="og:description"/&amp;gt;
+  &amp;lt;meta property="og:url"/&amp;gt;
+  &amp;lt;meta property="og:image"/&amp;gt;
+  &amp;lt;meta property="og:type" content="article"/&amp;gt;
+  &amp;lt;meta property="og:article:published_time"/&amp;gt;
+
+  &amp;lt;script type="application/ld+json"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Before I even run any Python code, my HTML documents for my articles will already contain the necessary OpenGraph &lt;code&gt;meta&lt;/code&gt; tags and an empty &lt;code&gt;script&lt;/code&gt; tag with a &lt;code&gt;type&lt;/code&gt; of &lt;code&gt;application/ld+json&lt;/code&gt;. Anything that is page specific will not have any data applied yet for the &lt;code&gt;content&lt;/code&gt; attributes. I am also programmatically populating the &lt;code&gt;content&lt;/code&gt; attribute for the standard &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;description&lt;/code&gt; too for consistency. When I run my Python CMS module, it will first run a series of tests on each document and make sure the tags it is expecting to work with are all present in the document. If anything is missing, or other tests fail, it will &lt;code&gt;exit&lt;/code&gt; the program and log what tests have failed.&lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;def extract_data(doc):
+  doc['title'] = doc['soup'].select_one(SELECTORS['title']).text
+  doc['intro'] = doc['soup'].select_one(SELECTORS['intro']).text
+  doc['description'] = " ".join(doc['intro'].split())
+  doc['html_date'] = doc['soup'].select_one(SELECTORS['time'])
+  doc['date_attr'] = doc['html_date']['datetime']
+  doc['URL'] = path_to_url(f"{doc['directory']}/{doc['filename']}")
+  doc['IMG'] = BASE_URL + selector(doc['soup'], "article img", "src")
+  return doc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;My CMS already iterates through documents to extract the required data to be able to create the RSS feeds, and add new articles to the index pages. So I already have all my data readily available. There are custom functions here to build a url from a specified file path, and a selector function to get an attributes content (I am not using that function to get the datetime attribute as I also use the &lt;code&gt;html_date&lt;/code&gt; to format dates to &lt;code&gt;RFC 822&lt;/code&gt; for the RSS feed). My CSS selectors are all pulled out of a config file, so if I decide to change my document structure, I just need to alter the config file and not the code itself. The &lt;code&gt;doc&lt;/code&gt; being passed into the function is a dictionary for each article document, with keys and values for &lt;code&gt;filename&lt;/code&gt;, &lt;code&gt;directory&lt;/code&gt;, and &lt;code&gt;soup&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;&lt;small&gt;NOTE: I've only included the relevant extractions in the function above. More data gets extracted from each document, but they are not relevant to building the meta for the page and are instead used elsewhere, such as the RSS feeds.&lt;/small&gt;&lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;def add_meta_content(article):
+  head = selector(article['soup'], "head")
+
+  description = selector(head, "meta[name='description']")
+  description['content'] = article['description']
+
+  og_title = selector(head, "meta[property='og:title']")
+  og_title['content'] = article['title']
+  og_desc = selector(head, "meta[property='og:description']")
+  og_desc['content'] = article['description']
+  og_url = selector(head, "meta[property='og:url']")
+  og_url['content'] = article['URL']
+  og_image = selector(head, "meta[property='og:image']")
+  og_image['content'] = article['IMG']
+  og_time = selector(head, "meta[property='og:article:published_time']")
+  og_time['content'] = article['date_attr']
+
+  json_ld = selector(head, "script[type='application/ld+json']")
+  json_ld_data = {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage":{
+      "@type": "WebPage",
+      "@id": article['URL']
+    },
+    "headline": article['title'],
+    "datePublished": article['date_attr'],
+    "description": article['description'],
+    "image": [
+      article['IMG']
+        ],
+    "author":{
+          "@type": "Person",
+          "name": "aaronwatts@dev"
+    }
+  }
+
+  json_ld_str = json.dumps(json_ld_data, indent=2)
+  json_ld.string = json_ld_str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The extended article data is then passed into a function that populates the required &lt;code&gt;meta&lt;/code&gt; tags with the applicable data. The Python &lt;code&gt;json&lt;/code&gt; module is used to convert a Python dictionary into a JSON string.&lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;article_path = f"{ROOT}/{article['directory']}/{article['filename']}"
+write_to_html(article['soup'], article_path)
+
+def write_to_html(soup, path):
+  with open(path, "w") as outf:
+    outf.write(str(soup))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each document's &lt;code&gt;soup&lt;/code&gt; retains all adjustments made, so the final step is simply to write the modified &lt;code&gt;soup&lt;/code&gt; back into the file it has been taken from.&lt;/p&gt;</content:encoded>
+      <enclosure url="https://aaronwatts.dev/images/guides/better-meta.avif" type="image/jpeg" length="0" />
+      <media:thumbnail url="https://aaronwatts.dev/images/guides/better-meta.avif" width="1920" height="1080" />
+      <media:content url="https://aaronwatts.dev/images/guides/better-meta.avif" type="image/jpeg" />
+    </item>
+    <item>
       <title>Raspberry Pi</title>
       <link>https://aaronwatts.dev/tech/raspberry-pi</link>
       <pubDate>Sun, 22 Feb 2026 08:00:00 GMT</pubDate>
@@ -466,18 +579,6 @@ make
       <enclosure url="https://aaronwatts.dev/images/guides/watchy.avif" type="image/jpeg" length="0" />
       <media:thumbnail url="https://aaronwatts.dev/images/guides/watchy.avif" width="1920" height="1080" />
       <media:content url="https://aaronwatts.dev/images/guides/watchy.avif" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Firefox Web Apps - Plasma Bigscreen</title>
-      <link>https://aaronwatts.dev/guides/firefox-web-apps</link>
-      <pubDate>Thu, 22 Aug 2024 08:00:00 GMT</pubDate>
-      <description>With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps.</description>
-      <guid>https://aaronwatts.dev/guides/firefox-web-apps</guid>
-      <content:encoded>&lt;header&gt; &lt;h1&gt;Firefox Web Apps - Plasma Bigscreen&lt;/h1&gt; &lt;time datetime="2024-08-22"&gt;22nd August, 2024&lt;/time&gt; &lt;img alt="A Raspberry Pi 4 running KDE Plasma Bigscreen on a HD TV, firefox browser, aniwave and amazon prime are listed in the recent apps list" src="https://aaronwatts.dev/images/guides/firefox-web-apps.avif"/&gt; &lt;/header&gt;&lt;p id="description"&gt; With the introduction of Web Manifest V3, ad blocking in Chromium based browsers is changing. the new limitations and API's for browser extensions means ad blockers, such as Ublock Origin are less effective than they once were. Firefox will still be using Manifest V2 for a while yet, but the fact that Firefox, on the dekstop at least, does not have support for PWA's (progressive web apps) may hinder the user experience for those off us using Plasma Bigscreen as a streaming OS. Luckily, Linux is flexible, and there's an easy way to get Firefox Web Apps. &lt;/p&gt;&lt;p&gt; Web Apps on Linux are not new, and while it would be time consuming, you could potentially just right your own dekstop files to open specified url's in their own windows. Thankfully, Linux Mint's Web Apps software has been ported over to the Raspberry Pi, so we can get set up with Firefox PWA's pretty quickly, and without fuss. &lt;/p&gt;&lt;small&gt; &lt;/small&gt;&lt;p&gt; NOTE: This guide is for installing Firefox PWA's on a Raspberry Pi device running KDE Plasma Bigscreen, find out how to get Bigscreen running on a Pi &lt;a href="https://aaronwatts.dev/guides/kde-plasma-bigscreen"&gt;here&lt;/a&gt;. &lt;/p&gt;&lt;h2&gt;Firefox on Pi&lt;/h2&gt;&lt;p&gt; Raspberry Pi OS used to ship with Chromium as it's default browser, and while the Ubuntu image for Rapsberry Pi delivered decent performance with Firefox, it did tend to struggle on Raspberry Pi OS. These issues appear to have been fixed, and you can now select Firefox or Chromium as the default browser when setting up the desktop. The Raspberry Pi Foundation has even included their own Firefox extension, called &lt;code&gt;UANaughtyList&lt;/code&gt;, that simply changes the user agent to improve the experience on Youtube and Netflix (you &lt;em&gt;ARE&lt;/em&gt; naughty, Youtube and Netflix!). &lt;/p&gt;&lt;p&gt; To install Firefox on Raspberry Pi OS with the necessary extensions, open terminal in type the following: &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;sudo apt update
-sudo apt install firefox rpi-firefox-mods&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;Installation&lt;/h2&gt;&lt;p&gt; Installation is pretty simple, but you will want the flexibility of multiple windows, so first log out of the Bigscreen session, and log in to the Plasma desktop session before starting. &lt;/p&gt;&lt;p&gt; To install Linux Mint's Web Apps software, we first need to install &lt;a href="https://pi-apps.io/" target="_blank"&gt;Pi-Apps&lt;/a&gt;. Installing Pi-Apps is simple enough and can be done with one line in the terminal: &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; Once Pi-Apps is installed, open it, and install &lt;code&gt;Web Apps&lt;/code&gt; from the &lt;code&gt;Internet&lt;/code&gt; category in the software list. &lt;/p&gt;&lt;h2&gt;Setting Up Web Apps&lt;/h2&gt;&lt;p&gt; Setting up web apps is easy. Just open the Web Apps software and click &lt;code&gt;+&lt;/code&gt; to create a new app. Give the app a name, and enter the url. Once you have typed the url, there is a button next to the field that will scrape the url for favicons that you can use as the apps icon on the dekstop. It's success rate for finding favicons is extremely good, but not quite 100%, so you may occasionally need to download the icon and set it manually. You can choose which web browser to launch a specific application in, so if a site struggles in firefox, you can select a different browser for that particular application. &lt;/p&gt;&lt;p&gt; That's all there is to it. After setting up your web apps, simply log back into the Bigscreen session and enjoy your favourite shows. &lt;/p&gt;</content:encoded>
-      <enclosure url="https://aaronwatts.dev/images/guides/firefox-web-apps.avif" type="image/jpeg" length="0" />
-      <media:thumbnail url="https://aaronwatts.dev/images/guides/firefox-web-apps.avif" width="1920" height="1080" />
-      <media:content url="https://aaronwatts.dev/images/guides/firefox-web-apps.avif" type="image/jpeg" />
     </item>
   </channel>
 </rss>

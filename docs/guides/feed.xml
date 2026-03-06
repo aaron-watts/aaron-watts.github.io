@@ -7,6 +7,119 @@
     <description>The most recent guides on AaronWattsDev</description>
     <category>Technology</category>
     <item>
+      <title>Better Meta</title>
+      <link>https://aaronwatts.dev/guides/better-meta</link>
+      <pubDate>Fri, 06 Mar 2026 08:00:00 GMT</pubDate>
+      <description>I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case.</description>
+      <guid>https://aaronwatts.dev/guides/better-meta</guid>
+      <content:encoded>&lt;header&gt; &lt;h1&gt;Better Meta&lt;/h1&gt; &lt;time datetime="2026-03-06"&gt;6th February, 2026&lt;/time&gt; &lt;img alt="A 3D representation a Google weeb crawler inspecting web pages with a magnifying glass" src="https://aaronwatts.dev/images/guides/better-meta.avif"/&gt; &lt;/header&gt;&lt;p id="description"&gt;I have another website, that I manage with CMS (Content Management Software). I haven't bothered setting up anything for Google or Bing indexing for that site yet, I was waiting to see if I would keep using the site first. But content I was putting on that site was getting indexed anyway, and it also looked good in the search results. So I decided to investigate why this was the case. &lt;/p&gt;&lt;p&gt;SEO. Isn't it always the answer? I put my hands up, I'm not an expert on it, it's quite a broad subject. I prefer playing in a terminal. But if a website can get itself indexed on it's own, to a high standard and without any human hands getting involved, then it's worth knowing about. &lt;/p&gt;&lt;p&gt;&lt;small&gt;NOTE: Keep in mind, this relies on web crawler bots coming to your site. So while it automates page indexing, if you want things done fast you may still want to use other methods. &lt;/small&gt;&lt;/p&gt;&lt;h2&gt;Robots&lt;/h2&gt;&lt;p&gt;Let's start with the simplest thing first. The &lt;code&gt;robots.txt&lt;/code&gt; file. I've only read about this file being used to &lt;em&gt;limit&lt;/em&gt; web crawler activity on a website. It seems obvious now I've seen it, but if it can tell robots to go away, then it can also tell them to come in. &lt;/p&gt;&lt;pre class="language-none"&gt;&lt;code&gt;User-agent: *
+Disallow:
+Sitemap: https://aaronwatts.dev/sitemap.xml&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There we go: all crawlers welcome, here's my site directory. I had been using an XSL template for my sitemap previously, which has since broken on Chromium. Chromium is in the process of removing XSL support from the blink web engine, I'm not sure if that's likely to effect certain web crawlers too, but just to be safe I have removed the XSL instruction from the XML sitemap file.&lt;/p&gt;&lt;h2&gt;OpenGraph&lt;/h2&gt;&lt;p&gt;The &lt;a href="https://ogp.me/" target="_blank"&gt;OpenGraph&lt;/a&gt; protocol is a standard that allows relevant information to be picked out by social media applications to generate thumbnails. Not dissimilar from the standard meta description tag, but &lt;em&gt;richer&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;Making use of the tool is just a case of adding the necessary meta elements to your document head.&lt;/p&gt;&lt;pre class="language-html"&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;meta property="og:title" content="Better Meta"/&amp;gt;
+    &amp;lt;meta property="og:site_name" content="aaronwatts@dev"/&amp;gt;
+    &amp;lt;meta property="og:description" content="intro text here"/&amp;gt;
+    &amp;lt;meta property="og:url" content="https://aaronwatts.dev/guides/better-meta"/&amp;gt;
+    &amp;lt;meta property="og:image" content="https://aaronwatts.dev/images/guides/better-meta.avif"/&amp;gt;
+    &amp;lt;meta property="og:type" content="article"/&amp;gt;
+    &amp;lt;meta property="og:article:published_time" content="2026-03-05"/&amp;gt;
+  &amp;lt;/head&amp;gt;
+  ...
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The content required for the tags already all exists somewhere within the document itself, so this can all be done programmatically, which I will look at shortly. Automating the process also redduces the risk of breaking something with a typo.&lt;/p&gt;&lt;p&gt;Twitter has an OpenGraph property for it's cards, which I am not currently implementing here, but will do soon. I have used this page as an example, which would count as an article, but the schema is vast, and it's worth consulting the documentation for what kind of clues you can provide, about what type of content your material is, to other sites that might display links to your site.&lt;/p&gt;&lt;h2&gt;Schema&lt;/h2&gt;&lt;p&gt;Similar to OpenGraph, there are also rich content identifiers specifically for search engines. Google, along with other search engines, use the &lt;a href="https://schema.org/" target="_blank"&gt;schema.org&lt;/a&gt; vocabulary.&lt;/p&gt;&lt;p&gt;The easiest way to work with schema is using &lt;a href="https://json-ld.org/" target="_blank"&gt;json-ld&lt;/a&gt; (JSON Linked Data). Some schema classifications have required attributes, and &lt;a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank"&gt;Google's developer documentation&lt;/a&gt; has helpful guidance and what ought to be included, and what is complimentary.&lt;/p&gt;&lt;pre class="language-html"&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;script type="application/ld+json"&amp;gt;{
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://aaronwatts.dev/guides/better-meta"
+      },
+      "headline": "Better Meta",
+      "datePublished": "2025-03-05",
+      "description": "intro text here",
+      "image": [
+        "https://aaronwatts.dev/images/guides/better-meta.avif"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "aaronwatts@dev"
+      }
+    }&amp;lt;/script&amp;gt;
+  &amp;lt;/head&amp;gt;
+  ...
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To implement a schema using json-ld, you just need a &lt;code&gt;script&lt;/code&gt; tag in the &lt;code&gt;head&lt;/code&gt; of the document, with a &lt;code&gt;type&lt;/code&gt; attribute of &lt;code&gt;application/ld+json&lt;/code&gt;. As with the data required to populate the OpenGraph content, all the required data is contained somewhere within the document, so it can be done programmatically.&lt;/p&gt;&lt;h2&gt;Automating the Process&lt;/h2&gt;&lt;p&gt;If you are using a CMS, this stuff is likely being handled for you. But if not, it can be automated. How you acheive this will depend on the tech stack you use for a given website, and your preferred or available technologies. A PHP-like templating engine will be the simplest way to automate. For my use case, I have already made a CMS module in Python, and so have implemented the automation into that. Without looking too deeply into my CMS module, I'll outline how I have automated updating the meta for my articles using Python.&lt;/p&gt;&lt;pre class="language-html"&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+  &amp;lt;meta charset="UTF-8"/&amp;gt;
+  &amp;lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&amp;gt;
+  &amp;lt;meta name="description"/&amp;gt;
+  ...
+  &amp;lt;meta property="og:title"/&amp;gt;
+  &amp;lt;meta property="og:site_name" content="aaronwatts@dev"/&amp;gt;
+  &amp;lt;meta property="og:description"/&amp;gt;
+  &amp;lt;meta property="og:url"/&amp;gt;
+  &amp;lt;meta property="og:image"/&amp;gt;
+  &amp;lt;meta property="og:type" content="article"/&amp;gt;
+  &amp;lt;meta property="og:article:published_time"/&amp;gt;
+
+  &amp;lt;script type="application/ld+json"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Before I even run any Python code, my HTML documents for my articles will already contain the necessary OpenGraph &lt;code&gt;meta&lt;/code&gt; tags and an empty &lt;code&gt;script&lt;/code&gt; tag with a &lt;code&gt;type&lt;/code&gt; of &lt;code&gt;application/ld+json&lt;/code&gt;. Anything that is page specific will not have any data applied yet for the &lt;code&gt;content&lt;/code&gt; attributes. I am also programmatically populating the &lt;code&gt;content&lt;/code&gt; attribute for the standard &lt;code&gt;meta&lt;/code&gt; &lt;code&gt;description&lt;/code&gt; too for consistency. When I run my Python CMS module, it will first run a series of tests on each document and make sure the tags it is expecting to work with are all present in the document. If anything is missing, or other tests fail, it will &lt;code&gt;exit&lt;/code&gt; the program and log what tests have failed.&lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;def extract_data(doc):
+  doc['title'] = doc['soup'].select_one(SELECTORS['title']).text
+  doc['intro'] = doc['soup'].select_one(SELECTORS['intro']).text
+  doc['description'] = " ".join(doc['intro'].split())
+  doc['html_date'] = doc['soup'].select_one(SELECTORS['time'])
+  doc['date_attr'] = doc['html_date']['datetime']
+  doc['URL'] = path_to_url(f"{doc['directory']}/{doc['filename']}")
+  doc['IMG'] = BASE_URL + selector(doc['soup'], "article img", "src")
+  return doc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;My CMS already iterates through documents to extract the required data to be able to create the RSS feeds, and add new articles to the index pages. So I already have all my data readily available. There are custom functions here to build a url from a specified file path, and a selector function to get an attributes content (I am not using that function to get the datetime attribute as I also use the &lt;code&gt;html_date&lt;/code&gt; to format dates to &lt;code&gt;RFC 822&lt;/code&gt; for the RSS feed). My CSS selectors are all pulled out of a config file, so if I decide to change my document structure, I just need to alter the config file and not the code itself. The &lt;code&gt;doc&lt;/code&gt; being passed into the function is a dictionary for each article document, with keys and values for &lt;code&gt;filename&lt;/code&gt;, &lt;code&gt;directory&lt;/code&gt;, and &lt;code&gt;soup&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;&lt;small&gt;NOTE: I've only included the relevant extractions in the function above. More data gets extracted from each document, but they are not relevant to building the meta for the page and are instead used elsewhere, such as the RSS feeds.&lt;/small&gt;&lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;def add_meta_content(article):
+  head = selector(article['soup'], "head")
+
+  description = selector(head, "meta[name='description']")
+  description['content'] = article['description']
+
+  og_title = selector(head, "meta[property='og:title']")
+  og_title['content'] = article['title']
+  og_desc = selector(head, "meta[property='og:description']")
+  og_desc['content'] = article['description']
+  og_url = selector(head, "meta[property='og:url']")
+  og_url['content'] = article['URL']
+  og_image = selector(head, "meta[property='og:image']")
+  og_image['content'] = article['IMG']
+  og_time = selector(head, "meta[property='og:article:published_time']")
+  og_time['content'] = article['date_attr']
+
+  json_ld = selector(head, "script[type='application/ld+json']")
+  json_ld_data = {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage":{
+      "@type": "WebPage",
+      "@id": article['URL']
+    },
+    "headline": article['title'],
+    "datePublished": article['date_attr'],
+    "description": article['description'],
+    "image": [
+      article['IMG']
+        ],
+    "author":{
+          "@type": "Person",
+          "name": "aaronwatts@dev"
+    }
+  }
+
+  json_ld_str = json.dumps(json_ld_data, indent=2)
+  json_ld.string = json_ld_str&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The extended article data is then passed into a function that populates the required &lt;code&gt;meta&lt;/code&gt; tags with the applicable data. The Python &lt;code&gt;json&lt;/code&gt; module is used to convert a Python dictionary into a JSON string.&lt;/p&gt;&lt;pre class="language-python"&gt;&lt;code&gt;article_path = f"{ROOT}/{article['directory']}/{article['filename']}"
+write_to_html(article['soup'], article_path)
+
+def write_to_html(soup, path):
+  with open(path, "w") as outf:
+    outf.write(str(soup))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each document's &lt;code&gt;soup&lt;/code&gt; retains all adjustments made, so the final step is simply to write the modified &lt;code&gt;soup&lt;/code&gt; back into the file it has been taken from.&lt;/p&gt;</content:encoded>
+      <enclosure url="https://aaronwatts.dev/images/guides/better-meta.avif" type="image/jpeg" length="0" />
+      <media:thumbnail url="https://aaronwatts.dev/images/guides/better-meta.avif" width="1920" height="1080" />
+      <media:content url="https://aaronwatts.dev/images/guides/better-meta.avif" type="image/jpeg" />
+    </item>
+    <item>
       <title>AppSheet - Rota App</title>
       <link>https://aaronwatts.dev/guides/appsheet</link>
       <pubDate>Thu, 28 Aug 2025 08:00:00 GMT</pubDate>
@@ -940,18 +1053,6 @@ with open ('home.html', 'w') as outf:
       <enclosure url="https://aaronwatts.dev/images/guides/pi5-desktop.avif" type="image/jpeg" length="0" />
       <media:thumbnail url="https://aaronwatts.dev/images/guides/pi5-desktop.avif" width="1920" height="1080" />
       <media:content url="https://aaronwatts.dev/images/guides/pi5-desktop.avif" type="image/jpeg" />
-    </item>
-    <item>
-      <title>GPi Case 2 - Compute Module 4</title>
-      <link>https://aaronwatts.dev/guides/gpicase</link>
-      <pubDate>Sun, 28 Apr 2024 08:00:00 GMT</pubDate>
-      <description>The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience.</description>
-      <guid>https://aaronwatts.dev/guides/gpicase</guid>
-      <content:encoded>&lt;header&gt; &lt;h1&gt;GPi Case 2 - Compute Module 4&lt;/h1&gt; &lt;time datetime="2024-04-28"&gt;28th April, 2024&lt;/time&gt; &lt;img alt="GPi Case 2 powered on, showing the recalbox menu screen" src="https://aaronwatts.dev/images/guides/gpicase.avif"/&gt; &lt;/header&gt;&lt;p id="description"&gt; The GPi Case 2 with Raspberry Pi's Compute Module 4 is the ultimate portable gaming device. The case offers amazing functionality, and when combined with a CM4 and 64-bit Recalbox, there is little that can challenge it for a portable retro gaming experience. &lt;/p&gt;&lt;p&gt; For this project, I went with a Compute Module 4, with 32Gb eMMC storage, and 4Gb RAM. I also went with no wireless, as this is my portable gaming device, and I don't require any online functionality for it. If you've read my NesPi-4 guide, you will know that I prefer RetroPie as my emulationstation frontend, but for this project I went with Recalbox instead. The biggest issue I've had with Recalbox in my Nespi-4 case, was that some updates would break the operating system sligthly. The web UI where you upload your games would stop working, and the shutdown option would disappear from the start menu. But as I don't really run this device online, the WebUI isn't as much of an issue, and the safe shutdown script for the GPi Case 2 means that the missing option isn't really an issue either. Although, I haven't really encountered the same glitches when updating Recalbox on this device. Recalbox also has a few features that let it pair extremely well to the GPi Case 2. It is 64-bit, which helps a lot with performance - I haven't overclocked it, as there is no cooling inside the case, but I still get great performance when emulating PSX, and it runs Mr. Driller and Volgar the Viking well on the Dreamcast - I haven't tried any games more taxing than those though, as it a battery powered device, and working it too hard is going to drain it faster. Recalbox is quite opinionated as far as emulationstation station frontends go, and to my knowledge, there is no way to add new emulators to it, although it does come prepacked with a more than reasonable collection of emulators, as well as lots of homebrew game ROMs, which is a very nice touch! &lt;/p&gt;&lt;h2&gt;Setting Up&lt;/h2&gt;&lt;small&gt; &lt;/small&gt;&lt;p&gt; Note: I use Linux computers only, so these instructions might not be of use to you if you are using Windows or Mac OS. &lt;/p&gt;&lt;p&gt; First you will need to flash Recalbox to the eMMC storage on the compute module 4. Either use the image provided in the Raspberry Pi Imager (Recalbox - Raspberry Pi 4 / 400 (64 bits)), or download the image from &lt;a href="https://www.recalbox.com/download/stable/handheld/gpicase2/alternative/" target="_blank"&gt; Recalbox&lt;/a&gt; and install using your software of choice. To install directly onto the CM4's flash storage, we will need a piece of software that overrides the boot method on the CM4, and registers the device instead, as a storage device. &lt;/p&gt;&lt;p&gt; First, we will need to check that &lt;code&gt;libusb-1.0-0-dev&lt;/code&gt; is installed on your computer that you will be using to flash the CM4. Check using: &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;apt list --installed | grep libusb&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; &lt;code&gt;libusb-1.0-0-dev&lt;/code&gt; should be in the list. If it's not, then install it using: &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;sudo apt install libusb-1.0-0-dev&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; Next, we need to clone the &lt;a href="https://github.com/raspberrypi/usbboot" target="_blank"&gt;Raspberry Pi USB Boot&lt;/a&gt; repository. &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;git clone --depth=1 https://github.com/raspberrypi/usbboot&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; Next we need to build the software: &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;cd usbboot
-make&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; Now we can run the software: &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;sudo ./rpiboot&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; Now, plug the GPiCase 2, with compute module 4 board installed, into your PC while the usbboot software is still running. You need to use the micro USB socket on the back of the case, under the cartridge style cover. Now power on the GPi Case 2, and the computer will now recognise the CM4 as a storage device. You can install the image just as you would an SD card. &lt;/p&gt;&lt;h2&gt;BIOS's&lt;/h2&gt;&lt;p&gt; You can get a full set of the RetroPie BIOS's at &lt;a href="https://github.com/archtaurus/RetroPieBIOS" target="_blank"&gt;this repo&lt;/a&gt; (if you need help getting BIOS's from it, have a look at my &lt;a href="https://aaronwatts.dev/guides/retropie-nespi-4#bios"&gt;NesPi-4 guide&lt;/a&gt; for instructions). I haven't checked every single one, but they should cover most of what you'll need for Recalbox. Check where to load each BIOS in the &lt;a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx" target="_blank"&gt;RecalBox Documentation&lt;/a&gt;. Use the installation instructions described in the next section about ROMs to install BIOS's onto the device. &lt;/p&gt;&lt;h2&gt;Adding ROMs&lt;/h2&gt;&lt;p&gt; I'm not going to tell you where to get copies of ROMs you already own physical copies of, but if you need help with it, take a look at the &lt;a href="https://aaronwatts.dev/guides/retropie-nespi-4#games"&gt;Getting Games&lt;/a&gt; section in the Nespi-4 guide. To load the ROMs to CM4, you will need to run the &lt;code&gt;usbboot&lt;/code&gt; software again, as with the installation. Games will need to be loaded onto the &lt;em&gt;Share&lt;/em&gt; partition, check out the &lt;a href="https://wiki.recalbox.com/en/emulators/consoles/playstation-1/libretro-mednafen_psx" target="_blank"&gt;RecalBox docs&lt;/a&gt; for the correct location and formats of ROMs for specific emulators. &lt;/p&gt;&lt;h2&gt;Tweaks and Polish&lt;/h2&gt;&lt;h3&gt;Theme&lt;/h3&gt;&lt;p&gt; The &lt;a href="https://github.com/SamYStudiO/es-theme-next-pixel" target="_blank"&gt;Next Pixel&lt;/a&gt; theme is great for the small LCD screen on the GPiCase. It looks great and the font sizes are large enough to be readable. To install just clone the repo to your computer, then drop the folder into the &lt;code&gt;recalbox/themes&lt;/code&gt; folder on the CM4 device. &lt;/p&gt;&lt;pre class="language-none command-line" data-host="dev" data-user="aaronwatts"&gt;&lt;code&gt;git clone https://github.com/SamYStudiO/es-theme-next-pixel.git&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; Then, from the Recalbox start menu, select &lt;em&gt;UI Settings &amp;gt; Theme &amp;gt; Theme Set&lt;/em&gt;, and select the &lt;em&gt;ES-THEME-NEXT-PIXEL-V2-4X4-240P&lt;/em&gt; theme from the menu. I also like to set the &lt;em&gt;On-Screen Help&lt;/em&gt; to off, as the font is so small, and it's not hard to memorise the few UI controls. &lt;/p&gt;&lt;h3&gt;Other Polish&lt;/h3&gt;&lt;p&gt; In the &lt;em&gt;UI Settings &amp;gt; Popup Settings&lt;/em&gt; menu, I set &lt;em&gt;Help Popup Duration&lt;/em&gt; to 1 second, and &lt;em&gt;Music Popup Duration&lt;/em&gt; to 0 seconds to hide music popups. &lt;/p&gt;&lt;p&gt; Recalbox menu controls default to a PSX style layout, but as we have a Nintendo style layout, you can also set &lt;em&gt;Swap Validate/Cancel Buttons&lt;/em&gt; in the UI settings to &lt;em&gt;On&lt;/em&gt;. &lt;/p&gt;&lt;p&gt; The &lt;em&gt;Start&lt;/em&gt; and &lt;em&gt;Home&lt;/em&gt; buttons are incredibly close together on the GPiCase 2, and if your thumbs are as large as mine, it can be easy to accidentally hit both buttons at once, which happens to be the &lt;em&gt;Exit&lt;/em&gt; hotkey. In &lt;em&gt;Game Settings&lt;/em&gt;, we can set &lt;em&gt;Press Twice To Quit Game&lt;/em&gt; to &lt;em&gt;On&lt;/em&gt;, this will show a popup and require a second press to quit the game - a real frustration saver! &lt;/p&gt;&lt;p&gt; To use the scraper, you will need an internet connection. I've found that the easiest way to achieve this, is to plug your phone into the USB-C port at the bottom, using a USB to USB-C adaptor, and use your phones USB hotspot tethering. &lt;/p&gt;</content:encoded>
-      <enclosure url="https://aaronwatts.dev/images/guides/gpicase.avif" type="image/jpeg" length="0" />
-      <media:thumbnail url="https://aaronwatts.dev/images/guides/gpicase.avif" width="1920" height="1080" />
-      <media:content url="https://aaronwatts.dev/images/guides/gpicase.avif" type="image/jpeg" />
     </item>
   </channel>
 </rss>

@@ -199,7 +199,7 @@ img {
     margin-inline: auto;
 }
 
-small:has(> p) {
+p small {
     display: block;
     font-style: italic;
     font-size: .9em;
